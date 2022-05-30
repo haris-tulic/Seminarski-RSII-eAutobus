@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eAutobus", "eAutobus\eAutobus.csproj", "{F00AB809-0188-4DF3-A27F-4D672BF6F5E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eAutobus", "eAutobus\eAutobus.csproj", "{F00AB809-0188-4DF3-A27F-4D672BF6F5E9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eAutobus.Model", "eAutobus.Model\eAutobus.Model.csproj", "{52F1764A-4FB0-40A2-BBDC-434E86F45109}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eAutobus.WinUI", "eAutobus.WinUI\eAutobus.WinUI.csproj", "{B44A0E8B-9AC9-499B-B6AF-DDC2ACAE893B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{F00AB809-0188-4DF3-A27F-4D672BF6F5E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F00AB809-0188-4DF3-A27F-4D672BF6F5E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F00AB809-0188-4DF3-A27F-4D672BF6F5E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52F1764A-4FB0-40A2-BBDC-434E86F45109}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52F1764A-4FB0-40A2-BBDC-434E86F45109}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52F1764A-4FB0-40A2-BBDC-434E86F45109}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52F1764A-4FB0-40A2-BBDC-434E86F45109}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B44A0E8B-9AC9-499B-B6AF-DDC2ACAE893B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B44A0E8B-9AC9-499B-B6AF-DDC2ACAE893B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B44A0E8B-9AC9-499B-B6AF-DDC2ACAE893B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B44A0E8B-9AC9-499B-B6AF-DDC2ACAE893B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
