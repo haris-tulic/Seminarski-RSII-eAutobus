@@ -86,8 +86,7 @@ namespace eAutobus.Services
             var entity = _mapper.Map<Database.Kupac>(request);
             if (!string.IsNullOrEmpty(request.KorisnickoIme) && request.Password == request.PotrvrdaPassworda)
             {
-                //entity.KorisnickoIme = entity.Ime.ToLower() + "." + entity.Prezime.ToLower();
-                //request.Password = entity.Ime.ToLower() + "" + entity.Prezime.ToLower() + "123";
+               
                 entity.LozinkaSalt = GenerateSalt();
                 entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Password);
                 var pronadji = PronadjiKupca(request);
@@ -110,7 +109,7 @@ namespace eAutobus.Services
                 var pronadji = await PronadjiKupca(request);
                 if (pronadji != null)
                 {
-                    Update(request, pronadji.KupacID);
+                   await Update(request, pronadji.KupacID);
                 }
                 else
                 {
@@ -128,8 +127,7 @@ namespace eAutobus.Services
             var entity = _mapper.Map<Kupac>(request);
             if (!string.IsNullOrEmpty(request.KorisnickoIme) && request.Password == request.PotrvrdaPassworda)
             {
-                //entity.KorisnickoIme = entity.Ime.ToLower() + "." + entity.Prezime.ToLower();
-                //request.Password = entity.Ime.ToLower() + "" + entity.Prezime.ToLower() + "123";
+               
                 entity.LozinkaSalt = GenerateSalt();
                 entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Password);
             }
