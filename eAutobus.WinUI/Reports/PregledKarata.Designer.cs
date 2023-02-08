@@ -1,7 +1,6 @@
-﻿
-namespace eAutobus.WinUI.Reports
+﻿namespace eAutobus.WinUI.Reports
 {
-    partial class PregledCjenovnika
+    partial class PregledKarata
     {
         /// <summary>
         /// Required designer variable.
@@ -29,40 +28,27 @@ namespace eAutobus.WinUI.Reports
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.CjenovnikModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.CjenovnikModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "DataSet1";
-            reportDataSource1.Value = this.CjenovnikModelBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "eAutobus.WinUI.Reports.rptPregledKarata.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.Name = "ReportViewer";
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(800, 450);
             this.reportViewer1.TabIndex = 0;
             // 
-            // CjenovnikModelBindingSource
+            // PregledKarata
             // 
-            this.CjenovnikModelBindingSource.DataSource = typeof(eAutobusModel.CjenovnikModel);
-            // 
-            // PregledCjenovnika
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.reportViewer1);
-            this.Name = "PregledCjenovnika";
-            this.Text = "PregledCjenovnika";
-            this.Load += new System.EventHandler(this.PregledCjenovnika_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.CjenovnikModelBindingSource)).EndInit();
+            this.Name = "PregledKarata";
+            this.Text = "Pregled karata";
+            this.Load += new System.EventHandler(this.PregledKarata_Load);
             this.ResumeLayout(false);
 
         }
@@ -70,6 +56,5 @@ namespace eAutobus.WinUI.Reports
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private System.Windows.Forms.BindingSource CjenovnikModelBindingSource;
     }
 }

@@ -93,7 +93,8 @@ namespace eAutobus.WinUI.RedVoznji
 
         private void btnIzvjestaj_Click(object sender, EventArgs e)
         {
-            Reports.PregledLinijaReportView rpt = new Reports.PregledLinijaReportView(_prikazLinija);
+            var _printLinije = dgvLinije.DataSource as List<RasporedVoznjeModel>;
+            Reports.frmPregledLinija rpt = new Reports.frmPregledLinija(_printLinije);
             rpt.Show();
         }
     }

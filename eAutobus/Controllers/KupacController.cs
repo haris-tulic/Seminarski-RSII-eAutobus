@@ -12,7 +12,7 @@ using eAutobus.Services.Interfaces;
 
 namespace eAutobus.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class KupacController : ControllerBase

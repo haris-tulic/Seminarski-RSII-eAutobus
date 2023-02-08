@@ -18,7 +18,7 @@ abstract class BaseProvider<T> with ChangeNotifier {
 
   BaseProvider(String endpoint) {
     _baseUrl = const String.fromEnvironment("baseUrl",
-        defaultValue: "https://10.0.2.2:44321/");
+        defaultValue: "http://10.0.2.2:44312/");
     print("baseurl: $_baseUrl");
 
     if (_baseUrl!.endsWith("/") == false) {
@@ -52,11 +52,18 @@ abstract class BaseProvider<T> with ChangeNotifier {
       String queryString = getQueryString(search);
       url = url + "?" + queryString;
     }
-
+    print("baseurl: $_baseUrl");
+    print(url);
     var uri = Uri.parse(url);
 
     Map<String, String> headers = createHeaders();
+    print("uri");
+    print(uri);
+    print(headers);
     print("get me");
+    print("uri");
+
+    print(headers);
     var response = await http!.get(uri, headers: headers);
     print("done $response");
     if (isValidResponseCode(response)) {

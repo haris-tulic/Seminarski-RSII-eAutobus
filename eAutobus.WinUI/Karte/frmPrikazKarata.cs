@@ -96,8 +96,8 @@ namespace eAutobus.WinUI.Karte
 
         private void btnPrintajKarte_Click(object sender, EventArgs e)
         {
-            var cjenovinikPrikaz=dataGridView1.DataSource as List<CjenovnikModel>;
-            Reports.PregledCjenovnika rpt= new Reports.PregledCjenovnika(cjenovinikPrikaz);
+            var cjenovinikPrikaz = dataGridView1.DataSource as List<CjenovnikModel>;
+            Reports.PregledKarata rpt = new Reports.PregledKarata(cjenovinikPrikaz);
             rpt.Show();
         }
     }

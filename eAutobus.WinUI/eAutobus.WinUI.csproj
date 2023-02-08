@@ -9,9 +9,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Reports\PregledKarataView.rdlc" />
+    <None Remove="Reports\rptIzdanaKarta.rdlc" />
+    <None Remove="Reports\rptKorisnici.rdlc" />
+    <None Remove="Reports\rptPregledLinija.rdlc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Reports\PregledKarataView.rdlc" />
+    <EmbeddedResource Include="Reports\rptIzdanaKarta.rdlc" />
+    <EmbeddedResource Include="Reports\rptKorisnici.rdlc" />
+    <EmbeddedResource Include="Reports\rptPregledLinija.rdlc" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Flurl" Version="3.0.6" />
     <PackageReference Include="Flurl.Http" Version="3.2.4" />
-    <PackageReference Include="Microsoft.ReportingServices.ReportViewerControl.Winforms" Version="150.1484.0" />
+    <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.17" />
   </ItemGroup>
 
   <ItemGroup>

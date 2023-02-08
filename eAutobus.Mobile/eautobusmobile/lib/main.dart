@@ -15,7 +15,6 @@ void main() => runApp(MultiProvider(
       child: MaterialApp(
         debugShowCheckedModeBanner: true,
         theme: ThemeData(
-          // Define the default brightness and colors.
           brightness: Brightness.light,
           primaryColor: Color.fromARGB(255, 183, 160, 58),
           textButtonTheme: TextButtonThemeData(
@@ -25,9 +24,6 @@ void main() => runApp(MultiProvider(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       fontStyle: FontStyle.italic))),
-
-          // Define the default `TextTheme`. Use this to specify the default
-          // text styling for headlines, titles, bodies of text, and more.
           textTheme: const TextTheme(
             headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
             headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
@@ -37,16 +33,6 @@ void main() => runApp(MultiProvider(
         onGenerateRoute: (settings) {
           if (settings.name == CjenovnikPage.routeName) {
             return MaterialPageRoute(builder: ((context) => CjenovnikPage()));
-            // } else if (settings.name == CartScreen.routeName) {
-            //   return MaterialPageRoute(builder: ((context) => CartScreen()));
-            // }
-
-            // var uri = Uri.parse(settings.name!);
-            // if (uri.pathSegments.length == 2 &&
-            //     "/${uri.pathSegments.first}" == ProductDetailsScreen.routeName) {
-            //   var id = uri.pathSegments[1];
-            //   return MaterialPageRoute(
-            //       builder: (context) => ProductDetailsScreen(id));
           }
         },
       ),
@@ -199,3 +185,97 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+// class HomePage extends StatefulWidget {
+//   @override
+//   _LoginPageState createState() => _LoginPageState();
+// }
+
+// class _LoginPageState extends State<HomePage> {
+//   final _formKey = GlobalKey<FormState>();
+//   String? _username = " ";
+//   String? _password = " ";
+//   bool _obscureText = true;
+//   late KorisnikProvider _userProvider;
+
+//   void _toggleObscureText() {
+//     setState(() {
+//       _obscureText = !_obscureText;
+//     });
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('Login'),
+//       ),
+//       body: Container(
+//         padding: EdgeInsets.all(20.0),
+//         child: Form(
+//           key: _formKey,
+//           child: Column(
+//             children: [
+//               TextFormField(
+//                 decoration: InputDecoration(
+//                   labelText: 'Username',
+//                   labelStyle: TextStyle(color: Colors.yellow[800]),
+//                   focusedBorder: UnderlineInputBorder(
+//                     borderSide:
+//                         BorderSide(color: Color.fromARGB(0, 246, 156, 2)),
+//                   ),
+//                 ),
+//                 validator: (value) {
+//                   // if (value.isEmpty) {
+//                   //   return 'Please enter a valid username';
+//                   // }
+//                   return null;
+//                 },
+//                 onSaved: (value) => _username = value,
+//               ),
+//               TextFormField(
+//                 decoration: InputDecoration(
+//                   labelText: 'Password',
+//                   labelStyle: TextStyle(color: Colors.orange[800]),
+//                   focusedBorder: UnderlineInputBorder(
+//                     borderSide:
+//                         BorderSide(color: Color.fromARGB(0, 246, 156, 2)),
+//                   ),
+//                   suffixIcon: IconButton(
+//                     icon: Icon(
+//                       _obscureText ? Icons.visibility : Icons.visibility_off,
+//                       color: Colors.orange[800],
+//                     ),
+//                     onPressed: _toggleObscureText,
+//                   ),
+//                 ),
+//                 obscureText: _obscureText,
+//                 validator: (value) {
+//                   // if (value.isEmpty) {
+//                   //   return 'Please enter a password';
+//                   // }
+//                   return null;
+//                 },
+//                 onSaved: (value) => _password = value,
+//               ),
+//               RaisedButton(
+//                 color: Colors.red[800],
+//                 textColor: Colors.white,
+//                 onPressed: () {
+//                   // if (_formKey.currentState?.validate()) {
+//                   //   _formKey.currentState.save();
+//                   //   // TODO: Call the login API
+//                   _userProvider.get();
+
+//                   Navigator.pushNamed(context, CjenovnikPage.routeName);
+//                   // }
+//                 },
+//                 child: Text('Login'),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }

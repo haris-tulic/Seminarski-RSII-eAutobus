@@ -309,7 +309,7 @@ namespace eAutobus.WinUI.Karte
             {
                 kartaPrikaz.Pravac = rbDva.Text;
             }
-            Reports.IzdanaKartaReportView rpt = new Reports.IzdanaKartaReportView(kartaPrikaz);
+            Reports.frmIzdanaKarta rpt = new Reports.frmIzdanaKarta(kartaPrikaz);
             rpt.Show();
         }
 

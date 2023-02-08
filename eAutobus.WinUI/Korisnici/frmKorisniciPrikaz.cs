@@ -87,7 +87,7 @@ namespace eAutobus.WinUI.Korisnici
         private void button1_Click(object sender, EventArgs e)
         {
             var prikazKorisnika = dgvPrikaz.DataSource as List<KorisnikModel>;
-            Reports.PregledKorisnikaReportView rpt= new Reports.PregledKorisnikaReportView(prikazKorisnika);
+            Reports.frmKorisnici rpt= new Reports.frmKorisnici(prikazKorisnika);
             rpt.Show();
         }
     }

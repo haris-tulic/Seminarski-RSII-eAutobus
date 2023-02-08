@@ -1,7 +1,6 @@
-﻿
-namespace eAutobus.WinUI.Reports
+﻿namespace eAutobus.WinUI.Reports
 {
-    partial class rptKorisniciReportView
+    partial class frmIzdanaKarta
     {
         /// <summary>
         /// Required designer variable.
@@ -29,40 +28,27 @@ namespace eAutobus.WinUI.Reports
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.KorisnikModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.KorisnikModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "dsKorisnici";
-            reportDataSource1.Value = this.KorisnikModelBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "eAutobus.WinUI.Reports.Report1.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.Name = "ReportViewer";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(800, 450);
+            this.reportViewer1.Size = new System.Drawing.Size(396, 246);
             this.reportViewer1.TabIndex = 0;
             // 
-            // KorisnikModelBindingSource
+            // frmIzdanaKarta
             // 
-            this.KorisnikModelBindingSource.DataSource = typeof(eAutobusModel.KorisnikModel);
-            // 
-            // rptKorisniciReportView
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.reportViewer1);
-            this.Name = "rptKorisniciReportView";
-            this.Text = "rptKorisniciReportView";
-            this.Load += new System.EventHandler(this.rptKorisniciReportView_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.KorisnikModelBindingSource)).EndInit();
+            this.Name = "frmIzdanaKarta";
+            this.Text = "frmIzdanaKarta";
+            this.Load += new System.EventHandler(this.frmIzdanaKarta_Load);
             this.ResumeLayout(false);
 
         }
@@ -70,6 +56,5 @@ namespace eAutobus.WinUI.Reports
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private System.Windows.Forms.BindingSource KorisnikModelBindingSource;
     }
 }

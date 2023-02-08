@@ -1,7 +1,6 @@
-﻿
-namespace eAutobus.WinUI.Reports
+﻿namespace eAutobus.WinUI.Reports
 {
-    partial class IzdanaKartaReportView
+    partial class frmPregledLinija
     {
         /// <summary>
         /// Required designer variable.
@@ -35,22 +34,21 @@ namespace eAutobus.WinUI.Reports
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "eAutobus.WinUI.Reports.rptIzdanaKarta.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.Name = "ReportViewer";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(871, 542);
+            this.reportViewer1.Size = new System.Drawing.Size(800, 450);
             this.reportViewer1.TabIndex = 0;
             // 
-            // IzdanaKartaReportView
+            // frmPregledLinija
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(871, 542);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.reportViewer1);
-            this.Name = "IzdanaKartaReportView";
-            this.Text = "IzdanaKartaReportView";
-            this.Load += new System.EventHandler(this.IzdanaKartaReportView_Load);
+            this.Name = "frmPregledLinija";
+            this.Text = "frmPregledLinija";
+            this.Load += new System.EventHandler(this.frmPregledLinija_Load);
             this.ResumeLayout(false);
 
         }
