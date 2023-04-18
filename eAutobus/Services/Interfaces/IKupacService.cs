@@ -17,5 +17,6 @@ namespace eAutobus.Services.Interfaces
        Task<KupacModel> Delete(int id);
        Task<Kupac> PronadjiKupca(KupacInsertRequest kupac);
        Task<KupacModel> RegistrujSe(KupacInsertRequest request);
+       Task<List<KupacModel>> Authentificiraj(string username, string password);
     }
 }

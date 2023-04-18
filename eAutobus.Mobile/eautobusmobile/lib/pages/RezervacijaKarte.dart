@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class RezervacijaKarte extends StatefulWidget {
+  static const String routname = "Rezervacija";
   const RezervacijaKarte({Key? key}) : super(key: key);
 
   @override

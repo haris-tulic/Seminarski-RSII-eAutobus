@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace eAutobus.Controllers
 {
-    
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class LoginController : ControllerBase
@@ -23,9 +23,10 @@ namespace eAutobus.Controllers
         }
 
         [HttpGet]
-        public Task<KorisnikModel> Autentificiraj(string userName,string password)
+        public Task<KorisnikModel> Get([FromQuery] string userName,string password)
         {
             return _service.Autentificiraj(userName, password);
+            
         }
     }
 }

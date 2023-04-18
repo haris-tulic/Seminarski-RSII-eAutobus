@@ -6,21 +6,21 @@ import 'package:http/io_client.dart';
 import 'package:flutter/foundation.dart';
 
 import '../models/korisnik/Korisnik.dart';
-import '../models/response/payload_response.dart';
 import '../utils/util.dart';
 
 abstract class BaseProvider<T> with ChangeNotifier {
   static String? _baseUrl;
   String? _endpoint;
 
-  HttpClient client = new HttpClient();
+  var client = new HttpClient();
   IOClient? http;
 
   BaseProvider(String endpoint) {
     _baseUrl = const String.fromEnvironment("baseUrl",
-        defaultValue: "http://10.0.2.2:44312/");
+        defaultValue: "https://localhost:44312/api");
     print("baseurl: $_baseUrl");
-
+    //10.0.2.2//
+    //https://localhost:44312/api//
     if (_baseUrl!.endsWith("/") == false) {
       _baseUrl = _baseUrl! + "/";
     }
@@ -52,20 +52,10 @@ abstract class BaseProvider<T> with ChangeNotifier {
       String queryString = getQueryString(search);
       url = url + "?" + queryString;
     }
-    print("baseurl: $_baseUrl");
-    print(url);
     var uri = Uri.parse(url);
-
     Map<String, String> headers = createHeaders();
-    print("uri");
-    print(uri);
-    print(headers);
-    print("get me");
-    print("uri");
 
-    print(headers);
     var response = await http!.get(uri, headers: headers);
-    print("done $response");
     if (isValidResponseCode(response)) {
       var data = jsonDecode(response.body);
       return data.map((x) => fromJson(x)).cast<T>().toList();
@@ -90,44 +80,37 @@ abstract class BaseProvider<T> with ChangeNotifier {
     }
   }
 
-  Future<Korisnik?> prijava() async {
-    var url = "$_baseUrl$_endpoint";
+  Future<List<T?>> login() async {
     String? username = Authorization.username;
     String? password = Authorization.password;
-
+    var url = "https://localhost:44312/api/Kupac/Login";
     Map<String, String> headers = createHeaders();
-
-    final response = await http!.get(
-      Uri.parse(url),
-      headers: headers,
-    );
+    var uri = Uri.parse(url);
+    final response = await http!.get(uri, headers: headers);
     if (response.statusCode == 200) {
-      return Korisnik.fromJson(
-          PayloadResponse.fromJson(json.decode(response.body)).payload);
+      final token = json.decode(response.body)['token'];
+      return token;
+    } else {
+      throw Exception('Failed to login');
     }
-
-    return null;
   }
 
-  // static Future<dynamic> registracija(String body) async {
-  //   String baseUrl = _baseRoute + "Korisnik/registracija";
+  Future<dynamic> SignIn(dynamic body) async {
+    var url = "$_baseUrl$_endpoint";
+    var uri = Uri.parse(url);
+    Map<String, String> headers = createHeaders();
+    var jsonRequest = jsonEncode(body);
 
-  //   final response = await http.post(
-  //     Uri.parse(baseUrl),
-  //     headers: {
-  //       HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8'
-  //     },
-  //     body: body,
-  //   );
+    var response = await http!.post(uri,
+        headers: {'Content-type': 'application/json'}, body: jsonRequest);
+    if (isValidResponseCode(response)) {
+      var data = jsonDecode(response.body);
+      return fromJson(data) as T;
+    } else {
+      return null;
+    }
+  }
 
-  //   if (response.statusCode == 200) {
-  //     return PayloadResponse.fromJson(json.decode(response.body));
-  //   } else if (response.statusCode == 400) {
-  //     return ErrorResponse.fromJson(json.decode(response.body));
-  //   } else {
-  //     return null;
-  //   }
-  // }
   Future<T?> update(int id, [dynamic request]) async {
     var url = "$_baseUrl$_endpoint/$id";
     var uri = Uri.parse(url);
@@ -141,7 +124,7 @@ abstract class BaseProvider<T> with ChangeNotifier {
       var data = jsonDecode(response.body);
       return fromJson(data) as T;
     } else {
-      return null;
+      throw Exception(response.statusCode);
     }
   }
 
@@ -153,7 +136,8 @@ abstract class BaseProvider<T> with ChangeNotifier {
         "Basic ${base64Encode(utf8.encode('$username:$password'))}";
 
     var headers = {
-      "Content-Type": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+      'Accept': 'application/json',
       "Authorization": basicAuth
     };
     return headers;

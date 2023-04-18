@@ -29,6 +29,25 @@ namespace eAutobus.Services
             _korisnik = korisnik;
             _kartaKupac = kartaKupac;
         }
+        public async Task<List<KupacModel>> Authentificiraj(string username, string password)
+        {
+            var entityK = await _context.Kupac.FirstOrDefaultAsync(k => k.KorisnickoIme == username);
+
+
+            if (entityK != null)
+            {
+                var hash = GenerateHash(entityK.LozinkaSalt, password);
+                if (hash != entityK.LozinkaHash)
+                {
+                    throw new UserException("Pogresan username ili password");
+                }
+
+                return _mapper.Map<List<KupacModel>>(entityK);
+            }
+
+            return null;
+
+        }
 
         public async Task< KupacModel> Delete(int id)
         {
@@ -89,7 +108,7 @@ namespace eAutobus.Services
                
                 entity.LozinkaSalt = GenerateSalt();
                 entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Password);
-                var pronadji = PronadjiKupca(request);
+                var pronadji = await PronadjiKupca(request);
                 if (pronadji!=null)
                 {
                     return null;
@@ -187,14 +206,11 @@ namespace eAutobus.Services
         public async Task<Kupac> PronadjiKupca(KupacInsertRequest kupac)
         {
             var pronadji = await _context.Kupac
-                .Include(x=>x.KartaList).Include(x=>x.PlaceneKarte).Include(x=>x.Recenzija)
-                .Include("KartaList.Karta").Include("PlaceneKarte.Karta")
-                .FirstOrDefaultAsync(k => k.Ime == kupac.Ime && k.Prezime == kupac.Prezime  && k.BrojTelefona == kupac.BrojTelefona && k.KorisnickoIme==kupac.KorisnickoIme);
-            if (pronadji!=null)
-            {
-                return pronadji;
-            }
-            return null;
+                .Include(x => x.KartaList).Include(x => x.PlaceneKarte).Include(x => x.Recenzija)
+                .FirstOrDefaultAsync(k => k.Ime == kupac.Ime && k.Prezime == kupac.Prezime && k.BrojTelefona == kupac.BrojTelefona && k.KorisnickoIme == kupac.KorisnickoIme);
+
+
+            return pronadji;
         }
 
         public Kupac PronadjiRegistrovanogKupca(KupacInsertRequest kupac)
@@ -203,12 +219,9 @@ namespace eAutobus.Services
                 .Where(k => k.Ime == kupac.Ime && k.Prezime == kupac.Prezime && k.BrojTelefona == kupac.BrojTelefona && k.KorisnickoIme == kupac.KorisnickoIme && k.Email==kupac.Email)
                 .Include(x => x.KartaList).Include(x => x.PlaceneKarte).Include(x => x.Recenzija)
                 .Include("KartaList.Karta").Include("PlaceneKarte.Karta").FirstOrDefault();
-            if (pronadji != null)
-            {
-                return pronadji;
-            }
-            return null;
+            return pronadji;
         }
 
+        
     }
 }

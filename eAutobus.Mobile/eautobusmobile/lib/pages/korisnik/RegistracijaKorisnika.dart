@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:eautobusmobile/models/cjenovnik/Cjenovnik.dart';
 import 'package:eautobusmobile/models/korisnik/Korisnik.dart';
 import 'package:eautobusmobile/pages/CjenovnikPage.dart';
-import 'package:eautobusmobile/pages/korisnik/Login.dart';
 import 'package:eautobusmobile/providers/base_provider.dart';
 import 'package:eautobusmobile/utils/util.dart';
 import 'package:email_validator/email_validator.dart';
@@ -13,14 +12,15 @@ import '../../models/response/error_response.dart';
 import '../../models/response/payload_response.dart';
 import '../../providers/user_provider.dart';
 
-class Registracija extends StatefulWidget {
-  const Registracija({Key? key}) : super(key: key);
+class RegistracijaPage extends StatefulWidget {
+  static const String routeName = "Registracija";
+  const RegistracijaPage({Key? key}) : super(key: key);
 
   @override
   _RegistracijaState createState() => _RegistracijaState();
 }
 
-class _RegistracijaState extends State<Registracija> {
+class _RegistracijaState extends State<RegistracijaPage> {
   TextStyle style = const TextStyle(fontSize: 18.0);
 
   TextEditingController imeController = TextEditingController();

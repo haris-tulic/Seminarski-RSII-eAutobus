@@ -1,5 +1,10 @@
 import 'package:eautobusmobile/pages/CjenovnikPage.dart';
+import 'package:eautobusmobile/pages/RecenzijaPage.dart';
+import 'package:eautobusmobile/pages/RedVoznjePage.dart';
 import 'package:eautobusmobile/pages/korisnik/RegistracijaKorisnika.dart';
+import 'package:eautobusmobile/providers/karta_provider.dart';
+import 'package:eautobusmobile/providers/redvoznje_provider.dart';
+import 'package:eautobusmobile/providers/registracija_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../models/cjenovnik/Cjenovnik.dart';
@@ -11,6 +16,10 @@ void main() => runApp(MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => CjenovnikProvider()),
         ChangeNotifierProvider(create: (_) => KorisnikProvider()),
+        ChangeNotifierProvider(create: (_) => RegistracijaProvider()),
+        ChangeNotifierProvider(create: (_) => RedVoznjeProvider()),
+        ChangeNotifierProvider(create: (_) => KartaProvider()),
+        //ChangeNotifierProvider(create: (_) =>RecomendedProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: true,
@@ -33,6 +42,13 @@ void main() => runApp(MultiProvider(
         onGenerateRoute: (settings) {
           if (settings.name == CjenovnikPage.routeName) {
             return MaterialPageRoute(builder: ((context) => CjenovnikPage()));
+          } else if (settings.name == RegistracijaPage.routeName) {
+            return MaterialPageRoute(
+                builder: ((context) => RegistracijaPage()));
+          } else if (settings.name == RecenzijaPage.routeName) {
+            return MaterialPageRoute(builder: ((context) => RecenzijaPage()));
+          } else if (settings.name == RedVoznjePage.routeName) {
+            return MaterialPageRoute(builder: ((context) => RedVoznjePage()));
           }
         },
       ),
@@ -135,9 +151,7 @@ class HomePage extends StatelessWidget {
                   try {
                     Authorization.username = _usernameController.text;
                     Authorization.password = _passwordController.text;
-
                     await _userProvider.get();
-
                     Navigator.pushNamed(context, CjenovnikPage.routeName);
                   } catch (e) {
                     showDialog(
@@ -176,7 +190,9 @@ class HomePage extends StatelessWidget {
               ),
               child: InkWell(
                 child: Center(child: Text("Don't have account? Create one!")),
-                //onTap:() async {Navigator.pushNamed(context, Registracija.name)},
+                onTap: () async {
+                  //Navigator.pushNamed(context, RegistracijaPage.routename);
+                },
               ),
             )
           ],
