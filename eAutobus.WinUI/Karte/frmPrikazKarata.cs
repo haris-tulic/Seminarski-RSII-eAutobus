@@ -84,7 +84,7 @@ namespace eAutobus.WinUI.Karte
             if (dataGridView1.CurrentCell is DataGridViewButtonCell)
             {
                 await _cjenovnik.Delete<CjenovnikModel>(kartaID);
-                MessageBox.Show("Izbrisali ste odabranu kartu: " + odabranaKarta.Tipkarte + " " + odabranaKarta.VrstaKarte);
+                MessageBox.Show("Izbrisali ste odabranu kartu: " + odabranaKarta.TipKarte + " " + odabranaKarta.VrstaKarte);
                 await LoadCjenovnik();
             }
             else

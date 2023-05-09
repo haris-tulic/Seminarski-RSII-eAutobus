@@ -11,6 +11,15 @@ class RecenzijaPage extends StatefulWidget {
 class _RecenzijaState extends State<RecenzijaPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.orange,
+        title: Text(
+          "Ostavite recenziju",
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
+      body: Text(""),
+    );
   }
 }

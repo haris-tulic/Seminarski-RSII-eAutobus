@@ -30,7 +30,7 @@ abstract class BaseProvider<T> with ChangeNotifier {
     http = IOClient(client);
   }
 
-  Future<List<T>> getById(int id, [dynamic additionalData]) async {
+  Future<T?> getById(int id, [dynamic additionalData]) async {
     var url = Uri.parse("$_baseUrl$_endpoint/$id");
 
     Map<String, String> headers = createHeaders();
@@ -39,7 +39,7 @@ abstract class BaseProvider<T> with ChangeNotifier {
 
     if (isValidResponseCode(response)) {
       var data = jsonDecode(response.body);
-      return data.map((x) => fromJson(x)).cast<T>().toList();
+      return fromJson(data);
     } else {
       throw Exception("Exception... handle this gracefully");
     }
@@ -74,40 +74,23 @@ abstract class BaseProvider<T> with ChangeNotifier {
 
     if (isValidResponseCode(response)) {
       var data = jsonDecode(response.body);
-      return fromJson(data) as T;
+      return fromJson(data);
     } else {
       return null;
     }
   }
 
-  Future<List<T?>> login() async {
-    String? username = Authorization.username;
-    String? password = Authorization.password;
-    var url = "https://localhost:44312/api/Kupac/Login";
+  Future<T?> prijava() async {
+    _endpoint = "Login";
+    var url = "${_baseUrl}${_endpoint}";
     Map<String, String> headers = createHeaders();
     var uri = Uri.parse(url);
     final response = await http!.get(uri, headers: headers);
     if (response.statusCode == 200) {
-      final token = json.decode(response.body)['token'];
-      return token;
+      final data = json.decode(response.body);
+      return fromJson(data);
     } else {
       throw Exception('Failed to login');
-    }
-  }
-
-  Future<dynamic> SignIn(dynamic body) async {
-    var url = "$_baseUrl$_endpoint";
-    var uri = Uri.parse(url);
-    Map<String, String> headers = createHeaders();
-    var jsonRequest = jsonEncode(body);
-
-    var response = await http!.post(uri,
-        headers: {'Content-type': 'application/json'}, body: jsonRequest);
-    if (isValidResponseCode(response)) {
-      var data = jsonDecode(response.body);
-      return fromJson(data) as T;
-    } else {
-      return null;
     }
   }
 
@@ -122,7 +105,7 @@ abstract class BaseProvider<T> with ChangeNotifier {
 
     if (isValidResponseCode(response)) {
       var data = jsonDecode(response.body);
-      return fromJson(data) as T;
+      return fromJson(data);
     } else {
       throw Exception(response.statusCode);
     }

@@ -36,24 +36,49 @@ class _CjenovnikState extends State<CjenovnikPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 248, 183, 86),
+      appBar: AppBar(
+        backgroundColor: Colors.orange,
+        title: _cjenovnikHeader(),
+      ),
       body: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
         child: Container(
-          child: Column(
-            children: [
-              _cjenovnikHeader(),
-              Container(
-                height: 200,
-                child: GridView(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 1,
-                      childAspectRatio: 4 / 3,
-                      crossAxisSpacing: 20,
-                      mainAxisSpacing: 30),
-                  scrollDirection: Axis.vertical,
-                  children: _cjenovnikCardList(),
-                ),
-              ),
+          child: DataTable(
+            dataTextStyle: TextStyle(fontSize: 15, color: Colors.white),
+            dataRowHeight: 70,
+            columns: [
+              DataColumn(
+                  label: Text(
+                'Vrsta karte',
+                style: TextStyle(color: Colors.white, fontSize: 18),
+              )),
+              DataColumn(
+                  label: Text('Tip karte',
+                      style: TextStyle(color: Colors.white, fontSize: 18))),
+              DataColumn(
+                  label: Text('Polaziste',
+                      style: TextStyle(color: Colors.white, fontSize: 18))),
+              DataColumn(
+                  label: Text('Odrediste',
+                      style: TextStyle(color: Colors.white, fontSize: 18))),
+              DataColumn(
+                  label: Text('Cijena karte',
+                      style: TextStyle(color: Colors.white, fontSize: 18))),
             ],
+            rows: data
+                .map(
+                  (data) => DataRow(
+                    cells: [
+                      DataCell(Text(data.vrstaKarte!)),
+                      DataCell(Text(data.tipKarte!)),
+                      DataCell(Text(data.polaziste!)),
+                      DataCell(Text(data.odrediste!)),
+                      DataCell(Text(data.cijenaPrikaz!)),
+                    ],
+                  ),
+                )
+                .toList(),
           ),
         ),
       ),
@@ -66,22 +91,12 @@ class _CjenovnikState extends State<CjenovnikPage> {
       child: Text(
         "Cjenovnik",
         style: TextStyle(
-            color: Colors.grey, fontSize: 40, fontWeight: FontWeight.w500),
+          color: Colors.white,
+          fontSize: 40,
+          fontWeight: FontWeight.w500,
+          backgroundColor: Colors.orange,
+        ),
       ),
     );
-  }
-
-  List<Widget> _cjenovnikCardList() {
-    List<Widget> list = data
-        .map(
-          (x) => Container(
-            height: 200,
-            width: 200,
-            child: Text(x.vrstaKarte ?? " "),
-          ),
-        )
-        .cast<Widget>()
-        .toList();
-    return list;
   }
 }

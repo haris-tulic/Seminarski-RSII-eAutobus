@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:eautobusmobile/models/cjenovnik/Cjenovnik.dart';
 import 'package:eautobusmobile/models/korisnik/Korisnik.dart';
 import 'package:eautobusmobile/pages/CjenovnikPage.dart';
+import 'package:eautobusmobile/pages/InfoPage.dart';
 import 'package:eautobusmobile/providers/base_provider.dart';
 import 'package:eautobusmobile/utils/util.dart';
 import 'package:email_validator/email_validator.dart';
@@ -82,18 +83,21 @@ class _RegistracijaState extends State<RegistracijaPage> {
 
   @override
   Widget build(BuildContext context) {
-    final txtIme = TextFormField(
-      validator: (value) {
-        return value == null || value.isEmpty ? _obaveznoPolje : null;
-      },
-      controller: imeController,
-      obscureText: false,
-      style: style,
-      decoration: InputDecoration(
-          contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Ime",
-          border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
+    final txtIme = Container(
+      child: TextFormField(
+        style: const TextStyle(color: Colors.white),
+        validator: (value) {
+          return value == null || value.isEmpty ? _obaveznoPolje : null;
+        },
+        controller: imeController,
+        obscureText: false,
+        decoration: InputDecoration(
+            contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+            labelText: "Ime",
+            labelStyle: TextStyle(color: Colors.white),
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
+      ),
     );
     final txtPrezime = TextFormField(
       validator: (value) {
@@ -101,15 +105,17 @@ class _RegistracijaState extends State<RegistracijaPage> {
       },
       controller: prezimeController,
       obscureText: false,
-      style: style,
+      style: const TextStyle(color: Colors.white),
       decoration: InputDecoration(
           contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Prezime",
+          labelText: "Prezime",
+          labelStyle: TextStyle(color: Colors.white),
           border:
               OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
     );
 
     final txtMail = TextFormField(
+      style: const TextStyle(color: Colors.white),
       validator: (value) {
         if (value == null || value.isEmpty) {
           return _obaveznoPolje;
@@ -121,10 +127,10 @@ class _RegistracijaState extends State<RegistracijaPage> {
       },
       controller: emailController,
       obscureText: false,
-      style: style,
       decoration: InputDecoration(
           contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Email",
+          labelText: "Email",
+          labelStyle: TextStyle(color: Colors.white),
           border:
               OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
     );
@@ -137,10 +143,11 @@ class _RegistracijaState extends State<RegistracijaPage> {
           },
           controller: dtpDatumRodjenjaController,
           obscureText: false,
-          style: style,
+          style: const TextStyle(color: Colors.white),
           decoration: InputDecoration(
               contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-              hintText: "Datum rođenja",
+              labelText: "Datum rodjenja",
+              labelStyle: TextStyle(color: Colors.white),
               border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(32.0))),
         ),
@@ -151,15 +158,16 @@ class _RegistracijaState extends State<RegistracijaPage> {
     );
 
     final txtKorisnickoIme = TextFormField(
+      style: const TextStyle(color: Colors.white),
       validator: (value) {
         return value == null || value.isEmpty ? _obaveznoPolje : null;
       },
       controller: korisnickoImeController,
       obscureText: false,
-      style: style,
       decoration: InputDecoration(
           contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-          hintText: "Korisničko ime",
+          labelText: "Korisnicko ime",
+          labelStyle: TextStyle(color: Colors.white),
           border:
               OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
     );
@@ -178,7 +186,7 @@ class _RegistracijaState extends State<RegistracijaPage> {
       },
       controller: lozinkaController,
       obscureText: _isObscure,
-      style: style,
+      style: const TextStyle(color: Colors.white),
       decoration: InputDecoration(
           contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           suffixIcon: IconButton(
@@ -190,16 +198,19 @@ class _RegistracijaState extends State<RegistracijaPage> {
                   _isObscure = !_isObscure;
                 });
               }),
-          hintText: "Lozinka",
-          border:
-              OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
+          labelText: "Password",
+          labelStyle: TextStyle(color: Colors.white),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(32.0),
+              borderSide:
+                  BorderSide(color: Color.fromARGB(255, 255, 1, 1), width: 2))),
     );
 
     final btnOdustani = Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(30.0),
-      color: Colors.white,
       child: MaterialButton(
+        color: Color.fromARGB(255, 255, 81, 0),
         padding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () async {
           Navigator.of(context).pushAndRemoveUntil(
@@ -212,15 +223,15 @@ class _RegistracijaState extends State<RegistracijaPage> {
         child: Text("Odustani",
             textAlign: TextAlign.center,
             style: style.copyWith(
-                color: const Color(0xff01A0C7), fontWeight: FontWeight.bold)),
+                color: Colors.white, fontWeight: FontWeight.bold)),
       ),
     );
     final btnRegistrujSe = Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(30.0),
-      color: const Color(0xff01A0C7),
       child: MaterialButton(
         padding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+        color: Color.fromARGB(255, 255, 81, 0),
         onPressed: () async {
           if (_formKey.currentState!.validate()) {
             response = null;
@@ -239,8 +250,9 @@ class _RegistracijaState extends State<RegistracijaPage> {
               var korisnik = Korisnik.fromJson(response.payload);
               Navigator.of(context).pushAndRemoveUntil(
                 MaterialPageRoute(
-                  builder: (BuildContext context) => const CjenovnikPage(),
-                ),
+                    builder: (BuildContext context) => InfoPage(
+                          korisnikId: null,
+                        )),
                 (route) => false,
               );
             } else {
@@ -256,10 +268,19 @@ class _RegistracijaState extends State<RegistracijaPage> {
     );
 
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 248, 183, 86),
+      appBar: AppBar(
+        backgroundColor: Colors.orange,
+        title: Text(
+          "Registracija korisnika",
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
       body: Center(
         child: ListView(children: [
           Container(
-            color: Colors.white,
+            padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
+            color: Color.fromARGB(255, 248, 183, 86),
             child: Padding(
               padding: const EdgeInsets.all(36.0),
               child: Column(
@@ -278,41 +299,41 @@ class _RegistracijaState extends State<RegistracijaPage> {
                               children: [
                                 Flexible(child: txtIme),
                                 const SizedBox(
-                                  width: 5.0,
+                                  width: 10,
                                 ),
                                 Flexible(child: txtPrezime)
                               ],
                             ),
-                            const SizedBox(height: 5.0),
-                            txtMail,
-                            const SizedBox(height: 5.0),
-                            //Datum rodjenja i spol
+                            const SizedBox(height: 50),
                             Row(
                               children: [
                                 Flexible(child: dtpDatumRodjenja),
                                 const SizedBox(
-                                  width: 5.0,
+                                  width: 10,
                                 ),
+                                Flexible(
+                                  child: txtMail,
+                                )
                               ],
                             ),
-                            const SizedBox(height: 5.0),
+                            const SizedBox(height: 50),
                             //Korisnicko ime i lozinka
                             Row(
                               children: [
                                 Flexible(child: txtKorisnickoIme),
                                 const SizedBox(
-                                  width: 5.0,
+                                  width: 10,
                                 ),
                                 Flexible(child: txtLozinka)
                               ],
                             ),
-                            const SizedBox(height: 15.0),
+                            const SizedBox(height: 30),
                             //Buttoni
                             Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  btnOdustani,
+                                  Expanded(child: btnOdustani),
                                   const SizedBox(width: 15.0),
                                   Expanded(child: btnRegistrujSe)
                                 ]),

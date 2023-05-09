@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Net.Http.Headers;
+using System.Text;
 
 namespace eAutobus.Controllers
 {
@@ -23,8 +25,13 @@ namespace eAutobus.Controllers
         }
 
         [HttpGet]
-        public Task<KorisnikModel> Get([FromQuery] string userName,string password)
+        public Task<KorisnikModel> Get()
         {
+            var authHeader = AuthenticationHeaderValue.Parse(Request.Headers["Authorization"]);
+            var credentialBytes = Convert.FromBase64String(authHeader.Parameter);
+            var credentials = Encoding.UTF8.GetString(credentialBytes).Split(':');
+            var userName = credentials[0];
+            var password = credentials[1];
             return _service.Autentificiraj(userName, password);
             
         }

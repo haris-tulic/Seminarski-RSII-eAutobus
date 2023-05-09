@@ -18,7 +18,7 @@ namespace eAutobus.Controllers
     public class KupacController : ControllerBase
     {
         private readonly IKupacService _service;
-        public KupacController(IKupacService service, ILoginService login)
+        public KupacController(IKupacService service)
         {
             _service = service;
         }
@@ -71,8 +71,8 @@ namespace eAutobus.Controllers
             var response = await _service.RegistrujSe(request);
             return Ok(response);
         }
-        [HttpGet("/Login")]
-        public async Task<ActionResult<List<KupacModel>>> Login([FromQuery] string username, string password)
+        [HttpGet("Prijava")]
+        public async Task<ActionResult<KupacModel>> Prijava([FromQuery] string username, string password)
         {
             var response = await _service.Authentificiraj(username,password);
             return Ok(response);

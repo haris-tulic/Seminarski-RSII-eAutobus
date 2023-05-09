@@ -11,9 +11,9 @@ class RedVoznje {
   String? polazak;
   String? odlazak;
   String? nazivLinije;
-  DateTime? vrijemePolaska;
-  DateTime? vrijemeDolaska;
-  DateTime? datum;
+  String? vrijemePolaska;
+  String? vrijemeDolaska;
+  String? datum;
   String? cijenaPrikaz;
 
   RedVoznje() {}

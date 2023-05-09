@@ -54,13 +54,17 @@ namespace eAutobus.Services
             var listR = new List<RasporedVoznjeModel>();
             _mapper.Map(list, listR);
             
-            for (int i = 0; i <list.Count; i++)
+            for (int i = 0; i < list.Count; i++)
             {
                 listR[i].Odlazak = list[i].Odrediste.NazivLokacijeStanice;
                 listR[i].Polazak = list[i].Polaziste.NazivLokacijeStanice;
                 listR[i].BrojAutobusa = list[i].Autobus.BrojAutobusa;
                 listR[i].NazivLinije = list[i].Polaziste.NazivLokacijeStanice + "-" + list[i].Odrediste.NazivLokacijeStanice;
                 listR[i].VozacIme = list[i].Vozac.Korisnik.Ime;
+                listR[i].Datum= DateTime.Parse(list[i].Datum.Date.ToString());
+                listR[i].VrijemeDolaska = DateTime.Parse(list[i].VrijemeDolaska.ToString("G"));
+                listR[i].VrijemePolaska = DateTime.Parse(list[i].VrijemePolaska.ToString("G"));
+            
             }
             return listR.OrderByDescending(r=>r.FinalOcjena).ToList();
         }

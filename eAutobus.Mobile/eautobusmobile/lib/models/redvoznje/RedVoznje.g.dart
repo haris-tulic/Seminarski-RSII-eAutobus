@@ -14,9 +14,9 @@ RedVoznje _$RedVoznjeFromJson(Map<String, dynamic> json) => RedVoznje()
   ..polazak = json['polazak'] as String?
   ..odlazak = json['odlazak'] as String?
   ..nazivLinije = json['nazivLinije'] as String?
-  ..vrijemePolaska = json['vrijemePolaska'] as DateTime?
-  ..vrijemeDolaska = json['vrijemeDolaska'] as DateTime?
-  ..datum = json['datum'] as DateTime?
+  ..vrijemePolaska = json['vrijemePolaska'] as String?
+  ..vrijemeDolaska = json['vrijemeDolaska'] as String?
+  ..datum = json['datum'] as String?
   ..cijenaPrikaz = json['cijenaPrikaz'] as String?;
 
 Map<String, dynamic> _$RedVoznjeToJson(RedVoznje instance) => <String, dynamic>{

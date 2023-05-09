@@ -13,7 +13,7 @@ namespace eAutobusModel
         public string VrstaKarte { get; set; }
         public int VrstaKarteID { get; set; }
 
-        public string Tipkarte { get; set; }
+        public string TipKarte { get; set; }
         public int TipkarteID { get; set; }
         public int OdredisteID { get; set; }
         public int PolazisteID { get; set; }

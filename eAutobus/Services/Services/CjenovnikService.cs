@@ -63,12 +63,12 @@ namespace eAutobus.Services
             _mapper.Map(list,listC);
             for (int i = 0; i < list.Count(); i++)
             {
-                listC[i].Tipkarte = list[i].Tipkarte.Naziv;
+                listC[i].TipKarte = list[i].Tipkarte.Naziv;
                 listC[i].VrstaKarte = list[i].VrstaKarte.Naziv;
                 listC[i].Zona = list[i].Zona.OznakaZone;
                 listC[i].Odrediste = list[i].Odrediste.NazivLokacijeStanice;
                 listC[i].Polaziste = list[i].Polaziste.NazivLokacijeStanice;
-                
+                listC[i].CijenaPrikaz = list[i].Cijena.ToString() + " KM";
             }
             return listC;
         }
