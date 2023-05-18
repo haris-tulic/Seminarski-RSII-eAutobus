@@ -21,16 +21,16 @@ namespace eAutobus.Services
             _mapper = mapper;
         }
 
-        public List<KartaKupacModel> Get(KartaKupacGetRequest search)
+        public async Task<List<KartaKupacModel>> Get(KartaKupacGetRequest search)
         {
-            var list = _context.KartaKupac.Include(k=>k.Karta)
+            var list = await _context.KartaKupac.Include(k=>k.Karta)
                 .Include("Karta.Odrediste")
                 .Include("Karta.Polaziste")
                 .Include(u=>u.Kupac)
                 .Include(t=>t.Karta.TipKarte)
                 .Include(v=>v.Karta.VrstaKarte)
                 .Where(x=>x.KupacID==search.KupacID)
-                .ToList();
+                .ToListAsync();
             var listM = new List<KartaKupacModel>();
             _mapper.Map(list, listM);
             for (int i = 0; i < list.Count; i++)

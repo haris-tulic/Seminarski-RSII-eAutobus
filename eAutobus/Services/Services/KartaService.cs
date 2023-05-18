@@ -81,6 +81,7 @@ namespace eAutobus.Services
                 AdresaStanovanja = request.AdresaStanovanja,
                 BrojTelefona = request.BrojTelefona,
                 Email = request.Email,
+                KorisnickoIme = request.KorisnickoIme
             };
             var entity = _mapper.Map<Karta>(request);
             bool postoji = await ProvjeriKartu(kupac);
@@ -125,17 +126,9 @@ namespace eAutobus.Services
             {
                 foreach (var item in pronadjiKupca.KartaList)
                 {
-                    if (DateTime.Now>item.DatumVazenjaKarte)
+                    if (DateTime.Parse(DateTime.Now.ToShortDateString())>DateTime.Parse(item.DatumVazenjaKarte.ToShortDateString()))
                     {
                         item.Aktivna = false;
-                    }
-                }
-                foreach (var item in pronadjiKupca.KartaList)
-                {
-
-                    if (item.Aktivna && item.DatumVazenjaKarte>DateTime.Now)
-                    {
-                        return true;
                     }
                 }
             }

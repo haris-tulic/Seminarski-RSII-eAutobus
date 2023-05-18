@@ -13,7 +13,6 @@ namespace eAutobusModel.Requests
         [Required]
 
         public string Prezime { get; set; }
-        [Required]
 
         public string AdresaStanovanja { get; set; }
         public string Email { get; set; }
@@ -46,5 +45,6 @@ namespace eAutobusModel.Requests
         public int KartaID { get; set; }
         public string PravacS { get; set; }
         public string NacinPlacanja { get; set; }
+        public string KorisnickoIme { get; set; }
     }
 }

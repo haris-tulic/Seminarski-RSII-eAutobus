@@ -4,7 +4,7 @@ part 'RedVoznje.g.dart';
 
 @JsonSerializable()
 class RedVoznje {
-  int? rasporedVoznjeId;
+  int? rasporedVoznjeID;
   int? brojLinije;
   int? brojAutobusa;
   String? vozacIme;

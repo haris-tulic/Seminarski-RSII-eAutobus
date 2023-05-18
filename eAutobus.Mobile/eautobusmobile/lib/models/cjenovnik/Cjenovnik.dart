@@ -11,6 +11,7 @@ class Cjenovnik {
   String? odrediste;
   String? polaziste;
   String? cijenaPrikaz;
+  int? cijena;
 
   Cjenovnik() {}
   factory Cjenovnik.fromJson(Map<String, dynamic> json) =>

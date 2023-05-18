@@ -1,3 +1,5 @@
+import 'dart:core';
+
 import 'package:json_annotation/json_annotation.dart';
 
 part 'Karta.g.dart';
@@ -6,15 +8,18 @@ part 'Karta.g.dart';
 class Karta {
   int? kartaId;
   String? nacinPlacanja;
-  String? vrstaKarte;
-  String? tipKarte;
-  String? odrediste;
-  String? polaziste;
+  int? vrstaKarteID;
+  int? tipKarteID;
+  int? odredisteID;
+  int? polazisteID;
   String? cijenaPrikaz;
-  String? imePrezimeKupca;
-  String? relacija;
+  int? cijena;
+  String? ime;
+  String? prezime;
   DateTime? datumVadjenjaKarte;
   DateTime? datumVazenjaKarte;
+  int? kupacID;
+  String? korisnickoIme;
 
   Karta() {}
   factory Karta.fromJson(Map<String, dynamic> json) => _$KartaFromJson(json);

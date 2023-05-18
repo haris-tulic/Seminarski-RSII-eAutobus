@@ -5,16 +5,18 @@ class KorisnikRegistracijaRequest {
   String? brojTelefona;
   String? email;
   String? adresaStanovanja;
-  DateTime? datumRodjenja;
-  String? lozinka;
+  String? password;
+  String? potvrdaPassworda;
 
   KorisnikRegistracijaRequest(
       {this.korisnickoIme,
       this.ime,
       this.prezime,
       this.email,
-      this.datumRodjenja,
-      this.lozinka});
+      this.potvrdaPassworda,
+      this.password,
+      this.brojTelefona,
+      this.adresaStanovanja});
 
   factory KorisnikRegistracijaRequest.fromJson(Map<String, dynamic> json) {
     return KorisnikRegistracijaRequest(
@@ -22,18 +24,21 @@ class KorisnikRegistracijaRequest {
       ime: json['ime'] as String,
       prezime: json['prezime'] as String,
       email: json['prezime'] as String,
-      datumRodjenja: DateTime.tryParse(json['datumRodjenja']),
-      lozinka: json['lozinka'] as String,
+      password: json['password'] as String,
+      potvrdaPassworda: json['potvrdaPassworda'] as String,
+      adresaStanovanja: json['adresaStanovanja'] as String,
+      brojTelefona: json['brojTelefona'] as String,
     );
   }
 
   Map<String, dynamic> toJson() => {
-        "korisnickoIme": korisnickoIme,
-        "ime": ime,
-        "prezime": prezime,
-        "email": email,
-        "datumRodjenja":
-            datumRodjenja == null ? null : datumRodjenja!.toIso8601String(),
-        "lozinka": lozinka,
+        'korisnickoIme': korisnickoIme,
+        'ime': ime,
+        'prezime': prezime,
+        'email': email,
+        'potvrdaPassworda': potvrdaPassworda,
+        'password': password,
+        'brojTelefona': brojTelefona,
+        'adresaStanovanja': adresaStanovanja,
       };
 }

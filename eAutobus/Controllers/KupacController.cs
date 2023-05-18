@@ -23,7 +23,6 @@ namespace eAutobus.Controllers
             _service = service;
         }
 
-        
         [HttpGet]
         public async Task<ActionResult<List<KupacModel>>> Get([FromQuery]KupacGetRequest request)
         {
@@ -65,17 +64,19 @@ namespace eAutobus.Controllers
 
         }
         [AllowAnonymous]
-        [HttpPost("{request}")]
-        public async Task<ActionResult<KupacModel>> RegistrujSe(KupacInsertRequest request)
+        [HttpPost("Registracija")]
+        public async Task<ActionResult<KupacModel>> Registracija(KupacInsertRequest request)
         {
             var response = await _service.RegistrujSe(request);
             return Ok(response);
         }
         [HttpGet("Prijava")]
-        public async Task<ActionResult<KupacModel>> Prijava([FromQuery] string username, string password)
+        public async Task<ActionResult<KupacModel>> Prijava()
         {
-            var response = await _service.Authentificiraj(username,password);
-            return Ok(response);
+            //var response = await _service.Authentificiraj(username,password);
+            //return Ok(response);
+            return Ok();
+
         }
     }
 }

@@ -9,7 +9,7 @@ namespace eAutobus.Services.Interfaces
 {
     public interface IKartaKupacService
     {
-        List<KartaKupacModel> Get(KartaKupacGetRequest search);
+        Task<List<KartaKupacModel>> Get(KartaKupacGetRequest search);
         KartaKupacModel Insert(KartaKupacUpsertRequest request);
     }
 }

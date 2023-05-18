@@ -7,7 +7,7 @@ part of 'RedVoznje.dart';
 // **************************************************************************
 
 RedVoznje _$RedVoznjeFromJson(Map<String, dynamic> json) => RedVoznje()
-  ..rasporedVoznjeId = json['rasporedVoznjeId'] as int?
+  ..rasporedVoznjeID = json['rasporedVoznjeID'] as int?
   ..brojLinije = json['brojLinije'] as int?
   ..brojAutobusa = json['brojAutobusa'] as int?
   ..vozacIme = json['vozacIme'] as String?
@@ -20,7 +20,7 @@ RedVoznje _$RedVoznjeFromJson(Map<String, dynamic> json) => RedVoznje()
   ..cijenaPrikaz = json['cijenaPrikaz'] as String?;
 
 Map<String, dynamic> _$RedVoznjeToJson(RedVoznje instance) => <String, dynamic>{
-      'rasporedVoznjeId': instance.rasporedVoznjeId,
+      'rasporedVoznjeID': instance.rasporedVoznjeID,
       'brojLinije': instance.brojLinije,
       'brojAutobusa': instance.brojAutobusa,
       'vozacIme': instance.vozacIme,

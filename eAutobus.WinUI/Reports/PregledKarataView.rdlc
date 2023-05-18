@@ -31,7 +31,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Tipkarte</Value>
+                              <Value>Tip karte</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -157,21 +157,21 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Tipkarte">
+                    <Textbox Name="TipKarte">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Tipkarte.Value</Value>
+                              <Value>=Fields!TipKarte.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Tipkarte</rd:DefaultName>
+                      <rd:DefaultName>TipKarte</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -400,8 +400,8 @@
           <DataField>PolazisteID</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="Tipkarte">
-          <DataField>Tipkarte</DataField>
+        <Field Name="TipKarte">
+          <DataField>TipKarte</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="TipkarteID">

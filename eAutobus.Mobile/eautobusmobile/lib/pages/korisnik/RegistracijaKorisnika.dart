@@ -1,17 +1,13 @@
-import 'dart:convert';
-import 'package:eautobusmobile/models/cjenovnik/Cjenovnik.dart';
-import 'package:eautobusmobile/models/korisnik/Korisnik.dart';
-import 'package:eautobusmobile/pages/CjenovnikPage.dart';
 import 'package:eautobusmobile/pages/InfoPage.dart';
-import 'package:eautobusmobile/providers/base_provider.dart';
+import 'package:eautobusmobile/providers/registracija_provider.dart';
 import 'package:eautobusmobile/utils/util.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import '../../main.dart';
+import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import '../../models/korisnik/KorisnikRegistracija.dart';
 import '../../models/response/error_response.dart';
-import '../../models/response/payload_response.dart';
-import '../../providers/user_provider.dart';
+import '../HomePage.dart';
 
 class RegistracijaPage extends StatefulWidget {
   static const String routeName = "Registracija";
@@ -26,33 +22,40 @@ class _RegistracijaState extends State<RegistracijaPage> {
 
   TextEditingController imeController = TextEditingController();
   TextEditingController prezimeController = TextEditingController();
+  TextEditingController adresaController = TextEditingController();
+  TextEditingController brojTelefonaController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController dtpDatumRodjenjaController = TextEditingController();
   TextEditingController korisnickoImeController = TextEditingController();
   TextEditingController lozinkaController = TextEditingController();
-  FocusNode focusNode = FocusNode();
-  late KorisnikProvider _userProvider;
-  dynamic response;
-  KorisnikRegistracijaRequest request = KorisnikRegistracijaRequest();
+  TextEditingController potvrdalozinkaController = TextEditingController();
 
-  DateTime _odabraniDatumRodjenja = DateTime.now();
+  FocusNode focusNode = FocusNode();
+  late RegistracijaProvider _registracijaProvider;
+  dynamic _existUSer;
+  Map? newUser = null;
+  KorisnikRegistracijaRequest request = KorisnikRegistracijaRequest();
 
   final _formKey = GlobalKey<FormState>();
   final _obaveznoPolje = "Polje je obavezno";
-
-  Future<void> getData(KorisnikRegistracijaRequest request) async {
-    response = await _userProvider.get(request);
-  }
 
   Future<void> _showDialog(String text) async {
     return showDialog<void>(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          content: Text(text),
+          backgroundColor: Colors.grey,
+          content: Text(
+            text,
+            style: const TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold),
+          ),
           actions: <Widget>[
             TextButton(
-              child: const Text('OK'),
+              child: const Text(
+                'OK',
+                style: TextStyle(color: Colors.white),
+              ),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -63,26 +66,14 @@ class _RegistracijaState extends State<RegistracijaPage> {
     );
   }
 
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-        context: context,
-        initialDate: _odabraniDatumRodjenja,
-        firstDate: DateTime(1900, 1),
-        lastDate: DateTime.now());
-
-    if (picked != null && picked != _odabraniDatumRodjenja) {
-      setState(() {
-        _odabraniDatumRodjenja = picked;
-        dtpDatumRodjenjaController.text =
-            "${_odabraniDatumRodjenja.toLocal()}".split(' ')[0];
-      });
-    }
-  }
-
   bool _isObscure = true;
+  bool _potvrda = true;
 
   @override
   Widget build(BuildContext context) {
+    _registracijaProvider =
+        Provider.of<RegistracijaProvider>(context, listen: false);
+
     final txtIme = Container(
       child: TextFormField(
         style: const TextStyle(color: Colors.white),
@@ -135,26 +126,37 @@ class _RegistracijaState extends State<RegistracijaPage> {
               OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
     );
 
-    final dtpDatumRodjenja = InkWell(
-      child: IgnorePointer(
-        child: TextFormField(
-          validator: (value) {
-            return value == null || value.isEmpty ? _obaveznoPolje : null;
-          },
-          controller: dtpDatumRodjenjaController,
-          obscureText: false,
-          style: const TextStyle(color: Colors.white),
-          decoration: InputDecoration(
-              contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-              labelText: "Datum rodjenja",
-              labelStyle: TextStyle(color: Colors.white),
-              border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(32.0))),
-        ),
-      ),
-      onTap: () {
-        _selectDate(context);
+    final txtAdresaStanovanja = TextFormField(
+      validator: (value) {
+        return value == null || value.isEmpty ? _obaveznoPolje : null;
       },
+      controller: adresaController,
+      obscureText: false,
+      style: const TextStyle(color: Colors.white),
+      decoration: InputDecoration(
+          contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+          labelText: "Adresa stanovanja",
+          labelStyle: TextStyle(color: Colors.white),
+          border:
+              OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
+    );
+    final txtBrojTelefona = TextFormField(
+      validator: (value) {
+        return value == null || value.isEmpty ? _obaveznoPolje : null;
+      },
+      controller: brojTelefonaController,
+      keyboardType: TextInputType.number,
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly
+      ],
+      obscureText: false,
+      style: const TextStyle(color: Colors.white),
+      decoration: InputDecoration(
+          contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+          labelText: "Broj telefona",
+          labelStyle: TextStyle(color: Colors.white),
+          border:
+              OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
     );
 
     final txtKorisnickoIme = TextFormField(
@@ -205,6 +207,39 @@ class _RegistracijaState extends State<RegistracijaPage> {
               borderSide:
                   BorderSide(color: Color.fromARGB(255, 255, 1, 1), width: 2))),
     );
+    final txtPotvrdaPassworda = TextFormField(
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return _obaveznoPolje;
+        } else if (value.length < 6) {
+          return "Minimalna dužina 6!";
+        } else if (value != lozinkaController.text) {
+          return "Passwordi se ne poklapaju";
+        } else {
+          return null;
+        }
+      },
+      controller: potvrdalozinkaController,
+      obscureText: _potvrda,
+      style: const TextStyle(color: Colors.white),
+      decoration: InputDecoration(
+          contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+          suffixIcon: IconButton(
+              icon: Icon(
+                _potvrda ? Icons.visibility : Icons.visibility_off,
+              ),
+              onPressed: () {
+                setState(() {
+                  _potvrda = !_potvrda;
+                });
+              }),
+          labelText: "Potvrda passworda",
+          labelStyle: TextStyle(color: Colors.white),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(32.0),
+              borderSide:
+                  BorderSide(color: Color.fromARGB(255, 255, 1, 1), width: 2))),
+    );
 
     final btnOdustani = Material(
       elevation: 5.0,
@@ -234,30 +269,39 @@ class _RegistracijaState extends State<RegistracijaPage> {
         color: Color.fromARGB(255, 255, 81, 0),
         onPressed: () async {
           if (_formKey.currentState!.validate()) {
-            response = null;
-            request.ime = imeController.text;
-            request.prezime = prezimeController.text;
-            request.email = emailController.text;
-            request.datumRodjenja = _odabraniDatumRodjenja;
-            request.korisnickoIme = korisnickoImeController.text;
-            request.lozinka = lozinkaController.text;
+            newUser = {
+              "korisnickoIme": korisnickoImeController.text,
+              "ime": imeController.text,
+              "prezime": prezimeController.text,
+              "brojTelefona": brojTelefonaController.text,
+              "email": emailController.text,
+              "adresaStanovanja": adresaController.text,
+              "password": lozinkaController.text,
+              "potvrdaPassworda": potvrdalozinkaController.text,
+            };
             Authorization.username = korisnickoImeController.text;
             Authorization.password = lozinkaController.text;
-            await getData(request);
-            if (response != null) {
-              _showDialog('Došlo je do greške, pokušajte opet! ');
-            } else if (response == null) {
-              var korisnik = Korisnik.fromJson(response.payload);
+            try {
+              var kreiraniUser =
+                  await _registracijaProvider.registracija(newUser);
+              if (kreiraniUser == null) {
+                _showDialog("Korisnik vec postoji!");
+              }
+
+              CircularProgressIndicator();
               Navigator.of(context).pushAndRemoveUntil(
                 MaterialPageRoute(
                     builder: (BuildContext context) => InfoPage(
-                          korisnikId: null,
+                          korisnikId: kreiraniUser?.kupacID,
                         )),
                 (route) => false,
               );
-            } else {
-              _showDialog((response as ErrorResponse).message as String);
+            } catch (e) {
+              _showDialog(
+                  "Nije moguce kreirati novog korisnika. Pokusajte kasnije!");
             }
+          } else {
+            _showDialog((_existUSer as ErrorResponse).message as String);
           }
         },
         child: Text("Registruj se",
@@ -289,12 +333,10 @@ class _RegistracijaState extends State<RegistracijaPage> {
                   children: [
                     Form(
                       key: _formKey,
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            //Ime i prezime
                             Row(
                               children: [
                                 Flexible(child: txtIme),
@@ -307,7 +349,7 @@ class _RegistracijaState extends State<RegistracijaPage> {
                             const SizedBox(height: 50),
                             Row(
                               children: [
-                                Flexible(child: dtpDatumRodjenja),
+                                Flexible(child: txtAdresaStanovanja),
                                 const SizedBox(
                                   width: 10,
                                 ),
@@ -317,18 +359,24 @@ class _RegistracijaState extends State<RegistracijaPage> {
                               ],
                             ),
                             const SizedBox(height: 50),
-                            //Korisnicko ime i lozinka
                             Row(
                               children: [
+                                Flexible(child: txtBrojTelefona),
+                                const SizedBox(width: 10),
                                 Flexible(child: txtKorisnickoIme),
+                              ],
+                            ),
+                            const SizedBox(height: 50),
+                            Row(
+                              children: [
+                                Flexible(child: txtLozinka),
                                 const SizedBox(
                                   width: 10,
                                 ),
-                                Flexible(child: txtLozinka)
+                                Flexible(child: txtPotvrdaPassworda)
                               ],
                             ),
                             const SizedBox(height: 30),
-                            //Buttoni
                             Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment: MainAxisAlignment.center,

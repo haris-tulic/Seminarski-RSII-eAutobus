@@ -49,7 +49,7 @@ namespace eAutobus.Services
 
         }
 
-        public async Task< KupacModel> Delete(int id)
+        public async Task<KupacModel> Delete(int id)
         {
             var entity = await _context.Kupac.FirstOrDefaultAsync(x=>x.KupacID==id);
             entity.IsDeleted = true;
@@ -83,7 +83,7 @@ namespace eAutobus.Services
                 {
                     search.KupacID = item.KupacID;
                 }
-                List<KartaKupacModel> listaKarata = _kartaKupac.Get(search);
+                List<KartaKupacModel> listaKarata = await _kartaKupac.Get(search);
                 for (int i = 0; i < listM.Count; i++)
                 {
                     listM[i].KartaKupacs = listaKarata;
@@ -95,7 +95,14 @@ namespace eAutobus.Services
         public async Task<KupacModel> GetByID(int id)
         {
             var entity = await _context.Kupac.Include(k=>k.KartaList).Include(k=>k.PlaceneKarte).FirstOrDefaultAsync(k=>k.KupacID==id && (!k.IsDeleted));
-            return _mapper.Map<KupacModel>(entity);
+            var search = new KartaKupacGetRequest
+            {
+                KupacID = id,
+            };
+            var trazeniKupac = new KupacModel();
+            _mapper.Map(entity, trazeniKupac);
+            trazeniKupac.KartaKupacs = await _kartaKupac.Get(search);
+            return trazeniKupac;
         }
 
 
@@ -103,7 +110,7 @@ namespace eAutobus.Services
         {
           
             var entity = _mapper.Map<Database.Kupac>(request);
-            if (!string.IsNullOrEmpty(request.KorisnickoIme) && request.Password == request.PotrvrdaPassworda)
+            if (!string.IsNullOrEmpty(request.KorisnickoIme) && request.Password == request.PotvrdaPassworda)
             {
                
                 entity.LozinkaSalt = GenerateSalt();
@@ -144,7 +151,7 @@ namespace eAutobus.Services
         {
 
             var entity = _mapper.Map<Kupac>(request);
-            if (!string.IsNullOrEmpty(request.KorisnickoIme) && request.Password == request.PotrvrdaPassworda)
+            if (!string.IsNullOrEmpty(request.KorisnickoIme) && request.Password == request.PotvrdaPassworda)
             {
                
                 entity.LozinkaSalt = GenerateSalt();
@@ -170,7 +177,7 @@ namespace eAutobus.Services
         {
             var entity = await _context.Kupac.FirstOrDefaultAsync(x=>x.KupacID==id);
             _mapper.Map(request, entity);
-            if (!string.IsNullOrEmpty(entity.KorisnickoIme) && request.Password == request.PotrvrdaPassworda)
+            if (!string.IsNullOrEmpty(entity.KorisnickoIme) && request.Password == request.PotvrdaPassworda)
             {
                 entity.LozinkaSalt = GenerateSalt();
                 entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Password);

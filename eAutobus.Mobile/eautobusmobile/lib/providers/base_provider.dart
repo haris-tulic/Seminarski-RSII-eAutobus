@@ -5,7 +5,6 @@ import 'package:http/http.dart';
 import 'package:http/io_client.dart';
 import 'package:flutter/foundation.dart';
 
-import '../models/korisnik/Korisnik.dart';
 import '../utils/util.dart';
 
 abstract class BaseProvider<T> with ChangeNotifier {
@@ -80,8 +79,23 @@ abstract class BaseProvider<T> with ChangeNotifier {
     }
   }
 
+  Future<T?> registracija(dynamic request) async {
+    var url = "$_baseUrl$_endpoint";
+    var uri = Uri.parse(url);
+
+    Map<String, String> headers = createHeaders();
+    var jsonRequest = jsonEncode(request);
+    var response = await http!.post(uri, headers: headers, body: jsonRequest);
+
+    if (isValidResponseCode(response)) {
+      var data = jsonDecode(response.body);
+      return fromJson(data);
+    } else {
+      return null;
+    }
+  }
+
   Future<T?> prijava() async {
-    _endpoint = "Login";
     var url = "${_baseUrl}${_endpoint}";
     Map<String, String> headers = createHeaders();
     var uri = Uri.parse(url);
@@ -119,7 +133,7 @@ abstract class BaseProvider<T> with ChangeNotifier {
         "Basic ${base64Encode(utf8.encode('$username:$password'))}";
 
     var headers = {
-      "Content-Type": "application/x-www-form-urlencoded",
+      "Content-Type": "application/json",
       'Accept': 'application/json',
       "Authorization": basicAuth
     };
