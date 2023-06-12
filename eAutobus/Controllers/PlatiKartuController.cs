@@ -38,7 +38,7 @@ namespace eAutobus.Controllers
         }
 
         [HttpPost]
-    public async Task<ActionResult<PlatiKartuModel>> Insert(PlatiKartuUpsertRequest request)
+         public async Task<ActionResult<PlatiKartuModel>> Insert(PlatiKartuUpsertRequest request)
         {
             var response = await _service.Insert(request);
             return Ok(response);
@@ -46,7 +46,7 @@ namespace eAutobus.Controllers
         }
 
         [HttpPut("{id}")]
-public async Task<ActionResult<PlatiKartuModel>> Update(PlatiKartuUpsertRequest request, int id)
+        public async Task<ActionResult<PlatiKartuModel>> Update(PlatiKartuUpsertRequest request, int id)
         {
             var response = await _service.Update(request,id);
             return Ok(response);

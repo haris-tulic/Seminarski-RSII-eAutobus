@@ -65,6 +65,12 @@ namespace eAutobus.WinUI
             var result = await url.GetJsonAsync<T>();
             return result;
         }
+
+        public async Task<T> PlatiKartu<T>(object id)
+        {
+            var url = $"{Settings.Default.ApiURL}/{_route}/{id}";
+            return await url.WithBasicAuth(Username, Password).PutJsonAsync(id).ReceiveJson<T>();
+        }
     }
 
 }

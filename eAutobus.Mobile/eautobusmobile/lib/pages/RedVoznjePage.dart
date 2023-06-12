@@ -1,5 +1,6 @@
 import 'package:eautobusmobile/models/redvoznje/RedVoznje.dart';
 import 'package:eautobusmobile/models/redvoznje/Stanica.dart';
+import 'package:eautobusmobile/pages/RedVoznjeDetails.dart';
 import 'package:eautobusmobile/providers/redvoznje_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -20,6 +21,7 @@ class _RedVoznjeState extends State<RedVoznjePage> {
   List<RedVoznje>? data = [];
   List<Stanica>? stanice = [];
   int? polazisteID = null;
+  int? selectedRow = -1;
 
   @override
   void initState() {
@@ -49,21 +51,39 @@ class _RedVoznjeState extends State<RedVoznjePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 248, 183, 86),
       appBar: AppBar(
-        title: const Text("Red voznje", style: TextStyle(color: Colors.white)),
-        backgroundColor: Colors.orange,
+        title: const Text("Red voznje"),
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        child: Center(
-          child: Column(
-            children: [
-              Container(
-                width: 500,
+        padding: const EdgeInsets.fromLTRB(20, 50, 0, 0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Center(
+              child: Text(
+                "Pregled reda voznje:",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18),
+              ),
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+            Flexible(
+              child: Container(
+                width: 350,
+                height: 60,
                 alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: Colors.orange[400],
+                  border: Border.all(color: Colors.white),
+                ),
                 child: DropdownButtonFormField(
-                    dropdownColor: Colors.grey,
+                    dropdownColor: Colors.orange[300],
                     style: const TextStyle(color: Colors.white),
                     decoration: const InputDecoration(
                       labelText: "Odaberite stanicu polaska",
@@ -89,80 +109,102 @@ class _RedVoznjeState extends State<RedVoznjePage> {
                       });
                     }),
               ),
-              const SizedBox(height: 30),
-              Material(
-                elevation: 5.0,
-                borderRadius: BorderRadius.circular(30.0),
-                child: MaterialButton(
-                  child: Text(
-                    "Pretraga",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white),
+            ),
+            const SizedBox(height: 30),
+            Material(
+              elevation: 5.0,
+              borderRadius: BorderRadius.circular(30.0),
+              child: MaterialButton(
+                child: Text(
+                  "Pretraga",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white),
+                ),
+                color: Color.fromARGB(255, 255, 81, 0),
+                padding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                onPressed: () {
+                  setState(() {
+                    loadData();
+                  });
+                },
+              ),
+            ),
+            const SizedBox(height: 30),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.yellow[900],
+                border: Border.all(color: Colors.white),
+                borderRadius: BorderRadius.all(Radius.circular(20)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Color.fromARGB(255, 255, 255, 255).withOpacity(0.9),
+                    spreadRadius: 2,
+                    blurRadius: 5,
+                    offset: Offset(0, 1),
                   ),
-                  color: Color.fromARGB(255, 255, 81, 0),
-                  padding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-                  onPressed: () {
-                    setState(() {
-                      loadData();
-                    });
-                  },
-                ),
+                ],
               ),
-              const SizedBox(height: 30),
-              Container(
-                child: DataTable(
-                  dataTextStyle:
-                      const TextStyle(fontSize: 15, color: Colors.white),
-                  columns: [
-                    const DataColumn(
-                        label: Text(
-                      'Broj linije',
-                      style: TextStyle(color: Colors.white, fontSize: 18),
-                    )),
-                    const DataColumn(
-                        label: const Text('Polazak',
-                            style: const TextStyle(
-                                color: Colors.white, fontSize: 18))),
-                    const DataColumn(
-                        label: Text('Vrijeme polaska',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 18))),
-                    const DataColumn(
-                        label: const Text('Odrediste',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 18))),
-                    const DataColumn(
-                        label: const Text('Vrijeme dolaska',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 18))),
-                    const DataColumn(
-                        label: Text('Datum',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 18))),
-                    const DataColumn(
-                        label: Text('Broj autobusa',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 18))),
-                  ],
-                  rows: data!
-                      .map(
-                        (data) => DataRow(
-                          cells: [
-                            DataCell(Text(data.brojLinije.toString())),
-                            DataCell(Text(data.polazak!)),
-                            DataCell(Text(data.vrijemePolaska!.substring(11))),
-                            DataCell(Text(data.odlazak!)),
-                            DataCell(Text(data.vrijemeDolaska!.substring(11))),
-                            DataCell(Text(data.datum!.substring(0, 10))),
-                            DataCell(Text(data.brojAutobusa.toString())),
-                          ],
-                        ),
-                      )
-                      .toList(),
-                ),
+              child: DataTable(
+                dataTextStyle:
+                    const TextStyle(fontSize: 15, color: Colors.white),
+                columns: [
+                  const DataColumn(
+                      label: Text(
+                    'Broj linije',
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  )),
+                  const DataColumn(
+                      label: const Text('Polazak',
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 18))),
+                  const DataColumn(
+                      label: Text('Vrijeme polaska',
+                          style: TextStyle(color: Colors.white, fontSize: 18))),
+                  const DataColumn(
+                      label: const Text('Odrediste',
+                          style: TextStyle(color: Colors.white, fontSize: 18))),
+                  const DataColumn(
+                      label: const Text('Vrijeme dolaska',
+                          style: TextStyle(color: Colors.white, fontSize: 18))),
+                  const DataColumn(
+                      label: Text('Datum',
+                          style: TextStyle(color: Colors.white, fontSize: 18))),
+                  const DataColumn(
+                      label: Text('Broj autobusa',
+                          style: TextStyle(color: Colors.white, fontSize: 18))),
+                ],
+                rows: data!
+                    .map(
+                      (data) => DataRow(
+                        cells: [
+                          DataCell(Text(data.brojLinije.toString())),
+                          DataCell(Text(data.polazak!)),
+                          DataCell(Text(data.vrijemePolaska!.substring(11))),
+                          DataCell(Text(data.odlazak!)),
+                          DataCell(Text(data.vrijemeDolaska!.substring(11))),
+                          DataCell(Text(data.datum!.substring(0, 10))),
+                          DataCell(Text(data.brojAutobusa.toString())),
+                          DataCell(TextButton(
+                            child: Text(
+                              "Prikazi detalje",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 18),
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                Navigator.pushNamed(
+                                    context, RedVoznjePrikaz.routeName,
+                                    arguments: data.rasporedVoznjeID);
+                              });
+                            },
+                          )),
+                        ],
+                      ),
+                    )
+                    .toList(),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

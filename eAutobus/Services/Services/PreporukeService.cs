@@ -7,6 +7,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Data;
+using System.Reflection;
+using Microsoft.ML;
+using Microsoft.ML.Trainers;
+using eAutobus.ML;
 
 namespace eAutobus.Services
 {
@@ -20,12 +25,12 @@ namespace eAutobus.Services
             _context = context;
             _mapper = mapper;
         }
-
+        Dictionary<int, List<Recenzija>> linije = new Dictionary<int, List<Recenzija>>();
 
         public async Task<List<RasporedVoznjeModel>> Get(int RasporedLinijaID)
         {
-            var linija =await  _context.RasporedVoznje.Include(r=>r.Recenzija).FirstOrDefaultAsync(r => r.RasporedVoznjeID == RasporedLinijaID);
-            int ocjena=0;
+            var linija = await _context.RasporedVoznje.Include(r => r.Recenzija).FirstOrDefaultAsync(r => r.RasporedVoznjeID == RasporedLinijaID);
+            int ocjena = 0;
             foreach (var o in linija.Recenzija)
             {
                 ocjena += o.Ocjena;
@@ -35,28 +40,72 @@ namespace eAutobus.Services
 
         }
 
-        public async Task<RasporedVoznjeModel> GetById(int RasporedLinijaID)
+
+
+        public List<RasporedVoznjeModel> Recommend(int id)
         {
-            var linija = _context.RasporedVoznje.Include(r => r.Recenzija)
-                                                .Include(r => r.Odrediste)
-                                                .Include(r => r.Polaziste)
-                                                .Include(r => r.Autobus)
-                                                .FirstOrDefault();
-                                                                           
+            var linijeA = _context.RasporedVoznje.Include(r => r.Recenzija).Include("Recenzija.Kupac").Where(r => r.RasporedVoznjeID != id && r.IsDeleted == false).ToList();
             decimal ocjena = 0;
-            var linijaM = new RasporedVoznjeModel();
-            _mapper.Map(linija, linijaM);
-            linijaM.BrojAutobusa = linija.Autobus.BrojAutobusa;
-            linijaM.Polazak = linija.Polaziste.NazivLokacijeStanice;
-            linijaM.Odlazak = linija.Odrediste.NazivLokacijeStanice;
-            linijaM.NazivLinije = linija.Polaziste.NazivLokacijeStanice + "-" + linija.Odrediste.NazivLokacijeStanice;
-            foreach (var o in linija.Recenzija)
+            List<Recenzija> ocjene;
+            foreach (var item in linijeA)
             {
-                ocjena += o.Ocjena;
+                ocjene = _context.Recenzija.Where(o => o.RasporedVoznjeID == item.RasporedVoznjeID).OrderBy(x => x.KupacID).ToList();
+                if (ocjene.Count > 0)
+                {
+                    linije.Add(item.RasporedVoznjeID, ocjene);
+                }
             }
-            decimal brojRecenzija = linija.Recenzija.Count();
-            linija.FinalOcjena = ocjena / brojRecenzija;
-            return _mapper.Map<RasporedVoznjeModel>(linija);
+            var recenzijeT = _context.Recenzija.Where(x => x.RasporedVoznjeID == id).OrderBy(x => x.KupacID);
+            var zajednickeR1 = new List<Recenzija>();
+            var zajednickeR2 = new List<Recenzija>();
+
+            var preporuceneLinijeIds = new List<int>();
+            foreach (var x in linije)
+            {
+                foreach (var y in recenzijeT)
+                {
+                    if (x.Value.Where(x => x.KupacID == y.KupacID).Count() > 0)
+                    {
+                        zajednickeR1.Add(y);
+                        zajednickeR2.Add(x.Value.Where(x => x.KupacID == y.KupacID).First());
+                    }
+                }
+                double slicnost = GetSlicnost(zajednickeR1, zajednickeR2);
+                if (slicnost > 0.5)
+                {
+                    var ocjenjeneLinije = linije.Select(e => e.Value).SelectMany(e => e).Where(e => e.Ocjena >= 3).Select(e => e.RasporedVoznjeID).Where(e => !preporuceneLinijeIds.Contains(e)).ToList();
+                    ocjenjeneLinije.ForEach(e =>
+                    {
+                        if (!preporuceneLinijeIds.Contains(e))
+                            preporuceneLinijeIds.Add(e);
+
+                    });
+                }
+                zajednickeR1.Clear();
+                zajednickeR2.Clear();
+            }
+            var preporuka = _context.Set<RasporedVoznje>().Where(x=>preporuceneLinijeIds.Contains(x.RasporedVoznjeID)).ToList();
+            return _mapper.Map<List<RasporedVoznjeModel>>(preporuka);
         }
-    }
+
+        private double GetSlicnost(List<Recenzija> zajednickeR1, List<Recenzija> zajednickeR2)
+        {
+            if (zajednickeR1.Count != zajednickeR2.Count)
+                return 0;
+
+            double brojnik = 0, nazivnik1 = 0, nazivnik2 = 0;
+            for (int i = 0; i < zajednickeR1.Count; i++)
+            {
+                brojnik = zajednickeR1[i].Ocjena * zajednickeR2[i].Ocjena;
+                nazivnik1 = zajednickeR1[i].Ocjena * zajednickeR1[i].Ocjena;
+                nazivnik2 = zajednickeR2[i].Ocjena * zajednickeR2[i].Ocjena;
+            }
+            nazivnik1 = Math.Sqrt(nazivnik1);
+            nazivnik2 = Math.Sqrt(nazivnik2);
+            double nazivnik = nazivnik1 * nazivnik2;
+            if (nazivnik == 0)
+                return 0;
+            return brojnik / nazivnik;
+        }
+    } 
 }

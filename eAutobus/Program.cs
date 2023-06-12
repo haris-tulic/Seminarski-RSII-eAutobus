@@ -13,44 +13,44 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddScoped<IKupacService, KupacService>();
-builder.Services.AddScoped<IAutobusService, AutobusService>();
-builder.Services.AddScoped<IAutobusVozacService, AutobusVozacService>();
-builder.Services.AddScoped<ICjenovnikService, CjenovnikService>();
-builder.Services.AddScoped<IGradService, GradService>();
-builder.Services.AddScoped<IKartaService, KartaService>();
-builder.Services.AddScoped<IRasporedVoznjeService, RasporedVoznjeService>();
-builder.Services.AddScoped<IStanicaService, StanicaService>();
-builder.Services.AddScoped<ITipKarteService, TipKarteService>();
-builder.Services.AddScoped<IVozacService, VozacService>();
-builder.Services.AddScoped<IVrstaKarteService, VrstaKarteService>();
-builder.Services.AddScoped<IZonaService, ZonaService>();
-builder.Services.AddScoped<IAutobusService, AutobusService>();
-builder.Services.AddScoped<IGarazaService, GarazaService>();
-builder.Services.AddScoped<IUlogeService, UlogeService>();
-builder.Services.AddScoped<IKorisnikService, KorisnikService>();
-builder.Services.AddScoped<ILoginService, LoginService>();
-builder.Services.AddScoped<IKartaKupacService, KartaKupacService>();
-builder.Services.AddScoped<IRecenzijaService, RecenzijaService>();
-builder.Services.AddScoped<IPlatiOnlineService, PlatiOnlineService>();
+builder.Services.AddTransient<IKupacService, KupacService>();
+builder.Services.AddTransient<IAutobusService, AutobusService>();
+builder.Services.AddTransient<IAutobusVozacService, AutobusVozacService>();
+builder.Services.AddTransient<ICjenovnikService, CjenovnikService>();
+builder.Services.AddTransient<IGradService, GradService>();
+builder.Services.AddTransient<IKartaService, KartaService>();
+builder.Services.AddTransient<IRasporedVoznjeService, RasporedVoznjeService>();
+builder.Services.AddTransient<IStanicaService, StanicaService>();
+builder.Services.AddTransient<ITipKarteService, TipKarteService>();
+builder.Services.AddTransient<IVozacService, VozacService>();
+builder.Services.AddTransient<IVrstaKarteService, VrstaKarteService>();
+builder.Services.AddTransient<IZonaService, ZonaService>();
+builder.Services.AddTransient<IAutobusService, AutobusService>();
+builder.Services.AddTransient<IGarazaService, GarazaService>();
+builder.Services.AddTransient<IUlogeService, UlogeService>();
+builder.Services.AddTransient<IKorisnikService, KorisnikService>();
+builder.Services.AddTransient<ILoginService, LoginService>();
+builder.Services.AddTransient<IKartaKupacService, KartaKupacService>();
+builder.Services.AddTransient<IRecenzijaService, RecenzijaService>();
+builder.Services.AddTransient<IPlatiOnlineService, PlatiOnlineService>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-var connection = builder.Configuration.GetConnectionString("eAutobus");
+var connection = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<eAutobusi>(options => options.UseSqlServer(connection));
 builder.Services.AddAuthentication("BasicAuthentification")
     .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentification", null);
 builder.Services.AddSwaggerGen(c =>
 {
-    c.AddSecurityDefinition("basicAuth", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+    c.AddSecurityDefinition("basicAuth", new Microsoft.OpenApi.Models.OpenApiSecurityScheme()
     {
         Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
         Scheme = "basic"
     });
 
-    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement()
     {
         {
             new OpenApiSecurityScheme
@@ -77,5 +77,11 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+//using (var scope = app.Services.CreateScope())
+//{
+//    var dataContext = scope.ServiceProvider.GetRequiredService<eAutobusi>();
+//    dataContext.Database.EnsureCreated();
+//}
 
 app.Run();

@@ -1,5 +1,4 @@
 import 'package:eautobusmobile/pages/InfoPage.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -29,11 +28,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     _loginProvider = Provider.of<LoginProvider>(context, listen: false);
+
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 248, 183, 86),
       appBar: AppBar(
         title: const Text("eAutobus"),
-        backgroundColor: const Color.fromARGB(251, 252, 122, 1),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(20, 50, 20, 0),
@@ -41,18 +39,18 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
+                  Text(
                     "Login",
                     style: TextStyle(
                         color: Color.fromARGB(255, 255, 102, 0),
                         fontSize: 30,
                         fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(width: 20),
-                  const FaIcon(
+                  SizedBox(width: 20),
+                  FaIcon(
                     FontAwesomeIcons.busSimple,
                     color: Color.fromARGB(255, 255, 81, 0),
                     size: 50,
@@ -64,7 +62,7 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.all(40),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 255, 115, 0),
+                    color: Colors.orange[500],
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Column(children: [
@@ -117,64 +115,77 @@ class _HomePageState extends State<HomePage> {
                   ]),
                 ),
               ),
-              Container(
-                height: 50,
-                margin: const EdgeInsets.fromLTRB(40, 0, 40, 0),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Color.fromARGB(255, 255, 80, 0)),
-                child: InkWell(
-                  onTap: () async {
-                    try {
-                      Authorization.username = _usernameController.text;
-                      Authorization.password = _passwordController.text;
-                      var user = await _loginProvider.prijava();
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                            builder: (ctx) =>
-                                InfoPage(korisnikId: user?.korisnikId)),
-                      );
-                    } catch (e) {
-                      showDialog(
-                          context: context,
-                          builder: (BuildContext context) => AlertDialog(
-                                title: const Text("Wrong username or password"),
-                                content: Text(e.toString()),
-                                actions: [
-                                  TextButton(
-                                    child: const Text("Ok"),
-                                    onPressed: () => Navigator.pop(context),
-                                  )
-                                ],
-                              ));
-                    }
-                  },
-                  child: const Center(
-                      child: Text("Login",
-                          style: TextStyle(color: Colors.white, fontSize: 15))),
+              Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      width: 250,
+                      height: 50,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.orange[800]),
+                      child: InkWell(
+                        onTap: () async {
+                          try {
+                            Authorization.username = _usernameController.text;
+                            Authorization.password = _passwordController.text;
+                            var user = await _loginProvider.prijava();
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (ctx) =>
+                                      InfoPage(korisnikId: user?.korisnikId)),
+                            );
+                          } catch (e) {
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) => AlertDialog(
+                                      title: const Text(
+                                          "Wrong username or password"),
+                                      content: Text(e.toString()),
+                                      actions: [
+                                        TextButton(
+                                          child: const Text("Ok"),
+                                          onPressed: () =>
+                                              Navigator.pop(context),
+                                        )
+                                      ],
+                                    ));
+                          }
+                        },
+                        child: const Center(
+                            child: Text("Login",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 15))),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      width: 250,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.orange[800],
+                      ),
+                      child: InkWell(
+                        child: const Center(
+                            child: Text(
+                          "Don't have account? Create one!",
+                          style: TextStyle(color: Colors.white, fontSize: 15),
+                        )),
+                        onTap: () async {
+                          Navigator.pushNamed(
+                              context, RegistracijaPage.routeName);
+                        },
+                      ),
+                    )
+                  ],
                 ),
               ),
-              const SizedBox(
-                height: 40,
-              ),
-              Container(
-                height: 50,
-                margin: const EdgeInsets.fromLTRB(40, 0, 40, 0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: const Color.fromARGB(255, 255, 80, 0),
-                ),
-                child: InkWell(
-                  child: const Center(
-                      child: Text(
-                    "Don't have account? Create one!",
-                    style: TextStyle(color: Colors.white, fontSize: 15),
-                  )),
-                  onTap: () async {
-                    Navigator.pushNamed(context, RegistracijaPage.routeName);
-                  },
-                ),
-              )
             ],
           ),
         ),

@@ -16,10 +16,8 @@ abstract class BaseProvider<T> with ChangeNotifier {
 
   BaseProvider(String endpoint) {
     _baseUrl = const String.fromEnvironment("baseUrl",
-        defaultValue: "https://localhost:44312/api");
-    print("baseurl: $_baseUrl");
-    //10.0.2.2//
-    //https://localhost:44312/api//
+        defaultValue: "http://10.0.2.2:7037/api");
+
     if (_baseUrl!.endsWith("/") == false) {
       _baseUrl = _baseUrl! + "/";
     }
@@ -99,6 +97,11 @@ abstract class BaseProvider<T> with ChangeNotifier {
     var url = "${_baseUrl}${_endpoint}";
     Map<String, String> headers = createHeaders();
     var uri = Uri.parse(url);
+    // Map request = {
+    //   "userName": Authorization.username,
+    //   "password": Authorization.password
+    // };
+    // var kredencijali = jsonEncode(request);
     final response = await http!.get(uri, headers: headers);
     if (response.statusCode == 200) {
       final data = json.decode(response.body);

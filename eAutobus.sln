@@ -7,7 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eAutobus", "eAutobus\eAutob
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eAutobus.Model", "eAutobus.Model\eAutobus.Model.csproj", "{52F1764A-4FB0-40A2-BBDC-434E86F45109}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eAutobus.WinUI", "eAutobus.WinUI\eAutobus.WinUI.csproj", "{B44A0E8B-9AC9-499B-B6AF-DDC2ACAE893B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eAutobus.WinUI", "eAutobus.WinUI\eAutobus.WinUI.csproj", "{B44A0E8B-9AC9-499B-B6AF-DDC2ACAE893B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D469E802-1592-43F6-81B1-7DE27D259EDD}"
+	ProjectSection(SolutionItems) = preProject
+		Dockerfile = Dockerfile
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

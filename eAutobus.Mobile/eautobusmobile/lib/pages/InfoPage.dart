@@ -41,13 +41,10 @@ class _InfoPageState extends State<InfoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 248, 183, 86),
       appBar: AppBar(
-          backgroundColor: Colors.orange,
           title: const Text(
-            "Pocetna",
-            style: TextStyle(color: Colors.white),
-          )),
+        "Pocetna",
+      )),
       drawer: Drawer(
         backgroundColor: const Color.fromARGB(255, 255, 125, 39),
         child: ListView(
@@ -58,8 +55,20 @@ class _InfoPageState extends State<InfoPage> {
               arrowColor: Colors.white,
               accountName: Text('${korisnik?.korisnickoIme}',
                   style: const TextStyle(color: Colors.white, fontSize: 18)),
-              accountEmail: Text('${korisnik?.email ?? " "}',
-                  style: const TextStyle(color: Colors.white, fontSize: 18)),
+              accountEmail: Row(
+                children: [
+                  const Icon(
+                    Icons.email_rounded,
+                    color: Colors.white,
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Text('${korisnik?.email ?? " "}',
+                      style:
+                          const TextStyle(color: Colors.white, fontSize: 18)),
+                ],
+              ),
               currentAccountPicture: CircleAvatar(
                 backgroundColor: Colors.yellow,
                 child: Text(
@@ -94,15 +103,12 @@ class _InfoPageState extends State<InfoPage> {
                   style: TextStyle(color: Colors.white, fontSize: 18)),
               iconColor: Colors.white,
               onTap: () async {
-                final result =
-                    await Navigator.of(context).push(MaterialPageRoute(
+                await Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => RezervacijaKarte(
                     korisnik: korisnik,
                   ),
                 ));
-                if (result == true) {
-                  loadData();
-                }
+                loadData();
               },
             ),
             ListTile(
@@ -136,37 +142,51 @@ class _InfoPageState extends State<InfoPage> {
         ),
       ),
       body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Center(
-          child: Container(
-            padding: EdgeInsets.fromLTRB(0, 100, 0, 0),
-            alignment: Alignment.center,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Dobrodosli nazad \n ${korisnik?.ime} ${korisnik?.prezime}",
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold),
+        scrollDirection: Axis.horizontal,
+        child: Container(
+          padding: const EdgeInsets.fromLTRB(20, 100, 0, 0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            verticalDirection: VerticalDirection.down,
+            children: [
+              Text(
+                "Dobrodosli nazad \n ${korisnik?.ime} ${korisnik?.prezime}",
+                style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 50),
+              const Text(
+                "Historija karata: ",
+                style: TextStyle(color: Colors.black, fontSize: 22),
+              ),
+              const SizedBox(height: 30),
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.yellow[900],
+                  border: Border.all(color: Colors.white),
+                  borderRadius: const BorderRadius.all(Radius.circular(20)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color.fromARGB(255, 255, 255, 255)
+                          .withOpacity(0.9),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: const Offset(0, 1),
+                    ),
+                  ],
                 ),
-                const SizedBox(height: 50),
-                const Text(
-                  "Historija karata: ",
-                  style: TextStyle(color: Colors.white, fontSize: 22),
-                ),
-                const SizedBox(height: 30),
-                DataTable(
+                child: DataTable(
                   dataTextStyle:
                       const TextStyle(fontSize: 15, color: Colors.white),
                   border: TableBorder.all(
-                      color: Color.fromARGB(207, 255, 255, 255),
+                      color: const Color.fromARGB(207, 255, 255, 255),
                       width: 2,
                       style: BorderStyle.solid),
-                  columns: [
-                    const DataColumn(
+                  columns: const [
+                    DataColumn(
                       label: Text(
                         "Karta",
                         style: TextStyle(
@@ -175,54 +195,53 @@ class _InfoPageState extends State<InfoPage> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    const DataColumn(
+                    DataColumn(
                         label: Text("Polaziste",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold))),
-                    const DataColumn(
+                    DataColumn(
                         label: Text("Odrediste",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold))),
-                    const DataColumn(
+                    DataColumn(
                         label: Text("Datum vadjenja karte",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold))),
-                    const DataColumn(
+                    DataColumn(
                         label: Text("Datum vazenja karte",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold))),
-                    const DataColumn(
+                    DataColumn(
                         label: Text("Aktivna",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold))),
                   ],
-                  rows: korisnik != null
+                  rows: korisnik!.karte != null
                       ? korisnik!.karte!
                           .map(
-                            (_historijaKarata) => DataRow(
+                            (historijaKarata) => DataRow(
                               cells: [
-                                DataCell(Text(_historijaKarata.karta!)),
-                                DataCell(Text(_historijaKarata.polaziste!)),
-                                DataCell(Text(_historijaKarata.odrediste!)),
-                                DataCell(Text(_historijaKarata
-                                    .datumVadjenjaKarte
+                                DataCell(Text(historijaKarata.karta!)),
+                                DataCell(Text(historijaKarata.polaziste!)),
+                                DataCell(Text(historijaKarata.odrediste!)),
+                                DataCell(Text(historijaKarata.datumVadjenjaKarte
                                     .toString()
                                     .substring(0, 19))),
-                                DataCell(Text(_historijaKarata.datumVazenjaKarte
+                                DataCell(Text(historijaKarata.datumVazenjaKarte
                                     .toString()
                                     .substring(0, 19))),
                                 DataCell(Checkbox(
-                                  value: _historijaKarata.aktivna,
+                                  value: historijaKarata.aktivna,
                                   onChanged: null,
                                 )),
                               ],
@@ -231,8 +250,8 @@ class _InfoPageState extends State<InfoPage> {
                           .toList()
                       : [],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

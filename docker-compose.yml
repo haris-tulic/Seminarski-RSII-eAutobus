@@ -1,0 +1,37 @@
+version: '3'
+services:
+#mssql docker
+  eautobus-sql:
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    restart: unless-stopped
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=QWElkj132!
+      - MSSQL_PID=Developer
+    ports:
+      - 1401:1433
+    expose:
+      - 1433
+    networks:
+      - eautobusnet2023
+
+  eautobus-api:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - ConnectionStrings:DefaultConnection=Server=eautobus-sql,1433;Database=eautobusbase;User=sa;Password=QWElkj132!;ConnectRetryCount=0;TrustServerCertificate=True
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - 7037:7037
+    networks:
+      - eautobusnet2023
+    links:
+      - eautobus-sql
+    depends_on:
+      - eautobus-sql
+      
+networks:
+  eautobusnet2023:
+    driver: bridge      

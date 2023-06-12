@@ -53,48 +53,65 @@ class _CjenovnikState extends State<CjenovnikPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 248, 183, 86),
       appBar: AppBar(
-        backgroundColor: Colors.orange,
-        title: _cjenovnikHeader(),
-      ),
+          title: const Text(
+        "Cjenovnik",
+      )),
       body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.fromLTRB(20, 60, 0, 50),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
+            verticalDirection: VerticalDirection.down,
             children: [
-              Container(
-                width: 300,
-                child: DropdownButtonFormField(
-                    isDense: true,
-                    dropdownColor: Colors.grey,
-                    style: const TextStyle(color: Colors.white),
-                    decoration: const InputDecoration(
-                      labelText: 'Odaberite tip karte',
-                      labelStyle: TextStyle(color: Colors.white),
-                      border: OutlineInputBorder(),
-                    ),
-                    value: tipKarte != null ? tipKarte : null,
-                    items: [
-                      for (final kartaT in karte!)
-                        DropdownMenuItem(
-                            value: kartaT.tipKarteID,
-                            child: Row(
-                              children: [
-                                kartaT == null
-                                    ? Text("Pretrazi sve")
-                                    : Text(
-                                        "${kartaT.naziv}",
-                                      )
-                              ],
-                            ))
-                    ],
-                    onChanged: (value) {
-                      tipKarte = value as int;
-                    }),
+              const Center(
+                child: Text(
+                  "Pregled cjenovnika:",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18),
+                ),
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              Flexible(
+                child: Container(
+                  width: 350,
+                  decoration: BoxDecoration(
+                    color: Colors.orange[400],
+                    border: Border.all(color: Colors.white),
+                  ),
+                  child: DropdownButtonFormField(
+                      isDense: true,
+                      dropdownColor: Colors.orange[300],
+                      style: const TextStyle(color: Colors.white),
+                      decoration: const InputDecoration(
+                        labelText: 'Odaberite tip karte',
+                        labelStyle: TextStyle(color: Colors.white),
+                        border: OutlineInputBorder(),
+                      ),
+                      value: tipKarte != null ? tipKarte : null,
+                      items: [
+                        for (final kartaT in karte!)
+                          DropdownMenuItem(
+                              value: kartaT.tipKarteID,
+                              child: Row(
+                                children: [
+                                  Text(
+                                    "${kartaT.naziv}",
+                                  )
+                                ],
+                              ))
+                      ],
+                      onChanged: (value) {
+                        tipKarte = value as int;
+                      }),
+                ),
               ),
               const SizedBox(height: 30),
               Material(
@@ -116,58 +133,63 @@ class _CjenovnikState extends State<CjenovnikPage> {
                 ),
               ),
               const SizedBox(height: 30),
-              DataTable(
-                dataTextStyle: TextStyle(fontSize: 15, color: Colors.white),
-                columns: [
-                  DataColumn(
-                      label: Text(
-                    'Vrsta karte',
-                    style: TextStyle(color: Colors.white, fontSize: 18),
-                  )),
-                  DataColumn(
-                      label: Text('Tip karte',
-                          style: TextStyle(color: Colors.white, fontSize: 18))),
-                  DataColumn(
-                      label: Text('Polaziste',
-                          style: TextStyle(color: Colors.white, fontSize: 18))),
-                  DataColumn(
-                      label: Text('Odrediste',
-                          style: TextStyle(color: Colors.white, fontSize: 18))),
-                  DataColumn(
-                      label: Text('Cijena karte',
-                          style: TextStyle(color: Colors.white, fontSize: 18))),
-                ],
-                rows: data!
-                    .map(
-                      (data) => DataRow(
-                        cells: [
-                          DataCell(Text(data.vrstaKarte!)),
-                          DataCell(Text(data.tipKarte!)),
-                          DataCell(Text(data.polaziste!)),
-                          DataCell(Text(data.odrediste!)),
-                          DataCell(Text(data.cijenaPrikaz!)),
-                        ],
-                      ),
-                    )
-                    .toList(),
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.yellow[900],
+                  border: Border.all(color: Colors.white),
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  boxShadow: [
+                    BoxShadow(
+                      color:
+                          Color.fromARGB(255, 255, 255, 255).withOpacity(0.9),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: Offset(0, 1),
+                    ),
+                  ],
+                ),
+                child: DataTable(
+                  dataTextStyle: TextStyle(fontSize: 15, color: Colors.white),
+                  columns: [
+                    DataColumn(
+                        label: Text(
+                      'Vrsta karte',
+                      style: TextStyle(color: Colors.white, fontSize: 18),
+                    )),
+                    DataColumn(
+                        label: Text('Tip karte',
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 18))),
+                    DataColumn(
+                        label: Text('Polaziste',
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 18))),
+                    DataColumn(
+                        label: Text('Odrediste',
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 18))),
+                    DataColumn(
+                        label: Text('Cijena karte',
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 18))),
+                  ],
+                  rows: data!
+                      .map(
+                        (data) => DataRow(
+                          cells: [
+                            DataCell(Text(data.vrstaKarte!)),
+                            DataCell(Text(data.tipKarte!)),
+                            DataCell(Text(data.polaziste!)),
+                            DataCell(Text(data.odrediste!)),
+                            DataCell(Text(data.cijenaPrikaz!)),
+                          ],
+                        ),
+                      )
+                      .toList(),
+                ),
               ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget _cjenovnikHeader() {
-    return Container(
-      padding: EdgeInsets.all(20),
-      child: Text(
-        "Cjenovnik",
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 40,
-          fontWeight: FontWeight.w500,
-          backgroundColor: Colors.orange,
         ),
       ),
     );

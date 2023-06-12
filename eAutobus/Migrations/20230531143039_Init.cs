@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace eAutobus.Migrations
 {
-    public partial class InitData : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -617,8 +617,8 @@ namespace eAutobus.Migrations
                 columns: new[] { "AutobusID", "BrojAutobusa", "BrojSjedista", "DatumProizvodnje", "GarazaID", "IsDeleted", "Ispravan", "MarkaAutobusa" },
                 values: new object[,]
                 {
-                    { 1, 6, 55, new DateTime(2022, 5, 30, 21, 55, 38, 652, DateTimeKind.Local).AddTicks(7538), 1, false, true, "MAN" },
-                    { 2, 10, 55, new DateTime(2022, 5, 30, 21, 55, 38, 652, DateTimeKind.Local).AddTicks(7609), 2, false, true, "Volvo" }
+                    { 1, 6, 55, new DateTime(2023, 5, 31, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(4653), 1, false, true, "MAN" },
+                    { 2, 10, 55, new DateTime(2023, 5, 31, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(4752), 2, false, true, "Volvo" }
                 });
 
             migrationBuilder.InsertData(
@@ -648,9 +648,9 @@ namespace eAutobus.Migrations
                 columns: new[] { "KorisniciUlogeID", "DatumIzmjene", "KorisnikID", "UlogaID" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2022, 5, 30, 21, 55, 38, 652, DateTimeKind.Local).AddTicks(7980), 1, 1 },
-                    { 2, new DateTime(2022, 5, 30, 21, 55, 38, 652, DateTimeKind.Local).AddTicks(7998), 2, 2 },
-                    { 3, new DateTime(2022, 5, 30, 21, 55, 38, 652, DateTimeKind.Local).AddTicks(8009), 3, 2 }
+                    { 1, new DateTime(2023, 5, 31, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(5704), 1, 1 },
+                    { 2, new DateTime(2023, 5, 31, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(5775), 2, 2 },
+                    { 3, new DateTime(2023, 5, 31, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(5807), 3, 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -667,8 +667,8 @@ namespace eAutobus.Migrations
                 columns: new[] { "AutobusVozacID", "AutobusID", "IsDeleted", "Kraj", "Pocetak", "Smjena", "VozacID" },
                 values: new object[,]
                 {
-                    { 1, 1, false, new DateTime(2022, 5, 31, 5, 55, 38, 652, DateTimeKind.Local).AddTicks(7634), new DateTime(2022, 5, 30, 21, 55, 38, 652, DateTimeKind.Local).AddTicks(7631), 1, 1 },
-                    { 2, 2, false, new DateTime(2022, 5, 31, 5, 55, 38, 652, DateTimeKind.Local).AddTicks(7655), new DateTime(2022, 5, 30, 21, 55, 38, 652, DateTimeKind.Local).AddTicks(7652), 1, 2 }
+                    { 1, 1, false, new DateTime(2023, 6, 1, 0, 30, 38, 827, DateTimeKind.Local).AddTicks(4791), new DateTime(2023, 5, 31, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(4787), 1, 1 },
+                    { 2, 2, false, new DateTime(2023, 6, 1, 0, 30, 38, 827, DateTimeKind.Local).AddTicks(4845), new DateTime(2023, 5, 31, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(4835), 1, 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -676,33 +676,33 @@ namespace eAutobus.Migrations
                 columns: new[] { "KartaKupacID", "Aktivna", "DatumVadjenjaKarte", "DatumVazenjaKarte", "KartaID", "KupacID", "Pravac", "PravacS" },
                 values: new object[,]
                 {
-                    { 1, true, new DateTime(2022, 5, 30, 21, 55, 38, 652, DateTimeKind.Local).AddTicks(8103), new DateTime(2022, 5, 31, 9, 55, 38, 652, DateTimeKind.Local).AddTicks(8106), 1, 1, true, "U jednom pravcu" },
-                    { 2, true, new DateTime(2022, 5, 30, 21, 55, 38, 652, DateTimeKind.Local).AddTicks(8121), new DateTime(2022, 6, 30, 21, 55, 38, 652, DateTimeKind.Local).AddTicks(8124), 2, 2, true, "U oba pravca" }
+                    { 1, true, new DateTime(2023, 5, 31, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(6091), new DateTime(2023, 6, 1, 4, 30, 38, 827, DateTimeKind.Local).AddTicks(6100), 1, 1, true, "U jednom pravcu" },
+                    { 2, true, new DateTime(2023, 5, 31, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(6148), new DateTime(2023, 6, 30, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(6154), 2, 2, true, "U oba pravca" }
                 });
 
             migrationBuilder.InsertData(
                 table: "PlatiKartu",
                 columns: new[] { "PlatiKartuID", "Cijena", "DatumVadjenjaKarte", "DatumVazenjaKarte", "JeLiPlacena", "KartaID", "KupacID" },
-                values: new object[] { 1, 10.0, new DateTime(2022, 5, 30, 21, 55, 38, 652, DateTimeKind.Local).AddTicks(8194), new DateTime(2022, 6, 30, 21, 55, 38, 652, DateTimeKind.Local).AddTicks(8197), true, 2, 2 });
+                values: new object[] { 1, 10.0, new DateTime(2023, 5, 31, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(6205), new DateTime(2023, 6, 30, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(6212), true, 2, 2 });
 
             migrationBuilder.InsertData(
                 table: "RasporedVoznje",
                 columns: new[] { "RasporedVoznjeID", "AutobusID", "BrojLinije", "Datum", "FinalOcjena", "IsDeleted", "KondukterID", "OdredisteID", "PolazisteID", "VozacID", "VrijemeDolaska", "VrijemePolaska" },
                 values: new object[,]
                 {
-                    { 1, 1, 6, new DateTime(2022, 5, 30, 21, 55, 38, 652, DateTimeKind.Local).AddTicks(8220), 5m, false, 1, 2, 1, 1, new DateTime(2022, 5, 30, 21, 55, 38, 652, DateTimeKind.Local).AddTicks(8228), new DateTime(2022, 5, 30, 21, 55, 38, 652, DateTimeKind.Local).AddTicks(8226) },
+                    { 1, 1, 6, new DateTime(2023, 5, 31, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(6345), 5m, false, 1, 2, 1, 1, new DateTime(2023, 5, 31, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(6361), new DateTime(2023, 5, 31, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(6356) },
                     { 2, 2, 10, new DateTime(2022, 3, 1, 14, 29, 18, 167, DateTimeKind.Local).AddTicks(8190), 4m, false, 2, 1, 2, 2, new DateTime(2022, 3, 1, 14, 30, 0, 0, DateTimeKind.Local).AddTicks(8190), new DateTime(2022, 3, 1, 12, 15, 0, 0, DateTimeKind.Local).AddTicks(8190) }
                 });
 
             migrationBuilder.InsertData(
                 table: "Recenzija",
                 columns: new[] { "RecenzijaID", "DatumRecenzije", "Komentar", "KupacID", "Ocjena", "RasporedVoznjeID", "VrstaUsluga" },
-                values: new object[] { 1, new DateTime(2022, 5, 30, 21, 55, 38, 652, DateTimeKind.Local).AddTicks(8256), "Sve pohvale!", 1, 5, 1, "Osoblje" });
+                values: new object[] { 1, new DateTime(2023, 5, 31, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(6446), "Sve pohvale!", 1, 5, 1, "Osoblje" });
 
             migrationBuilder.InsertData(
                 table: "Recenzija",
                 columns: new[] { "RecenzijaID", "DatumRecenzije", "Komentar", "KupacID", "Ocjena", "RasporedVoznjeID", "VrstaUsluga" },
-                values: new object[] { 2, new DateTime(2022, 5, 30, 21, 55, 38, 652, DateTimeKind.Local).AddTicks(8274), "Nije očišćeno!", 2, 3, 2, "Vozilo" });
+                values: new object[] { 2, new DateTime(2023, 5, 31, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(6492), "Nije očišćeno!", 2, 3, 2, "Vozilo" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Autobus_GarazaID",

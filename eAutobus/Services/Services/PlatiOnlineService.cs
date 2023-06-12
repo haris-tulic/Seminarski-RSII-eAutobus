@@ -24,12 +24,12 @@ namespace eAutobus.Services
         public async Task<List<PlatiKartuModel>> Get(PlatiKartuGetRequest search)
         {
             var query = _context.PlatiKartu.Include(x => x.Kupac)
-                                            .Include(x => x.Karta)
-                                            .Include("Karta.TipKarte")
-                                            .Include("Karta.VrstaKarte")
-                                            .Include("Karta.Polaziste")
-                                            .Include("Karta.Odrediste")
-                                            .AsQueryable();
+                                              .Include(x => x.Karta)
+                                              .Include("Karta.TipKarte")
+                                              .Include("Karta.VrstaKarte")
+                                              .Include("Karta.Polaziste")
+                                              .Include("Karta.Odrediste")
+                                              .AsQueryable();
             var list = await query.ToListAsync();
             var listM = new List<PlatiKartuModel>();
             _mapper.Map(list, listM);

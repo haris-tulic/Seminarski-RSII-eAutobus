@@ -30,10 +30,10 @@ namespace eAutobus.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<RasporedVoznjeModel>> GetById(int RasporedLinijeID)
+        public async Task<ActionResult<List<RasporedVoznjeModel>>> Recommend(int RasporedLinijeID)
         {
-            var response = await _service.GetById(RasporedLinijeID);
-            return Ok(response);
+            //var response = await _service.Recommend(RasporedLinijeID);
+            return Ok();
 
         }
     }

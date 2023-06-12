@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace eAutobus.Services
 {
@@ -17,13 +18,14 @@ namespace eAutobus.Services
         private readonly IMapper _mapper;
         private readonly IKupacService _kupac;
         private readonly IKartaKupacService _kartaKupac;
-
-        public KartaService(eAutobusi context, IMapper mapper, IKupacService kupac, IKartaKupacService kartaKupac)
+        private readonly IPlatiOnlineService _onlinePlacanje;
+        public KartaService(eAutobusi context, IMapper mapper, IKupacService kupac, IKartaKupacService kartaKupac, IPlatiOnlineService onlinePlacanje)
         {
             _context = context;
             _mapper = mapper;
             _kupac = kupac;
             _kartaKupac = kartaKupac;
+            _onlinePlacanje = onlinePlacanje;
         }
         public async Task<KartaModel> Delete(int id)
         {
@@ -114,7 +116,20 @@ namespace eAutobus.Services
                     KartaKupacModel osobineKarte = _kartaKupac.Insert(kupacKarta);
                     request.KupacID = newKupac.KupacID;
                     request.KartaID = entity.KartaID;
-                    return _mapper.Map<KartaModel>(request);
+                    if (request.NacinPlacanja == "Online")
+                    {
+                        var onlineplati = new PlatiKartuUpsertRequest()
+                        {
+                            KartaID = request.KartaID,
+                            KupacID = request.KupacID,
+                            Cijena = request.Cijena,
+                            DatumVadjenjaKarte = request.DatumVadjenjaKarte,
+                            DatumVazenjaKarte = request.DatumVazenjaKarte,
+                            JeLiPlacena = true,
+                        };
+                        await _onlinePlacanje.Insert(onlineplati);
+                }
+                return _mapper.Map<KartaModel>(request);
                 }
             return null;  
         }
@@ -137,10 +152,20 @@ namespace eAutobus.Services
 
         public async Task<KartaModel> Update(KartaUpsertRequest request, int id)
         {
-            var update = await _context.Karta.FirstOrDefaultAsync(k=>k.KartaID==id);
+            var update = await _context.Karta.Include(k=>k.PlaceneKarte).FirstOrDefaultAsync(k=>k.KartaID==id);
             _mapper.Map(request, update);
             await _context.SaveChangesAsync();
             return _mapper.Map<KartaModel>(update);
+        }
+        public async Task<KartaModel> PlatiKartu(int id)
+        {
+            var platiK = await _context.Karta.Include(k => k.PlaceneKarte).FirstOrDefaultAsync(k => k.KartaID == id);
+            foreach (var item in platiK.PlaceneKarte)
+            {
+                item.JeLiPlacena = true;
+            }
+            await _context.SaveChangesAsync();
+            return _mapper.Map<KartaModel>(platiK);
         }
     }
 }

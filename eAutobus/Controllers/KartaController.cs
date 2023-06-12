@@ -57,6 +57,11 @@ namespace eAutobus.Controllers
             return Ok(response);
 
         }
+        public async Task<ActionResult<KartaModel>> PlatiKartu(int id)
+        {
+            var response = await _service.PlatiKartu(id);
+            return Ok(response);
+        }
 
     }
 }

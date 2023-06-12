@@ -14,6 +14,7 @@ namespace eAutobus.Services.Interfaces
         Task<KartaModel> Insert(KartaUpsertRequest request);
         Task<KartaModel> Update(KartaUpsertRequest request,int id);
         Task<KartaModel> Delete(int id);
+        Task<KartaModel> PlatiKartu(int id);
 
 
     }

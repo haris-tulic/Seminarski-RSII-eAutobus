@@ -29,270 +29,292 @@ namespace eAutobus.WinUI.Autobusi
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.txtBrojAutobusa = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtBrojSjedista = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtMarkaAutobusa = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dtpDatumProizvodnje = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cbIspravan = new System.Windows.Forms.CheckBox();
-            this.btnSpremi = new System.Windows.Forms.Button();
-            this.cbGaraza = new System.Windows.Forms.ComboBox();
-            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.dgvPrikazAutobusa = new System.Windows.Forms.DataGridView();
-            this.AutobusID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BrojAutobusa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MarkaAutobusa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DatumProizvodnje = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BrojSjedista = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NazivGaraze = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ispravan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPrikazAutobusa)).BeginInit();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            txtBrojAutobusa = new TextBox();
+            label1 = new Label();
+            label2 = new Label();
+            txtBrojSjedista = new TextBox();
+            label3 = new Label();
+            txtMarkaAutobusa = new TextBox();
+            label5 = new Label();
+            dtpDatumProizvodnje = new DateTimePicker();
+            label4 = new Label();
+            label6 = new Label();
+            cbIspravan = new CheckBox();
+            btnSpremi = new Button();
+            cbGaraza = new ComboBox();
+            errorProvider = new ErrorProvider(components);
+            dgvPrikazAutobusa = new DataGridView();
+            AutobusID = new DataGridViewTextBoxColumn();
+            BrojAutobusa = new DataGridViewTextBoxColumn();
+            MarkaAutobusa = new DataGridViewTextBoxColumn();
+            DatumProizvodnje = new DataGridViewTextBoxColumn();
+            BrojSjedista = new DataGridViewTextBoxColumn();
+            NazivGaraze = new DataGridViewTextBoxColumn();
+            Ispravan = new DataGridViewCheckBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvPrikazAutobusa).BeginInit();
+            SuspendLayout();
             // 
             // txtBrojAutobusa
             // 
-            this.txtBrojAutobusa.Location = new System.Drawing.Point(40, 65);
-            this.txtBrojAutobusa.Name = "txtBrojAutobusa";
-            this.txtBrojAutobusa.Size = new System.Drawing.Size(222, 20);
-            this.txtBrojAutobusa.TabIndex = 0;
-            this.txtBrojAutobusa.Validating += new System.ComponentModel.CancelEventHandler(this.txtBrojAutobusa_Validating);
+            txtBrojAutobusa.Location = new Point(53, 100);
+            txtBrojAutobusa.Margin = new Padding(4, 5, 4, 5);
+            txtBrojAutobusa.Name = "txtBrojAutobusa";
+            txtBrojAutobusa.Size = new Size(295, 27);
+            txtBrojAutobusa.TabIndex = 0;
+            txtBrojAutobusa.Validating += txtBrojAutobusa_Validating;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 49);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Broj autobusa:";
+            label1.AutoSize = true;
+            label1.Location = new Point(53, 75);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(104, 20);
+            label1.TabIndex = 1;
+            label1.Text = "Broj autobusa:";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(444, 49);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Broj sjedista:";
+            label2.AutoSize = true;
+            label2.Location = new Point(592, 75);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(93, 20);
+            label2.TabIndex = 3;
+            label2.Text = "Broj sjedista:";
             // 
             // txtBrojSjedista
             // 
-            this.txtBrojSjedista.Location = new System.Drawing.Point(447, 65);
-            this.txtBrojSjedista.Name = "txtBrojSjedista";
-            this.txtBrojSjedista.Size = new System.Drawing.Size(222, 20);
-            this.txtBrojSjedista.TabIndex = 2;
+            txtBrojSjedista.Location = new Point(596, 100);
+            txtBrojSjedista.Margin = new Padding(4, 5, 4, 5);
+            txtBrojSjedista.Name = "txtBrojSjedista";
+            txtBrojSjedista.Size = new Size(295, 27);
+            txtBrojSjedista.TabIndex = 2;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(40, 120);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Marka autobusa:";
+            label3.AutoSize = true;
+            label3.Location = new Point(53, 185);
+            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(118, 20);
+            label3.TabIndex = 5;
+            label3.Text = "Marka autobusa:";
             // 
             // txtMarkaAutobusa
             // 
-            this.txtMarkaAutobusa.Location = new System.Drawing.Point(40, 136);
-            this.txtMarkaAutobusa.Name = "txtMarkaAutobusa";
-            this.txtMarkaAutobusa.Size = new System.Drawing.Size(222, 20);
-            this.txtMarkaAutobusa.TabIndex = 4;
-            this.txtMarkaAutobusa.Validating += new System.ComponentModel.CancelEventHandler(this.txtMarkaAutobusa_Validating);
+            txtMarkaAutobusa.Location = new Point(53, 209);
+            txtMarkaAutobusa.Margin = new Padding(4, 5, 4, 5);
+            txtMarkaAutobusa.Name = "txtMarkaAutobusa";
+            txtMarkaAutobusa.Size = new Size(295, 27);
+            txtMarkaAutobusa.TabIndex = 4;
+            txtMarkaAutobusa.Validating += txtMarkaAutobusa_Validating;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(40, 202);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Garaza:";
+            label5.AutoSize = true;
+            label5.Location = new Point(53, 311);
+            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(58, 20);
+            label5.TabIndex = 9;
+            label5.Text = "Garaza:";
             // 
             // dtpDatumProizvodnje
             // 
-            this.dtpDatumProizvodnje.Location = new System.Drawing.Point(447, 152);
-            this.dtpDatumProizvodnje.Name = "dtpDatumProizvodnje";
-            this.dtpDatumProizvodnje.Size = new System.Drawing.Size(200, 20);
-            this.dtpDatumProizvodnje.TabIndex = 12;
+            dtpDatumProizvodnje.Location = new Point(596, 234);
+            dtpDatumProizvodnje.Margin = new Padding(4, 5, 4, 5);
+            dtpDatumProizvodnje.Name = "dtpDatumProizvodnje";
+            dtpDatumProizvodnje.Size = new Size(265, 27);
+            dtpDatumProizvodnje.TabIndex = 12;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(444, 136);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(98, 13);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "Datum proizvodnje:";
+            label4.AutoSize = true;
+            label4.Location = new Point(592, 209);
+            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(140, 20);
+            label4.TabIndex = 13;
+            label4.Text = "Datum proizvodnje:";
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(450, 218);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(48, 13);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Ispravan";
+            label6.AutoSize = true;
+            label6.Location = new Point(600, 335);
+            label6.Margin = new Padding(4, 0, 4, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(64, 20);
+            label6.TabIndex = 14;
+            label6.Text = "Ispravan";
             // 
             // cbIspravan
             // 
-            this.cbIspravan.AutoSize = true;
-            this.cbIspravan.Location = new System.Drawing.Point(463, 234);
-            this.cbIspravan.Name = "cbIspravan";
-            this.cbIspravan.Size = new System.Drawing.Size(15, 14);
-            this.cbIspravan.TabIndex = 15;
-            this.cbIspravan.UseVisualStyleBackColor = true;
+            cbIspravan.AutoSize = true;
+            cbIspravan.Location = new Point(617, 360);
+            cbIspravan.Margin = new Padding(4, 5, 4, 5);
+            cbIspravan.Name = "cbIspravan";
+            cbIspravan.Size = new Size(18, 17);
+            cbIspravan.TabIndex = 15;
+            cbIspravan.UseVisualStyleBackColor = true;
             // 
             // btnSpremi
             // 
-            this.btnSpremi.Location = new System.Drawing.Point(331, 282);
-            this.btnSpremi.Name = "btnSpremi";
-            this.btnSpremi.Size = new System.Drawing.Size(75, 23);
-            this.btnSpremi.TabIndex = 16;
-            this.btnSpremi.Text = "Spremi";
-            this.btnSpremi.UseVisualStyleBackColor = true;
-            this.btnSpremi.Click += new System.EventHandler(this.btnSpremi_Click);
+            btnSpremi.Location = new Point(441, 434);
+            btnSpremi.Margin = new Padding(4, 5, 4, 5);
+            btnSpremi.Name = "btnSpremi";
+            btnSpremi.Size = new Size(100, 35);
+            btnSpremi.TabIndex = 16;
+            btnSpremi.Text = "Spremi";
+            btnSpremi.UseVisualStyleBackColor = true;
+            btnSpremi.Click += btnSpremi_Click;
             // 
             // cbGaraza
             // 
-            this.cbGaraza.FormattingEnabled = true;
-            this.cbGaraza.Location = new System.Drawing.Point(40, 218);
-            this.cbGaraza.Name = "cbGaraza";
-            this.cbGaraza.Size = new System.Drawing.Size(222, 21);
-            this.cbGaraza.TabIndex = 17;
+            cbGaraza.FormattingEnabled = true;
+            cbGaraza.Location = new Point(53, 335);
+            cbGaraza.Margin = new Padding(4, 5, 4, 5);
+            cbGaraza.Name = "cbGaraza";
+            cbGaraza.Size = new Size(295, 28);
+            cbGaraza.TabIndex = 17;
             // 
             // errorProvider
             // 
-            this.errorProvider.ContainerControl = this;
+            errorProvider.ContainerControl = this;
             // 
             // dgvPrikazAutobusa
             // 
-            this.dgvPrikazAutobusa.AllowUserToAddRows = false;
-            this.dgvPrikazAutobusa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPrikazAutobusa.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.AutobusID,
-            this.BrojAutobusa,
-            this.MarkaAutobusa,
-            this.DatumProizvodnje,
-            this.BrojSjedista,
-            this.NazivGaraze,
-            this.Ispravan});
-            this.dgvPrikazAutobusa.Location = new System.Drawing.Point(12, 331);
-            this.dgvPrikazAutobusa.Name = "dgvPrikazAutobusa";
-            this.dgvPrikazAutobusa.ReadOnly = true;
-            this.dgvPrikazAutobusa.Size = new System.Drawing.Size(745, 259);
-            this.dgvPrikazAutobusa.TabIndex = 18;
+            dgvPrikazAutobusa.AllowUserToAddRows = false;
+            dgvPrikazAutobusa.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPrikazAutobusa.Columns.AddRange(new DataGridViewColumn[] { AutobusID, BrojAutobusa, MarkaAutobusa, DatumProizvodnje, BrojSjedista, NazivGaraze, Ispravan });
+            dgvPrikazAutobusa.Location = new Point(75, 503);
+            dgvPrikazAutobusa.Margin = new Padding(4, 5, 4, 5);
+            dgvPrikazAutobusa.Name = "dgvPrikazAutobusa";
+            dgvPrikazAutobusa.ReadOnly = true;
+            dgvPrikazAutobusa.RowHeadersWidth = 51;
+            dgvPrikazAutobusa.Size = new Size(806, 398);
+            dgvPrikazAutobusa.TabIndex = 18;
             // 
             // AutobusID
             // 
-            this.AutobusID.DataPropertyName = "AutobusID";
-            this.AutobusID.HeaderText = "ID";
-            this.AutobusID.Name = "AutobusID";
-            this.AutobusID.ReadOnly = true;
-            this.AutobusID.Visible = false;
+            AutobusID.DataPropertyName = "AutobusID";
+            AutobusID.HeaderText = "ID";
+            AutobusID.MinimumWidth = 6;
+            AutobusID.Name = "AutobusID";
+            AutobusID.ReadOnly = true;
+            AutobusID.Visible = false;
+            AutobusID.Width = 125;
             // 
             // BrojAutobusa
             // 
-            this.BrojAutobusa.DataPropertyName = "BrojAutobusa";
-            this.BrojAutobusa.HeaderText = "Broj autobusa";
-            this.BrojAutobusa.Name = "BrojAutobusa";
-            this.BrojAutobusa.ReadOnly = true;
+            BrojAutobusa.DataPropertyName = "BrojAutobusa";
+            BrojAutobusa.HeaderText = "Broj autobusa";
+            BrojAutobusa.MinimumWidth = 6;
+            BrojAutobusa.Name = "BrojAutobusa";
+            BrojAutobusa.ReadOnly = true;
+            BrojAutobusa.Width = 125;
             // 
             // MarkaAutobusa
             // 
-            this.MarkaAutobusa.DataPropertyName = "MarkaAutobusa";
-            this.MarkaAutobusa.HeaderText = "Marka";
-            this.MarkaAutobusa.Name = "MarkaAutobusa";
-            this.MarkaAutobusa.ReadOnly = true;
+            MarkaAutobusa.DataPropertyName = "MarkaAutobusa";
+            MarkaAutobusa.HeaderText = "Marka";
+            MarkaAutobusa.MinimumWidth = 6;
+            MarkaAutobusa.Name = "MarkaAutobusa";
+            MarkaAutobusa.ReadOnly = true;
+            MarkaAutobusa.Width = 125;
             // 
             // DatumProizvodnje
             // 
-            this.DatumProizvodnje.DataPropertyName = "DatumProizvodnje";
-            this.DatumProizvodnje.HeaderText = "Datum proizvodnje";
-            this.DatumProizvodnje.Name = "DatumProizvodnje";
-            this.DatumProizvodnje.ReadOnly = true;
+            DatumProizvodnje.DataPropertyName = "DatumProizvodnje";
+            DatumProizvodnje.HeaderText = "Datum proizvodnje";
+            DatumProizvodnje.MinimumWidth = 6;
+            DatumProizvodnje.Name = "DatumProizvodnje";
+            DatumProizvodnje.ReadOnly = true;
+            DatumProizvodnje.Width = 125;
             // 
             // BrojSjedista
             // 
-            this.BrojSjedista.DataPropertyName = "BrojSjedista";
-            this.BrojSjedista.HeaderText = "Broj sjedista";
-            this.BrojSjedista.Name = "BrojSjedista";
-            this.BrojSjedista.ReadOnly = true;
+            BrojSjedista.DataPropertyName = "BrojSjedista";
+            BrojSjedista.HeaderText = "Broj sjedista";
+            BrojSjedista.MinimumWidth = 6;
+            BrojSjedista.Name = "BrojSjedista";
+            BrojSjedista.ReadOnly = true;
+            BrojSjedista.Width = 125;
             // 
             // NazivGaraze
             // 
-            this.NazivGaraze.DataPropertyName = "NazivGaraze";
-            this.NazivGaraze.HeaderText = "Garaza";
-            this.NazivGaraze.Name = "NazivGaraze";
-            this.NazivGaraze.ReadOnly = true;
+            NazivGaraze.DataPropertyName = "NazivGaraze";
+            NazivGaraze.HeaderText = "Garaza";
+            NazivGaraze.MinimumWidth = 6;
+            NazivGaraze.Name = "NazivGaraze";
+            NazivGaraze.ReadOnly = true;
+            NazivGaraze.Width = 125;
             // 
             // Ispravan
             // 
-            this.Ispravan.DataPropertyName = "Ispravan";
-            this.Ispravan.HeaderText = "Ispravan";
-            this.Ispravan.Name = "Ispravan";
-            this.Ispravan.ReadOnly = true;
-            this.Ispravan.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Ispravan.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            Ispravan.DataPropertyName = "Ispravan";
+            Ispravan.HeaderText = "Ispravan";
+            Ispravan.MinimumWidth = 6;
+            Ispravan.Name = "Ispravan";
+            Ispravan.ReadOnly = true;
+            Ispravan.Resizable = DataGridViewTriState.True;
+            Ispravan.SortMode = DataGridViewColumnSortMode.Automatic;
+            Ispravan.Width = 125;
             // 
             // frmDodajAutobus
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(779, 602);
-            this.Controls.Add(this.dgvPrikazAutobusa);
-            this.Controls.Add(this.cbGaraza);
-            this.Controls.Add(this.btnSpremi);
-            this.Controls.Add(this.cbIspravan);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.dtpDatumProizvodnje);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtMarkaAutobusa);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtBrojSjedista);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtBrojAutobusa);
-            this.Name = "frmDodajAutobus";
-            this.Text = "frmDodajAutobus";
-            this.Load += new System.EventHandler(this.frmDodajAutobus_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPrikazAutobusa)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1039, 926);
+            Controls.Add(dgvPrikazAutobusa);
+            Controls.Add(cbGaraza);
+            Controls.Add(btnSpremi);
+            Controls.Add(cbIspravan);
+            Controls.Add(label6);
+            Controls.Add(label4);
+            Controls.Add(dtpDatumProizvodnje);
+            Controls.Add(label5);
+            Controls.Add(label3);
+            Controls.Add(txtMarkaAutobusa);
+            Controls.Add(label2);
+            Controls.Add(txtBrojSjedista);
+            Controls.Add(label1);
+            Controls.Add(txtBrojAutobusa);
+            Margin = new Padding(4, 5, 4, 5);
+            Name = "frmDodajAutobus";
+            Text = "frmDodajAutobus";
+            Load += frmDodajAutobus_Load;
+            ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvPrikazAutobusa).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtBrojAutobusa;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtBrojSjedista;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtMarkaAutobusa;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker dtpDatumProizvodnje;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckBox cbIspravan;
-        private System.Windows.Forms.Button btnSpremi;
-        private System.Windows.Forms.ComboBox cbGaraza;
-        private System.Windows.Forms.ErrorProvider errorProvider;
-        private System.Windows.Forms.DataGridView dgvPrikazAutobusa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AutobusID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BrojAutobusa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MarkaAutobusa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DatumProizvodnje;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BrojSjedista;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NazivGaraze;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Ispravan;
+        private TextBox txtBrojAutobusa;
+        private Label label1;
+        private Label label2;
+        private TextBox txtBrojSjedista;
+        private Label label3;
+        private TextBox txtMarkaAutobusa;
+        private Label label5;
+        private DateTimePicker dtpDatumProizvodnje;
+        private Label label4;
+        private Label label6;
+        private CheckBox cbIspravan;
+        private Button btnSpremi;
+        private ComboBox cbGaraza;
+        private ErrorProvider errorProvider;
+        private DataGridView dgvPrikazAutobusa;
+        private DataGridViewTextBoxColumn AutobusID;
+        private DataGridViewTextBoxColumn BrojAutobusa;
+        private DataGridViewTextBoxColumn MarkaAutobusa;
+        private DataGridViewTextBoxColumn DatumProizvodnje;
+        private DataGridViewTextBoxColumn BrojSjedista;
+        private DataGridViewTextBoxColumn NazivGaraze;
+        private DataGridViewCheckBoxColumn Ispravan;
     }
 }

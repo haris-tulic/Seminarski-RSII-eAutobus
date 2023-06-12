@@ -9,6 +9,6 @@ namespace eAutobus.Services.Interfaces
     public interface IPreporukeService
     {
         Task<List<RasporedVoznjeModel>> Get(int RasporedLinijaID);
-        Task<RasporedVoznjeModel>GetById(int RasporedLinijaID);
+       // Task<List<RasporedVoznjeModel>> Recommend(int RasporedLinijaID);
     }
 }

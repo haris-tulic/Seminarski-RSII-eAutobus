@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:json_annotation/json_annotation.dart';
 
 part 'RedVoznje.g.dart';
@@ -15,6 +17,7 @@ class RedVoznje {
   String? vrijemeDolaska;
   String? datum;
   String? cijenaPrikaz;
+  Double? finalOcjena;
 
   RedVoznje() {}
   factory RedVoznje.fromJson(Map<String, dynamic> json) =>

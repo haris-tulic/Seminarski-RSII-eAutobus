@@ -13,10 +13,10 @@ namespace eAutobus.WinUI.Autobusi
 {
     public partial class frmDodajAutobus : Form
     {
-        private readonly APIService _service= new APIService("Autobusi");
+        private readonly APIService _service = new APIService("Autobusi");
         private readonly APIService _garaze = new APIService("Garaza");
         private int? id = null;
-        public frmDodajAutobus(int? autobusID=null)
+        public frmDodajAutobus(int? autobusID = null)
         {
             InitializeComponent();
             id = autobusID;
@@ -33,8 +33,8 @@ namespace eAutobus.WinUI.Autobusi
                 request.MarkaAutobusa = txtMarkaAutobusa.Text;
                 request.Ispravan = cbIspravan.Checked;
                 request.GarazaID = int.Parse(cbGaraza.SelectedValue.ToString());
-                    
-                
+
+
                 if (id.HasValue)
                 {
                     await _service.Update<eAutobusModel.AutobusiModel>(id, request);
@@ -46,7 +46,7 @@ namespace eAutobus.WinUI.Autobusi
                     MessageBox.Show("Novo vozilo uspjesno dodano!");
                 }
             }
-  
+
             await LoadAutobuse();
         }
 
@@ -61,7 +61,7 @@ namespace eAutobus.WinUI.Autobusi
                 txtBrojSjedista.Text = autobus.BrojSjedista.ToString();
                 txtMarkaAutobusa.Text = autobus.MarkaAutobusa;
                 cbIspravan.Checked = autobus.Ispravan;
-                cbGaraza.SelectedValue =autobus.GarazaID;
+                cbGaraza.SelectedValue = autobus.GarazaID;
                 dtpDatumProizvodnje.Value = autobus.DatumProizvodnje;
 
             }
@@ -109,19 +109,19 @@ namespace eAutobus.WinUI.Autobusi
         {
             try
             {
-                var result = await _garaze.Get <List<eAutobusModel.GarazaModel>>(null);
+                var result = await _garaze.Get<List<eAutobusModel.GarazaModel>>(null);
                 result.Insert(0, new eAutobusModel.GarazaModel { });
                 cbGaraza.DataSource = result;
                 cbGaraza.DisplayMember = "NazivGaraze";
                 cbGaraza.ValueMember = "GarazaID";
-                
+
             }
             catch (Exception e)
             {
 
                 throw new Exception(e.Message);
             }
-            
+
         }
         private async Task LoadAutobuse()
         {
@@ -131,7 +131,7 @@ namespace eAutobus.WinUI.Autobusi
                 dgvPrikazAutobusa.AutoGenerateColumns = false;
                 dgvPrikazAutobusa.DataSource = result;
             }
-            catch (Exception e)            
+            catch (Exception e)
             {
 
                 throw new Exception(e.Message);

@@ -45,15 +45,14 @@ class _RecenzijaState extends State<RecenzijaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 248, 183, 86),
       appBar: AppBar(
-        backgroundColor: Colors.orange,
-        title: Text(
+        title: const Text(
           "Ostavite recenziju",
-          style: TextStyle(color: Colors.white),
         ),
       ),
       body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        padding: const EdgeInsets.fromLTRB(0, 100, 0, 0),
         child: Center(
           child: Form(
             child: Column(
@@ -63,23 +62,23 @@ class _RecenzijaState extends State<RecenzijaPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
-                      "Linija: ",
-                      style: TextStyle(color: Colors.white, fontSize: 18),
-                    ),
-                    const SizedBox(width: 30),
                     Container(
-                      width: 500,
+                      width: 300,
+                      decoration: BoxDecoration(
+                        color: Colors.orange[400],
+                        border: Border.all(color: Colors.white),
+                      ),
                       child: DropdownButtonFormField(
                         isDense: true,
                         decoration: const InputDecoration(
                           labelText: 'Odaberite liniju',
-                          labelStyle: TextStyle(color: Colors.white),
+                          labelStyle: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
                           border: OutlineInputBorder(),
                         ),
                         style: const TextStyle(color: Colors.white),
                         value: _odabranaLinijaID,
-                        dropdownColor: Colors.grey,
+                        dropdownColor: Colors.orange[300],
                         items: [
                           for (final linija in data!)
                             DropdownMenuItem(
@@ -109,25 +108,25 @@ class _RecenzijaState extends State<RecenzijaPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
-                      "Usluga: ",
-                      style: TextStyle(color: Colors.white, fontSize: 18),
-                    ),
-                    const SizedBox(width: 15),
                     Container(
-                      width: 500,
+                      width: 300,
+                      decoration: BoxDecoration(
+                        color: Colors.orange[400],
+                        border: Border.all(color: Colors.white),
+                      ),
                       child: DropdownButtonFormField(
                         isDense: true,
                         decoration: const InputDecoration(
-                          labelText: 'Odaberite vrstu usluge',
-                          labelStyle: TextStyle(color: Colors.white),
+                          labelText: 'Odaberite uslugu',
+                          labelStyle: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
                           border: OutlineInputBorder(),
                         ),
                         style: const TextStyle(color: Colors.white),
                         value: usluga,
-                        dropdownColor: Colors.grey,
+                        dropdownColor: Colors.orange[300],
                         items: [
-                          for (final u in vrstaUsluge!)
+                          for (final u in vrstaUsluge)
                             DropdownMenuItem(
                               value: u,
                               child: Row(
@@ -155,17 +154,18 @@ class _RecenzijaState extends State<RecenzijaPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
-                      "Komentar: ",
-                      style: TextStyle(color: Colors.white, fontSize: 18),
-                    ),
                     Container(
-                      width: 500,
+                      width: 300,
+                      decoration: BoxDecoration(
+                        color: Colors.orange[400],
+                        border: Border.all(color: Colors.white),
+                      ),
                       child: TextFormField(
                         controller: _komentar,
                         decoration: InputDecoration(
                           labelText: "Ostavite komentar",
-                          labelStyle: TextStyle(color: Colors.white),
+                          labelStyle: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5)),
                         ),
@@ -177,7 +177,10 @@ class _RecenzijaState extends State<RecenzijaPage> {
                 const SizedBox(height: 40),
                 const Text(
                   "Ocjena:",
-                  style: TextStyle(color: Colors.white, fontSize: 18),
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(width: 20),
                 Container(
@@ -191,8 +194,8 @@ class _RecenzijaState extends State<RecenzijaPage> {
                           _ocjena = value;
                         });
                       },
-                      activeColor: Colors.white,
-                      inactiveColor: Colors.white60,
+                      activeColor: Colors.orange[400],
+                      inactiveColor: Colors.black54,
                       divisions: 4,
                       label: '${_ocjena.round()}'),
                 ),
@@ -223,12 +226,14 @@ class _RecenzijaState extends State<RecenzijaPage> {
                                     "Hvala vam na recenziji!",
                                     style: TextStyle(color: Colors.white),
                                   ),
-                                  backgroundColor: Colors.grey,
+                                  backgroundColor: Colors.orangeAccent,
                                   actions: [
                                     TextButton(
                                       child: Text(
                                         "Ok",
-                                        style: TextStyle(color: Colors.white),
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold),
                                       ),
                                       onPressed: () => Navigator.pop(context),
                                     )

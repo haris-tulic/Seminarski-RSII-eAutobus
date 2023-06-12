@@ -1,4 +1,5 @@
-﻿using eAutobusModel;
+﻿using eAutobus.WinUI.Korisnici;
+using eAutobusModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,19 +27,21 @@ namespace eAutobus.WinUI.Karte
             foreach (var item in list)
             {
                 item.CijenaString = item.Cijena.ToString() + " KM";
-                //if (!string.IsNullOrEmpty(item.NacinPlacanja) && item.NacinPlacanja.StartsWith("Preuzećem"))
-                //{
-                //    listPrikaz.Add(item);
-
-                //}
             }
             dgvPrikazKarata.AutoGenerateColumns = false;
             dgvPrikazKarata.DataSource = list;
-            if (listPrikaz.Count>0)
+
+        }
+
+        private async void dgvPrikazKarata_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var IdKarta = dgvPrikazKarata.SelectedRows[0].Cells[0].Value;
+            var karta = await _karte.GetById<KartaModel>(IdKarta);
+            if (dgvPrikazKarata.CurrentCell is DataGridViewCheckBoxCell && karta != null)
             {
-                //dgvPrikazKarata.AutoGenerateColumns = false;
-                //dgvPrikazKarata.DataSource = listPrikaz;
+                await _karte.Update<KartaModel>(karta.KartaID, karta);
             }
+
         }
     }
 }

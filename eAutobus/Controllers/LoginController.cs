@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Net.Http.Headers;
 using System.Text;
+using eAutobus.Model.Requests;
 
 namespace eAutobus.Controllers
 {
@@ -25,7 +26,7 @@ namespace eAutobus.Controllers
         }
 
         [HttpGet]
-        public Task<KorisnikModel> Get()
+        public Task<KorisnikModel> Login()
         {
             var authHeader = AuthenticationHeaderValue.Parse(Request.Headers["Authorization"]);
             var credentialBytes = Convert.FromBase64String(authHeader.Parameter);

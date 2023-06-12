@@ -29,167 +29,157 @@ namespace eAutobus.WinUI.Karte
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvPrikazKarata = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.PlatiKartuID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ImePrezimeKupca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TipKarte = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VrstaKarteNaziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PolazisteOdrediste = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DatumVadjenjaKarte = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DatumVazenjaKarte = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cijena = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.JeLiPlacena = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPrikazKarata)).BeginInit();
-            this.SuspendLayout();
+            dgvPrikazKarata = new DataGridView();
+            PlatiKartuID = new DataGridViewTextBoxColumn();
+            ImePrezimeKupca = new DataGridViewTextBoxColumn();
+            TipKarte = new DataGridViewTextBoxColumn();
+            VrstaKarteNaziv = new DataGridViewTextBoxColumn();
+            PolazisteOdrediste = new DataGridViewTextBoxColumn();
+            DatumVadjenjaKarte = new DataGridViewTextBoxColumn();
+            DatumVazenjaKarte = new DataGridViewTextBoxColumn();
+            Cijena = new DataGridViewTextBoxColumn();
+            JeLiPlacena = new DataGridViewCheckBoxColumn();
+            label1 = new Label();
+            ((System.ComponentModel.ISupportInitialize)dgvPrikazKarata).BeginInit();
+            SuspendLayout();
             // 
             // dgvPrikazKarata
             // 
-            this.dgvPrikazKarata.AllowUserToAddRows = false;
-            this.dgvPrikazKarata.AllowUserToDeleteRows = false;
-            this.dgvPrikazKarata.ColumnHeadersHeight = 29;
-            this.dgvPrikazKarata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvPrikazKarata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.PlatiKartuID,
-            this.ImePrezimeKupca,
-            this.TipKarte,
-            this.VrstaKarteNaziv,
-            this.PolazisteOdrediste,
-            this.DatumVadjenjaKarte,
-            this.DatumVazenjaKarte,
-            this.Cijena,
-            this.JeLiPlacena});
-            this.dgvPrikazKarata.Location = new System.Drawing.Point(48, 224);
-            this.dgvPrikazKarata.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dgvPrikazKarata.Name = "dgvPrikazKarata";
-            this.dgvPrikazKarata.ReadOnly = true;
-            this.dgvPrikazKarata.RowHeadersWidth = 51;
-            this.dgvPrikazKarata.RowTemplate.Height = 24;
-            this.dgvPrikazKarata.Size = new System.Drawing.Size(1405, 327);
-            this.dgvPrikazKarata.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(455, 66);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(238, 32);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Online plaćanje:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            dgvPrikazKarata.AllowUserToAddRows = false;
+            dgvPrikazKarata.AllowUserToDeleteRows = false;
+            dgvPrikazKarata.ColumnHeadersHeight = 29;
+            dgvPrikazKarata.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvPrikazKarata.Columns.AddRange(new DataGridViewColumn[] { PlatiKartuID, ImePrezimeKupca, TipKarte, VrstaKarteNaziv, PolazisteOdrediste, DatumVadjenjaKarte, DatumVazenjaKarte, Cijena, JeLiPlacena });
+            dgvPrikazKarata.Location = new Point(48, 280);
+            dgvPrikazKarata.Margin = new Padding(3, 2, 3, 2);
+            dgvPrikazKarata.Name = "dgvPrikazKarata";
+            dgvPrikazKarata.ReadOnly = true;
+            dgvPrikazKarata.RowHeadersWidth = 51;
+            dgvPrikazKarata.RowTemplate.Height = 24;
+            dgvPrikazKarata.Size = new Size(1056, 409);
+            dgvPrikazKarata.TabIndex = 0;
             // 
             // PlatiKartuID
             // 
-            this.PlatiKartuID.DataPropertyName = "PlatiKartuID";
-            this.PlatiKartuID.HeaderText = "ID";
-            this.PlatiKartuID.MinimumWidth = 6;
-            this.PlatiKartuID.Name = "PlatiKartuID";
-            this.PlatiKartuID.ReadOnly = true;
-            this.PlatiKartuID.Visible = false;
-            this.PlatiKartuID.Width = 125;
+            PlatiKartuID.DataPropertyName = "PlatiKartuID";
+            PlatiKartuID.HeaderText = "ID";
+            PlatiKartuID.MinimumWidth = 6;
+            PlatiKartuID.Name = "PlatiKartuID";
+            PlatiKartuID.ReadOnly = true;
+            PlatiKartuID.Visible = false;
+            PlatiKartuID.Width = 125;
             // 
             // ImePrezimeKupca
             // 
-            this.ImePrezimeKupca.DataPropertyName = "ImePrezimeKupca";
-            this.ImePrezimeKupca.HeaderText = "Ime i prezime";
-            this.ImePrezimeKupca.MinimumWidth = 6;
-            this.ImePrezimeKupca.Name = "ImePrezimeKupca";
-            this.ImePrezimeKupca.ReadOnly = true;
-            this.ImePrezimeKupca.Width = 125;
+            ImePrezimeKupca.DataPropertyName = "ImePrezimeKupca";
+            ImePrezimeKupca.HeaderText = "Ime i prezime";
+            ImePrezimeKupca.MinimumWidth = 6;
+            ImePrezimeKupca.Name = "ImePrezimeKupca";
+            ImePrezimeKupca.ReadOnly = true;
+            ImePrezimeKupca.Width = 125;
             // 
             // TipKarte
             // 
-            this.TipKarte.DataPropertyName = "TipKarteNaziv";
-            this.TipKarte.HeaderText = "Tip karte";
-            this.TipKarte.MinimumWidth = 6;
-            this.TipKarte.Name = "TipKarte";
-            this.TipKarte.ReadOnly = true;
-            this.TipKarte.Width = 125;
+            TipKarte.DataPropertyName = "TipKarteNaziv";
+            TipKarte.HeaderText = "Tip karte";
+            TipKarte.MinimumWidth = 6;
+            TipKarte.Name = "TipKarte";
+            TipKarte.ReadOnly = true;
+            TipKarte.Width = 125;
             // 
             // VrstaKarteNaziv
             // 
-            this.VrstaKarteNaziv.DataPropertyName = "VrstaKarteNaziv";
-            this.VrstaKarteNaziv.HeaderText = "Vrsta karte";
-            this.VrstaKarteNaziv.MinimumWidth = 6;
-            this.VrstaKarteNaziv.Name = "VrstaKarteNaziv";
-            this.VrstaKarteNaziv.ReadOnly = true;
-            this.VrstaKarteNaziv.Width = 125;
+            VrstaKarteNaziv.DataPropertyName = "VrstaKarteNaziv";
+            VrstaKarteNaziv.HeaderText = "Vrsta karte";
+            VrstaKarteNaziv.MinimumWidth = 6;
+            VrstaKarteNaziv.Name = "VrstaKarteNaziv";
+            VrstaKarteNaziv.ReadOnly = true;
+            VrstaKarteNaziv.Width = 125;
             // 
             // PolazisteOdrediste
             // 
-            this.PolazisteOdrediste.DataPropertyName = "PolazisteOdrediste";
-            this.PolazisteOdrediste.HeaderText = "Relacija";
-            this.PolazisteOdrediste.MinimumWidth = 6;
-            this.PolazisteOdrediste.Name = "PolazisteOdrediste";
-            this.PolazisteOdrediste.ReadOnly = true;
-            this.PolazisteOdrediste.Width = 125;
+            PolazisteOdrediste.DataPropertyName = "PolazisteOdrediste";
+            PolazisteOdrediste.HeaderText = "Relacija";
+            PolazisteOdrediste.MinimumWidth = 6;
+            PolazisteOdrediste.Name = "PolazisteOdrediste";
+            PolazisteOdrediste.ReadOnly = true;
+            PolazisteOdrediste.Width = 125;
             // 
             // DatumVadjenjaKarte
             // 
-            this.DatumVadjenjaKarte.DataPropertyName = "DatumVadjenjaKarte";
-            this.DatumVadjenjaKarte.HeaderText = "Datum izdavanja";
-            this.DatumVadjenjaKarte.MinimumWidth = 6;
-            this.DatumVadjenjaKarte.Name = "DatumVadjenjaKarte";
-            this.DatumVadjenjaKarte.ReadOnly = true;
-            this.DatumVadjenjaKarte.Width = 125;
+            DatumVadjenjaKarte.DataPropertyName = "DatumVadjenjaKarte";
+            DatumVadjenjaKarte.HeaderText = "Datum izdavanja";
+            DatumVadjenjaKarte.MinimumWidth = 6;
+            DatumVadjenjaKarte.Name = "DatumVadjenjaKarte";
+            DatumVadjenjaKarte.ReadOnly = true;
+            DatumVadjenjaKarte.Width = 125;
             // 
             // DatumVazenjaKarte
             // 
-            this.DatumVazenjaKarte.DataPropertyName = "DatumVazenjaKarte";
-            this.DatumVazenjaKarte.HeaderText = "Datum isteka";
-            this.DatumVazenjaKarte.MinimumWidth = 6;
-            this.DatumVazenjaKarte.Name = "DatumVazenjaKarte";
-            this.DatumVazenjaKarte.ReadOnly = true;
-            this.DatumVazenjaKarte.Width = 125;
+            DatumVazenjaKarte.DataPropertyName = "DatumVazenjaKarte";
+            DatumVazenjaKarte.HeaderText = "Datum isteka";
+            DatumVazenjaKarte.MinimumWidth = 6;
+            DatumVazenjaKarte.Name = "DatumVazenjaKarte";
+            DatumVazenjaKarte.ReadOnly = true;
+            DatumVazenjaKarte.Width = 125;
             // 
             // Cijena
             // 
-            this.Cijena.DataPropertyName = "CijenaString";
-            this.Cijena.HeaderText = "Cijena";
-            this.Cijena.MinimumWidth = 6;
-            this.Cijena.Name = "Cijena";
-            this.Cijena.ReadOnly = true;
-            this.Cijena.Width = 125;
+            Cijena.DataPropertyName = "CijenaString";
+            Cijena.HeaderText = "Cijena";
+            Cijena.MinimumWidth = 6;
+            Cijena.Name = "Cijena";
+            Cijena.ReadOnly = true;
+            Cijena.Width = 125;
             // 
             // JeLiPlacena
             // 
-            this.JeLiPlacena.DataPropertyName = "JeLiPlacena";
-            this.JeLiPlacena.HeaderText = "Placena";
-            this.JeLiPlacena.MinimumWidth = 6;
-            this.JeLiPlacena.Name = "JeLiPlacena";
-            this.JeLiPlacena.ReadOnly = true;
-            this.JeLiPlacena.Width = 125;
+            JeLiPlacena.DataPropertyName = "JeLiPlacena";
+            JeLiPlacena.HeaderText = "Placena";
+            JeLiPlacena.MinimumWidth = 6;
+            JeLiPlacena.Name = "JeLiPlacena";
+            JeLiPlacena.ReadOnly = true;
+            JeLiPlacena.Width = 125;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(455, 82);
+            label1.Name = "label1";
+            label1.Size = new Size(237, 32);
+            label1.TabIndex = 1;
+            label1.Text = "Online plaćanje:";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // frmOnlineKarte
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1511, 596);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.dgvPrikazKarata);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "frmOnlineKarte";
-            this.Text = "frmOnlineKarte";
-            this.Load += new System.EventHandler(this.frmOnlineKarte_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPrikazKarata)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1171, 745);
+            Controls.Add(label1);
+            Controls.Add(dgvPrikazKarata);
+            Margin = new Padding(3, 2, 3, 2);
+            Name = "frmOnlineKarte";
+            Text = "frmOnlineKarte";
+            Load += frmOnlineKarte_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvPrikazKarata).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvPrikazKarata;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PlatiKartuID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ImePrezimeKupca;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TipKarte;
-        private System.Windows.Forms.DataGridViewTextBoxColumn VrstaKarteNaziv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PolazisteOdrediste;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DatumVadjenjaKarte;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DatumVazenjaKarte;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cijena;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn JeLiPlacena;
+        private DataGridView dgvPrikazKarata;
+        private Label label1;
+        private DataGridViewTextBoxColumn PlatiKartuID;
+        private DataGridViewTextBoxColumn ImePrezimeKupca;
+        private DataGridViewTextBoxColumn TipKarte;
+        private DataGridViewTextBoxColumn VrstaKarteNaziv;
+        private DataGridViewTextBoxColumn PolazisteOdrediste;
+        private DataGridViewTextBoxColumn DatumVadjenjaKarte;
+        private DataGridViewTextBoxColumn DatumVazenjaKarte;
+        private DataGridViewTextBoxColumn Cijena;
+        private DataGridViewCheckBoxColumn JeLiPlacena;
     }
 }
