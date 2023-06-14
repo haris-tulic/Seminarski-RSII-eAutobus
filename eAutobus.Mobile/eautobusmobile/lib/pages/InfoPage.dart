@@ -142,116 +142,117 @@ class _InfoPageState extends State<InfoPage> {
         ),
       ),
       body: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Container(
-          padding: const EdgeInsets.fromLTRB(20, 100, 0, 0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            verticalDirection: VerticalDirection.down,
-            children: [
-              Text(
-                "Dobrodosli nazad \n ${korisnik?.ime} ${korisnik?.prezime}",
-                style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 50),
-              const Text(
-                "Historija karata: ",
-                style: TextStyle(color: Colors.black, fontSize: 22),
-              ),
-              const SizedBox(height: 30),
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.yellow[900],
-                  border: Border.all(color: Colors.white),
-                  borderRadius: const BorderRadius.all(Radius.circular(20)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: const Color.fromARGB(255, 255, 255, 255)
-                          .withOpacity(0.9),
-                      spreadRadius: 2,
-                      blurRadius: 5,
-                      offset: const Offset(0, 1),
-                    ),
-                  ],
+        scrollDirection: Axis.vertical,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Container(
+            padding: const EdgeInsets.fromLTRB(20, 100, 0, 0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              verticalDirection: VerticalDirection.down,
+              children: [
+                Text(
+                  "Dobrodosli nazad \n ${korisnik?.ime} ${korisnik?.prezime}",
+                  style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold),
                 ),
-                child: DataTable(
-                  dataTextStyle:
-                      const TextStyle(fontSize: 15, color: Colors.white),
-                  border: TableBorder.all(
-                      color: const Color.fromARGB(207, 255, 255, 255),
-                      width: 2,
-                      style: BorderStyle.solid),
-                  columns: const [
-                    DataColumn(
-                      label: Text(
-                        "Karta",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold),
+                const SizedBox(height: 50),
+                const Text(
+                  "Historija karata: ",
+                  style: TextStyle(color: Colors.black, fontSize: 22),
+                ),
+                const SizedBox(height: 30),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.yellow[900],
+                    border: Border.all(color: Colors.white),
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
+                    boxShadow: [
+                      BoxShadow(
+                        color: const Color.fromARGB(255, 255, 255, 255)
+                            .withOpacity(0.9),
+                        spreadRadius: 2,
+                        blurRadius: 5,
+                        offset: const Offset(0, 1),
                       ),
-                    ),
-                    DataColumn(
-                        label: Text("Polaziste",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold))),
-                    DataColumn(
-                        label: Text("Odrediste",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold))),
-                    DataColumn(
-                        label: Text("Datum vadjenja karte",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold))),
-                    DataColumn(
-                        label: Text("Datum vazenja karte",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold))),
-                    DataColumn(
-                        label: Text("Aktivna",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold))),
-                  ],
-                  rows: korisnik!.karte != null
-                      ? korisnik!.karte!
-                          .map(
-                            (historijaKarata) => DataRow(
-                              cells: [
-                                DataCell(Text(historijaKarata.karta!)),
-                                DataCell(Text(historijaKarata.polaziste!)),
-                                DataCell(Text(historijaKarata.odrediste!)),
-                                DataCell(Text(historijaKarata.datumVadjenjaKarte
-                                    .toString()
-                                    .substring(0, 19))),
-                                DataCell(Text(historijaKarata.datumVazenjaKarte
-                                    .toString()
-                                    .substring(0, 19))),
-                                DataCell(Checkbox(
-                                  value: historijaKarata.aktivna,
-                                  onChanged: null,
-                                )),
-                              ],
-                            ),
-                          )
-                          .toList()
-                      : [],
+                    ],
+                  ),
+                  child: DataTable(
+                    dataTextStyle:
+                        const TextStyle(fontSize: 15, color: Colors.white),
+                    border: TableBorder.all(
+                        color: const Color.fromARGB(207, 255, 255, 255),
+                        width: 2,
+                        style: BorderStyle.solid),
+                    columns: const [
+                      DataColumn(
+                        label: Text(
+                          "Karta",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      DataColumn(
+                          label: Text("Polaziste",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold))),
+                      DataColumn(
+                          label: Text("Odrediste",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold))),
+                      DataColumn(
+                          label: Text("Datum vadjenja karte",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold))),
+                      DataColumn(
+                          label: Text("Datum vazenja karte",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold))),
+                      DataColumn(
+                          label: Text("Aktivna",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold))),
+                    ],
+                    rows: korisnik!.karte!
+                        .map(
+                          (historijaKarata) => DataRow(
+                            cells: [
+                              DataCell(Text(historijaKarata.karta!)),
+                              DataCell(Text(historijaKarata.polaziste!)),
+                              DataCell(Text(historijaKarata.odrediste!)),
+                              DataCell(Text(historijaKarata.datumVadjenjaKarte
+                                  .toString()
+                                  .substring(0, 19))),
+                              DataCell(Text(historijaKarata.datumVazenjaKarte
+                                  .toString()
+                                  .substring(0, 19))),
+                              DataCell(Checkbox(
+                                value: historijaKarata.aktivna,
+                                onChanged: null,
+                              )),
+                            ],
+                          ),
+                        )
+                        .toList(),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

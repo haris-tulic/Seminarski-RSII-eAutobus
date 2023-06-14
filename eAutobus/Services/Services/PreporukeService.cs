@@ -42,9 +42,9 @@ namespace eAutobus.Services
 
 
 
-        public List<RasporedVoznjeModel> Recommend(int id)
+        public async Task<List<RasporedVoznjeModel>> Recommend(int id)
         {
-            var linijeA = _context.RasporedVoznje.Include(r => r.Recenzija).Include("Recenzija.Kupac").Where(r => r.RasporedVoznjeID != id && r.IsDeleted == false).ToList();
+            var linijeA = await _context.RasporedVoznje.Include(r => r.Recenzija).Include("Recenzija.Kupac").Where(r => r.RasporedVoznjeID != id && r.IsDeleted == false).ToListAsync();
             decimal ocjena = 0;
             List<Recenzija> ocjene;
             foreach (var item in linijeA)

@@ -172,6 +172,9 @@ class _RedVoznjeState extends State<RedVoznjePage> {
                   const DataColumn(
                       label: Text('Broj autobusa',
                           style: TextStyle(color: Colors.white, fontSize: 18))),
+                  const DataColumn(
+                      label: Text('Prikazi detalje',
+                          style: TextStyle(color: Colors.white, fontSize: 18))),
                 ],
                 rows: data!
                     .map(
@@ -186,7 +189,7 @@ class _RedVoznjeState extends State<RedVoznjePage> {
                           DataCell(Text(data.brojAutobusa.toString())),
                           DataCell(TextButton(
                             child: Text(
-                              "Prikazi detalje",
+                              "Detalji",
                               style:
                                   TextStyle(color: Colors.white, fontSize: 18),
                             ),

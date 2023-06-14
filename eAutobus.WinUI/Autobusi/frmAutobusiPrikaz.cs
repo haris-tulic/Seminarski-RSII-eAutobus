@@ -28,16 +28,16 @@ namespace eAutobus.WinUI.Autobusi
             {
                 Marka = txtMarkaVozila.Text
             };
-            var result = await _service.Get <List<eAutobusModel.AutobusiModel>>(search);
+            var result = await _service.Get<List<eAutobusModel.AutobusiModel>>(search);
             dgvAutobusi.AutoGenerateColumns = false;
             dgvAutobusi.DataSource = result;
         }
 
-       
+
 
         private async void dgvAutobusi_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            var idAutobus =dgvAutobusi.SelectedRows[0].Cells[0].Value;
+            var idAutobus = dgvAutobusi.SelectedRows[0].Cells[0].Value;
             var odabraniAutobus = await _service.GetById<AutobusiModel>(idAutobus);
             if (dgvAutobusi.CurrentCell is DataGridViewButtonCell)
             {
@@ -64,6 +64,6 @@ namespace eAutobus.WinUI.Autobusi
             await LoadAutobuse();
         }
 
-       
+
     }
 }

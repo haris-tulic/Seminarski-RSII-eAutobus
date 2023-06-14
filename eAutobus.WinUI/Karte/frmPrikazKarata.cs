@@ -18,7 +18,7 @@ namespace eAutobus.WinUI.Karte
         private readonly APIService _zone = new APIService("Zona");
         private readonly APIService _cjenovnik = new APIService("Cjenovnik");
         private int? ID;
-        public frmPrikazKarata(int?id=null)
+        public frmPrikazKarata(int? id = null)
         {
             InitializeComponent();
             ID = id;
@@ -63,18 +63,18 @@ namespace eAutobus.WinUI.Karte
         private async void btnPretraga_Click(object sender, EventArgs e)
         {
             var search = new CjenovnikSearchRequest();
-           
-                search.ZonaID = int.Parse(cbZona.SelectedValue.ToString());
-                search.TipkarteID = int.Parse(cbTip.SelectedValue.ToString());
-                                               
-               var result=await _cjenovnik.Get<List<CjenovnikModel>>(search);
+
+            search.ZonaID = int.Parse(cbZona.SelectedValue.ToString());
+            search.TipkarteID = int.Parse(cbTip.SelectedValue.ToString());
+
+            var result = await _cjenovnik.Get<List<CjenovnikModel>>(search);
             foreach (var item in result)
             {
                 item.CijenaPrikaz = item.Cijena.ToString() + " KM";
             }
-            dataGridView1.AutoGenerateColumns = false;    
+            dataGridView1.AutoGenerateColumns = false;
             dataGridView1.DataSource = result;
-           
+
         }
 
         private async void dataGridView1_MouseDoubleClick(object sender, MouseEventArgs e)

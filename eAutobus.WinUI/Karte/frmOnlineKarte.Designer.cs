@@ -50,13 +50,13 @@ namespace eAutobus.WinUI.Karte
             dgvPrikazKarata.ColumnHeadersHeight = 29;
             dgvPrikazKarata.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvPrikazKarata.Columns.AddRange(new DataGridViewColumn[] { PlatiKartuID, ImePrezimeKupca, TipKarte, VrstaKarteNaziv, PolazisteOdrediste, DatumVadjenjaKarte, DatumVazenjaKarte, Cijena, JeLiPlacena });
-            dgvPrikazKarata.Location = new Point(48, 280);
+            dgvPrikazKarata.Location = new Point(42, 210);
             dgvPrikazKarata.Margin = new Padding(3, 2, 3, 2);
             dgvPrikazKarata.Name = "dgvPrikazKarata";
             dgvPrikazKarata.ReadOnly = true;
             dgvPrikazKarata.RowHeadersWidth = 51;
             dgvPrikazKarata.RowTemplate.Height = 24;
-            dgvPrikazKarata.Size = new Size(1056, 409);
+            dgvPrikazKarata.Size = new Size(1054, 307);
             dgvPrikazKarata.TabIndex = 0;
             // 
             // PlatiKartuID
@@ -145,18 +145,18 @@ namespace eAutobus.WinUI.Karte
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(455, 82);
+            label1.Location = new Point(398, 62);
             label1.Name = "label1";
-            label1.Size = new Size(237, 32);
+            label1.Size = new Size(184, 26);
             label1.TabIndex = 1;
             label1.Text = "Online plaćanje:";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // frmOnlineKarte
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1171, 745);
+            ClientSize = new Size(1171, 559);
             Controls.Add(label1);
             Controls.Add(dgvPrikazKarata);
             Margin = new Padding(3, 2, 3, 2);

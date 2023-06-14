@@ -29,263 +29,253 @@ namespace eAutobus.WinUI.RedVoznji
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnSnimi = new System.Windows.Forms.Button();
-            this.dgvLinije = new System.Windows.Forms.DataGridView();
-            this.cbPolaziste = new System.Windows.Forms.ComboBox();
-            this.cbOdrediste = new System.Windows.Forms.ComboBox();
-            this.dtpDatum = new System.Windows.Forms.DateTimePicker();
-            this.btnIzvjestaj = new System.Windows.Forms.Button();
-            this.RasporedVoznjeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BrojLinije = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BrojAutobusa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Polazak = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VrijemePolaska = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VrijemeDolaska = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Odlazak = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Datum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Akcija = new System.Windows.Forms.DataGridViewButtonColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLinije)).BeginInit();
-            this.SuspendLayout();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            btnSnimi = new Button();
+            dgvLinije = new DataGridView();
+            RasporedVoznjeID = new DataGridViewTextBoxColumn();
+            BrojLinije = new DataGridViewTextBoxColumn();
+            BrojAutobusa = new DataGridViewTextBoxColumn();
+            Polazak = new DataGridViewTextBoxColumn();
+            VrijemePolaska = new DataGridViewTextBoxColumn();
+            VrijemeDolaska = new DataGridViewTextBoxColumn();
+            Odlazak = new DataGridViewTextBoxColumn();
+            Datum = new DataGridViewTextBoxColumn();
+            Akcija = new DataGridViewButtonColumn();
+            cbPolaziste = new ComboBox();
+            cbOdrediste = new ComboBox();
+            dtpDatum = new DateTimePicker();
+            btnIzvjestaj = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvLinije).BeginInit();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(81, 71);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Polazište:";
+            label1.AutoSize = true;
+            label1.Location = new Point(71, 67);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(56, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Polazište:";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(699, 70);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 17);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Odredište:";
+            label2.AutoSize = true;
+            label2.Location = new Point(612, 66);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(61, 15);
+            label2.TabIndex = 1;
+            label2.Text = "Odredište:";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(360, 158);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 17);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Datum:";
+            label3.AutoSize = true;
+            label3.Location = new Point(315, 148);
+            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(46, 15);
+            label3.TabIndex = 2;
+            label3.Text = "Datum:";
             // 
             // btnSnimi
             // 
-            this.btnSnimi.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.btnSnimi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnSnimi.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnSnimi.Location = new System.Drawing.Point(493, 214);
-            this.btnSnimi.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSnimi.Name = "btnSnimi";
-            this.btnSnimi.Size = new System.Drawing.Size(100, 28);
-            this.btnSnimi.TabIndex = 3;
-            this.btnSnimi.Text = "Pretraga";
-            this.btnSnimi.UseVisualStyleBackColor = false;
-            this.btnSnimi.Click += new System.EventHandler(this.btnSnimi_Click);
+            btnSnimi.BackColor = SystemColors.ControlDark;
+            btnSnimi.BackgroundImageLayout = ImageLayout.Center;
+            btnSnimi.ForeColor = SystemColors.ButtonFace;
+            btnSnimi.Location = new Point(431, 201);
+            btnSnimi.Margin = new Padding(4);
+            btnSnimi.Name = "btnSnimi";
+            btnSnimi.Size = new Size(88, 26);
+            btnSnimi.TabIndex = 3;
+            btnSnimi.Text = "Pretraga";
+            btnSnimi.UseVisualStyleBackColor = false;
+            btnSnimi.Click += btnSnimi_Click;
             // 
             // dgvLinije
             // 
-            this.dgvLinije.AllowUserToAddRows = false;
-            this.dgvLinije.AllowUserToDeleteRows = false;
-            this.dgvLinije.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLinije.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.RasporedVoznjeID,
-            this.BrojLinije,
-            this.BrojAutobusa,
-            this.Polazak,
-            this.VrijemePolaska,
-            this.VrijemeDolaska,
-            this.Odlazak,
-            this.Datum,
-            this.Akcija});
-            this.dgvLinije.Location = new System.Drawing.Point(16, 281);
-            this.dgvLinije.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvLinije.Name = "dgvLinije";
-            this.dgvLinije.ReadOnly = true;
-            this.dgvLinije.RowHeadersWidth = 51;
-            this.dgvLinije.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLinije.Size = new System.Drawing.Size(1053, 258);
-            this.dgvLinije.TabIndex = 4;
-            this.dgvLinije.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvLinije_MouseDoubleClick);
-            // 
-            // cbPolaziste
-            // 
-            this.cbPolaziste.FormattingEnabled = true;
-            this.cbPolaziste.Location = new System.Drawing.Point(159, 66);
-            this.cbPolaziste.Margin = new System.Windows.Forms.Padding(4);
-            this.cbPolaziste.Name = "cbPolaziste";
-            this.cbPolaziste.Size = new System.Drawing.Size(183, 24);
-            this.cbPolaziste.TabIndex = 5;
-            // 
-            // cbOdrediste
-            // 
-            this.cbOdrediste.FormattingEnabled = true;
-            this.cbOdrediste.Location = new System.Drawing.Point(780, 66);
-            this.cbOdrediste.Margin = new System.Windows.Forms.Padding(4);
-            this.cbOdrediste.Name = "cbOdrediste";
-            this.cbOdrediste.Size = new System.Drawing.Size(183, 24);
-            this.cbOdrediste.TabIndex = 6;
-            // 
-            // dtpDatum
-            // 
-            this.dtpDatum.Location = new System.Drawing.Point(435, 158);
-            this.dtpDatum.Margin = new System.Windows.Forms.Padding(4);
-            this.dtpDatum.Name = "dtpDatum";
-            this.dtpDatum.Size = new System.Drawing.Size(265, 22);
-            this.dtpDatum.TabIndex = 7;
-            this.dtpDatum.ValueChanged += new System.EventHandler(this.dtpDatum_ValueChanged);
-            // 
-            // btnIzvjestaj
-            // 
-            this.btnIzvjestaj.Location = new System.Drawing.Point(493, 591);
-            this.btnIzvjestaj.Margin = new System.Windows.Forms.Padding(4);
-            this.btnIzvjestaj.Name = "btnIzvjestaj";
-            this.btnIzvjestaj.Size = new System.Drawing.Size(100, 28);
-            this.btnIzvjestaj.TabIndex = 8;
-            this.btnIzvjestaj.Text = "Izvještaj";
-            this.btnIzvjestaj.UseVisualStyleBackColor = true;
-            this.btnIzvjestaj.Click += new System.EventHandler(this.btnIzvjestaj_Click);
+            dgvLinije.AllowUserToAddRows = false;
+            dgvLinije.AllowUserToDeleteRows = false;
+            dgvLinije.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvLinije.Columns.AddRange(new DataGridViewColumn[] { RasporedVoznjeID, BrojLinije, BrojAutobusa, Polazak, VrijemePolaska, VrijemeDolaska, Odlazak, Datum, Akcija });
+            dgvLinije.Location = new Point(14, 263);
+            dgvLinije.Margin = new Padding(4);
+            dgvLinije.Name = "dgvLinije";
+            dgvLinije.ReadOnly = true;
+            dgvLinije.RowHeadersWidth = 51;
+            dgvLinije.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvLinije.Size = new Size(1055, 242);
+            dgvLinije.TabIndex = 4;
+            dgvLinije.MouseDoubleClick += dgvLinije_MouseDoubleClick;
             // 
             // RasporedVoznjeID
             // 
-            this.RasporedVoznjeID.DataPropertyName = "RasporedVoznjeID";
-            this.RasporedVoznjeID.HeaderText = "RasporedVoznjeID";
-            this.RasporedVoznjeID.MinimumWidth = 6;
-            this.RasporedVoznjeID.Name = "RasporedVoznjeID";
-            this.RasporedVoznjeID.ReadOnly = true;
-            this.RasporedVoznjeID.Visible = false;
-            this.RasporedVoznjeID.Width = 125;
+            RasporedVoznjeID.DataPropertyName = "RasporedVoznjeID";
+            RasporedVoznjeID.HeaderText = "RasporedVoznjeID";
+            RasporedVoznjeID.MinimumWidth = 6;
+            RasporedVoznjeID.Name = "RasporedVoznjeID";
+            RasporedVoznjeID.ReadOnly = true;
+            RasporedVoznjeID.Visible = false;
+            RasporedVoznjeID.Width = 125;
             // 
             // BrojLinije
             // 
-            this.BrojLinije.DataPropertyName = "BrojLinije";
-            this.BrojLinije.HeaderText = "Linija";
-            this.BrojLinije.MinimumWidth = 6;
-            this.BrojLinije.Name = "BrojLinije";
-            this.BrojLinije.ReadOnly = true;
-            this.BrojLinije.Width = 125;
+            BrojLinije.DataPropertyName = "BrojLinije";
+            BrojLinije.HeaderText = "Linija";
+            BrojLinije.MinimumWidth = 6;
+            BrojLinije.Name = "BrojLinije";
+            BrojLinije.ReadOnly = true;
+            BrojLinije.Width = 125;
             // 
             // BrojAutobusa
             // 
-            this.BrojAutobusa.DataPropertyName = "BrojAutobusa";
-            this.BrojAutobusa.HeaderText = "Autobus";
-            this.BrojAutobusa.MinimumWidth = 6;
-            this.BrojAutobusa.Name = "BrojAutobusa";
-            this.BrojAutobusa.ReadOnly = true;
-            this.BrojAutobusa.Width = 125;
+            BrojAutobusa.DataPropertyName = "BrojAutobusa";
+            BrojAutobusa.HeaderText = "Autobus";
+            BrojAutobusa.MinimumWidth = 6;
+            BrojAutobusa.Name = "BrojAutobusa";
+            BrojAutobusa.ReadOnly = true;
+            BrojAutobusa.Width = 125;
             // 
             // Polazak
             // 
-            this.Polazak.DataPropertyName = "Polazak";
-            this.Polazak.HeaderText = "Polazište";
-            this.Polazak.MinimumWidth = 6;
-            this.Polazak.Name = "Polazak";
-            this.Polazak.ReadOnly = true;
-            this.Polazak.Width = 125;
+            Polazak.DataPropertyName = "Polazak";
+            Polazak.HeaderText = "Polazište";
+            Polazak.MinimumWidth = 6;
+            Polazak.Name = "Polazak";
+            Polazak.ReadOnly = true;
+            Polazak.Width = 125;
             // 
             // VrijemePolaska
             // 
-            this.VrijemePolaska.DataPropertyName = "VrijemePolaska";
-            this.VrijemePolaska.HeaderText = "Vrijeme polaska";
-            this.VrijemePolaska.MinimumWidth = 6;
-            this.VrijemePolaska.Name = "VrijemePolaska";
-            this.VrijemePolaska.ReadOnly = true;
-            this.VrijemePolaska.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.VrijemePolaska.Width = 125;
+            VrijemePolaska.DataPropertyName = "VrijemePolaska";
+            VrijemePolaska.HeaderText = "Vrijeme polaska";
+            VrijemePolaska.MinimumWidth = 6;
+            VrijemePolaska.Name = "VrijemePolaska";
+            VrijemePolaska.ReadOnly = true;
+            VrijemePolaska.Resizable = DataGridViewTriState.False;
+            VrijemePolaska.Width = 125;
             // 
             // VrijemeDolaska
             // 
-            this.VrijemeDolaska.DataPropertyName = "VrijemeDolaska";
-            this.VrijemeDolaska.HeaderText = "Vrijeme dolaska";
-            this.VrijemeDolaska.MinimumWidth = 6;
-            this.VrijemeDolaska.Name = "VrijemeDolaska";
-            this.VrijemeDolaska.ReadOnly = true;
-            this.VrijemeDolaska.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.VrijemeDolaska.Width = 125;
+            VrijemeDolaska.DataPropertyName = "VrijemeDolaska";
+            VrijemeDolaska.HeaderText = "Vrijeme dolaska";
+            VrijemeDolaska.MinimumWidth = 6;
+            VrijemeDolaska.Name = "VrijemeDolaska";
+            VrijemeDolaska.ReadOnly = true;
+            VrijemeDolaska.Resizable = DataGridViewTriState.False;
+            VrijemeDolaska.Width = 125;
             // 
             // Odlazak
             // 
-            this.Odlazak.DataPropertyName = "Odlazak";
-            this.Odlazak.HeaderText = "Odredište";
-            this.Odlazak.MinimumWidth = 6;
-            this.Odlazak.Name = "Odlazak";
-            this.Odlazak.ReadOnly = true;
-            this.Odlazak.Width = 125;
+            Odlazak.DataPropertyName = "Odlazak";
+            Odlazak.HeaderText = "Odredište";
+            Odlazak.MinimumWidth = 6;
+            Odlazak.Name = "Odlazak";
+            Odlazak.ReadOnly = true;
+            Odlazak.Width = 125;
             // 
             // Datum
             // 
-            this.Datum.DataPropertyName = "Datum";
-            this.Datum.HeaderText = "Datum";
-            this.Datum.MinimumWidth = 6;
-            this.Datum.Name = "Datum";
-            this.Datum.ReadOnly = true;
-            this.Datum.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Datum.Width = 125;
+            Datum.DataPropertyName = "Datum";
+            Datum.HeaderText = "Datum";
+            Datum.MinimumWidth = 6;
+            Datum.Name = "Datum";
+            Datum.ReadOnly = true;
+            Datum.Resizable = DataGridViewTriState.False;
+            Datum.Width = 125;
             // 
             // Akcija
             // 
-            this.Akcija.HeaderText = "Akcija";
-            this.Akcija.MinimumWidth = 6;
-            this.Akcija.Name = "Akcija";
-            this.Akcija.ReadOnly = true;
-            this.Akcija.Text = "Obriši";
-            this.Akcija.UseColumnTextForButtonValue = true;
-            this.Akcija.Width = 125;
+            Akcija.HeaderText = "Akcija";
+            Akcija.MinimumWidth = 6;
+            Akcija.Name = "Akcija";
+            Akcija.ReadOnly = true;
+            Akcija.Text = "Obriši";
+            Akcija.UseColumnTextForButtonValue = true;
+            Akcija.Width = 125;
+            // 
+            // cbPolaziste
+            // 
+            cbPolaziste.FormattingEnabled = true;
+            cbPolaziste.Location = new Point(139, 62);
+            cbPolaziste.Margin = new Padding(4);
+            cbPolaziste.Name = "cbPolaziste";
+            cbPolaziste.Size = new Size(161, 23);
+            cbPolaziste.TabIndex = 5;
+            // 
+            // cbOdrediste
+            // 
+            cbOdrediste.FormattingEnabled = true;
+            cbOdrediste.Location = new Point(682, 62);
+            cbOdrediste.Margin = new Padding(4);
+            cbOdrediste.Name = "cbOdrediste";
+            cbOdrediste.Size = new Size(161, 23);
+            cbOdrediste.TabIndex = 6;
+            // 
+            // dtpDatum
+            // 
+            dtpDatum.Location = new Point(381, 148);
+            dtpDatum.Margin = new Padding(4);
+            dtpDatum.Name = "dtpDatum";
+            dtpDatum.Size = new Size(232, 23);
+            dtpDatum.TabIndex = 7;
+            dtpDatum.ValueChanged += dtpDatum_ValueChanged;
+            // 
+            // btnIzvjestaj
+            // 
+            btnIzvjestaj.Location = new Point(431, 554);
+            btnIzvjestaj.Margin = new Padding(4);
+            btnIzvjestaj.Name = "btnIzvjestaj";
+            btnIzvjestaj.Size = new Size(88, 26);
+            btnIzvjestaj.TabIndex = 8;
+            btnIzvjestaj.Text = "Izvještaj";
+            btnIzvjestaj.UseVisualStyleBackColor = true;
+            btnIzvjestaj.Click += btnIzvjestaj_Click;
             // 
             // frmPregledRedaVoznji
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1093, 684);
-            this.Controls.Add(this.btnIzvjestaj);
-            this.Controls.Add(this.dtpDatum);
-            this.Controls.Add(this.cbOdrediste);
-            this.Controls.Add(this.cbPolaziste);
-            this.Controls.Add(this.dgvLinije);
-            this.Controls.Add(this.btnSnimi);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmPregledRedaVoznji";
-            this.Text = "frmPregledRedaVoznji";
-            this.Load += new System.EventHandler(this.frmPregledRedaVoznji_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLinije)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1094, 641);
+            Controls.Add(btnIzvjestaj);
+            Controls.Add(dtpDatum);
+            Controls.Add(cbOdrediste);
+            Controls.Add(cbPolaziste);
+            Controls.Add(dgvLinije);
+            Controls.Add(btnSnimi);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Margin = new Padding(4);
+            Name = "frmPregledRedaVoznji";
+            Text = "frmPregledRedaVoznji";
+            Load += frmPregledRedaVoznji_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvLinije).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnSnimi;
-        private System.Windows.Forms.DataGridView dgvLinije;
-        private System.Windows.Forms.ComboBox cbPolaziste;
-        private System.Windows.Forms.ComboBox cbOdrediste;
-        private System.Windows.Forms.DateTimePicker dtpDatum;
-        private System.Windows.Forms.Button btnIzvjestaj;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RasporedVoznjeID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BrojLinije;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BrojAutobusa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Polazak;
-        private System.Windows.Forms.DataGridViewTextBoxColumn VrijemePolaska;
-        private System.Windows.Forms.DataGridViewTextBoxColumn VrijemeDolaska;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Odlazak;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Datum;
-        private System.Windows.Forms.DataGridViewButtonColumn Akcija;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Button btnSnimi;
+        private DataGridView dgvLinije;
+        private ComboBox cbPolaziste;
+        private ComboBox cbOdrediste;
+        private DateTimePicker dtpDatum;
+        private Button btnIzvjestaj;
+        private DataGridViewTextBoxColumn RasporedVoznjeID;
+        private DataGridViewTextBoxColumn BrojLinije;
+        private DataGridViewTextBoxColumn BrojAutobusa;
+        private DataGridViewTextBoxColumn Polazak;
+        private DataGridViewTextBoxColumn VrijemePolaska;
+        private DataGridViewTextBoxColumn VrijemeDolaska;
+        private DataGridViewTextBoxColumn Odlazak;
+        private DataGridViewTextBoxColumn Datum;
+        private DataGridViewButtonColumn Akcija;
     }
 }

@@ -29,220 +29,211 @@ namespace eAutobus.WinUI.Karte
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cbTip = new System.Windows.Forms.ComboBox();
-            this.cbZona = new System.Windows.Forms.ComboBox();
-            this.btnPretraga = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnPrintajKarte = new System.Windows.Forms.Button();
-            this.CjenovnikID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TipKarte = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Zona = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VrstaKarte = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Polaziste = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Odrediste = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CijenaPrikaz = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Akcija = new System.Windows.Forms.DataGridViewButtonColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.SuspendLayout();
+            label1 = new Label();
+            label2 = new Label();
+            cbTip = new ComboBox();
+            cbZona = new ComboBox();
+            btnPretraga = new Button();
+            dataGridView1 = new DataGridView();
+            CjenovnikID = new DataGridViewTextBoxColumn();
+            TipKarte = new DataGridViewTextBoxColumn();
+            Zona = new DataGridViewTextBoxColumn();
+            VrstaKarte = new DataGridViewTextBoxColumn();
+            Polaziste = new DataGridViewTextBoxColumn();
+            Odrediste = new DataGridViewTextBoxColumn();
+            CijenaPrikaz = new DataGridViewTextBoxColumn();
+            Akcija = new DataGridViewButtonColumn();
+            btnPrintajKarte = new Button();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(136, 94);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Tip:";
+            label1.AutoSize = true;
+            label1.Location = new Point(119, 88);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(26, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Tip:";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(603, 94);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 17);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Zona:";
+            label2.AutoSize = true;
+            label2.Location = new Point(528, 88);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(37, 15);
+            label2.TabIndex = 1;
+            label2.Text = "Zona:";
             // 
             // cbTip
             // 
-            this.cbTip.FormattingEnabled = true;
-            this.cbTip.Location = new System.Drawing.Point(177, 90);
-            this.cbTip.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cbTip.Name = "cbTip";
-            this.cbTip.Size = new System.Drawing.Size(228, 24);
-            this.cbTip.TabIndex = 2;
+            cbTip.FormattingEnabled = true;
+            cbTip.Location = new Point(155, 84);
+            cbTip.Margin = new Padding(4);
+            cbTip.Name = "cbTip";
+            cbTip.Size = new Size(200, 23);
+            cbTip.TabIndex = 2;
             // 
             // cbZona
             // 
-            this.cbZona.FormattingEnabled = true;
-            this.cbZona.Location = new System.Drawing.Point(657, 90);
-            this.cbZona.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cbZona.Name = "cbZona";
-            this.cbZona.Size = new System.Drawing.Size(228, 24);
-            this.cbZona.TabIndex = 3;
+            cbZona.FormattingEnabled = true;
+            cbZona.Location = new Point(575, 84);
+            cbZona.Margin = new Padding(4);
+            cbZona.Name = "cbZona";
+            cbZona.Size = new Size(200, 23);
+            cbZona.TabIndex = 3;
             // 
             // btnPretraga
             // 
-            this.btnPretraga.Location = new System.Drawing.Point(451, 170);
-            this.btnPretraga.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnPretraga.Name = "btnPretraga";
-            this.btnPretraga.Size = new System.Drawing.Size(100, 28);
-            this.btnPretraga.TabIndex = 4;
-            this.btnPretraga.Text = "Pretraga";
-            this.btnPretraga.UseVisualStyleBackColor = true;
-            this.btnPretraga.Click += new System.EventHandler(this.btnPretraga_Click);
+            btnPretraga.Location = new Point(395, 159);
+            btnPretraga.Margin = new Padding(4);
+            btnPretraga.Name = "btnPretraga";
+            btnPretraga.Size = new Size(88, 26);
+            btnPretraga.TabIndex = 4;
+            btnPretraga.Text = "Pretraga";
+            btnPretraga.UseVisualStyleBackColor = true;
+            btnPretraga.Click += btnPretraga_Click;
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CjenovnikID,
-            this.TipKarte,
-            this.Zona,
-            this.VrstaKarte,
-            this.Polaziste,
-            this.Odrediste,
-            this.CijenaPrikaz,
-            this.Akcija});
-            this.dataGridView1.Location = new System.Drawing.Point(71, 297);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(931, 242);
-            this.dataGridView1.TabIndex = 5;
-            this.dataGridView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDoubleClick);
-            // 
-            // btnPrintajKarte
-            // 
-            this.btnPrintajKarte.Location = new System.Drawing.Point(451, 609);
-            this.btnPrintajKarte.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnPrintajKarte.Name = "btnPrintajKarte";
-            this.btnPrintajKarte.Size = new System.Drawing.Size(100, 28);
-            this.btnPrintajKarte.TabIndex = 6;
-            this.btnPrintajKarte.Text = "Printaj karte";
-            this.btnPrintajKarte.UseVisualStyleBackColor = true;
-            this.btnPrintajKarte.Click += new System.EventHandler(this.btnPrintajKarte_Click);
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { CjenovnikID, TipKarte, Zona, VrstaKarte, Polaziste, Odrediste, CijenaPrikaz, Akcija });
+            dataGridView1.Location = new Point(62, 278);
+            dataGridView1.Margin = new Padding(4);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.Size = new Size(929, 227);
+            dataGridView1.TabIndex = 5;
+            dataGridView1.MouseDoubleClick += dataGridView1_MouseDoubleClick;
             // 
             // CjenovnikID
             // 
-            this.CjenovnikID.DataPropertyName = "CjenovnikID";
-            this.CjenovnikID.HeaderText = "CjenovnikID";
-            this.CjenovnikID.MinimumWidth = 6;
-            this.CjenovnikID.Name = "CjenovnikID";
-            this.CjenovnikID.ReadOnly = true;
-            this.CjenovnikID.Visible = false;
-            this.CjenovnikID.Width = 125;
+            CjenovnikID.DataPropertyName = "CjenovnikID";
+            CjenovnikID.HeaderText = "CjenovnikID";
+            CjenovnikID.MinimumWidth = 6;
+            CjenovnikID.Name = "CjenovnikID";
+            CjenovnikID.ReadOnly = true;
+            CjenovnikID.Visible = false;
+            CjenovnikID.Width = 125;
             // 
             // TipKarte
             // 
-            this.TipKarte.DataPropertyName = "TipKarte";
-            this.TipKarte.HeaderText = "Tip karte";
-            this.TipKarte.MinimumWidth = 6;
-            this.TipKarte.Name = "TipKarte";
-            this.TipKarte.ReadOnly = true;
-            this.TipKarte.Width = 125;
+            TipKarte.DataPropertyName = "TipKarte";
+            TipKarte.HeaderText = "Tip karte";
+            TipKarte.MinimumWidth = 6;
+            TipKarte.Name = "TipKarte";
+            TipKarte.ReadOnly = true;
+            TipKarte.Width = 125;
             // 
             // Zona
             // 
-            this.Zona.DataPropertyName = "Zona";
-            this.Zona.HeaderText = "Zona";
-            this.Zona.MinimumWidth = 6;
-            this.Zona.Name = "Zona";
-            this.Zona.ReadOnly = true;
-            this.Zona.Width = 125;
+            Zona.DataPropertyName = "Zona";
+            Zona.HeaderText = "Zona";
+            Zona.MinimumWidth = 6;
+            Zona.Name = "Zona";
+            Zona.ReadOnly = true;
+            Zona.Width = 125;
             // 
             // VrstaKarte
             // 
-            this.VrstaKarte.DataPropertyName = "VrstaKarte";
-            this.VrstaKarte.HeaderText = "Vrsta";
-            this.VrstaKarte.MinimumWidth = 6;
-            this.VrstaKarte.Name = "VrstaKarte";
-            this.VrstaKarte.ReadOnly = true;
-            this.VrstaKarte.Width = 125;
+            VrstaKarte.DataPropertyName = "VrstaKarte";
+            VrstaKarte.HeaderText = "Vrsta";
+            VrstaKarte.MinimumWidth = 6;
+            VrstaKarte.Name = "VrstaKarte";
+            VrstaKarte.ReadOnly = true;
+            VrstaKarte.Width = 125;
             // 
             // Polaziste
             // 
-            this.Polaziste.DataPropertyName = "Polaziste";
-            this.Polaziste.HeaderText = "Polazište";
-            this.Polaziste.MinimumWidth = 6;
-            this.Polaziste.Name = "Polaziste";
-            this.Polaziste.ReadOnly = true;
-            this.Polaziste.Width = 125;
+            Polaziste.DataPropertyName = "Polaziste";
+            Polaziste.HeaderText = "Polazište";
+            Polaziste.MinimumWidth = 6;
+            Polaziste.Name = "Polaziste";
+            Polaziste.ReadOnly = true;
+            Polaziste.Width = 125;
             // 
             // Odrediste
             // 
-            this.Odrediste.DataPropertyName = "Odrediste";
-            this.Odrediste.HeaderText = "Odredište";
-            this.Odrediste.MinimumWidth = 6;
-            this.Odrediste.Name = "Odrediste";
-            this.Odrediste.ReadOnly = true;
-            this.Odrediste.Width = 125;
+            Odrediste.DataPropertyName = "Odrediste";
+            Odrediste.HeaderText = "Odredište";
+            Odrediste.MinimumWidth = 6;
+            Odrediste.Name = "Odrediste";
+            Odrediste.ReadOnly = true;
+            Odrediste.Width = 125;
             // 
             // CijenaPrikaz
             // 
-            this.CijenaPrikaz.DataPropertyName = "CijenaPrikaz";
-            this.CijenaPrikaz.HeaderText = "Cijena";
-            this.CijenaPrikaz.MinimumWidth = 6;
-            this.CijenaPrikaz.Name = "CijenaPrikaz";
-            this.CijenaPrikaz.ReadOnly = true;
-            this.CijenaPrikaz.Width = 125;
+            CijenaPrikaz.DataPropertyName = "CijenaPrikaz";
+            CijenaPrikaz.HeaderText = "Cijena";
+            CijenaPrikaz.MinimumWidth = 6;
+            CijenaPrikaz.Name = "CijenaPrikaz";
+            CijenaPrikaz.ReadOnly = true;
+            CijenaPrikaz.Width = 125;
             // 
             // Akcija
             // 
-            this.Akcija.HeaderText = "Akcija";
-            this.Akcija.MinimumWidth = 6;
-            this.Akcija.Name = "Akcija";
-            this.Akcija.ReadOnly = true;
-            this.Akcija.Text = "Obriši";
-            this.Akcija.UseColumnTextForButtonValue = true;
-            this.Akcija.Width = 125;
+            Akcija.HeaderText = "Akcija";
+            Akcija.MinimumWidth = 6;
+            Akcija.Name = "Akcija";
+            Akcija.ReadOnly = true;
+            Akcija.Text = "Obriši";
+            Akcija.UseColumnTextForButtonValue = true;
+            Akcija.Width = 125;
+            // 
+            // btnPrintajKarte
+            // 
+            btnPrintajKarte.Location = new Point(395, 571);
+            btnPrintajKarte.Margin = new Padding(4);
+            btnPrintajKarte.Name = "btnPrintajKarte";
+            btnPrintajKarte.Size = new Size(88, 26);
+            btnPrintajKarte.TabIndex = 6;
+            btnPrintajKarte.Text = "Printaj karte";
+            btnPrintajKarte.UseVisualStyleBackColor = true;
+            btnPrintajKarte.Click += btnPrintajKarte_Click;
             // 
             // frmPrikazKarata
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1124, 746);
-            this.Controls.Add(this.btnPrintajKarte);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.btnPretraga);
-            this.Controls.Add(this.cbZona);
-            this.Controls.Add(this.cbTip);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "frmPrikazKarata";
-            this.Text = "frmPrikazKarata";
-            this.Load += new System.EventHandler(this.frmPrikazKarata_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1066, 699);
+            Controls.Add(btnPrintajKarte);
+            Controls.Add(dataGridView1);
+            Controls.Add(btnPretraga);
+            Controls.Add(cbZona);
+            Controls.Add(cbTip);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Margin = new Padding(4);
+            Name = "frmPrikazKarata";
+            Text = "frmPrikazKarata";
+            Load += frmPrikazKarata_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cbTip;
-        private System.Windows.Forms.ComboBox cbZona;
-        private System.Windows.Forms.Button btnPretraga;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btnPrintajKarte;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CjenovnikID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TipKarte;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Zona;
-        private System.Windows.Forms.DataGridViewTextBoxColumn VrstaKarte;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Polaziste;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Odrediste;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CijenaPrikaz;
-        private System.Windows.Forms.DataGridViewButtonColumn Akcija;
+        private Label label1;
+        private Label label2;
+        private ComboBox cbTip;
+        private ComboBox cbZona;
+        private Button btnPretraga;
+        private DataGridView dataGridView1;
+        private Button btnPrintajKarte;
+        private DataGridViewTextBoxColumn CjenovnikID;
+        private DataGridViewTextBoxColumn TipKarte;
+        private DataGridViewTextBoxColumn Zona;
+        private DataGridViewTextBoxColumn VrstaKarte;
+        private DataGridViewTextBoxColumn Polaziste;
+        private DataGridViewTextBoxColumn Odrediste;
+        private DataGridViewTextBoxColumn CijenaPrikaz;
+        private DataGridViewButtonColumn Akcija;
     }
 }

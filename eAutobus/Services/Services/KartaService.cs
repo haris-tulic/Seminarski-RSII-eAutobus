@@ -70,7 +70,19 @@ namespace eAutobus.Services
         public async Task<KartaModel> GetById(int id)
         {
             var entity = await _context.Karta.Include(k=>k.PlaceneKarte).Include(k=>k.KupacList).FirstOrDefaultAsync(x=>x.KartaID==id);
-            return _mapper.Map<KartaModel>(entity);
+            var entityK = new KartaModel();
+            _mapper.Map(entity, entityK);
+            foreach (var item in entity.KupacList)
+            {
+                if (item.KartaID == id)
+                {
+                    entityK.DatumVadjenjaKarte = item.DatumVadjenjaKarte;
+                    entityK.DatumVazenjaKarte = item.DatumVazenjaKarte;
+                    entityK.KupacID = item.KupacID;
+                }
+                
+            }
+            return entityK;
           
         }
 

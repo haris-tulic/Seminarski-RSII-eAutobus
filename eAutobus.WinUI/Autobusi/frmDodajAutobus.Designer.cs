@@ -58,114 +58,114 @@ namespace eAutobus.WinUI.Autobusi
             // 
             // txtBrojAutobusa
             // 
-            txtBrojAutobusa.Location = new Point(53, 100);
-            txtBrojAutobusa.Margin = new Padding(4, 5, 4, 5);
+            txtBrojAutobusa.Location = new Point(46, 75);
+            txtBrojAutobusa.Margin = new Padding(4, 4, 4, 4);
             txtBrojAutobusa.Name = "txtBrojAutobusa";
-            txtBrojAutobusa.Size = new Size(295, 27);
+            txtBrojAutobusa.Size = new Size(259, 23);
             txtBrojAutobusa.TabIndex = 0;
             txtBrojAutobusa.Validating += txtBrojAutobusa_Validating;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(53, 75);
+            label1.Location = new Point(46, 56);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(104, 20);
+            label1.Size = new Size(83, 15);
             label1.TabIndex = 1;
             label1.Text = "Broj autobusa:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(592, 75);
+            label2.Location = new Point(518, 56);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(93, 20);
+            label2.Size = new Size(73, 15);
             label2.TabIndex = 3;
             label2.Text = "Broj sjedista:";
             // 
             // txtBrojSjedista
             // 
-            txtBrojSjedista.Location = new Point(596, 100);
-            txtBrojSjedista.Margin = new Padding(4, 5, 4, 5);
+            txtBrojSjedista.Location = new Point(522, 75);
+            txtBrojSjedista.Margin = new Padding(4, 4, 4, 4);
             txtBrojSjedista.Name = "txtBrojSjedista";
-            txtBrojSjedista.Size = new Size(295, 27);
+            txtBrojSjedista.Size = new Size(259, 23);
             txtBrojSjedista.TabIndex = 2;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(53, 185);
+            label3.Location = new Point(46, 139);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(118, 20);
+            label3.Size = new Size(95, 15);
             label3.TabIndex = 5;
             label3.Text = "Marka autobusa:";
             // 
             // txtMarkaAutobusa
             // 
-            txtMarkaAutobusa.Location = new Point(53, 209);
-            txtMarkaAutobusa.Margin = new Padding(4, 5, 4, 5);
+            txtMarkaAutobusa.Location = new Point(46, 157);
+            txtMarkaAutobusa.Margin = new Padding(4, 4, 4, 4);
             txtMarkaAutobusa.Name = "txtMarkaAutobusa";
-            txtMarkaAutobusa.Size = new Size(295, 27);
+            txtMarkaAutobusa.Size = new Size(259, 23);
             txtMarkaAutobusa.TabIndex = 4;
             txtMarkaAutobusa.Validating += txtMarkaAutobusa_Validating;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(53, 311);
+            label5.Location = new Point(46, 233);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(58, 20);
+            label5.Size = new Size(45, 15);
             label5.TabIndex = 9;
             label5.Text = "Garaza:";
             // 
             // dtpDatumProizvodnje
             // 
-            dtpDatumProizvodnje.Location = new Point(596, 234);
-            dtpDatumProizvodnje.Margin = new Padding(4, 5, 4, 5);
+            dtpDatumProizvodnje.Location = new Point(522, 176);
+            dtpDatumProizvodnje.Margin = new Padding(4, 4, 4, 4);
             dtpDatumProizvodnje.Name = "dtpDatumProizvodnje";
-            dtpDatumProizvodnje.Size = new Size(265, 27);
+            dtpDatumProizvodnje.Size = new Size(232, 23);
             dtpDatumProizvodnje.TabIndex = 12;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(592, 209);
+            label4.Location = new Point(518, 157);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(140, 20);
+            label4.Size = new Size(111, 15);
             label4.TabIndex = 13;
             label4.Text = "Datum proizvodnje:";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(600, 335);
+            label6.Location = new Point(525, 251);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
-            label6.Size = new Size(64, 20);
+            label6.Size = new Size(51, 15);
             label6.TabIndex = 14;
             label6.Text = "Ispravan";
             // 
             // cbIspravan
             // 
             cbIspravan.AutoSize = true;
-            cbIspravan.Location = new Point(617, 360);
-            cbIspravan.Margin = new Padding(4, 5, 4, 5);
+            cbIspravan.Location = new Point(540, 270);
+            cbIspravan.Margin = new Padding(4, 4, 4, 4);
             cbIspravan.Name = "cbIspravan";
-            cbIspravan.Size = new Size(18, 17);
+            cbIspravan.Size = new Size(15, 14);
             cbIspravan.TabIndex = 15;
             cbIspravan.UseVisualStyleBackColor = true;
             // 
             // btnSpremi
             // 
-            btnSpremi.Location = new Point(441, 434);
-            btnSpremi.Margin = new Padding(4, 5, 4, 5);
+            btnSpremi.Location = new Point(386, 326);
+            btnSpremi.Margin = new Padding(4, 4, 4, 4);
             btnSpremi.Name = "btnSpremi";
-            btnSpremi.Size = new Size(100, 35);
+            btnSpremi.Size = new Size(88, 26);
             btnSpremi.TabIndex = 16;
             btnSpremi.Text = "Spremi";
             btnSpremi.UseVisualStyleBackColor = true;
@@ -174,10 +174,10 @@ namespace eAutobus.WinUI.Autobusi
             // cbGaraza
             // 
             cbGaraza.FormattingEnabled = true;
-            cbGaraza.Location = new Point(53, 335);
-            cbGaraza.Margin = new Padding(4, 5, 4, 5);
+            cbGaraza.Location = new Point(46, 251);
+            cbGaraza.Margin = new Padding(4, 4, 4, 4);
             cbGaraza.Name = "cbGaraza";
-            cbGaraza.Size = new Size(295, 28);
+            cbGaraza.Size = new Size(259, 23);
             cbGaraza.TabIndex = 17;
             // 
             // errorProvider
@@ -189,12 +189,12 @@ namespace eAutobus.WinUI.Autobusi
             dgvPrikazAutobusa.AllowUserToAddRows = false;
             dgvPrikazAutobusa.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPrikazAutobusa.Columns.AddRange(new DataGridViewColumn[] { AutobusID, BrojAutobusa, MarkaAutobusa, DatumProizvodnje, BrojSjedista, NazivGaraze, Ispravan });
-            dgvPrikazAutobusa.Location = new Point(75, 503);
-            dgvPrikazAutobusa.Margin = new Padding(4, 5, 4, 5);
+            dgvPrikazAutobusa.Location = new Point(66, 377);
+            dgvPrikazAutobusa.Margin = new Padding(4, 4, 4, 4);
             dgvPrikazAutobusa.Name = "dgvPrikazAutobusa";
             dgvPrikazAutobusa.ReadOnly = true;
             dgvPrikazAutobusa.RowHeadersWidth = 51;
-            dgvPrikazAutobusa.Size = new Size(806, 398);
+            dgvPrikazAutobusa.Size = new Size(804, 298);
             dgvPrikazAutobusa.TabIndex = 18;
             // 
             // AutobusID
@@ -265,9 +265,9 @@ namespace eAutobus.WinUI.Autobusi
             // 
             // frmDodajAutobus
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1039, 926);
+            ClientSize = new Size(961, 694);
             Controls.Add(dgvPrikazAutobusa);
             Controls.Add(cbGaraza);
             Controls.Add(btnSpremi);
@@ -282,7 +282,7 @@ namespace eAutobus.WinUI.Autobusi
             Controls.Add(txtBrojSjedista);
             Controls.Add(label1);
             Controls.Add(txtBrojAutobusa);
-            Margin = new Padding(4, 5, 4, 5);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "frmDodajAutobus";
             Text = "frmDodajAutobus";
             Load += frmDodajAutobus_Load;

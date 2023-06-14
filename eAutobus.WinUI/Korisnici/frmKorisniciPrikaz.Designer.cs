@@ -29,219 +29,212 @@ namespace eAutobus.WinUI.Korisnici
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtIme = new System.Windows.Forms.TextBox();
-            this.btnPrikazi = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtPrezime = new System.Windows.Forms.TextBox();
-            this.dgvPrikaz = new System.Windows.Forms.DataGridView();
-            this.cbUloga = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.KorisnikID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DatumRodjenja = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Uloga = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Akcija = new System.Windows.Forms.DataGridViewButtonColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPrikaz)).BeginInit();
-            this.SuspendLayout();
+            label1 = new Label();
+            txtIme = new TextBox();
+            btnPrikazi = new Button();
+            label2 = new Label();
+            label3 = new Label();
+            txtPrezime = new TextBox();
+            dgvPrikaz = new DataGridView();
+            KorisnikID = new DataGridViewTextBoxColumn();
+            Ime = new DataGridViewTextBoxColumn();
+            Prezime = new DataGridViewTextBoxColumn();
+            DatumRodjenja = new DataGridViewTextBoxColumn();
+            Uloga = new DataGridViewTextBoxColumn();
+            Akcija = new DataGridViewButtonColumn();
+            cbUloga = new ComboBox();
+            button1 = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvPrikaz).BeginInit();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(329, 81);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Ime:";
+            label1.AutoSize = true;
+            label1.Location = new Point(288, 76);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(30, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Ime:";
             // 
             // txtIme
             // 
-            this.txtIme.Location = new System.Drawing.Point(373, 78);
-            this.txtIme.Margin = new System.Windows.Forms.Padding(4);
-            this.txtIme.Name = "txtIme";
-            this.txtIme.Size = new System.Drawing.Size(188, 22);
-            this.txtIme.TabIndex = 1;
+            txtIme.Location = new Point(326, 73);
+            txtIme.Margin = new Padding(4);
+            txtIme.Name = "txtIme";
+            txtIme.Size = new Size(165, 23);
+            txtIme.TabIndex = 1;
             // 
             // btnPrikazi
             // 
-            this.btnPrikazi.Location = new System.Drawing.Point(404, 220);
-            this.btnPrikazi.Margin = new System.Windows.Forms.Padding(4);
-            this.btnPrikazi.Name = "btnPrikazi";
-            this.btnPrikazi.Size = new System.Drawing.Size(100, 28);
-            this.btnPrikazi.TabIndex = 2;
-            this.btnPrikazi.Text = "Pretraga";
-            this.btnPrikazi.UseVisualStyleBackColor = true;
-            this.btnPrikazi.Click += new System.EventHandler(this.btnPrikazi_Click);
+            btnPrikazi.Location = new Point(354, 206);
+            btnPrikazi.Margin = new Padding(4);
+            btnPrikazi.Name = "btnPrikazi";
+            btnPrikazi.Size = new Size(88, 26);
+            btnPrikazi.TabIndex = 2;
+            btnPrikazi.Text = "Pretraga";
+            btnPrikazi.UseVisualStyleBackColor = true;
+            btnPrikazi.Click += btnPrikazi_Click;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(303, 124);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 17);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Prezime:";
+            label2.AutoSize = true;
+            label2.Location = new Point(265, 116);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(52, 15);
+            label2.TabIndex = 3;
+            label2.Text = "Prezime:";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(315, 169);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 17);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Uloga:";
+            label3.AutoSize = true;
+            label3.Location = new Point(276, 158);
+            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(41, 15);
+            label3.TabIndex = 4;
+            label3.Text = "Uloga:";
             // 
             // txtPrezime
             // 
-            this.txtPrezime.Location = new System.Drawing.Point(373, 121);
-            this.txtPrezime.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPrezime.Name = "txtPrezime";
-            this.txtPrezime.Size = new System.Drawing.Size(188, 22);
-            this.txtPrezime.TabIndex = 6;
+            txtPrezime.Location = new Point(326, 113);
+            txtPrezime.Margin = new Padding(4);
+            txtPrezime.Name = "txtPrezime";
+            txtPrezime.Size = new Size(165, 23);
+            txtPrezime.TabIndex = 6;
             // 
             // dgvPrikaz
             // 
-            this.dgvPrikaz.AllowUserToAddRows = false;
-            this.dgvPrikaz.AllowUserToDeleteRows = false;
-            this.dgvPrikaz.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPrikaz.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.KorisnikID,
-            this.Ime,
-            this.Prezime,
-            this.DatumRodjenja,
-            this.Uloga,
-            this.Akcija});
-            this.dgvPrikaz.Location = new System.Drawing.Point(123, 277);
-            this.dgvPrikaz.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvPrikaz.Name = "dgvPrikaz";
-            this.dgvPrikaz.ReadOnly = true;
-            this.dgvPrikaz.RowHeadersWidth = 51;
-            this.dgvPrikaz.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPrikaz.Size = new System.Drawing.Size(680, 273);
-            this.dgvPrikaz.TabIndex = 7;
-            this.dgvPrikaz.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvPrikaz_MouseDoubleClick);
-            // 
-            // cbUloga
-            // 
-            this.cbUloga.FormattingEnabled = true;
-            this.cbUloga.Location = new System.Drawing.Point(373, 159);
-            this.cbUloga.Margin = new System.Windows.Forms.Padding(4);
-            this.cbUloga.Name = "cbUloga";
-            this.cbUloga.Size = new System.Drawing.Size(188, 24);
-            this.cbUloga.TabIndex = 8;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(404, 598);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 28);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Izvještaj";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            dgvPrikaz.AllowUserToAddRows = false;
+            dgvPrikaz.AllowUserToDeleteRows = false;
+            dgvPrikaz.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPrikaz.Columns.AddRange(new DataGridViewColumn[] { KorisnikID, Ime, Prezime, DatumRodjenja, Uloga, Akcija });
+            dgvPrikaz.Location = new Point(62, 265);
+            dgvPrikaz.Margin = new Padding(4);
+            dgvPrikaz.Name = "dgvPrikaz";
+            dgvPrikaz.ReadOnly = true;
+            dgvPrikaz.RowHeadersWidth = 51;
+            dgvPrikaz.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvPrikaz.Size = new Size(679, 256);
+            dgvPrikaz.TabIndex = 7;
+            dgvPrikaz.MouseDoubleClick += dgvPrikaz_MouseDoubleClick;
             // 
             // KorisnikID
             // 
-            this.KorisnikID.DataPropertyName = "KorisnikID";
-            this.KorisnikID.HeaderText = "ID";
-            this.KorisnikID.MinimumWidth = 6;
-            this.KorisnikID.Name = "KorisnikID";
-            this.KorisnikID.ReadOnly = true;
-            this.KorisnikID.Visible = false;
-            this.KorisnikID.Width = 125;
+            KorisnikID.DataPropertyName = "KorisnikID";
+            KorisnikID.HeaderText = "ID";
+            KorisnikID.MinimumWidth = 6;
+            KorisnikID.Name = "KorisnikID";
+            KorisnikID.ReadOnly = true;
+            KorisnikID.Visible = false;
+            KorisnikID.Width = 125;
             // 
             // Ime
             // 
-            this.Ime.DataPropertyName = "Ime";
-            this.Ime.HeaderText = "Ime";
-            this.Ime.MinimumWidth = 6;
-            this.Ime.Name = "Ime";
-            this.Ime.ReadOnly = true;
-            this.Ime.Width = 125;
+            Ime.DataPropertyName = "Ime";
+            Ime.HeaderText = "Ime";
+            Ime.MinimumWidth = 6;
+            Ime.Name = "Ime";
+            Ime.ReadOnly = true;
+            Ime.Width = 125;
             // 
             // Prezime
             // 
-            this.Prezime.DataPropertyName = "Prezime";
-            this.Prezime.HeaderText = "Prezime";
-            this.Prezime.MinimumWidth = 6;
-            this.Prezime.Name = "Prezime";
-            this.Prezime.ReadOnly = true;
-            this.Prezime.Width = 125;
+            Prezime.DataPropertyName = "Prezime";
+            Prezime.HeaderText = "Prezime";
+            Prezime.MinimumWidth = 6;
+            Prezime.Name = "Prezime";
+            Prezime.ReadOnly = true;
+            Prezime.Width = 125;
             // 
             // DatumRodjenja
             // 
-            this.DatumRodjenja.DataPropertyName = "DatumRodjenja";
-            this.DatumRodjenja.HeaderText = "Datum rodjenja";
-            this.DatumRodjenja.MinimumWidth = 6;
-            this.DatumRodjenja.Name = "DatumRodjenja";
-            this.DatumRodjenja.ReadOnly = true;
-            this.DatumRodjenja.Width = 125;
+            DatumRodjenja.DataPropertyName = "DatumRodjenja";
+            DatumRodjenja.HeaderText = "Datum rodjenja";
+            DatumRodjenja.MinimumWidth = 6;
+            DatumRodjenja.Name = "DatumRodjenja";
+            DatumRodjenja.ReadOnly = true;
+            DatumRodjenja.Width = 125;
             // 
             // Uloga
             // 
-            this.Uloga.DataPropertyName = "Uloga";
-            this.Uloga.HeaderText = "Uloga";
-            this.Uloga.MinimumWidth = 6;
-            this.Uloga.Name = "Uloga";
-            this.Uloga.ReadOnly = true;
-            this.Uloga.Width = 125;
+            Uloga.DataPropertyName = "Uloga";
+            Uloga.HeaderText = "Uloga";
+            Uloga.MinimumWidth = 6;
+            Uloga.Name = "Uloga";
+            Uloga.ReadOnly = true;
+            Uloga.Width = 125;
             // 
             // Akcija
             // 
-            this.Akcija.HeaderText = "Akcija";
-            this.Akcija.MinimumWidth = 6;
-            this.Akcija.Name = "Akcija";
-            this.Akcija.ReadOnly = true;
-            this.Akcija.Text = "Obriši";
-            this.Akcija.UseColumnTextForButtonValue = true;
-            this.Akcija.Width = 125;
+            Akcija.HeaderText = "Akcija";
+            Akcija.MinimumWidth = 6;
+            Akcija.Name = "Akcija";
+            Akcija.ReadOnly = true;
+            Akcija.Text = "Obriši";
+            Akcija.UseColumnTextForButtonValue = true;
+            Akcija.Width = 125;
+            // 
+            // cbUloga
+            // 
+            cbUloga.FormattingEnabled = true;
+            cbUloga.Location = new Point(326, 149);
+            cbUloga.Margin = new Padding(4);
+            cbUloga.Name = "cbUloga";
+            cbUloga.Size = new Size(165, 23);
+            cbUloga.TabIndex = 8;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(354, 561);
+            button1.Margin = new Padding(4);
+            button1.Name = "button1";
+            button1.Size = new Size(88, 26);
+            button1.TabIndex = 9;
+            button1.Text = "Izvještaj";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // frmKorisniciPrikaz
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(985, 678);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.cbUloga);
-            this.Controls.Add(this.dgvPrikaz);
-            this.Controls.Add(this.txtPrezime);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnPrikazi);
-            this.Controls.Add(this.txtIme);
-            this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmKorisniciPrikaz";
-            this.Text = "frmKorisniciPrikaz";
-            this.Load += new System.EventHandler(this.frmKorisniciPrikaz_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPrikaz)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(862, 636);
+            Controls.Add(button1);
+            Controls.Add(cbUloga);
+            Controls.Add(dgvPrikaz);
+            Controls.Add(txtPrezime);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(btnPrikazi);
+            Controls.Add(txtIme);
+            Controls.Add(label1);
+            Margin = new Padding(4);
+            Name = "frmKorisniciPrikaz";
+            Text = "frmKorisniciPrikaz";
+            Load += frmKorisniciPrikaz_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvPrikaz).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtIme;
-        private System.Windows.Forms.Button btnPrikazi;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtPrezime;
-        private System.Windows.Forms.DataGridView dgvPrikaz;
-        private System.Windows.Forms.ComboBox cbUloga;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn KorisnikID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Prezime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DatumRodjenja;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Uloga;
-        private System.Windows.Forms.DataGridViewButtonColumn Akcija;
+        private Label label1;
+        private TextBox txtIme;
+        private Button btnPrikazi;
+        private Label label2;
+        private Label label3;
+        private TextBox txtPrezime;
+        private DataGridView dgvPrikaz;
+        private ComboBox cbUloga;
+        private Button button1;
+        private DataGridViewTextBoxColumn KorisnikID;
+        private DataGridViewTextBoxColumn Ime;
+        private DataGridViewTextBoxColumn Prezime;
+        private DataGridViewTextBoxColumn DatumRodjenja;
+        private DataGridViewTextBoxColumn Uloga;
+        private DataGridViewButtonColumn Akcija;
     }
 }

@@ -35,7 +35,7 @@ namespace eAutobus.WinUI.RedVoznji
             _prikazLinija = result;
             dgvLinije.AutoGenerateColumns = false;
             dgvLinije.DataSource = result;
-           
+
 
         }
 
@@ -60,10 +60,10 @@ namespace eAutobus.WinUI.RedVoznji
             {
                 PolazisteID = int.Parse(cbPolaziste.SelectedValue.ToString()),
                 OdredisteID = int.Parse(cbOdrediste.SelectedValue.ToString()),
-                Datum= dtpDatum.Value.Date,
-               
+                Datum = dtpDatum.Value.Date,
+
             };
-            var result =await _linije.Get<List<RasporedVoznjeModel>>(search);
+            var result = await _linije.Get<List<RasporedVoznjeModel>>(search);
             dgvLinije.AutoGenerateColumns = false;
             dgvLinije.DataSource = result;
         }
@@ -75,7 +75,7 @@ namespace eAutobus.WinUI.RedVoznji
             if (dgvLinije.CurrentCell is DataGridViewButtonCell)
             {
                 await _linije.Delete<RasporedVoznjeModel>(RedVoznjeID);
-                MessageBox.Show("Izbrisali ste liniju: "+odabranaLinija.Polazak+"-"+odabranaLinija.Odlazak);
+                MessageBox.Show("Izbrisali ste liniju: " + odabranaLinija.Polazak + "-" + odabranaLinija.Odlazak);
                 await LoadRedVoznje();
             }
             else
@@ -83,7 +83,7 @@ namespace eAutobus.WinUI.RedVoznji
                 frmDodavanjeRedaVoznje frm = new frmDodavanjeRedaVoznje(int.Parse(RedVoznjeID.ToString()));
                 frm.Show();
             }
-           
+
         }
 
         private void dtpDatum_ValueChanged(object sender, EventArgs e)

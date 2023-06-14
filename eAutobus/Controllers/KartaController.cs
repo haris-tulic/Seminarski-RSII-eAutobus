@@ -43,24 +43,28 @@ namespace eAutobus.Controllers
             return Ok(response);
 
         }
+
         [HttpPut("{id}")]
-        public async Task<ActionResult<KartaModel>> Update(KartaUpsertRequest request, int id)
+        public async Task<ActionResult<KartaModel>> Update(int id,KartaUpsertRequest request)
         {
-            var response = await _service.Update(request, id);
+             var response = await _service.Update(request, id);
             return Ok(response);
 
         }
         [HttpDelete("{id}")]
-         public async Task<ActionResult<KartaModel>> Delete(int id)
+        public async Task<ActionResult<KartaModel>> Delete(int id)
         {
             var response = await _service.Delete(id);
             return Ok(response);
 
         }
-        public async Task<ActionResult<KartaModel>> PlatiKartu(int id)
+        [AllowAnonymous]
+        [HttpPut]
+        [Route("PlatiKartu/{id}")]
+        public async Task<ActionResult<KartaModel>> PlatiKartu(int id,object request)
         {
-            var response = await _service.PlatiKartu(id);
-            return Ok(response);
+                var response = await _service.PlatiKartu(id);
+                return Ok(response);
         }
 
     }

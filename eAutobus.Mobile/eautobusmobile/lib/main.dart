@@ -19,6 +19,7 @@ import '../../providers/cjenovnik_provider.dart';
 import '../../providers/user_provider.dart';
 import 'package:eautobusmobile/pages/InfoPage.dart';
 import '.env';
+import 'pages/RedVoznjeDetails.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -69,6 +70,11 @@ void main() async {
                   )));
         } else if (settings.name == HomePage.routeName) {
           return MaterialPageRoute(builder: ((context) => HomePage()));
+        } else if (settings.name == RedVoznjePrikaz.routeName) {
+          return MaterialPageRoute(
+              builder: ((context) => RedVoznjePrikaz(
+                    redVoznjeID: null,
+                  )));
         }
         return null;
       },

@@ -7,6 +7,7 @@ using Flurl.Http;
 using Flurl;
 using eAutobusModel;
 using eAutobus.WinUI.Properties;
+using Microsoft.Reporting.Map.WebForms.BingMaps;
 
 namespace eAutobus.WinUI
 {
@@ -66,11 +67,17 @@ namespace eAutobus.WinUI
             return result;
         }
 
-        public async Task<T> PlatiKartu<T>(object id)
+        public async Task<T> PlatiKartu<T>(int id,object request)
         {
+            if (request == null)
+            {
+                _route += "/PlatiKartu";
+            }
             var url = $"{Settings.Default.ApiURL}/{_route}/{id}";
-            return await url.WithBasicAuth(Username, Password).PutJsonAsync(id).ReceiveJson<T>();
+            var result = await url.WithBasicAuth(Username, Password).PutJsonAsync(request).ReceiveJson<T>();
+            return result;
         }
+
     }
 
 }

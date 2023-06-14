@@ -16,8 +16,8 @@ namespace eAutobus.WinUI.Korisnici
     {
         private APIService _korisnici = new APIService("Korisnik");
         private APIService _korisniciTip = new APIService("Uloge");
-        public List<KorisnikModel> _korisniciList=new List<KorisnikModel>();
-        public KorisnikModel _prikazK { get; set;}
+        public List<KorisnikModel> _korisniciList = new List<KorisnikModel>();
+        public KorisnikModel _prikazK { get; set; }
 
         public frmKorisniciPrikaz()
         {
@@ -30,7 +30,7 @@ namespace eAutobus.WinUI.Korisnici
             {
                 Ime = txtIme.Text,
                 Prezime = txtPrezime.Text,
-                UlogaID= int.Parse(cbUloga.SelectedValue.ToString())
+                UlogaID = int.Parse(cbUloga.SelectedValue.ToString())
             };
             var entity = await _korisnici.Get<List<KorisnikModel>>(search);
             _korisniciList = entity;
@@ -59,7 +59,7 @@ namespace eAutobus.WinUI.Korisnici
         private async Task LoadUloge()
         {
             var list = await _korisniciTip.Get<List<UlogeModel>>(null);
-            list.Insert(0, new UlogeModel{});
+            list.Insert(0, new UlogeModel { });
             cbUloga.DataSource = list;
             cbUloga.DisplayMember = "Naziv";
             cbUloga.ValueMember = "UlogeID";
@@ -69,10 +69,10 @@ namespace eAutobus.WinUI.Korisnici
         private async void dgvPrikaz_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             var IdKorisnik = dgvPrikaz.SelectedRows[0].Cells[0].Value;
-            var korisnik =await _korisnici.GetById<KorisnikModel>(IdKorisnik);
-            if (dgvPrikaz.CurrentCell is DataGridViewButtonCell && korisnik!=null)
+            var korisnik = await _korisnici.GetById<KorisnikModel>(IdKorisnik);
+            if (dgvPrikaz.CurrentCell is DataGridViewButtonCell && korisnik != null)
             {
-                MessageBox.Show("Da li ste sigurni da želite da izbrišete korisnika " + korisnik.Ime+" "+korisnik.Prezime);
+                MessageBox.Show("Da li ste sigurni da želite da izbrišete korisnika " + korisnik.Ime + " " + korisnik.Prezime);
                 await _korisnici.Delete<KorisnikModel>(korisnik.KorisnikID);
                 await LoadKorisnike();
             }
@@ -87,7 +87,7 @@ namespace eAutobus.WinUI.Korisnici
         private void button1_Click(object sender, EventArgs e)
         {
             var prikazKorisnika = dgvPrikaz.DataSource as List<KorisnikModel>;
-            Reports.frmKorisnici rpt= new Reports.frmKorisnici(prikazKorisnika);
+            Reports.frmKorisnici rpt = new Reports.frmKorisnici(prikazKorisnika);
             rpt.Show();
         }
     }

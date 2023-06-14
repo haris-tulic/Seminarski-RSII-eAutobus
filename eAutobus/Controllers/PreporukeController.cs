@@ -32,7 +32,7 @@ namespace eAutobus.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<List<RasporedVoznjeModel>>> Recommend(int RasporedLinijeID)
         {
-            //var response = await _service.Recommend(RasporedLinijeID);
+            var response = await _service.Recommend(RasporedLinijeID);
             return Ok();
 
         }

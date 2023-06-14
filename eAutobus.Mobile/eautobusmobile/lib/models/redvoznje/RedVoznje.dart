@@ -17,7 +17,7 @@ class RedVoznje {
   String? vrijemeDolaska;
   String? datum;
   String? cijenaPrikaz;
-  Double? finalOcjena;
+  double? finalOcjena;
 
   RedVoznje() {}
   factory RedVoznje.fromJson(Map<String, dynamic> json) =>
