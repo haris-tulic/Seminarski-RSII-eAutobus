@@ -121,7 +121,6 @@ namespace eAutobus.Services
                 preporukaM[i].Datum = DateTime.Parse(preporuka[i].Datum.Date.ToString());
                 preporukaM[i].VrijemeDolaska = DateTime.Parse(preporuka[i].VrijemeDolaska.ToString("G"));
                 preporukaM[i].VrijemePolaska = DateTime.Parse(preporuka[i].VrijemePolaska.ToString("G"));
-
             }
             return _mapper.Map<List<RasporedVoznjeModel>>(preporukaM);
         }

@@ -27,6 +27,7 @@ class _RedVoznjePrikazState extends State<RedVoznjePrikaz> {
   void initState() {
     super.initState();
     _redVoznjeProvider = context.read<RedVoznjeProvider>();
+    _recommendProvider = context.read<RecommendProvider>();
     loadData();
     loadRecommend();
   }
@@ -58,7 +59,7 @@ class _RedVoznjePrikazState extends State<RedVoznjePrikaz> {
     }
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      padding: const EdgeInsets.fromLTRB(20, 50, 0, 50),
+      padding: const EdgeInsets.fromLTRB(20, 50, 0, 5),
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
@@ -71,8 +72,13 @@ class _RedVoznjePrikazState extends State<RedVoznjePrikaz> {
               children: [
                 prikazOdabranog(),
                 const SizedBox(
-                  width: 150,
+                  height: 150,
                 ),
+                const Text(
+                  "Prijedlozi:",
+                  style: TextStyle(color: Colors.black, fontSize: 18),
+                ),
+                const SizedBox(height: 20),
                 prikazPredlozenih(),
               ],
             )
@@ -123,6 +129,9 @@ class _RedVoznjePrikazState extends State<RedVoznjePrikaz> {
           DataColumn(
               label: Text('Broj autobusa',
                   style: TextStyle(color: Colors.white, fontSize: 18))),
+          DataColumn(
+              label: Text('Ocjena',
+                  style: TextStyle(color: Colors.white, fontSize: 18))),
         ],
         rows: listaPreporuka!
             .map(
@@ -135,6 +144,7 @@ class _RedVoznjePrikazState extends State<RedVoznjePrikaz> {
                   DataCell(Text(data.vrijemeDolaska!.substring(11))),
                   DataCell(Text(data.datum!.substring(0, 10))),
                   DataCell(Text(data.brojAutobusa.toString())),
+                  DataCell(Text(data.finalOcjena.toString())),
                 ],
               ),
             )

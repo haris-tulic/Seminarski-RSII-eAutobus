@@ -46,6 +46,15 @@ namespace eAutobus.Services.Services
         {
             var entity = _mapper.Map<Recenzija>(request);
             _context.Recenzija.Add(entity);
+            var linija = await _context.RasporedVoznje.Include(r => r.Recenzija).FirstOrDefaultAsync(r => r.RasporedVoznjeID == request.RasporedVoznjeID);
+            int ocjena = 0;
+                foreach (var item in linija.Recenzija)
+                {
+                    ocjena += item.Ocjena;
+                }
+                if (linija.Recenzija.Count() > 0)
+                    linija.FinalOcjena = ocjena / linija.Recenzija.Count();
+
             await _context.SaveChangesAsync();
 
             return _mapper.Map<RecenzijaModel>(entity);
