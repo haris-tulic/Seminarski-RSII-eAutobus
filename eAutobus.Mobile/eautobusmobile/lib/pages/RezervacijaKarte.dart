@@ -107,15 +107,20 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
     };
     var tempcjenovnik = await _cjenovnikProvider?.get(cjenovnikPretraga);
     setState(() {
-      if (tempcjenovnik != null) {
+      if (tempcjenovnik!.isNotEmpty) {
         _cijenaKarte = tempcjenovnik[0].cijena;
         _cijenaPrikaz.text = tempcjenovnik[0].cijenaPrikaz!;
         if (_pravac == "U oba pravca" &&
             _odabrani == Smjer.dva &&
             tempcjenovnik[0].vrstaKarte == "Dnevna") {
-          _cijenaKarte = (_cijenaKarte! * 1.37).toInt();
+          _cijenaKarte = (_cijenaKarte! * 1.67).toInt();
           _cijenaPrikaz.text = "${_cijenaKarte.toString()} KM";
         }
+      } else {
+        _showDialog(
+            "Cijena za datu kartu ne moze biti pronadjena. Molimo pogledajte cjenovnik.",
+            null);
+        _cijenaPrikaz.text = "0 KM";
       }
     });
   }
@@ -174,7 +179,7 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
     showDialog(
       context: context,
       builder: (BuildContext context) => AlertDialog(
-        backgroundColor: Colors.grey,
+        backgroundColor: Colors.orangeAccent,
         title: Text(
           poruka,
           style: TextStyle(color: Colors.white, fontStyle: FontStyle.italic),
@@ -451,8 +456,6 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
                       controller: _cijenaPrikaz,
                       decoration: InputDecoration(
                         labelText: "Cijena",
-                        // helperText: "*Kliknite za prikaz cijene",
-                        // helperStyle: TextStyle(color: Colors.red),
                         labelStyle: const TextStyle(
                             color: Colors.white, fontWeight: FontWeight.bold),
                         border: OutlineInputBorder(
