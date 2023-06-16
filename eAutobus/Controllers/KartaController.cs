@@ -23,13 +23,13 @@ namespace eAutobus.Controllers
         {
             _service = service;
         }
-       [HttpGet]
+        [HttpGet]
         public async Task<ActionResult<List<KartaModel>>> Get([FromQuery] KartaGetRequest request)
         {
-            var response=await _service.Get(request);
+            var response = await _service.Get(request);
             return Ok(response);
         }
-       [HttpGet("{id}")] 
+        [HttpGet("{id}")]
         public async Task<ActionResult<KartaModel>> GetById(int id)
         {
             var response = await _service.GetById(id);
@@ -37,7 +37,7 @@ namespace eAutobus.Controllers
 
         }
         [HttpPost]
-       public async Task<ActionResult<KartaModel>> Insert(KartaUpsertRequest request)
+        public async Task<ActionResult<KartaModel>> Insert(KartaUpsertRequest request)
         {
             var response = await _service.Insert(request);
             return Ok(response);
@@ -45,9 +45,9 @@ namespace eAutobus.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<KartaModel>> Update(int id,KartaUpsertRequest request)
+        public async Task<ActionResult<KartaModel>> Update(int id, KartaUpsertRequest request)
         {
-             var response = await _service.Update(request, id);
+            var response = await _service.Update(request, id);
             return Ok(response);
 
         }
@@ -59,11 +59,10 @@ namespace eAutobus.Controllers
 
         }
         [AllowAnonymous]
-        [HttpPut]
-        [Route("PlatiKartu/{id}")]
-        public async Task<ActionResult<KartaModel>> PlatiKartu(int id,object request)
+        [HttpPost("UplatiKartu/{id}")]
+        public async Task<ActionResult<KartaModel>> UplatiKartu(int id,PlatiKartuUpsertRequest request)
         {
-                var response = await _service.PlatiKartu(id);
+                var response = await _service.UplatiKartu(id,request);
                 return Ok(response);
         }
 

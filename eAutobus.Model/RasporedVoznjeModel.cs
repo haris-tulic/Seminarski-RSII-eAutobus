@@ -24,7 +24,7 @@ namespace eAutobusModel
         public string Odlazak { get; set; }
         public int BrojAutobusa { get; set; }
         public string NazivLinije { get; set; }
-        public decimal FinalOcjena { get; set; }
+        public double FinalOcjena { get; set; }
         public string VrijemePolaskaS { get; set; }
         public string VrijemeDolaskaS { get; set; }
         public string  DatumS { get; set; }

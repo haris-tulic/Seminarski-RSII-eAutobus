@@ -54,14 +54,18 @@ namespace eAutobus.Services
                 listM[i].VrstaKarte = list[i].VrstaKarte.Naziv;
                 listM[i].TipKarte = list[i].TipKarte.Naziv;
                 listM[i].Relacija = list[i].Polaziste.NazivLokacijeStanice + " - " + list[i].Odrediste.NazivLokacijeStanice;
-                //listM[i].CijenaString = list[i].Cijena.ToString() + " KM";
                 foreach (var item in list[i].KupacList)
                 {
                     listM[i].DatumVadjenjaKarte = item.DatumVadjenjaKarte;
                     listM[i].DatumVazenjaKarte = item.DatumVazenjaKarte;
                     listM[i].ImePrezimeKupca = item.Kupac.Ime + " " + item.Kupac.Prezime;
+                   
                 }
-              
+                foreach (var item in list[i].PlaceneKarte)
+                {
+                        listM[i].JeLiPlacena = item.JeLiPlacena;
+                }
+
             }
             return listM;
 
@@ -169,14 +173,11 @@ namespace eAutobus.Services
             await _context.SaveChangesAsync();
             return _mapper.Map<KartaModel>(update);
         }
-        public async Task<KartaModel> PlatiKartu(int id)
+        public async Task<KartaModel> UplatiKartu(int id,PlatiKartuUpsertRequest request)
         {
-            var platiK = await _context.Karta.Include(k => k.PlaceneKarte).FirstOrDefaultAsync(k => k.KartaID == id);
-            foreach (var item in platiK.PlaceneKarte)
-            {
-                item.JeLiPlacena = true;
-            }
-            await _context.SaveChangesAsync();
+            var platiK = await _context.Karta.Include(k => k.PlaceneKarte).Include(k => k.KupacList).Where(k=>k.NacinPlacanja == "Preuzećem").FirstOrDefaultAsync(k => k.KartaID == id);
+            
+            var response = _onlinePlacanje.Insert(request);
             return _mapper.Map<KartaModel>(platiK);
         }
     }

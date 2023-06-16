@@ -55,27 +55,30 @@ void main() async {
         } else if (settings.name == RegistracijaPage.routeName) {
           return MaterialPageRoute(
               builder: ((context) => const RegistracijaPage()));
-        } else if (settings.name == RecenzijaPage.routeName) {
-          return MaterialPageRoute(
-              builder: ((context) => const RecenzijaPage(
-                    kupacID: null,
-                  )));
         } else if (settings.name == RedVoznjePage.routeName) {
           return MaterialPageRoute(
               builder: ((context) => const RedVoznjePage()));
-        } else if (settings.name == InfoPage.routeName) {
-          return MaterialPageRoute(
-              builder: ((context) => InfoPage(
-                    korisnikId: null,
-                  )));
         } else if (settings.name == HomePage.routeName) {
           return MaterialPageRoute(builder: ((context) => HomePage()));
-        } else if (settings.name == RedVoznjePrikaz.routeName) {
+        }
+        var uri = Uri.parse(settings.name!);
+        var putanja = uri.pathSegments.first.toString();
+        if (uri.pathSegments.length == 2 && putanja == InfoPage.routeName) {
+          var id = int.parse(uri.pathSegments[1]);
+          return MaterialPageRoute(builder: ((context) => InfoPage(id)));
+        } else if (uri.pathSegments.length == 2 &&
+            putanja == RedVoznjePrikaz.routeName) {
+          var id = int.parse(uri.pathSegments[1]);
           return MaterialPageRoute(
               builder: ((context) => RedVoznjePrikaz(
-                    redVoznjeID: null,
+                    id,
                   )));
+        } else if (uri.pathSegments.length == 2 &&
+            putanja == RecenzijaPage.routeName) {
+          var id = int.parse(uri.pathSegments[1]);
+          return MaterialPageRoute(builder: ((context) => RecenzijaPage(id)));
         }
+
         return null;
       },
     ),

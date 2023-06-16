@@ -48,16 +48,31 @@ namespace eAutobus.WinUI.Karte
 
                 var IdKarta = int.Parse(dgvPrikazKarata.SelectedRows[0].Cells[0].Value.ToString());
                 var karta = await _karte.GetById<KartaModel>(IdKarta);
-                KartaUpsertRequest kartaUpsert = new KartaUpsertRequest();
-                kartaUpsert = null;
+                PlatiKartuUpsertRequest kartaUpsert = new PlatiKartuUpsertRequest
+                {
+                    KartaID = karta.KartaID,
+                    KupacID = karta.KupacID,
+                    DatumVadjenjaKarte = karta.DatumVadjenjaKarte,
+                    DatumVazenjaKarte = karta.DatumVazenjaKarte,
+                    Cijena = karta.Cijena,
+                    JeLiPlacena = true,
+                };
 
-                DialogResult odgovor = MessageBox.Show("Da li zelite kartu oznaciti kao Placena", "Confirmation", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                    if (odgovor == DialogResult.Yes)
-                    {
-                        var response =  await _karte.PlatiKartu<KartaModel>(IdKarta, kartaUpsert);
+                if (dgvPrikazKarata.CurrentCell is DataGridViewCheckBoxCell checkBoxCell)
+                {
+                    bool isChecked = (bool)checkBoxCell.Value;
+                    if (!isChecked) {
+                        DialogResult odgovor = MessageBox.Show("Da li zelite kartu oznaciti kao Placena", "Confirmation", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                        if (odgovor == DialogResult.Yes)
+                        {
+                            var response = await _karte.UplatiKartu<KartaModel>(IdKarta, kartaUpsert);
+                            loadKarte();
+                        }
                     }
+                }
 
-                loadKarte();
+               
+
             }
         }
     }

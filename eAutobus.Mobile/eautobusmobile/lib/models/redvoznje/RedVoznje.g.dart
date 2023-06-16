@@ -17,8 +17,7 @@ RedVoznje _$RedVoznjeFromJson(Map<String, dynamic> json) => RedVoznje()
   ..vrijemePolaska = json['vrijemePolaska'] as String?
   ..vrijemeDolaska = json['vrijemeDolaska'] as String?
   ..datum = json['datum'] as String?
-  ..cijenaPrikaz = json['cijenaPrikaz'] as String?
-  ..finalOcjena = json['finalOcjena'] as double?;
+  ..finalOcjena = double.parse(json['finalOcjena'].toString());
 
 Map<String, dynamic> _$RedVoznjeToJson(RedVoznje instance) => <String, dynamic>{
       'rasporedVoznjeID': instance.rasporedVoznjeID,
@@ -31,6 +30,5 @@ Map<String, dynamic> _$RedVoznjeToJson(RedVoznje instance) => <String, dynamic>{
       'vrijemePolaska': instance.vrijemePolaska,
       'vrijemeDolaska': instance.vrijemeDolaska,
       'datum': instance.datum,
-      'cijenaPrikaz': instance.cijenaPrikaz,
       'finalOcjena': instance.finalOcjena,
     };

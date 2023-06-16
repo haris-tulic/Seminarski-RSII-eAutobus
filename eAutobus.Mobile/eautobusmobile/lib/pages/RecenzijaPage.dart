@@ -9,7 +9,7 @@ final List<String?> vrstaUsluge = ["Osoblje", "Vozilo"];
 class RecenzijaPage extends StatefulWidget {
   static const String routeName = "Recenzija";
   final int? kupacID;
-  const RecenzijaPage({Key? key, this.kupacID}) : super(key: key);
+  const RecenzijaPage(this.kupacID, {Key? key}) : super(key: key);
 
   @override
   State<RecenzijaPage> createState() => _RecenzijaState();

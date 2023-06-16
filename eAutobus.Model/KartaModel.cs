@@ -21,6 +21,7 @@ namespace eAutobusModel
         public string ImePrezimeKupca { get; set; }
         public string Relacija { get; set; }
         public string CijenaString { get; set; }
+        public bool JeLiPlacena { get; set; }
 
     }
 }

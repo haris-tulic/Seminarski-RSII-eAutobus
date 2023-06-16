@@ -47,6 +47,7 @@ abstract class BaseProvider<T> with ChangeNotifier {
 
     if (search != null) {
       String queryString = getQueryString(search);
+
       url = url + "?" + queryString;
     }
     var uri = Uri.parse(url);
@@ -97,11 +98,6 @@ abstract class BaseProvider<T> with ChangeNotifier {
     var url = "${_baseUrl}${_endpoint}";
     Map<String, String> headers = createHeaders();
     var uri = Uri.parse(url);
-    // Map request = {
-    //   "userName": Authorization.username,
-    //   "password": Authorization.password
-    // };
-    // var kredencijali = jsonEncode(request);
     final response = await http!.get(uri, headers: headers);
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
@@ -125,6 +121,18 @@ abstract class BaseProvider<T> with ChangeNotifier {
       return fromJson(data);
     } else {
       throw Exception(response.statusCode);
+    }
+  }
+
+  Future<List<T>> getPreporuke(int id) async {
+    var url = Uri.parse("$_baseUrl$_endpoint/$id");
+    Map<String, String> headers = createHeaders();
+    var response = await http!.get(url, headers: headers);
+    if (isValidResponseCode(response)) {
+      var data = jsonDecode(response.body);
+      return data.map((x) => fromJson(x)).cast<T>().toList();
+    } else {
+      throw Exception("Exception... handle this gracefully");
     }
   }
 

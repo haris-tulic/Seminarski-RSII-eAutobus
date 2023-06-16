@@ -292,7 +292,7 @@ class _RegistracijaState extends State<RegistracijaPage> {
               Navigator.of(context).pushAndRemoveUntil(
                 MaterialPageRoute(
                     builder: (BuildContext context) => InfoPage(
-                          korisnikId: kreiraniUser?.kupacID,
+                          kreiraniUser?.kupacID,
                         )),
                 (route) => false,
               );

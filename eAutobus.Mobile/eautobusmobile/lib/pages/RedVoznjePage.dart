@@ -147,32 +147,31 @@ class _RedVoznjeState extends State<RedVoznjePage> {
               child: DataTable(
                 dataTextStyle:
                     const TextStyle(fontSize: 15, color: Colors.white),
-                columns: [
-                  const DataColumn(
+                columns: const [
+                  DataColumn(
                       label: Text(
                     'Broj linije',
                     style: TextStyle(color: Colors.white, fontSize: 18),
                   )),
-                  const DataColumn(
-                      label: const Text('Polazak',
-                          style: const TextStyle(
-                              color: Colors.white, fontSize: 18))),
-                  const DataColumn(
+                  DataColumn(
+                      label: Text('Polazak',
+                          style: TextStyle(color: Colors.white, fontSize: 18))),
+                  DataColumn(
                       label: Text('Vrijeme polaska',
                           style: TextStyle(color: Colors.white, fontSize: 18))),
-                  const DataColumn(
-                      label: const Text('Odrediste',
+                  DataColumn(
+                      label: Text('Odrediste',
                           style: TextStyle(color: Colors.white, fontSize: 18))),
-                  const DataColumn(
-                      label: const Text('Vrijeme dolaska',
+                  DataColumn(
+                      label: Text('Vrijeme dolaska',
                           style: TextStyle(color: Colors.white, fontSize: 18))),
-                  const DataColumn(
+                  DataColumn(
                       label: Text('Datum',
                           style: TextStyle(color: Colors.white, fontSize: 18))),
-                  const DataColumn(
+                  DataColumn(
                       label: Text('Broj autobusa',
                           style: TextStyle(color: Colors.white, fontSize: 18))),
-                  const DataColumn(
+                  DataColumn(
                       label: Text('Prikazi detalje',
                           style: TextStyle(color: Colors.white, fontSize: 18))),
                 ],
@@ -196,8 +195,9 @@ class _RedVoznjeState extends State<RedVoznjePage> {
                             onPressed: () {
                               setState(() {
                                 Navigator.pushNamed(
-                                    context, RedVoznjePrikaz.routeName,
-                                    arguments: data.rasporedVoznjeID);
+                                  context,
+                                  "${RedVoznjePrikaz.routeName}/${data.rasporedVoznjeID}",
+                                );
                               });
                             },
                           )),

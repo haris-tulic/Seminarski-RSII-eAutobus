@@ -44,18 +44,35 @@ namespace eAutobus.Services
 
         public async Task<List<RasporedVoznjeModel>> Recommend(int id)
         {
-            var linijeA = await _context.RasporedVoznje.Include(r => r.Recenzija).Include("Recenzija.Kupac").Where(r => r.RasporedVoznjeID != id && r.IsDeleted == false).ToListAsync();
+            var linijeA = await _context.RasporedVoznje
+                .Include(o => o.Odrediste)
+                .Include(d => d.Polaziste)
+                .Include(r => r.Recenzija)
+                .Include(v => v.Vozac)
+                .Include(k => k.Kondukter)
+                .Include("Vozac.Korisnik").Where(r => r.RasporedVoznjeID != id && r.IsDeleted == false).ToListAsync();
+
             decimal ocjena = 0;
             List<Recenzija> ocjene;
             foreach (var item in linijeA)
             {
-                ocjene = _context.Recenzija.Where(o => o.RasporedVoznjeID == item.RasporedVoznjeID).OrderBy(x => x.KupacID).ToList();
+                ocjene = _context.Recenzija.
+                    Include(x => x.RasporedVoznje)
+                    .Include(x => x.Kupac)
+                    .Include("RasporedVoznje.Polaziste")
+                    .Include("RasporedVoznje.Odrediste")
+                    .Where(o => o.RasporedVoznjeID == item.RasporedVoznjeID).OrderBy(x => x.KupacID).ToList();
                 if (ocjene.Count > 0)
                 {
                     linije.Add(item.RasporedVoznjeID, ocjene);
                 }
             }
-            var recenzijeT = _context.Recenzija.Where(x => x.RasporedVoznjeID == id).OrderBy(x => x.KupacID);
+            var recenzijeT = _context.Recenzija
+                .Include(x => x.RasporedVoznje)
+                .Include(x => x.Kupac)
+                .Include("RasporedVoznje.Polaziste")
+                .Include("RasporedVoznje.Odrediste")
+                .Where(x => x.RasporedVoznjeID == id).OrderBy(x => x.KupacID);
             var zajednickeR1 = new List<Recenzija>();
             var zajednickeR2 = new List<Recenzija>();
 

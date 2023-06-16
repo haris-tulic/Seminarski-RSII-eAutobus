@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:json_annotation/json_annotation.dart';
 
 part 'RedVoznje.g.dart';
@@ -16,7 +14,6 @@ class RedVoznje {
   String? vrijemePolaska;
   String? vrijemeDolaska;
   String? datum;
-  String? cijenaPrikaz;
   double? finalOcjena;
 
   RedVoznje() {}

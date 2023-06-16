@@ -132,11 +132,8 @@ class _HomePageState extends State<HomePage> {
                             Authorization.username = _usernameController.text;
                             Authorization.password = _passwordController.text;
                             var user = await _loginProvider.prijava();
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                  builder: (ctx) =>
-                                      InfoPage(korisnikId: user?.korisnikId)),
-                            );
+                            Navigator.pushNamed(context,
+                                "${InfoPage.routeName}/${user?.korisnikId}");
                           } catch (e) {
                             showDialog(
                                 context: context,

@@ -82,18 +82,28 @@ namespace eAutobus.Services
                 OdredisteID = x.OdredisteID,
                 PolazisteID = x.PolazisteID,
                 RasporedVoznjeID = x.RasporedVoznjeID,
+                VozacIme = x.Vozac.Korisnik.Ime,
+                NazivLinije = x.Polaziste.NazivLokacijeStanice +" "+x.Odrediste.NazivLokacijeStanice,
                 VozacID = x.VozacID,
                 VrijemeDolaska = x.VrijemeDolaska,
                 VrijemePolaska = x.VrijemePolaska,
                 KondukterID = x.KondukterID,
+                FinalOcjena = double.Parse(x.FinalOcjena.ToString()),
             };
             return entity;
         }
 
         public async Task<RasporedVoznjeModel> GetById(int id)
         {
-            var entity = await _context.RasporedVoznje.FirstOrDefaultAsync(x=>x.RasporedVoznjeID==id);
-            return _mapper.Map<RasporedVoznjeModel>(entity);
+            var entity = await _context.RasporedVoznje.Include(a => a.Autobus)
+                .Include(o => o.Odrediste)
+                .Include(d => d.Polaziste)
+                .Include(r => r.Recenzija)
+                .Include(v => v.Vozac)
+                .Include(k => k.Kondukter)
+                .Include("Vozac.Korisnik").FirstOrDefaultAsync(x=>x.RasporedVoznjeID==id);
+            var entityk = Convert(entity);
+            return entityk;
         }
 
         public async Task<RasporedVoznjeModel> Insert(RasporedVoznjeUpsertRequest request)
