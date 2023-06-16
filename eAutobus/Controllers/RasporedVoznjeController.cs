@@ -26,7 +26,7 @@ namespace eAutobus.Controllers
         [HttpGet]
         public async Task<ActionResult<List<RasporedVoznjeModel>>> Get([FromQuery]RasporedVoznjeGetRequest search)
         {
-            var response=await  _service.Get(search);
+            var response=await _service.Get(search);
             return Ok(response);
         }
         

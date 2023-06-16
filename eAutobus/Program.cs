@@ -33,6 +33,8 @@ builder.Services.AddTransient<ILoginService, LoginService>();
 builder.Services.AddTransient<IKartaKupacService, KartaKupacService>();
 builder.Services.AddTransient<IRecenzijaService, RecenzijaService>();
 builder.Services.AddTransient<IPlatiOnlineService, PlatiOnlineService>();
+builder.Services.AddTransient<IPreporukeService, PreporukeService>();
+
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

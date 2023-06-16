@@ -7,6 +7,7 @@ import 'package:eautobusmobile/providers/karta_provider.dart';
 import 'package:eautobusmobile/providers/kartakupac_provider.dart';
 import 'package:eautobusmobile/providers/login_provider.dart';
 import 'package:eautobusmobile/providers/recenzija_provider.dart';
+import 'package:eautobusmobile/providers/recommend_provider.dart';
 import 'package:eautobusmobile/providers/redvoznje_provider.dart';
 import 'package:eautobusmobile/providers/registracija_provider.dart';
 import 'package:eautobusmobile/providers/stanica_provider.dart';
@@ -37,6 +38,7 @@ void main() async {
       ChangeNotifierProvider(create: (_) => VrstaKarteProvider()),
       ChangeNotifierProvider(create: (_) => TipKarteProvider()),
       ChangeNotifierProvider(create: (_) => KartaKupacProvider()),
+      ChangeNotifierProvider(create: (_) => RecommendProvider()),
     ],
     child: MaterialApp(
       debugShowCheckedModeBanner: true,

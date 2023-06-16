@@ -35,9 +35,11 @@ namespace eAutobus.Services
             {
                 ocjena += o.Ocjena;
             }
-            linija.FinalOcjena = ocjena / linija.Recenzija.Count();
-            return _mapper.Map<List<RasporedVoznjeModel>>(linija);
 
+            if(linija.Recenzija.Count() > 0)
+                linija.FinalOcjena = ocjena / linija.Recenzija.Count();
+
+            return _mapper.Map<List<RasporedVoznjeModel>>(linija);
         }
 
 
@@ -101,8 +103,27 @@ namespace eAutobus.Services
                 zajednickeR1.Clear();
                 zajednickeR2.Clear();
             }
-            var preporuka = _context.Set<RasporedVoznje>().Where(x=>preporuceneLinijeIds.Contains(x.RasporedVoznjeID)).ToList();
-            return _mapper.Map<List<RasporedVoznjeModel>>(preporuka);
+            var preporuka = _context.Set<RasporedVoznje>().Include(o => o.Odrediste).Include(a=>a.Autobus)
+                .Include(d => d.Polaziste)
+                .Include(r => r.Recenzija)
+                .Include(v => v.Vozac)
+                .Include(k => k.Kondukter)
+                .Include("Vozac.Korisnik").Where(x=>preporuceneLinijeIds.Contains(x.RasporedVoznjeID)).ToList();
+            var preporukaM = new List<RasporedVoznjeModel>();
+            _mapper.Map(preporuka, preporukaM);
+
+            for (int i = 0; i < preporuka.Count; i++)
+            {
+                preporukaM[i].Odlazak = preporuka[i].Odrediste.NazivLokacijeStanice;
+                preporukaM[i].Polazak = preporuka[i].Polaziste.NazivLokacijeStanice;
+                preporukaM[i].BrojAutobusa = preporuka[i].Autobus.BrojAutobusa;
+                preporukaM[i].NazivLinije = preporuka[i].Polaziste.NazivLokacijeStanice + "-" + preporuka[i].Odrediste.NazivLokacijeStanice;
+                preporukaM[i].Datum = DateTime.Parse(preporuka[i].Datum.Date.ToString());
+                preporukaM[i].VrijemeDolaska = DateTime.Parse(preporuka[i].VrijemeDolaska.ToString("G"));
+                preporukaM[i].VrijemePolaska = DateTime.Parse(preporuka[i].VrijemePolaska.ToString("G"));
+
+            }
+            return _mapper.Map<List<RasporedVoznjeModel>>(preporukaM);
         }
 
         private double GetSlicnost(List<Recenzija> zajednickeR1, List<Recenzija> zajednickeR2)

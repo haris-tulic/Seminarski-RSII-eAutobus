@@ -10,8 +10,6 @@ using System.Threading.Tasks;
 
 namespace eAutobus.Controllers
 {
-    
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PreporukeController : ControllerBase
@@ -30,10 +28,10 @@ namespace eAutobus.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<List<RasporedVoznjeModel>>> Recommend(int RasporedLinijeID)
+        public async Task<ActionResult<List<RasporedVoznjeModel>>> Recommend(int id)
         {
-            var response = await _service.Recommend(RasporedLinijeID);
-            return Ok();
+            var response = await _service.Recommend(id);
+            return Ok(response);
 
         }
     }

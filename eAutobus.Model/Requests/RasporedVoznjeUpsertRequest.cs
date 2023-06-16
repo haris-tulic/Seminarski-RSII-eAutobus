@@ -34,5 +34,7 @@ namespace eAutobusModel.Requests
 
         public DateTime Datum { get; set; }
 
+        public decimal FinalOcjena { get; set; }
+
     }
 }

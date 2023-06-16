@@ -56,8 +56,10 @@ namespace eAutobus.WinUI.RedVoznji
 
         private async void btnSnimi_Click(object sender, EventArgs e)
         {
+            var RedVoznjeID = dgvLinije.SelectedRows[0].Cells[0].Value;
             var search = new RasporedVoznjeGetRequest()
             {
+                RasporedVoznjeID = int.Parse(RedVoznjeID.ToString()),
                 PolazisteID = int.Parse(cbPolaziste.SelectedValue.ToString()),
                 OdredisteID = int.Parse(cbOdrediste.SelectedValue.ToString()),
                 Datum = dtpDatum.Value.Date,

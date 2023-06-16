@@ -53,7 +53,18 @@ namespace eAutobus.Services
             var list = await query.ToListAsync();
             var listR = new List<RasporedVoznjeModel>();
             _mapper.Map(list, listR);
-            
+
+            int ocjena = 0;
+            foreach (var o in list)
+            {
+                foreach (var item in o.Recenzija)
+                {
+                    ocjena += item.Ocjena;
+                }
+                if (o.Recenzija.Count() > 0)
+                    o.FinalOcjena = ocjena / o.Recenzija.Count();
+                ocjena = 0;
+            }
             for (int i = 0; i < list.Count; i++)
             {
                 listR[i].Odlazak = list[i].Odrediste.NazivLokacijeStanice;
@@ -64,8 +75,12 @@ namespace eAutobus.Services
                 listR[i].Datum= DateTime.Parse(list[i].Datum.Date.ToString());
                 listR[i].VrijemeDolaska = DateTime.Parse(list[i].VrijemeDolaska.ToString("G"));
                 listR[i].VrijemePolaska = DateTime.Parse(list[i].VrijemePolaska.ToString("G"));
-            
+                listR[i].FinalOcjena = double.Parse(list[i].FinalOcjena.ToString());
             }
+            
+           
+
+           
             return listR.OrderByDescending(r=>r.FinalOcjena).ToList();
         }
 

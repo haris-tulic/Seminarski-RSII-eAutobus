@@ -15,11 +15,13 @@ namespace eAutobus.Services.Services
     {
         private readonly eAutobusi _context;
         private readonly IMapper _mapper;
-        
-        public RecenzijaService(eAutobusi context, IMapper mapper)
+        private readonly IRasporedVoznjeService _rasporedVoznjeService;
+
+        public RecenzijaService(eAutobusi context, IMapper mapper, IRasporedVoznjeService rasporedVoznjeService)
         {
             _context = context;
             _mapper = mapper;
+            _rasporedVoznjeService = rasporedVoznjeService;
         }
 
         public async Task<List<RecenzijaModel>> Get(RecenzijaGetRequest search)
@@ -45,7 +47,9 @@ namespace eAutobus.Services.Services
             var entity = _mapper.Map<Recenzija>(request);
             _context.Recenzija.Add(entity);
             await _context.SaveChangesAsync();
+
             return _mapper.Map<RecenzijaModel>(entity);
         }
+    
     }
 }
