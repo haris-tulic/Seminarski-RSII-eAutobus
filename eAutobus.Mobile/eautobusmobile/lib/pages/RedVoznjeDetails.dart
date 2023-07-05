@@ -59,7 +59,7 @@ class _RedVoznjePrikazState extends State<RedVoznjePrikaz> {
     }
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      padding: const EdgeInsets.fromLTRB(20, 50, 0, 5),
+      padding: const EdgeInsets.fromLTRB(20, 30, 0, 5),
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(

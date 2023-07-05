@@ -56,7 +56,7 @@ class _RedVoznjeState extends State<RedVoznjePage> {
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.fromLTRB(20, 50, 0, 0),
+        padding: const EdgeInsets.fromLTRB(20, 30, 0, 0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,7 +71,7 @@ class _RedVoznjeState extends State<RedVoznjePage> {
               ),
             ),
             const SizedBox(
-              height: 40,
+              height: 30,
             ),
             Flexible(
               child: Container(

@@ -20,6 +20,9 @@ class _RecenzijaState extends State<RecenzijaPage> {
   RedVoznjeProvider? _redVoznje = null;
   RecenzijaProvider? _recenzijaProvider = null;
 
+  final _formKey = GlobalKey<FormState>();
+  final _obaveznoPolje = "Polje je obavezno";
+
   Map? recenzija;
   List<RedVoznje>? data = [];
   int? _odabranaLinijaID = null;
@@ -55,6 +58,7 @@ class _RecenzijaState extends State<RecenzijaPage> {
         padding: const EdgeInsets.fromLTRB(0, 100, 0, 0),
         child: Center(
           child: Form(
+            key: _formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
@@ -69,6 +73,9 @@ class _RecenzijaState extends State<RecenzijaPage> {
                         border: Border.all(color: Colors.white),
                       ),
                       child: DropdownButtonFormField(
+                        validator: (value) {
+                          return value == null ? _obaveznoPolje : null;
+                        },
                         isDense: true,
                         decoration: const InputDecoration(
                           labelText: 'Odaberite liniju',
@@ -116,6 +123,9 @@ class _RecenzijaState extends State<RecenzijaPage> {
                       ),
                       child: DropdownButtonFormField(
                         isDense: true,
+                        validator: (value) {
+                          return value == null ? _obaveznoPolje : null;
+                        },
                         decoration: const InputDecoration(
                           labelText: 'Odaberite uslugu',
                           labelStyle: TextStyle(
@@ -207,45 +217,59 @@ class _RecenzijaState extends State<RecenzijaPage> {
                     color: Color.fromARGB(255, 255, 81, 0),
                     padding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                     onPressed: () async {
-                      setState(() {
-                        recenzija = {
-                          "komentar": _komentar.text,
-                          "datumRecenzije": _datum?.toIso8601String(),
-                          "ocjena": _ocjena.toInt(),
-                          "rasporedVoznjeID": _odabranaLinijaID,
-                          "vrstaUsluga": usluga,
-                          "kupacID": widget.kupacID,
-                        };
-                      });
-                      try {
-                        await _recenzijaProvider?.insert(recenzija);
+                      if (_formKey.currentState!.validate()) {
+                        setState(() {
+                          recenzija = {
+                            "komentar": _komentar.text,
+                            "datumRecenzije": _datum?.toIso8601String(),
+                            "ocjena": _ocjena.toInt(),
+                            "rasporedVoznjeID": _odabranaLinijaID,
+                            "vrstaUsluga": usluga,
+                            "kupacID": widget.kupacID,
+                          };
+                        });
+                        try {
+                          await _recenzijaProvider?.insert(recenzija);
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) => AlertDialog(
+                                    title: Text(
+                                      "Hvala vam na recenziji!",
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                    backgroundColor: Colors.orangeAccent,
+                                    actions: [
+                                      TextButton(
+                                        child: Text(
+                                          "Ok",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        onPressed: () => Navigator.pop(context),
+                                      )
+                                    ],
+                                  ));
+                        } catch (e) {
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) => AlertDialog(
+                                    title: Text(
+                                        "Recenzija nije uspjela. Pokusajte ponovo kasnije."),
+                                    content: Text(e.toString()),
+                                    actions: [
+                                      TextButton(
+                                        child: Text("Ok"),
+                                        onPressed: () => Navigator.pop(context),
+                                      )
+                                    ],
+                                  ));
+                        }
+                      } else {
                         showDialog(
                             context: context,
                             builder: (BuildContext context) => AlertDialog(
-                                  title: Text(
-                                    "Hvala vam na recenziji!",
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                  backgroundColor: Colors.orangeAccent,
-                                  actions: [
-                                    TextButton(
-                                      child: Text(
-                                        "Ok",
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      onPressed: () => Navigator.pop(context),
-                                    )
-                                  ],
-                                ));
-                      } catch (e) {
-                        showDialog(
-                            context: context,
-                            builder: (BuildContext context) => AlertDialog(
-                                  title: Text(
-                                      "Recenzija nije uspjela. Pokusajte ponovo kasnije."),
-                                  content: Text(e.toString()),
+                                  title: Text("Popunite sva potrebna polja!"),
                                   actions: [
                                     TextButton(
                                       child: Text("Ok"),

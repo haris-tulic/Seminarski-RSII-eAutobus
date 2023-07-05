@@ -59,7 +59,7 @@ class _CjenovnikState extends State<CjenovnikPage> {
       )),
       body: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.fromLTRB(20, 60, 0, 50),
+        padding: const EdgeInsets.fromLTRB(20, 30, 0, 50),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

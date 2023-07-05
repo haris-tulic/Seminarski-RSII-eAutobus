@@ -34,6 +34,7 @@ class RezervacijaKarte extends StatefulWidget {
 
 class _RezervacijaKarteState extends State<RezervacijaKarte> {
   final _formkey = GlobalKey<FormState>();
+  final _obaveznoPolje = "Polje je obavezno";
   Map<String, dynamic>? paymentIntent;
   TextEditingController _datumPolaska = TextEditingController();
   TextEditingController _datumPovratka = TextEditingController();
@@ -60,6 +61,7 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
   Map? kupipreuzecem;
   bool isEnabledRadio = true;
   String? descBuy;
+
   @override
   void initState() {
     super.initState();
@@ -168,9 +170,11 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
                   .substring(0, 10);
         }
         _odabrani = Smjer.dva;
-        _pravac = "U oba smjera";
+        _pravac = "U oba pravca";
       } else {
-        isEnabledRadio = true;
+        if (_datumPolaska.text == _datumPovratka.text) {
+          isEnabledRadio = true;
+        }
       }
     });
   }
@@ -210,6 +214,7 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
         body: SingleChildScrollView(
           padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
           child: Form(
+            key: _formkey,
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -228,6 +233,9 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
                           border: OutlineInputBorder(),
                         ),
                         isDense: true,
+                        validator: (value) {
+                          return value == null ? _obaveznoPolje : null;
+                        },
                         value: stanicaOd != null ? stanicaOd : null,
                         items: [
                           for (final stanicaod in stanicaOD!)
@@ -263,6 +271,9 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
                               color: Colors.white, fontWeight: FontWeight.bold),
                           border: OutlineInputBorder(),
                         ),
+                        validator: (value) {
+                          return value == null ? _obaveznoPolje : null;
+                        },
                         value: stanicaDo != null ? stanicaDo : null,
                         items: [
                           for (final stanicado in stanicaDO!)
@@ -347,6 +358,11 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(0)),
                             ),
+                            validator: (value) {
+                              return (value == null || value.isEmpty)
+                                  ? _obaveznoPolje
+                                  : null;
+                            },
                             controller: _datumPolaska,
                             obscureText: false,
                             style: const TextStyle(color: Colors.white),
@@ -362,6 +378,11 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
                             color: Colors.orange[500],
                             alignment: Alignment.center,
                             child: TextFormField(
+                              validator: (value) {
+                                return (value == null || value.isEmpty)
+                                    ? _obaveznoPolje
+                                    : null;
+                              },
                               decoration: InputDecoration(
                                 labelText: "Datum vazenja karte",
                                 contentPadding: const EdgeInsets.all(20),
@@ -399,6 +420,9 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
                                 fontWeight: FontWeight.bold),
                             border: OutlineInputBorder(),
                           ),
+                          validator: (value) {
+                            return value == null ? _obaveznoPolje : null;
+                          },
                           value: _tipKarteS != null ? _tipKarteS : null,
                           items: [
                             for (final kartat in tipKarte!)
@@ -430,6 +454,9 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
                                   fontWeight: FontWeight.bold),
                               border: OutlineInputBorder(),
                             ),
+                            validator: (value) {
+                              return value == null ? _obaveznoPolje : null;
+                            },
                             value: _vrstaKarteS != null ? _vrstaKarteS : null,
                             items: [
                               for (final kartav in vrstaKarte!)
@@ -454,6 +481,11 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
                     color: Colors.orange[500],
                     child: TextFormField(
                       controller: _cijenaPrikaz,
+                      validator: (value) {
+                        return (value == null || value.isEmpty)
+                            ? _obaveznoPolje
+                            : null;
+                      },
                       decoration: InputDecoration(
                         labelText: "Cijena",
                         labelStyle: const TextStyle(
@@ -494,37 +526,40 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
                           padding:
                               const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                           onPressed: () async {
-                            setState(() {
-                              kupipreuzecem = {
-                                "tipKarteID": _tipKarteS,
-                                "vrstaKarteID": _vrstaKarteS,
-                                "kupacID": widget.korisnik?.kupacID,
-                                "datumVadjenjaKarte": _datumPolaska.text,
-                                "datumVazenjaKarte": _datumPovratka.text,
-                                "odredisteID": stanicaDo,
-                                "polazisteID": stanicaOd,
-                                "pravac": true,
-                                "cijena": _cijenaKarte?.toDouble(),
-                                "nacinPlacanja": nacinPlacanja[0],
-                                "pravacS": _pravac,
-                                "ime": widget.korisnik?.ime,
-                                "prezime": widget.korisnik?.prezime,
-                                "email": widget.korisnik?.email,
-                                "brojTelefona": widget.korisnik?.brojTelefona,
-                                "adresaStanovanja":
-                                    widget.korisnik?.adresaStanovanja,
-                                "korisnickoIme": widget.korisnik?.korisnickoIme,
-                              };
-                            });
-                            try {
-                              await _kartaProvider?.insert(kupipreuzecem);
-                              CircularProgressIndicator(
-                                  backgroundColor: Colors.orange[800]);
-                              showSnackBar(context,
-                                  "Karta uspjesno kupljena. Mozete je preuzeti na salteru!");
-                            } catch (e) {
-                              showSnackBar(context,
-                                  "Zao nam je, ali vasa kupovina nije uspjela. Pokusajte kasnije");
+                            if (_formkey.currentState!.validate()) {
+                              setState(() {
+                                kupipreuzecem = {
+                                  "tipKarteID": _tipKarteS,
+                                  "vrstaKarteID": _vrstaKarteS,
+                                  "kupacID": widget.korisnik?.kupacID,
+                                  "datumVadjenjaKarte": _datumPolaska.text,
+                                  "datumVazenjaKarte": _datumPovratka.text,
+                                  "odredisteID": stanicaDo,
+                                  "polazisteID": stanicaOd,
+                                  "pravac": true,
+                                  "cijena": _cijenaKarte?.toDouble(),
+                                  "nacinPlacanja": nacinPlacanja[0],
+                                  "pravacS": _pravac,
+                                  "ime": widget.korisnik?.ime,
+                                  "prezime": widget.korisnik?.prezime,
+                                  "email": widget.korisnik?.email,
+                                  "brojTelefona": widget.korisnik?.brojTelefona,
+                                  "adresaStanovanja":
+                                      widget.korisnik?.adresaStanovanja,
+                                  "korisnickoIme":
+                                      widget.korisnik?.korisnickoIme,
+                                };
+                              });
+                              try {
+                                await _kartaProvider?.insert(kupipreuzecem);
+                                CircularProgressIndicator(
+                                    backgroundColor: Colors.orange[800]);
+                                showSnackBar(context,
+                                    "Karta uspjesno kupljena. Mozete je preuzeti na salteru!");
+                              } catch (e) {
+                                showSnackBar(context,
+                                    "Zao nam je, ali vasa kupovina nije uspjela. Pokusajte kasnije");
+                              }
                             }
                           },
                         ),
@@ -543,35 +578,38 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
                           padding:
                               const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                           onPressed: () async {
-                            setState(() {
-                              kupipreuzecem = {
-                                "tipKarteID": _tipKarteS,
-                                "vrstaKarteID": _vrstaKarteS,
-                                "kupacID": widget.korisnik?.kupacID,
-                                "datumVadjenjaKarte": _datumPolaska.text,
-                                "datumVazenjaKarte": _datumPovratka.text,
-                                "odredisteID": stanicaDo,
-                                "polazisteID": stanicaOd,
-                                "pravac": true,
-                                "cijena": _cijenaKarte?.toDouble(),
-                                "nacinPlacanja": nacinPlacanja[1],
-                                "pravacS": _pravac,
-                                "ime": widget.korisnik?.ime,
-                                "prezime": widget.korisnik?.prezime,
-                                "email": widget.korisnik?.email,
-                                "brojTelefona": widget.korisnik?.brojTelefona,
-                                "adresaStanovanja":
-                                    widget.korisnik?.adresaStanovanja,
-                                "korisnickoIme": widget.korisnik?.korisnickoIme,
-                              };
-                            });
-                            try {
-                              await _kartaProvider?.insert(kupipreuzecem);
-                              await kupiOnline(_cijenaKarte?.toString());
-                            } catch (e) {
-                              _showDialog(
-                                  "Kartu nije moguce kupiti. Molimo pokusajte kasnije",
-                                  e);
+                            if (_formkey.currentState!.validate()) {
+                              setState(() {
+                                kupipreuzecem = {
+                                  "tipKarteID": _tipKarteS,
+                                  "vrstaKarteID": _vrstaKarteS,
+                                  "kupacID": widget.korisnik?.kupacID,
+                                  "datumVadjenjaKarte": _datumPolaska.text,
+                                  "datumVazenjaKarte": _datumPovratka.text,
+                                  "odredisteID": stanicaDo,
+                                  "polazisteID": stanicaOd,
+                                  "pravac": true,
+                                  "cijena": _cijenaKarte?.toDouble(),
+                                  "nacinPlacanja": nacinPlacanja[1],
+                                  "pravacS": _pravac,
+                                  "ime": widget.korisnik?.ime,
+                                  "prezime": widget.korisnik?.prezime,
+                                  "email": widget.korisnik?.email,
+                                  "brojTelefona": widget.korisnik?.brojTelefona,
+                                  "adresaStanovanja":
+                                      widget.korisnik?.adresaStanovanja,
+                                  "korisnickoIme":
+                                      widget.korisnik?.korisnickoIme,
+                                };
+                              });
+                              try {
+                                await _kartaProvider?.insert(kupipreuzecem);
+                                await kupiOnline(_cijenaKarte?.toString());
+                              } catch (e) {
+                                _showDialog(
+                                    "Kartu nije moguce kupiti. Molimo pokusajte kasnije",
+                                    e);
+                              }
                             }
                           },
                         ),
