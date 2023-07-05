@@ -59,7 +59,7 @@ namespace eAutobus.WinUI.Autobusi
             // txtBrojAutobusa
             // 
             txtBrojAutobusa.Location = new Point(46, 75);
-            txtBrojAutobusa.Margin = new Padding(4, 4, 4, 4);
+            txtBrojAutobusa.Margin = new Padding(4);
             txtBrojAutobusa.Name = "txtBrojAutobusa";
             txtBrojAutobusa.Size = new Size(259, 23);
             txtBrojAutobusa.TabIndex = 0;
@@ -88,10 +88,11 @@ namespace eAutobus.WinUI.Autobusi
             // txtBrojSjedista
             // 
             txtBrojSjedista.Location = new Point(522, 75);
-            txtBrojSjedista.Margin = new Padding(4, 4, 4, 4);
+            txtBrojSjedista.Margin = new Padding(4);
             txtBrojSjedista.Name = "txtBrojSjedista";
             txtBrojSjedista.Size = new Size(259, 23);
             txtBrojSjedista.TabIndex = 2;
+            txtBrojSjedista.Validating += txtBrojSjedista_Validating;
             // 
             // label3
             // 
@@ -106,7 +107,7 @@ namespace eAutobus.WinUI.Autobusi
             // txtMarkaAutobusa
             // 
             txtMarkaAutobusa.Location = new Point(46, 157);
-            txtMarkaAutobusa.Margin = new Padding(4, 4, 4, 4);
+            txtMarkaAutobusa.Margin = new Padding(4);
             txtMarkaAutobusa.Name = "txtMarkaAutobusa";
             txtMarkaAutobusa.Size = new Size(259, 23);
             txtMarkaAutobusa.TabIndex = 4;
@@ -125,7 +126,7 @@ namespace eAutobus.WinUI.Autobusi
             // dtpDatumProizvodnje
             // 
             dtpDatumProizvodnje.Location = new Point(522, 176);
-            dtpDatumProizvodnje.Margin = new Padding(4, 4, 4, 4);
+            dtpDatumProizvodnje.Margin = new Padding(4);
             dtpDatumProizvodnje.Name = "dtpDatumProizvodnje";
             dtpDatumProizvodnje.Size = new Size(232, 23);
             dtpDatumProizvodnje.TabIndex = 12;
@@ -154,7 +155,7 @@ namespace eAutobus.WinUI.Autobusi
             // 
             cbIspravan.AutoSize = true;
             cbIspravan.Location = new Point(540, 270);
-            cbIspravan.Margin = new Padding(4, 4, 4, 4);
+            cbIspravan.Margin = new Padding(4);
             cbIspravan.Name = "cbIspravan";
             cbIspravan.Size = new Size(15, 14);
             cbIspravan.TabIndex = 15;
@@ -163,7 +164,7 @@ namespace eAutobus.WinUI.Autobusi
             // btnSpremi
             // 
             btnSpremi.Location = new Point(386, 326);
-            btnSpremi.Margin = new Padding(4, 4, 4, 4);
+            btnSpremi.Margin = new Padding(4);
             btnSpremi.Name = "btnSpremi";
             btnSpremi.Size = new Size(88, 26);
             btnSpremi.TabIndex = 16;
@@ -175,10 +176,11 @@ namespace eAutobus.WinUI.Autobusi
             // 
             cbGaraza.FormattingEnabled = true;
             cbGaraza.Location = new Point(46, 251);
-            cbGaraza.Margin = new Padding(4, 4, 4, 4);
+            cbGaraza.Margin = new Padding(4);
             cbGaraza.Name = "cbGaraza";
             cbGaraza.Size = new Size(259, 23);
             cbGaraza.TabIndex = 17;
+            cbGaraza.Validating += cbGaraza_Validating;
             // 
             // errorProvider
             // 
@@ -190,7 +192,7 @@ namespace eAutobus.WinUI.Autobusi
             dgvPrikazAutobusa.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPrikazAutobusa.Columns.AddRange(new DataGridViewColumn[] { AutobusID, BrojAutobusa, MarkaAutobusa, DatumProizvodnje, BrojSjedista, NazivGaraze, Ispravan });
             dgvPrikazAutobusa.Location = new Point(66, 377);
-            dgvPrikazAutobusa.Margin = new Padding(4, 4, 4, 4);
+            dgvPrikazAutobusa.Margin = new Padding(4);
             dgvPrikazAutobusa.Name = "dgvPrikazAutobusa";
             dgvPrikazAutobusa.ReadOnly = true;
             dgvPrikazAutobusa.RowHeadersWidth = 51;
@@ -282,7 +284,7 @@ namespace eAutobus.WinUI.Autobusi
             Controls.Add(txtBrojSjedista);
             Controls.Add(label1);
             Controls.Add(txtBrojAutobusa);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "frmDodajAutobus";
             Text = "frmDodajAutobus";
             Load += frmDodajAutobus_Load;

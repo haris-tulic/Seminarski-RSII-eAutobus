@@ -56,21 +56,31 @@ namespace eAutobus.WinUI.RedVoznji
 
         private async void btnSnimi_Click(object sender, EventArgs e)
         {
-            var RedVoznjeID = dgvLinije.SelectedRows[0].Cells[0].Value;
             var search = new RasporedVoznjeGetRequest()
             {
-                RasporedVoznjeID = int.Parse(RedVoznjeID.ToString()),
                 PolazisteID = int.Parse(cbPolaziste.SelectedValue.ToString()),
                 OdredisteID = int.Parse(cbOdrediste.SelectedValue.ToString()),
-                Datum = dtpDatum.Value.Date,
-
+                Datum = DateTime.Parse(dtpDatum.Value.ToShortDateString()),
             };
+
             var result = await _linije.Get<List<RasporedVoznjeModel>>(search);
             dgvLinije.AutoGenerateColumns = false;
             dgvLinije.DataSource = result;
         }
 
-        private async void dgvLinije_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void dtpDatum_ValueChanged(object sender, EventArgs e)
+        {
+            dtpDatum.CustomFormat = "dd/MM/yyyy";
+        }
+
+        private void btnIzvjestaj_Click(object sender, EventArgs e)
+        {
+            var _printLinije = dgvLinije.DataSource as List<RasporedVoznjeModel>;
+            Reports.frmPregledLinija rpt = new Reports.frmPregledLinija(_printLinije);
+            rpt.Show();
+        }
+
+        private async void dgvLinije_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var RedVoznjeID = dgvLinije.SelectedRows[0].Cells[0].Value;
             var odabranaLinija = await _linije.GetById<RasporedVoznjeModel>(RedVoznjeID);
@@ -85,19 +95,6 @@ namespace eAutobus.WinUI.RedVoznji
                 frmDodavanjeRedaVoznje frm = new frmDodavanjeRedaVoznje(int.Parse(RedVoznjeID.ToString()));
                 frm.Show();
             }
-
-        }
-
-        private void dtpDatum_ValueChanged(object sender, EventArgs e)
-        {
-            dtpDatum.CustomFormat = "dd/MM/yyyy";
-        }
-
-        private void btnIzvjestaj_Click(object sender, EventArgs e)
-        {
-            var _printLinije = dgvLinije.DataSource as List<RasporedVoznjeModel>;
-            Reports.frmPregledLinija rpt = new Reports.frmPregledLinija(_printLinije);
-            rpt.Show();
         }
     }
 }

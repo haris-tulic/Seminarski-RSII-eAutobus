@@ -29,253 +29,280 @@ namespace eAutobus.WinUI.RedVoznji
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.btnSpremi = new System.Windows.Forms.Button();
-            this.txtBrLinije = new System.Windows.Forms.TextBox();
-            this.cbBrAutobusa = new System.Windows.Forms.ComboBox();
-            this.cbVozac = new System.Windows.Forms.ComboBox();
-            this.cbKondukter = new System.Windows.Forms.ComboBox();
-            this.dtpPolazak = new System.Windows.Forms.DateTimePicker();
-            this.dtpDolazak = new System.Windows.Forms.DateTimePicker();
-            this.errorDodavanjeLinije = new System.Windows.Forms.ErrorProvider(this.components);
-            this.cbPolaziste = new System.Windows.Forms.ComboBox();
-            this.cbOdrediste = new System.Windows.Forms.ComboBox();
-            this.dtpDatum = new System.Windows.Forms.DateTimePicker();
-            this.label9 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.errorDodavanjeLinije)).BeginInit();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            label6 = new Label();
+            label7 = new Label();
+            label8 = new Label();
+            btnSpremi = new Button();
+            txtBrLinije = new TextBox();
+            cbBrAutobusa = new ComboBox();
+            cbVozac = new ComboBox();
+            cbKondukter = new ComboBox();
+            dtpPolazak = new DateTimePicker();
+            dtpDolazak = new DateTimePicker();
+            errorDodavanjeLinije = new ErrorProvider(components);
+            cbPolaziste = new ComboBox();
+            cbOdrediste = new ComboBox();
+            dtpDatum = new DateTimePicker();
+            label9 = new Label();
+            ((System.ComponentModel.ISupportInitialize)errorDodavanjeLinije).BeginInit();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(45, 40);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Broj linije:";
+            label1.AutoSize = true;
+            label1.Location = new Point(52, 46);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(59, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Broj linije:";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(44, 91);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Polazište:";
+            label2.AutoSize = true;
+            label2.Location = new Point(51, 105);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(56, 15);
+            label2.TabIndex = 1;
+            label2.Text = "Polazište:";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(41, 148);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Odredište:";
+            label3.AutoSize = true;
+            label3.Location = new Point(48, 171);
+            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(61, 15);
+            label3.TabIndex = 2;
+            label3.Text = "Odredište:";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 206);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Vrijeme polaska:";
+            label4.AutoSize = true;
+            label4.Location = new Point(14, 238);
+            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(93, 15);
+            label4.TabIndex = 3;
+            label4.Text = "Vrijeme polaska:";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(408, 40);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Broj autobusa:";
+            label5.AutoSize = true;
+            label5.Location = new Point(476, 46);
+            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(83, 15);
+            label5.TabIndex = 4;
+            label5.Text = "Broj autobusa:";
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(443, 97);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Vozač:";
+            label6.AutoSize = true;
+            label6.Location = new Point(517, 112);
+            label6.Margin = new Padding(4, 0, 4, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(40, 15);
+            label6.TabIndex = 5;
+            label6.Text = "Vozač:";
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(424, 148);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(59, 13);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Kondukter:";
+            label7.AutoSize = true;
+            label7.Location = new Point(495, 171);
+            label7.Margin = new Padding(4, 0, 4, 0);
+            label7.Name = "label7";
+            label7.Size = new Size(65, 15);
+            label7.TabIndex = 6;
+            label7.Text = "Kondukter:";
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(399, 206);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(84, 13);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Vrijeme dolaska:";
+            label8.AutoSize = true;
+            label8.Location = new Point(465, 238);
+            label8.Margin = new Padding(4, 0, 4, 0);
+            label8.Name = "label8";
+            label8.Size = new Size(93, 15);
+            label8.TabIndex = 7;
+            label8.Text = "Vrijeme dolaska:";
             // 
             // btnSpremi
             // 
-            this.btnSpremi.Location = new System.Drawing.Point(331, 327);
-            this.btnSpremi.Name = "btnSpremi";
-            this.btnSpremi.Size = new System.Drawing.Size(75, 23);
-            this.btnSpremi.TabIndex = 8;
-            this.btnSpremi.Text = "Spremi";
-            this.btnSpremi.UseVisualStyleBackColor = true;
-            this.btnSpremi.Click += new System.EventHandler(this.btnSpremi_Click);
+            btnSpremi.Location = new Point(386, 377);
+            btnSpremi.Margin = new Padding(4, 3, 4, 3);
+            btnSpremi.Name = "btnSpremi";
+            btnSpremi.Size = new Size(88, 27);
+            btnSpremi.TabIndex = 8;
+            btnSpremi.Text = "Spremi";
+            btnSpremi.UseVisualStyleBackColor = true;
+            btnSpremi.Click += btnSpremi_Click;
             // 
             // txtBrLinije
             // 
-            this.txtBrLinije.Location = new System.Drawing.Point(119, 37);
-            this.txtBrLinije.Name = "txtBrLinije";
-            this.txtBrLinije.Size = new System.Drawing.Size(178, 20);
-            this.txtBrLinije.TabIndex = 9;
+            txtBrLinije.Location = new Point(139, 43);
+            txtBrLinije.Margin = new Padding(4, 3, 4, 3);
+            txtBrLinije.Name = "txtBrLinije";
+            txtBrLinije.Size = new Size(207, 23);
+            txtBrLinije.TabIndex = 9;
+            txtBrLinije.Validating += txtBrojLinije_Validating;
             // 
             // cbBrAutobusa
             // 
-            this.cbBrAutobusa.FormattingEnabled = true;
-            this.cbBrAutobusa.Location = new System.Drawing.Point(489, 36);
-            this.cbBrAutobusa.Name = "cbBrAutobusa";
-            this.cbBrAutobusa.Size = new System.Drawing.Size(178, 21);
-            this.cbBrAutobusa.TabIndex = 17;
+            cbBrAutobusa.FormattingEnabled = true;
+            cbBrAutobusa.Location = new Point(570, 42);
+            cbBrAutobusa.Margin = new Padding(4, 3, 4, 3);
+            cbBrAutobusa.Name = "cbBrAutobusa";
+            cbBrAutobusa.Size = new Size(207, 23);
+            cbBrAutobusa.TabIndex = 17;
+            cbBrAutobusa.Validating += cbBrAutobusa_Validating;
             // 
             // cbVozac
             // 
-            this.cbVozac.FormattingEnabled = true;
-            this.cbVozac.Location = new System.Drawing.Point(489, 94);
-            this.cbVozac.Name = "cbVozac";
-            this.cbVozac.Size = new System.Drawing.Size(178, 21);
-            this.cbVozac.TabIndex = 18;
+            cbVozac.FormattingEnabled = true;
+            cbVozac.Location = new Point(570, 108);
+            cbVozac.Margin = new Padding(4, 3, 4, 3);
+            cbVozac.Name = "cbVozac";
+            cbVozac.Size = new Size(207, 23);
+            cbVozac.TabIndex = 18;
+            cbVozac.Validating += cbVozac_Validating;
             // 
             // cbKondukter
             // 
-            this.cbKondukter.FormattingEnabled = true;
-            this.cbKondukter.Location = new System.Drawing.Point(489, 144);
-            this.cbKondukter.Name = "cbKondukter";
-            this.cbKondukter.Size = new System.Drawing.Size(178, 21);
-            this.cbKondukter.TabIndex = 19;
+            cbKondukter.FormattingEnabled = true;
+            cbKondukter.Location = new Point(570, 166);
+            cbKondukter.Margin = new Padding(4, 3, 4, 3);
+            cbKondukter.Name = "cbKondukter";
+            cbKondukter.Size = new Size(207, 23);
+            cbKondukter.TabIndex = 19;
             // 
             // dtpPolazak
             // 
-            this.dtpPolazak.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpPolazak.Location = new System.Drawing.Point(119, 200);
-            this.dtpPolazak.Name = "dtpPolazak";
-            this.dtpPolazak.Size = new System.Drawing.Size(178, 20);
-            this.dtpPolazak.TabIndex = 20;
-            this.dtpPolazak.Value = new System.DateTime(2022, 1, 6, 16, 1, 0, 0);
+            dtpPolazak.Format = DateTimePickerFormat.Time;
+            dtpPolazak.Location = new Point(139, 231);
+            dtpPolazak.Margin = new Padding(4, 3, 4, 3);
+            dtpPolazak.Name = "dtpPolazak";
+            dtpPolazak.Size = new Size(207, 23);
+            dtpPolazak.TabIndex = 20;
+            dtpPolazak.Value = new DateTime(2022, 1, 6, 16, 1, 0, 0);
+            dtpPolazak.Validating += dtpPolazak_Validating;
             // 
             // dtpDolazak
             // 
-            this.dtpDolazak.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpDolazak.Location = new System.Drawing.Point(489, 200);
-            this.dtpDolazak.Name = "dtpDolazak";
-            this.dtpDolazak.Size = new System.Drawing.Size(178, 20);
-            this.dtpDolazak.TabIndex = 21;
-            this.dtpDolazak.Value = new System.DateTime(2021, 10, 23, 16, 2, 13, 0);
+            dtpDolazak.Format = DateTimePickerFormat.Time;
+            dtpDolazak.Location = new Point(570, 231);
+            dtpDolazak.Margin = new Padding(4, 3, 4, 3);
+            dtpDolazak.Name = "dtpDolazak";
+            dtpDolazak.Size = new Size(207, 23);
+            dtpDolazak.TabIndex = 21;
+            dtpDolazak.Value = new DateTime(2021, 10, 23, 16, 2, 13, 0);
+            dtpDolazak.Validating += dtpDolazak_Validating;
             // 
             // errorDodavanjeLinije
             // 
-            this.errorDodavanjeLinije.ContainerControl = this;
+            errorDodavanjeLinije.ContainerControl = this;
             // 
             // cbPolaziste
             // 
-            this.cbPolaziste.FormattingEnabled = true;
-            this.cbPolaziste.Location = new System.Drawing.Point(119, 88);
-            this.cbPolaziste.Name = "cbPolaziste";
-            this.cbPolaziste.Size = new System.Drawing.Size(178, 21);
-            this.cbPolaziste.TabIndex = 22;
+            cbPolaziste.FormattingEnabled = true;
+            cbPolaziste.Location = new Point(139, 102);
+            cbPolaziste.Margin = new Padding(4, 3, 4, 3);
+            cbPolaziste.Name = "cbPolaziste";
+            cbPolaziste.Size = new Size(207, 23);
+            cbPolaziste.TabIndex = 22;
+            cbPolaziste.Validating += cbPolaziste_Validating;
             // 
             // cbOdrediste
             // 
-            this.cbOdrediste.FormattingEnabled = true;
-            this.cbOdrediste.Location = new System.Drawing.Point(119, 139);
-            this.cbOdrediste.Name = "cbOdrediste";
-            this.cbOdrediste.Size = new System.Drawing.Size(178, 21);
-            this.cbOdrediste.TabIndex = 23;
+            cbOdrediste.FormattingEnabled = true;
+            cbOdrediste.Location = new Point(139, 160);
+            cbOdrediste.Margin = new Padding(4, 3, 4, 3);
+            cbOdrediste.Name = "cbOdrediste";
+            cbOdrediste.Size = new Size(207, 23);
+            cbOdrediste.TabIndex = 23;
+            cbOdrediste.Validating += cbOdrediste_Validating;
             // 
             // dtpDatum
             // 
-            this.dtpDatum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDatum.Location = new System.Drawing.Point(119, 258);
-            this.dtpDatum.Name = "dtpDatum";
-            this.dtpDatum.Size = new System.Drawing.Size(178, 20);
-            this.dtpDatum.TabIndex = 24;
-            this.dtpDatum.ValueChanged += new System.EventHandler(this.dtpDatum_ValueChanged);
+            dtpDatum.Format = DateTimePickerFormat.Short;
+            dtpDatum.Location = new Point(139, 298);
+            dtpDatum.Margin = new Padding(4, 3, 4, 3);
+            dtpDatum.Name = "dtpDatum";
+            dtpDatum.Size = new Size(207, 23);
+            dtpDatum.TabIndex = 24;
+            dtpDatum.ValueChanged += dtpDatum_ValueChanged;
+            dtpDatum.Validating += dtpDatum_Validating;
             // 
             // label9
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(55, 264);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(41, 13);
-            this.label9.TabIndex = 25;
-            this.label9.Text = "Datum:";
+            label9.AutoSize = true;
+            label9.Location = new Point(64, 305);
+            label9.Margin = new Padding(4, 0, 4, 0);
+            label9.Name = "label9";
+            label9.Size = new Size(46, 15);
+            label9.TabIndex = 25;
+            label9.Text = "Datum:";
             // 
             // frmDodavanjeRedaVoznje
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.dtpDatum);
-            this.Controls.Add(this.cbOdrediste);
-            this.Controls.Add(this.cbPolaziste);
-            this.Controls.Add(this.dtpDolazak);
-            this.Controls.Add(this.dtpPolazak);
-            this.Controls.Add(this.cbKondukter);
-            this.Controls.Add(this.cbVozac);
-            this.Controls.Add(this.cbBrAutobusa);
-            this.Controls.Add(this.txtBrLinije);
-            this.Controls.Add(this.btnSpremi);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Name = "frmDodavanjeRedaVoznje";
-            this.Text = "Dodavanje novog reda vožnje";
-            this.Load += new System.EventHandler(this.frmDodavanjeRedaVoznje_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.errorDodavanjeLinije)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(933, 519);
+            Controls.Add(label9);
+            Controls.Add(dtpDatum);
+            Controls.Add(cbOdrediste);
+            Controls.Add(cbPolaziste);
+            Controls.Add(dtpDolazak);
+            Controls.Add(dtpPolazak);
+            Controls.Add(cbKondukter);
+            Controls.Add(cbVozac);
+            Controls.Add(cbBrAutobusa);
+            Controls.Add(txtBrLinije);
+            Controls.Add(btnSpremi);
+            Controls.Add(label8);
+            Controls.Add(label7);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "frmDodavanjeRedaVoznje";
+            Text = "Dodavanje novog reda vožnje";
+            Load += frmDodavanjeRedaVoznje_Load;
+            ((System.ComponentModel.ISupportInitialize)errorDodavanjeLinije).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button btnSpremi;
-        private System.Windows.Forms.TextBox txtBrLinije;
-        private System.Windows.Forms.ComboBox cbBrAutobusa;
-        private System.Windows.Forms.ComboBox cbVozac;
-        private System.Windows.Forms.ComboBox cbKondukter;
-        private System.Windows.Forms.DateTimePicker dtpPolazak;
-        private System.Windows.Forms.DateTimePicker dtpDolazak;
-        private System.Windows.Forms.ErrorProvider errorDodavanjeLinije;
-        private System.Windows.Forms.ComboBox cbOdrediste;
-        private System.Windows.Forms.ComboBox cbPolaziste;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DateTimePicker dtpDatum;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        private Label label5;
+        private Label label6;
+        private Label label7;
+        private Label label8;
+        private Button btnSpremi;
+        private TextBox txtBrLinije;
+        private ComboBox cbBrAutobusa;
+        private ComboBox cbVozac;
+        private ComboBox cbKondukter;
+        private DateTimePicker dtpPolazak;
+        private DateTimePicker dtpDolazak;
+        private ErrorProvider errorDodavanjeLinije;
+        private ComboBox cbOdrediste;
+        private ComboBox cbPolaziste;
+        private Label label9;
+        private DateTimePicker dtpDatum;
     }
 }

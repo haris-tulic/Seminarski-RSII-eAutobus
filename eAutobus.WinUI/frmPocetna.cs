@@ -73,12 +73,12 @@ namespace eAutobus.WinUI
 
         private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           // toolStrip.Visible = toolBarToolStripMenuItem.Checked;
+            // toolStrip.Visible = toolBarToolStripMenuItem.Checked;
         }
 
         private void StatusBarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           // statusStrip.Visible = statusBarToolStripMenuItem.Checked;
+            // statusStrip.Visible = statusBarToolStripMenuItem.Checked;
         }
 
         private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -125,7 +125,7 @@ namespace eAutobus.WinUI
 
         private void pregledKorisnikaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmKorisniciPrikaz frm =  new frmKorisniciPrikaz();
+            frmKorisniciPrikaz frm = new frmKorisniciPrikaz();
             frm.MdiParent = this;
             frm.WindowState = FormWindowState.Maximized;
             frm.Show();
@@ -158,7 +158,7 @@ namespace eAutobus.WinUI
 
         private void pregledKarataToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void cjenovnikToolStripMenuItem_Click(object sender, EventArgs e)
@@ -179,7 +179,7 @@ namespace eAutobus.WinUI
         {
             frmIzdajKartu frm = new frmIzdajKartu();
             frm.Show();
-           
+
         }
 
         private void recenzijeToolStripMenuItem_Click(object sender, EventArgs e)

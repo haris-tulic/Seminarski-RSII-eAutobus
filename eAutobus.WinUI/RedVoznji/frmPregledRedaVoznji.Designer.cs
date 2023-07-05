@@ -106,9 +106,9 @@ namespace eAutobus.WinUI.RedVoznji
             dgvLinije.ReadOnly = true;
             dgvLinije.RowHeadersWidth = 51;
             dgvLinije.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvLinije.Size = new Size(1055, 242);
+            dgvLinije.Size = new Size(1059, 242);
             dgvLinije.TabIndex = 4;
-            dgvLinije.MouseDoubleClick += dgvLinije_MouseDoubleClick;
+            dgvLinije.CellContentClick += dgvLinije_CellContentClick;
             // 
             // RasporedVoznjeID
             // 
@@ -238,7 +238,7 @@ namespace eAutobus.WinUI.RedVoznji
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1094, 641);
+            ClientSize = new Size(1100, 641);
             Controls.Add(btnIzvjestaj);
             Controls.Add(dtpDatum);
             Controls.Add(cbOdrediste);

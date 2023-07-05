@@ -428,21 +428,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Uloge">
+                    <Textbox Name="Uloga">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Uloge.Value</Value>
+                              <Value>=Fields!Uloga.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Uloge</rd:DefaultName>
+                      <rd:DefaultName>Uloga</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -485,7 +485,7 @@
         <Top>2.25637cm</Top>
         <Left>2.27753cm</Left>
         <Height>1.2cm</Height>
-        <Width>21.92384cm</Width>
+        <Width>21.92383cm</Width>
         <Style>
           <Border>
             <Style>None</Style>

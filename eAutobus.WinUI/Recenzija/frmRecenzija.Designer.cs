@@ -86,7 +86,7 @@ namespace eAutobus.WinUI.Recenzija
             dgvRecenzije.Name = "dgvRecenzije";
             dgvRecenzije.ReadOnly = true;
             dgvRecenzije.RowHeadersWidth = 51;
-            dgvRecenzije.Size = new Size(685, 264);
+            dgvRecenzije.Size = new Size(690, 264);
             dgvRecenzije.TabIndex = 3;
             // 
             // RecenzijaID

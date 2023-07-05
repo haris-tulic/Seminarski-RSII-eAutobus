@@ -20,7 +20,7 @@ namespace eAutobus.WinUI.RedVoznji
         private readonly APIService _redVoznje = new APIService("RasporedVoznje");
         private int? id = null;
 
-        public frmDodavanjeRedaVoznje(int? red=null)
+        public frmDodavanjeRedaVoznje(int? red = null)
         {
             InitializeComponent();
             id = red;
@@ -31,10 +31,10 @@ namespace eAutobus.WinUI.RedVoznji
             await LoadAutobuse();
             await LoadVozaceIKonduktere();
             await LoadPolazisteIOdrediste();
-            
+
             if (id.HasValue)
             {
-               var redVoznje = await _redVoznje.GetById<RasporedVoznjeModel>(id);
+                var redVoznje = await _redVoznje.GetById<RasporedVoznjeModel>(id);
                 txtBrLinije.Text = redVoznje.BrojLinije.ToString();
                 cbPolaziste.SelectedValue = redVoznje.PolazisteID;
                 cbOdrediste.SelectedValue = redVoznje.OdredisteID;
@@ -45,12 +45,12 @@ namespace eAutobus.WinUI.RedVoznji
                 dtpDolazak.Value = redVoznje.VrijemeDolaska;
                 dtpPolazak.Value = redVoznje.VrijemePolaska;
             }
-            
+
         }
 
         private async Task LoadPolazisteIOdrediste()
         {
-            var result =await _stanice.Get<List<StanicaModel>>(null);
+            var result = await _stanice.Get<List<StanicaModel>>(null);
             cbPolaziste.DataSource = result;
             cbPolaziste.ValueMember = "StanicaID";
             cbPolaziste.DisplayMember = "NazivLokacijeStanice";
@@ -85,20 +85,20 @@ namespace eAutobus.WinUI.RedVoznji
         private async Task LoadAutobuse()
         {
             var listIspravnih = new List<AutobusiModel>();
-                var list = await _autobusi.Get<List<eAutobusModel.AutobusiModel>>(null);
-               foreach (var ispravan in list)
+            var list = await _autobusi.Get<List<eAutobusModel.AutobusiModel>>(null);
+            foreach (var ispravan in list)
+            {
+                ispravan.PrikazAutobusa = ispravan.BrojAutobusa.ToString() + "-" + ispravan.MarkaAutobusa;
+                if (ispravan.Ispravan)
                 {
-                ispravan.PrikazAutobusa = ispravan.BrojAutobusa.ToString() +"-"+ ispravan.MarkaAutobusa;
-                    if (ispravan.Ispravan)
-                    {
-                     listIspravnih.Add(ispravan);
-                    }
+                    listIspravnih.Add(ispravan);
                 }
-                cbBrAutobusa.DataSource = listIspravnih;
-                cbBrAutobusa.DisplayMember = "PrikazAutobusa";
-                cbBrAutobusa.ValueMember = "AutobusID";
-           
-    
+            }
+            cbBrAutobusa.DataSource = listIspravnih;
+            cbBrAutobusa.DisplayMember = "PrikazAutobusa";
+            cbBrAutobusa.ValueMember = "AutobusID";
+
+
         }
 
         private async void btnSpremi_Click(object sender, EventArgs e)
@@ -109,7 +109,7 @@ namespace eAutobus.WinUI.RedVoznji
                 newLine.BrojLinije = int.Parse(txtBrLinije.Text);
                 newLine.VrijemeDolaska = dtpDolazak.Value;
                 newLine.VrijemePolaska = dtpPolazak.Value;
-                newLine.AutobusID= int.Parse(cbBrAutobusa.SelectedValue.ToString());
+                newLine.AutobusID = int.Parse(cbBrAutobusa.SelectedValue.ToString());
                 newLine.KondukterID = int.Parse(cbKondukter.SelectedValue.ToString());
                 newLine.OdredisteID = int.Parse(cbOdrediste.SelectedValue.ToString());
                 newLine.PolazisteID = int.Parse(cbPolaziste.SelectedValue.ToString());
@@ -125,7 +125,7 @@ namespace eAutobus.WinUI.RedVoznji
                 else
                 {
                     await _redVoznje.Insert<RasporedVoznjeModel>(newLine);
-                    MessageBox.Show("Uspjesno kreirana linija! ");            
+                    MessageBox.Show("Uspjesno kreirana linija! ");
                 }
             }
 
@@ -199,6 +199,45 @@ namespace eAutobus.WinUI.RedVoznji
         private void dtpDatum_ValueChanged(object sender, EventArgs e)
         {
             dtpDatum.CustomFormat = "dd/MM/yyyy";
+        }
+
+        private void dtpDatum_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(dtpDatum.Text.ToString()))
+            {
+                errorDodavanjeLinije.SetError(dtpDatum, "Obavezno polje");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorDodavanjeLinije.SetError(dtpDatum, null);
+            }
+        }
+
+        private void dtpDolazak_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(dtpDolazak.Text.ToString()))
+            {
+                errorDodavanjeLinije.SetError(dtpDolazak, "Obavezno polje");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorDodavanjeLinije.SetError(dtpDolazak, null);
+            }
+        }
+
+        private void dtpPolazak_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(dtpPolazak.Text.ToString()))
+            {
+                errorDodavanjeLinije.SetError(dtpPolazak, "Obavezno polje");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorDodavanjeLinije.SetError(dtpPolazak, null);
+            }
         }
     }
 }

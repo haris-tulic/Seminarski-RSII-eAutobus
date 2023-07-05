@@ -70,13 +70,6 @@ namespace eAutobus.Controllers
             var response = await _service.RegistrujSe(request);
             return Ok(response);
         }
-        [HttpGet("Prijava")]
-        public async Task<ActionResult<KupacModel>> Prijava()
-        {
-            //var response = await _service.Authentificiraj(username,password);
-            //return Ok(response);
-            return Ok();
-
-        }
+       
     }
 }

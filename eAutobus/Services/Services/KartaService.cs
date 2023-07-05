@@ -98,8 +98,8 @@ namespace eAutobus.Services
                 Prezime = request.Prezime,
                 AdresaStanovanja = request.AdresaStanovanja,
                 BrojTelefona = request.BrojTelefona,
-                Email = request.Email,
-                KorisnickoIme = request.KorisnickoIme
+                Email = request.Email ?? " ",
+                KorisnickoIme = request.KorisnickoIme ?? " ",
             };
             var entity = _mapper.Map<Karta>(request);
             bool postoji = await ProvjeriKartu(kupac);
@@ -111,6 +111,8 @@ namespace eAutobus.Services
                     Kupac pronadjeni = await _kupac.PronadjiKupca(kupac);
                     if (pronadjeni == null)
                     {
+                        kupac.Password = "";
+                        kupac.PotvrdaPassworda = "";
                         newKupac = await _kupac.Insert(kupac);
 
                     }

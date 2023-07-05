@@ -118,7 +118,7 @@ namespace eAutobus.WinUI.Korisnici
             dgvPrikaz.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvPrikaz.Size = new Size(679, 256);
             dgvPrikaz.TabIndex = 7;
-            dgvPrikaz.MouseDoubleClick += dgvPrikaz_MouseDoubleClick;
+            dgvPrikaz.CellContentClick += dgvPrikaz_CellContentClick;
             // 
             // KorisnikID
             // 

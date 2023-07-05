@@ -28,29 +28,14 @@ namespace eAutobus.WinUI.Karte
             InitializeComponent();
         }
 
-        
+
         private async void frmIzdajKartu_Load(object sender, EventArgs e)
         {
             await LoadVrstaKarte();
             await LoadTipkarte();
             await LoadPolazisteOdrediste();
-            //await LoadVrstaITipKarte();
+
         }
-
-        private async Task LoadVrstaITipKarte()
-        {
-            var listVT = await _cjenovnik.Get <List<CjenovnikModel>>(null);
-            cbVrstaKarte.DataSource = listVT;
-            cbTipKarte.DataSource = listVT;
-
-            cbVrstaKarte.DisplayMember = "VrstaKarte";
-            cbVrstaKarte.ValueMember = "VrstaKarteID";
-
-            cbTipKarte.DisplayMember = "TipKarte";
-            cbTipKarte.ValueMember = "TipKarteID";
-        }
-
-
 
         private async Task LoadPolazisteOdrediste()
         {
@@ -91,7 +76,7 @@ namespace eAutobus.WinUI.Karte
             }
             else
             {
-                errorProvider.SetError(txtIme,null);
+                errorProvider.SetError(txtIme, null);
             }
         }
 
@@ -125,7 +110,7 @@ namespace eAutobus.WinUI.Karte
         private void cbTipKarte_Validating(object sender, CancelEventArgs e)
         {
             var check = cbTipKarte.SelectedItem.ToString();
-           
+
             if (string.IsNullOrEmpty(check))
             {
                 errorProvider.SetError(cbTipKarte, "Obavezno polje!");
@@ -178,7 +163,7 @@ namespace eAutobus.WinUI.Karte
             }
         }
 
-      
+
 
         private async void btnIzdajKartu_Click(object sender, EventArgs e)
         {
@@ -187,7 +172,6 @@ namespace eAutobus.WinUI.Karte
                 insert.Ime = txtIme.Text;
                 insert.Prezime = txtPrezime.Text;
                 insert.AdresaStanovanja = txtAdresa.Text;
-                //insert.Email = txtEmail.Text;
                 insert.VrstaKarteID = int.Parse(cbVrstaKarte.SelectedValue.ToString());
                 insert.TipKarteID = int.Parse(cbTipKarte.SelectedValue.ToString());
                 insert.PolazisteID = int.Parse(cbPolaziste.SelectedValue.ToString());
@@ -203,12 +187,12 @@ namespace eAutobus.WinUI.Karte
                     insert.PravacS = rbJedan.Text;
 
                 }
-                else if(rbDva.Checked)
+                else if (rbDva.Checked)
                 {
                     insert.Pravac = rbDva.Checked;
                     insert.PravacS = rbDva.Text;
 
-                    insert.Cijena*=1.67;
+                    insert.Cijena *= 1.67;
                 }
                 await _karta.Insert<KartaModel>(insert);
                 MessageBox.Show("Karta je izdata!");
@@ -221,12 +205,11 @@ namespace eAutobus.WinUI.Karte
             int.TryParse(obj.ToString(), out int id);
             CijenaKarte.VrstaKarteID = id;
             var check = this.cbVrstaKarte.GetItemText(this.cbVrstaKarte.SelectedItem);
-            if (check.Contains("Mjesečna") || check.Contains("Godišnja") )
+            if (check.Contains("Mjesečna") || check.Contains("Godišnja"))
             {
                 rbJedan.Enabled = false;
                 rbDva.Enabled = false;
-                //rbJedan.Visible = false;
-                //rbDva.Visible = false;
+
             }
             else
             {
@@ -244,7 +227,7 @@ namespace eAutobus.WinUI.Karte
             var obj = cbTipKarte.SelectedValue;
             int.TryParse(obj.ToString(), out int id);
             CijenaKarte.TipkarteID = id;
-          
+
         }
         private void cbPolaziste_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -260,19 +243,19 @@ namespace eAutobus.WinUI.Karte
             int.TryParse(obj.ToString(), out int id);
             CijenaKarte.OdredisteID = id;
         }
-        private async  void txtCijena_Click(object sender,EventArgs e)
+        private async void txtCijena_Click(object sender, EventArgs e)
         {
-             var cijena =await _cjenovnik.Get<List<CjenovnikModel>>(CijenaKarte);
+            var cijena = await _cjenovnik.Get<List<CjenovnikModel>>(CijenaKarte);
             foreach (var x in cijena)
             {
                 CijenaK = x.Cijena;
-                txtCijena.Text = x.Cijena.ToString()+" KM";
-            
+                txtCijena.Text = x.Cijena.ToString() + " KM";
+
             }
-          
+
         }
 
-        private void frmIzdajKartu_Validating(object sender, CancelEventArgs e)
+        private void txtBrojTelefona_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(txtBrojTelefona.Text))
             {
@@ -285,20 +268,20 @@ namespace eAutobus.WinUI.Karte
             }
         }
 
-        private  void btnPreuzmiPDF_Click(object sender, EventArgs e)
+        private void btnPreuzmiPDF_Click(object sender, EventArgs e)
         {
-            
+
             var kartaPrikaz = new IzvjestajIzdanaKartaModel
             {
                 ImePrezime = txtIme.Text + " " + txtPrezime.Text,
                 AdresaStanovanja = txtAdresa.Text,
-                VrstaKarte =cbVrstaKarte.Text,
+                VrstaKarte = cbVrstaKarte.Text,
                 TipKarte = cbTipKarte.Text,
                 DatumVadjenja = dtpDatumVadjenja.Value,
                 DatumVazenja = dtpDatumVazenja.Value,
-                Polaziste = cbPolaziste.Text ,
-                Odrediste = cbOdrediste.Text ,
-                Cijena =txtCijena.Text,
+                Polaziste = cbPolaziste.Text,
+                Odrediste = cbOdrediste.Text,
+                Cijena = txtCijena.Text,
             };
             if (rbJedan.Checked)
             {
@@ -315,7 +298,7 @@ namespace eAutobus.WinUI.Karte
 
         private void rbDva_MouseClick(object sender, MouseEventArgs e)
         {
-            var cijenaPrikaz=CijenaK * 1.67;
+            var cijenaPrikaz = CijenaK * 1.67;
             txtCijena.Text = cijenaPrikaz.ToString() + " KM";
         }
 
@@ -324,5 +307,33 @@ namespace eAutobus.WinUI.Karte
             var cijenaPrikaz = CijenaK;
             txtCijena.Text = cijenaPrikaz.ToString() + " KM";
         }
+
+        private void txtPrezime_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtPrezime.Text))
+            {
+                errorProvider.SetError(txtPrezime, "Obavezno polje!");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(txtPrezime, null);
+            }
+        }
+
+        private void txtCijena_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtCijena.Text) || txtCijena.Text == "0")
+            {
+                errorProvider.SetError(txtCijena, "Obavezno polje");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(txtCijena, null);
+            }
+        }
+
+
     }
 }

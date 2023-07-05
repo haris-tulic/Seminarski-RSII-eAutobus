@@ -27,7 +27,6 @@ namespace eAutobusModel.Requests
         [Required]
 
         public int VozacID { get; set; }
-        [Required]
 
         public int KondukterID { get; set; }
         [Required]

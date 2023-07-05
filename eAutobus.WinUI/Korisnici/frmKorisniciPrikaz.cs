@@ -66,7 +66,14 @@ namespace eAutobus.WinUI.Korisnici
 
         }
 
-        private async void dgvPrikaz_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var prikazKorisnika = dgvPrikaz.DataSource as List<KorisnikModel>;
+            Reports.frmKorisnici rpt = new Reports.frmKorisnici(prikazKorisnika);
+            rpt.Show();
+        }
+
+        private async void dgvPrikaz_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var IdKorisnik = dgvPrikaz.SelectedRows[0].Cells[0].Value;
             var korisnik = await _korisnici.GetById<KorisnikModel>(IdKorisnik);
@@ -82,13 +89,6 @@ namespace eAutobus.WinUI.Korisnici
                 frm.Show();
 
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var prikazKorisnika = dgvPrikaz.DataSource as List<KorisnikModel>;
-            Reports.frmKorisnici rpt = new Reports.frmKorisnici(prikazKorisnika);
-            rpt.Show();
         }
     }
 }

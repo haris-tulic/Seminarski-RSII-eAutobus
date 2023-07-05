@@ -31,7 +31,7 @@ namespace eAutobus.Services
 
         public async Task<List<VozacModel>> Get(VozacGetRequest request)
         {
-            var query = _context.Vozac.Include(v=>v.Korisnik).AsQueryable();
+            var query = _context.Vozac.Include(v=>v.Korisnik).Where(v=>v.IsDeleted == true).AsQueryable();
             var list = await query.ToListAsync();
             var listM = new List<VozacModel>();
             _mapper.Map(list, listM);

@@ -87,7 +87,7 @@ namespace eAutobus.Services
         {
             var entity = _context.Korisnik.Find(id);
             entity.IsDeleted = true;
-         await   _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
             return _mapper.Map<KorisnikModel>(entity);
         }
 

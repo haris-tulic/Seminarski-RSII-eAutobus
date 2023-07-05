@@ -77,7 +77,14 @@ namespace eAutobus.WinUI.Karte
 
         }
 
-        private async void dataGridView1_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void btnPrintajKarte_Click(object sender, EventArgs e)
+        {
+            var cjenovinikPrikaz = dataGridView1.DataSource as List<CjenovnikModel>;
+            Reports.PregledKarata rpt = new Reports.PregledKarata(cjenovinikPrikaz);
+            rpt.Show();
+        }
+
+        private async void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var kartaID = dataGridView1.SelectedRows[0].Cells[0].Value;
             var odabranaKarta = await _cjenovnik.GetById<CjenovnikModel>(kartaID);
@@ -92,13 +99,6 @@ namespace eAutobus.WinUI.Karte
                 frmDodajKartu frm = new frmDodajKartu(int.Parse(kartaID.ToString()));
                 frm.Show();
             }
-        }
-
-        private void btnPrintajKarte_Click(object sender, EventArgs e)
-        {
-            var cjenovinikPrikaz = dataGridView1.DataSource as List<CjenovnikModel>;
-            Reports.PregledKarata rpt = new Reports.PregledKarata(cjenovinikPrikaz);
-            rpt.Show();
         }
     }
 }

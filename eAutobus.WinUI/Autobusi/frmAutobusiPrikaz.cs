@@ -33,9 +33,19 @@ namespace eAutobus.WinUI.Autobusi
             dgvAutobusi.DataSource = result;
         }
 
+        private async Task LoadAutobuse()
+        {
+            var list = await _service.Get<List<AutobusiModel>>(null);
+            dgvAutobusi.AutoGenerateColumns = false;
+            dgvAutobusi.DataSource = list;
+        }
 
+        private async void frmAutobusiPrikaz_Load(object sender, EventArgs e)
+        {
+            await LoadAutobuse();
+        }
 
-        private async void dgvAutobusi_MouseDoubleClick(object sender, MouseEventArgs e)
+        private async void dgvAutobusi_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var idAutobus = dgvAutobusi.SelectedRows[0].Cells[0].Value;
             var odabraniAutobus = await _service.GetById<AutobusiModel>(idAutobus);
@@ -51,19 +61,5 @@ namespace eAutobus.WinUI.Autobusi
                 frm.Show();
             }
         }
-
-        private async Task LoadAutobuse()
-        {
-            var list = await _service.Get<List<AutobusiModel>>(null);
-            dgvAutobusi.AutoGenerateColumns = false;
-            dgvAutobusi.DataSource = list;
-        }
-
-        private async void frmAutobusiPrikaz_Load(object sender, EventArgs e)
-        {
-            await LoadAutobuse();
-        }
-
-
     }
 }

@@ -22,7 +22,7 @@ namespace eAutobus.WinUI
         {
             _route = route;
         }
-        public async Task<T> Get<T>(object search)
+        public async Task<T> Get<T>(object search = null)
         {
             var url = $"{Settings.Default.ApiURL}/{_route}";
             if (search!=null)

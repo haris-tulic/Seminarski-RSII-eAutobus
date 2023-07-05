@@ -73,7 +73,7 @@ namespace eAutobus.WinUI.Autobusi
             dgvAutobusi.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvAutobusi.Size = new Size(803, 324);
             dgvAutobusi.TabIndex = 0;
-            dgvAutobusi.MouseDoubleClick += dgvAutobusi_MouseDoubleClick;
+            dgvAutobusi.CellContentClick += dgvAutobusi_CellContentClick;
             // 
             // AutobusID
             // 

@@ -95,16 +95,17 @@ namespace eAutobus.WinUI.Autobusi
 
         private void txtBrojSjedista_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtMarkaAutobusa.Text))
+            if (string.IsNullOrWhiteSpace(txtBrojSjedista.Text))
             {
-                errorProvider.SetError(txtMarkaAutobusa, "Obavezno polje");
+                errorProvider.SetError(txtBrojSjedista, "Obavezno polje");
                 e.Cancel = true;
             }
             else
             {
-                errorProvider.SetError(txtMarkaAutobusa, null);
+                errorProvider.SetError(txtBrojSjedista, null);
             }
         }
+
         private async Task LoadGaraze()
         {
             try
@@ -138,5 +139,20 @@ namespace eAutobus.WinUI.Autobusi
             }
         }
 
+        private void cbGaraza_Validating(object sender, CancelEventArgs e)
+        {
+            
+                if (string.IsNullOrWhiteSpace(cbGaraza.SelectedValue.ToString()) || cbGaraza.SelectedValue.ToString() == "0")
+                {
+                    errorProvider.SetError(cbGaraza, "Obavezno polje!");
+                    e.Cancel = true;
+                }
+                else
+                {
+                    errorProvider.SetError(cbGaraza, null);
+                }
+            
+           
+        }
     }
 }

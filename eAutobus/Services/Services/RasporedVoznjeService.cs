@@ -48,7 +48,7 @@ namespace eAutobus.Services
             }
             if (!string.IsNullOrEmpty(search.Datum.ToString()) && search.Datum.Year > 1)
             {
-                query = query.Where(r => r.Datum.ToString("MM/dd/yyyy") == search.Datum.ToString("MM/dd/yyyy"));
+                query = query.Where(r => r.Datum == search.Datum);
             }
             var list = await query.ToListAsync();
             var listR = new List<RasporedVoznjeModel>();
