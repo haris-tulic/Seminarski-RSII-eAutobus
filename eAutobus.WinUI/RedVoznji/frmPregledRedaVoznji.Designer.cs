@@ -109,6 +109,7 @@ namespace eAutobus.WinUI.RedVoznji
             dgvLinije.Size = new Size(1059, 242);
             dgvLinije.TabIndex = 4;
             dgvLinije.CellContentClick += dgvLinije_CellContentClick;
+            dgvLinije.CellMouseDoubleClick += dgvLinije_CellMouseDoubleClick;
             // 
             // RasporedVoznjeID
             // 

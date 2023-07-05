@@ -90,15 +90,22 @@ namespace eAutobus.WinUI.Karte
             var odabranaKarta = await _cjenovnik.GetById<CjenovnikModel>(kartaID);
             if (dataGridView1.CurrentCell is DataGridViewButtonCell)
             {
-                await _cjenovnik.Delete<CjenovnikModel>(kartaID);
-                MessageBox.Show("Izbrisali ste odabranu kartu: " + odabranaKarta.TipKarte + " " + odabranaKarta.VrstaKarte);
-                await LoadCjenovnik();
+                DialogResult odgovor = MessageBox.Show("Da li zelite da izbrisete odabranu kartu? ", "Izbrisati zapis", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                if (odgovor == DialogResult.Yes)
+                {
+                    await _cjenovnik.Delete<CjenovnikModel>(kartaID);
+                    MessageBox.Show("Izbrisali ste odabranu kartu: " + odabranaKarta.TipKarte + " " + odabranaKarta.VrstaKarte);
+                    await LoadCjenovnik();
+                }
             }
-            else
-            {
-                frmDodajKartu frm = new frmDodajKartu(int.Parse(kartaID.ToString()));
-                frm.Show();
-            }
+            
+        }
+
+        private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            var kartaID = dataGridView1.SelectedRows[0].Cells[0].Value;
+            frmDodajKartu frm = new frmDodajKartu(int.Parse(kartaID.ToString()));
+            frm.Show();
         }
     }
 }

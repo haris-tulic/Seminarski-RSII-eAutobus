@@ -86,15 +86,23 @@ namespace eAutobus.WinUI.RedVoznji
             var odabranaLinija = await _linije.GetById<RasporedVoznjeModel>(RedVoznjeID);
             if (dgvLinije.CurrentCell is DataGridViewButtonCell)
             {
-                await _linije.Delete<RasporedVoznjeModel>(RedVoznjeID);
-                MessageBox.Show("Izbrisali ste liniju: " + odabranaLinija.Polazak + "-" + odabranaLinija.Odlazak);
-                await LoadRedVoznje();
+                DialogResult odgovor = MessageBox.Show("Da li zelite da izbrisete odabranu liniju? ", "Izbrisati zapis", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                if (odgovor == DialogResult.Yes)
+                {
+                    await _linije.Delete<RasporedVoznjeModel>(RedVoznjeID);
+                    MessageBox.Show("Izbrisali ste liniju: " + odabranaLinija.Polazak + "-" + odabranaLinija.Odlazak);
+                    await LoadRedVoznje();
+                }
             }
-            else
-            {
-                frmDodavanjeRedaVoznje frm = new frmDodavanjeRedaVoznje(int.Parse(RedVoznjeID.ToString()));
+
+        }
+
+        private void dgvLinije_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            var RedVoznjeID = dgvLinije.SelectedRows[0].Cells[0].Value;
+            frmDodavanjeRedaVoznje frm = new frmDodavanjeRedaVoznje(int.Parse(RedVoznjeID.ToString()));
                 frm.Show();
-            }
+           
         }
     }
 }

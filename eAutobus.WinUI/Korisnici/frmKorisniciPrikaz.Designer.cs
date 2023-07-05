@@ -119,6 +119,7 @@ namespace eAutobus.WinUI.Korisnici
             dgvPrikaz.Size = new Size(679, 256);
             dgvPrikaz.TabIndex = 7;
             dgvPrikaz.CellContentClick += dgvPrikaz_CellContentClick;
+            dgvPrikaz.CellMouseDoubleClick += dgvPrikaz_CellMouseDoubleClick;
             // 
             // KorisnikID
             // 

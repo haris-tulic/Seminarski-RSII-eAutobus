@@ -62,7 +62,7 @@ namespace eAutobus.WinUI.Karte
                 {
                     bool isChecked = (bool)checkBoxCell.Value;
                     if (!isChecked) {
-                        DialogResult odgovor = MessageBox.Show("Da li zelite kartu oznaciti kao Placena", "Confirmation", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                        DialogResult odgovor = MessageBox.Show("Da li zelite kartu oznaciti kao Placena", "Izbrisati zapis", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                         if (odgovor == DialogResult.Yes)
                         {
                             var response = await _karte.UplatiKartu<KartaModel>(IdKarta, kartaUpsert);

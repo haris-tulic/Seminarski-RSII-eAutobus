@@ -79,16 +79,22 @@ namespace eAutobus.WinUI.Korisnici
             var korisnik = await _korisnici.GetById<KorisnikModel>(IdKorisnik);
             if (dgvPrikaz.CurrentCell is DataGridViewButtonCell && korisnik != null)
             {
-                MessageBox.Show("Da li ste sigurni da želite da izbrišete korisnika " + korisnik.Ime + " " + korisnik.Prezime);
-                await _korisnici.Delete<KorisnikModel>(korisnik.KorisnikID);
+
+                DialogResult odgovor = MessageBox.Show("Da li ste sigurni da želite da izbrišete korisnika" + korisnik.Ime + " " + korisnik.Prezime, "Izbrisati zapis", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                if (odgovor == DialogResult.Yes)
+                    await _korisnici.Delete<KorisnikModel>(korisnik.KorisnikID);
                 await LoadKorisnike();
             }
-            else
-            {
-                frmKorisniciDodaj frm = new frmKorisniciDodaj(int.Parse(IdKorisnik.ToString()));
+           
+        }
+
+        private void dgvPrikaz_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            var IdKorisnik = dgvPrikaz.SelectedRows[0].Cells[0].Value;
+
+            frmKorisniciDodaj frm = new frmKorisniciDodaj(int.Parse(IdKorisnik.ToString()));
                 frm.Show();
 
-            }
         }
     }
 }

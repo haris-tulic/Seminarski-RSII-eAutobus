@@ -111,6 +111,7 @@ namespace eAutobus.WinUI.Karte
             dataGridView1.Size = new Size(929, 227);
             dataGridView1.TabIndex = 5;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            dataGridView1.CellMouseDoubleClick += dataGridView1_CellMouseDoubleClick;
             // 
             // CjenovnikID
             // 

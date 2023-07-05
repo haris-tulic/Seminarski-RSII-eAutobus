@@ -51,15 +51,22 @@ namespace eAutobus.WinUI.Autobusi
             var odabraniAutobus = await _service.GetById<AutobusiModel>(idAutobus);
             if (dgvAutobusi.CurrentCell is DataGridViewButtonCell)
             {
-                await _service.Delete<AutobusiModel>(idAutobus);
-                MessageBox.Show("Izbrisali ste odabrani autobus: " + odabraniAutobus.BrojAutobusa + " ---> " + odabraniAutobus.MarkaAutobusa);
-                await LoadAutobuse();
+                DialogResult odgovor = MessageBox.Show("Da li zelite izbrisati odabrani autobus?", "Izbrisati zapis", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                if (odgovor == DialogResult.Yes)
+                { 
+                    await _service.Delete<AutobusiModel>(idAutobus);
+                    MessageBox.Show("Izbrisali ste odabrani autobus: " + odabraniAutobus.BrojAutobusa + " ---> " + odabraniAutobus.MarkaAutobusa);
+                    await LoadAutobuse();
+                }
             }
-            else
-            {
-                frmDodajAutobus frm = new frmDodajAutobus(int.Parse(idAutobus.ToString()));
-                frm.Show();
-            }
+          
+        }
+
+        private void dgvAutobusi_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            var idAutobus = dgvAutobusi.SelectedRows[0].Cells[0].Value;
+            frmDodajAutobus frm = new frmDodajAutobus(int.Parse(idAutobus.ToString()));
+            frm.Show();
         }
     }
 }

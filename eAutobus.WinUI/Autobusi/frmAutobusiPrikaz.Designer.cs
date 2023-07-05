@@ -74,6 +74,7 @@ namespace eAutobus.WinUI.Autobusi
             dgvAutobusi.Size = new Size(803, 324);
             dgvAutobusi.TabIndex = 0;
             dgvAutobusi.CellContentClick += dgvAutobusi_CellContentClick;
+            dgvAutobusi.CellMouseDoubleClick += dgvAutobusi_CellMouseDoubleClick;
             // 
             // AutobusID
             // 
