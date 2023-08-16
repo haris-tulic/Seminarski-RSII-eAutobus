@@ -12,7 +12,7 @@ using eAutobus.Database;
 namespace eAutobus.Migrations
 {
     [DbContext(typeof(eAutobusi))]
-    [Migration("20230531143039_Init")]
+    [Migration("20230816132514_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -66,7 +66,7 @@ namespace eAutobus.Migrations
                             AutobusID = 1,
                             BrojAutobusa = 6,
                             BrojSjedista = 55,
-                            DatumProizvodnje = new DateTime(2023, 5, 31, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(4653),
+                            DatumProizvodnje = new DateTime(2023, 8, 16, 15, 25, 13, 26, DateTimeKind.Local).AddTicks(1710),
                             GarazaID = 1,
                             IsDeleted = false,
                             Ispravan = true,
@@ -77,7 +77,7 @@ namespace eAutobus.Migrations
                             AutobusID = 2,
                             BrojAutobusa = 10,
                             BrojSjedista = 55,
-                            DatumProizvodnje = new DateTime(2023, 5, 31, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(4752),
+                            DatumProizvodnje = new DateTime(2023, 8, 16, 15, 25, 13, 26, DateTimeKind.Local).AddTicks(1778),
                             GarazaID = 2,
                             IsDeleted = false,
                             Ispravan = true,
@@ -125,8 +125,8 @@ namespace eAutobus.Migrations
                             AutobusVozacID = 1,
                             AutobusID = 1,
                             IsDeleted = false,
-                            Kraj = new DateTime(2023, 6, 1, 0, 30, 38, 827, DateTimeKind.Local).AddTicks(4791),
-                            Pocetak = new DateTime(2023, 5, 31, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(4787),
+                            Kraj = new DateTime(2023, 8, 16, 23, 25, 13, 26, DateTimeKind.Local).AddTicks(1799),
+                            Pocetak = new DateTime(2023, 8, 16, 15, 25, 13, 26, DateTimeKind.Local).AddTicks(1796),
                             Smjena = 1,
                             VozacID = 1
                         },
@@ -135,8 +135,8 @@ namespace eAutobus.Migrations
                             AutobusVozacID = 2,
                             AutobusID = 2,
                             IsDeleted = false,
-                            Kraj = new DateTime(2023, 6, 1, 0, 30, 38, 827, DateTimeKind.Local).AddTicks(4845),
-                            Pocetak = new DateTime(2023, 5, 31, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(4835),
+                            Kraj = new DateTime(2023, 8, 16, 23, 25, 13, 26, DateTimeKind.Local).AddTicks(1819),
+                            Pocetak = new DateTime(2023, 8, 16, 15, 25, 13, 26, DateTimeKind.Local).AddTicks(1817),
                             Smjena = 1,
                             VozacID = 2
                         });
@@ -471,8 +471,8 @@ namespace eAutobus.Migrations
                         {
                             KartaKupacID = 1,
                             Aktivna = true,
-                            DatumVadjenjaKarte = new DateTime(2023, 5, 31, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(6091),
-                            DatumVazenjaKarte = new DateTime(2023, 6, 1, 4, 30, 38, 827, DateTimeKind.Local).AddTicks(6100),
+                            DatumVadjenjaKarte = new DateTime(2023, 8, 16, 15, 25, 13, 26, DateTimeKind.Local).AddTicks(2277),
+                            DatumVazenjaKarte = new DateTime(2023, 8, 17, 3, 25, 13, 26, DateTimeKind.Local).AddTicks(2282),
                             KartaID = 1,
                             KupacID = 1,
                             Pravac = true,
@@ -482,61 +482,12 @@ namespace eAutobus.Migrations
                         {
                             KartaKupacID = 2,
                             Aktivna = true,
-                            DatumVadjenjaKarte = new DateTime(2023, 5, 31, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(6148),
-                            DatumVazenjaKarte = new DateTime(2023, 6, 30, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(6154),
+                            DatumVadjenjaKarte = new DateTime(2023, 8, 16, 15, 25, 13, 26, DateTimeKind.Local).AddTicks(2298),
+                            DatumVazenjaKarte = new DateTime(2023, 9, 16, 15, 25, 13, 26, DateTimeKind.Local).AddTicks(2301),
                             KartaID = 2,
                             KupacID = 2,
                             Pravac = true,
                             PravacS = "U oba pravca"
-                        });
-                });
-
-            modelBuilder.Entity("eAutobus.Database.KorisniciUloge", b =>
-                {
-                    b.Property<int>("KorisniciUlogeID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("KorisniciUlogeID"), 1L, 1);
-
-                    b.Property<DateTime?>("DatumIzmjene")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("KorisnikID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UlogaID")
-                        .HasColumnType("int");
-
-                    b.HasKey("KorisniciUlogeID");
-
-                    b.HasIndex("KorisnikID");
-
-                    b.HasIndex("UlogaID");
-
-                    b.ToTable("KorisniciUloge");
-
-                    b.HasData(
-                        new
-                        {
-                            KorisniciUlogeID = 1,
-                            DatumIzmjene = new DateTime(2023, 5, 31, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(5704),
-                            KorisnikID = 1,
-                            UlogaID = 1
-                        },
-                        new
-                        {
-                            KorisniciUlogeID = 2,
-                            DatumIzmjene = new DateTime(2023, 5, 31, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(5775),
-                            KorisnikID = 2,
-                            UlogaID = 2
-                        },
-                        new
-                        {
-                            KorisniciUlogeID = 3,
-                            DatumIzmjene = new DateTime(2023, 5, 31, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(5807),
-                            KorisnikID = 3,
-                            UlogaID = 2
                         });
                 });
 
@@ -766,8 +717,8 @@ namespace eAutobus.Migrations
                         {
                             PlatiKartuID = 1,
                             Cijena = 10.0,
-                            DatumVadjenjaKarte = new DateTime(2023, 5, 31, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(6205),
-                            DatumVazenjaKarte = new DateTime(2023, 6, 30, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(6212),
+                            DatumVadjenjaKarte = new DateTime(2023, 8, 16, 15, 25, 13, 26, DateTimeKind.Local).AddTicks(2321),
+                            DatumVazenjaKarte = new DateTime(2023, 9, 16, 15, 25, 13, 26, DateTimeKind.Local).AddTicks(2324),
                             JeLiPlacena = true,
                             KartaID = 2,
                             KupacID = 2
@@ -835,15 +786,15 @@ namespace eAutobus.Migrations
                             RasporedVoznjeID = 1,
                             AutobusID = 1,
                             BrojLinije = 6,
-                            Datum = new DateTime(2023, 5, 31, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(6345),
+                            Datum = new DateTime(2023, 8, 16, 15, 25, 13, 26, DateTimeKind.Local).AddTicks(2344),
                             FinalOcjena = 5m,
                             IsDeleted = false,
                             KondukterID = 1,
                             OdredisteID = 2,
                             PolazisteID = 1,
                             VozacID = 1,
-                            VrijemeDolaska = new DateTime(2023, 5, 31, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(6361),
-                            VrijemePolaska = new DateTime(2023, 5, 31, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(6356)
+                            VrijemeDolaska = new DateTime(2023, 8, 16, 15, 25, 13, 26, DateTimeKind.Local).AddTicks(2353),
+                            VrijemePolaska = new DateTime(2023, 8, 16, 15, 25, 13, 26, DateTimeKind.Local).AddTicks(2350)
                         },
                         new
                         {
@@ -902,7 +853,7 @@ namespace eAutobus.Migrations
                         new
                         {
                             RecenzijaID = 1,
-                            DatumRecenzije = new DateTime(2023, 5, 31, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(6446),
+                            DatumRecenzije = new DateTime(2023, 8, 16, 15, 25, 13, 26, DateTimeKind.Local).AddTicks(2384),
                             Komentar = "Sve pohvale!",
                             KupacID = 1,
                             Ocjena = 5,
@@ -912,7 +863,7 @@ namespace eAutobus.Migrations
                         new
                         {
                             RecenzijaID = 2,
-                            DatumRecenzije = new DateTime(2023, 5, 31, 16, 30, 38, 827, DateTimeKind.Local).AddTicks(6492),
+                            DatumRecenzije = new DateTime(2023, 8, 16, 15, 25, 13, 26, DateTimeKind.Local).AddTicks(2398),
                             Komentar = "Nije očišćeno!",
                             KupacID = 2,
                             Ocjena = 3,
@@ -1206,7 +1157,7 @@ namespace eAutobus.Migrations
                     b.HasOne("eAutobus.Database.Vozac", "Vozac")
                         .WithMany("Autobusi")
                         .HasForeignKey("VozacID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Autobus");
@@ -1217,15 +1168,15 @@ namespace eAutobus.Migrations
             modelBuilder.Entity("eAutobus.Database.Cjenovnik", b =>
                 {
                     b.HasOne("eAutobus.Database.Stanica", "Odrediste")
-                        .WithMany()
+                        .WithMany("Odredistes")
                         .HasForeignKey("OdredisteID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("eAutobus.Database.Stanica", "Polaziste")
-                        .WithMany()
+                        .WithMany("Polazistes")
                         .HasForeignKey("PolazisteID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("eAutobus.Database.TipKarte", "Tipkarte")
@@ -1271,15 +1222,15 @@ namespace eAutobus.Migrations
             modelBuilder.Entity("eAutobus.Database.Karta", b =>
                 {
                     b.HasOne("eAutobus.Database.Stanica", "Odrediste")
-                        .WithMany()
+                        .WithMany("KartaO")
                         .HasForeignKey("OdredisteID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("eAutobus.Database.Stanica", "Polaziste")
-                        .WithMany()
+                        .WithMany("KartaP")
                         .HasForeignKey("PolazisteID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("eAutobus.Database.TipKarte", "TipKarte")
@@ -1320,25 +1271,6 @@ namespace eAutobus.Migrations
                     b.Navigation("Karta");
 
                     b.Navigation("Kupac");
-                });
-
-            modelBuilder.Entity("eAutobus.Database.KorisniciUloge", b =>
-                {
-                    b.HasOne("eAutobus.Database.Korisnik", "Korisnik")
-                        .WithMany()
-                        .HasForeignKey("KorisnikID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("eAutobus.Database.Uloge", "Uloga")
-                        .WithMany()
-                        .HasForeignKey("UlogaID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Korisnik");
-
-                    b.Navigation("Uloga");
                 });
 
             modelBuilder.Entity("eAutobus.Database.Korisnik", b =>
@@ -1394,15 +1326,15 @@ namespace eAutobus.Migrations
                         .IsRequired();
 
                     b.HasOne("eAutobus.Database.Stanica", "Odrediste")
-                        .WithMany()
+                        .WithMany("RasporedVoznjeO")
                         .HasForeignKey("OdredisteID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("eAutobus.Database.Stanica", "Polaziste")
-                        .WithMany()
+                        .WithMany("RasporedVoznjeP")
                         .HasForeignKey("PolazisteID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("eAutobus.Database.Vozac", "Vozac")
@@ -1501,6 +1433,21 @@ namespace eAutobus.Migrations
             modelBuilder.Entity("eAutobus.Database.RasporedVoznje", b =>
                 {
                     b.Navigation("Recenzija");
+                });
+
+            modelBuilder.Entity("eAutobus.Database.Stanica", b =>
+                {
+                    b.Navigation("KartaO");
+
+                    b.Navigation("KartaP");
+
+                    b.Navigation("Odredistes");
+
+                    b.Navigation("Polazistes");
+
+                    b.Navigation("RasporedVoznjeO");
+
+                    b.Navigation("RasporedVoznjeP");
                 });
 
             modelBuilder.Entity("eAutobus.Database.Uloge", b =>

@@ -12,6 +12,7 @@
         public Garaza Garaza { get; set; }
         public bool IsDeleted { get; set; }
 
+        public List<Vozac> Vozacs { get; set; }
         public List<AutobusVozac> Vozaci { get; set; }
     }
 }

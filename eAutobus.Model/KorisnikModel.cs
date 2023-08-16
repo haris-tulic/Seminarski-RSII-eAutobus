@@ -20,7 +20,6 @@ namespace eAutobusModel
         public int UlogeID { get; set; }
         public string Uloga { get; set; }
         public UlogeModel Uloge { get; set; }
-        public List<KorisniciUlogeModel> KorisnickeUloge { get; set; }
         
     }
 }

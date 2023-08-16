@@ -302,30 +302,6 @@ namespace eAutobus.Database
 
             });
 
-            //korisnici-uloge
-            modelBuilder.Entity<KorisniciUloge>().HasData(new KorisniciUloge()
-            {
-                KorisniciUlogeID = 1,
-                KorisnikID = 1,
-                UlogaID = 1,
-                DatumIzmjene = DateTime.Now
-                
-            });
-            modelBuilder.Entity<KorisniciUloge>().HasData(new KorisniciUloge()
-            {
-                KorisniciUlogeID = 2,
-                KorisnikID = 2,
-                UlogaID = 2,
-                DatumIzmjene = DateTime.Now
-            });
-            modelBuilder.Entity<KorisniciUloge>().HasData(new KorisniciUloge()
-            {
-                KorisniciUlogeID = 3,
-                KorisnikID = 3,
-                UlogaID = 2,
-                DatumIzmjene = DateTime.Now
-            });
-
             //garaza
             modelBuilder.Entity<Garaza>().HasData(new Garaza()
             {

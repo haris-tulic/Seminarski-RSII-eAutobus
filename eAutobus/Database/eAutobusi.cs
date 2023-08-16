@@ -23,7 +23,6 @@ namespace eAutobus.Database
         public virtual DbSet<Vozac> Vozac { get; set; }
         public virtual DbSet<VrstaKarte> VrstaKarte { get; set; }
         public virtual DbSet<Zona> Zona { get; set; }
-        public virtual DbSet<KorisniciUloge> KorisniciUloge { get; set; }
         public virtual DbSet<Uloge> Uloge { get; set; }
         public virtual DbSet<Garaza> Garaza { get; set; }
         public virtual DbSet<Korisnik> Korisnik { get; set; }
@@ -35,10 +34,49 @@ namespace eAutobus.Database
 
         protected override void OnModelCreating(ModelBuilder bilder)
         {
+            bilder.Entity<Cjenovnik>()
+                  .HasOne(p => p.Polaziste)
+                  .WithMany(c => c.Polazistes)
+                  .HasForeignKey(p => p.PolazisteID)
+                  .OnDelete(DeleteBehavior.NoAction);
+
+            bilder.Entity<Cjenovnik>()
+                  .HasOne(o => o.Odrediste)
+                  .WithMany(s => s.Odredistes)
+                  .HasForeignKey(o => o.OdredisteID)
+                  .OnDelete(DeleteBehavior.NoAction);
+
+            bilder.Entity<Karta>()
+                    .HasOne(p => p.Polaziste)
+                    .WithMany(k => k.KartaP)
+                    .HasForeignKey(p => p.PolazisteID)
+                    .OnDelete(DeleteBehavior.NoAction);
+
+            bilder.Entity<Karta>()
+                  .HasOne(p => p.Odrediste)
+                  .WithMany(k => k.KartaO)
+                  .HasForeignKey(p => p.OdredisteID)
+                  .OnDelete(DeleteBehavior.NoAction);
+
+            bilder.Entity<RasporedVoznje>()
+                    .HasOne(p => p.Polaziste)
+                    .WithMany(k => k.RasporedVoznjeP)
+                    .HasForeignKey(p => p.PolazisteID)
+                    .OnDelete(DeleteBehavior.NoAction);
+
+            bilder.Entity<RasporedVoznje>()
+               .HasOne(p => p.Odrediste)
+               .WithMany(k => k.RasporedVoznjeO)
+               .HasForeignKey(p => p.OdredisteID)
+               .OnDelete(DeleteBehavior.NoAction);
+
+            bilder.Entity<Vozac>().HasMany(v => v.Autobuss).WithMany(v => v.Vozacs).UsingEntity<AutobusVozac>();
+            bilder.Entity<AutobusVozac>().HasOne(a=>a.Vozac).WithMany(v=>v.Autobusi).HasForeignKey(a=>a.VozacID).OnDelete(DeleteBehavior.NoAction);
+
             base.OnModelCreating(bilder);
             OnModelCreatingPartial(bilder);
         }
-        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
     }
 }

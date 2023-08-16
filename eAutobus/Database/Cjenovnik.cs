@@ -1,4 +1,6 @@
-﻿namespace eAutobus.Database
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace eAutobus.Database
 {
     public class Cjenovnik
     {
@@ -10,10 +12,13 @@
         public int VrstaKarteID { get; set; }
         public TipKarte Tipkarte { get; set; }
         public int TipkarteID { get; set; }
+        
         public int PolazisteID { get; set; }
-        public Stanica Polaziste { get; set; }
+        public virtual Stanica Polaziste { get; set; }
+        
         public int OdredisteID { get; set; }
-        public Stanica Odrediste { get; set; }
+        public virtual Stanica Odrediste { get; set; }
+
         public double Cijena { get; set; }
         public bool IsDeleted { get; set; }
     }

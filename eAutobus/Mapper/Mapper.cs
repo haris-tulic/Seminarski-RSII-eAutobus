@@ -65,8 +65,6 @@ namespace eAutobus.Mapper
             CreateMap<Korisnik, UpravaModel>().ReverseMap();
             CreateMap<Korisnik, KupacModel>().ReverseMap();
 
-            CreateMap<KorisniciUloge, KorisniciUlogeModel>().ReverseMap();
-
             CreateMap<KartaKupac, KartaKupacModel>().ReverseMap();
             CreateMap<KartaKupacUpsertRequest, KartaKupac>().ReverseMap();
 

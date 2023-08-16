@@ -80,10 +80,10 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-//using (var scope = app.Services.CreateScope())
-//{
-//    var dataContext = scope.ServiceProvider.GetRequiredService<eAutobusi>();
-//    dataContext.Database.EnsureCreated();
-//}
+using (var scope = app.Services.CreateScope())
+{
+    var dataContext = scope.ServiceProvider.GetRequiredService<eAutobusi>();
+    dataContext.Database.EnsureCreated();
+}
 
 app.Run();
