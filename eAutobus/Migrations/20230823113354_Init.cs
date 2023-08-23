@@ -126,7 +126,7 @@ namespace eAutobus.Migrations
                         column: x => x.GradID,
                         principalTable: "Grad",
                         principalColumn: "GradID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -147,7 +147,7 @@ namespace eAutobus.Migrations
                         column: x => x.GradID,
                         principalTable: "Grad",
                         principalColumn: "GradID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -177,13 +177,13 @@ namespace eAutobus.Migrations
                         column: x => x.GradID,
                         principalTable: "Grad",
                         principalColumn: "GradID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_Korisnik_Uloge_UlogeID",
                         column: x => x.UlogeID,
                         principalTable: "Uloge",
                         principalColumn: "UlogeID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -208,7 +208,7 @@ namespace eAutobus.Migrations
                         column: x => x.GarazaID,
                         principalTable: "Garaza",
                         principalColumn: "GarazaID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -243,19 +243,19 @@ namespace eAutobus.Migrations
                         column: x => x.TipkarteID,
                         principalTable: "TipKarte",
                         principalColumn: "TipKarteID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_Cjenovnik_VrstaKarte_VrstaKarteID",
                         column: x => x.VrstaKarteID,
                         principalTable: "VrstaKarte",
                         principalColumn: "VrstaKarteID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_Cjenovnik_Zona_ZonaID",
                         column: x => x.ZonaID,
                         principalTable: "Zona",
                         principalColumn: "ZonaID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -290,13 +290,13 @@ namespace eAutobus.Migrations
                         column: x => x.TipKarteID,
                         principalTable: "TipKarte",
                         principalColumn: "TipKarteID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_Karta_VrstaKarte_VrstaKarteID",
                         column: x => x.VrstaKarteID,
                         principalTable: "VrstaKarte",
                         principalColumn: "VrstaKarteID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -317,7 +317,7 @@ namespace eAutobus.Migrations
                         column: x => x.KorisnikID,
                         principalTable: "Korisnik",
                         principalColumn: "KorisnikID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -342,13 +342,13 @@ namespace eAutobus.Migrations
                         column: x => x.KartaID,
                         principalTable: "Karta",
                         principalColumn: "KartaID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_KartaKupac_Kupac_KupacID",
                         column: x => x.KupacID,
                         principalTable: "Kupac",
                         principalColumn: "KupacID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -372,13 +372,13 @@ namespace eAutobus.Migrations
                         column: x => x.KartaID,
                         principalTable: "Karta",
                         principalColumn: "KartaID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_PlatiKartu_Kupac_KupacID",
                         column: x => x.KupacID,
                         principalTable: "Kupac",
                         principalColumn: "KupacID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -402,7 +402,7 @@ namespace eAutobus.Migrations
                         column: x => x.AutobusID,
                         principalTable: "Autobus",
                         principalColumn: "AutobusID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_AutobusVozac_Vozac_VozacID",
                         column: x => x.VozacID,
@@ -436,7 +436,7 @@ namespace eAutobus.Migrations
                         column: x => x.AutobusID,
                         principalTable: "Autobus",
                         principalColumn: "AutobusID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_RasporedVoznje_Stanica_OdredisteID",
                         column: x => x.OdredisteID,
@@ -451,14 +451,12 @@ namespace eAutobus.Migrations
                         name: "FK_RasporedVoznje_Vozac_KondukterID",
                         column: x => x.KondukterID,
                         principalTable: "Vozac",
-                        principalColumn: "VozacID",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "VozacID");
                     table.ForeignKey(
                         name: "FK_RasporedVoznje_Vozac_VozacID",
                         column: x => x.VozacID,
                         principalTable: "Vozac",
-                        principalColumn: "VozacID",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "VozacID");
                 });
 
             migrationBuilder.CreateTable(
@@ -482,13 +480,13 @@ namespace eAutobus.Migrations
                         column: x => x.KupacID,
                         principalTable: "Kupac",
                         principalColumn: "KupacID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_Recenzija_RasporedVoznje_RasporedVoznjeID",
                         column: x => x.RasporedVoznjeID,
                         principalTable: "RasporedVoznje",
                         principalColumn: "RasporedVoznjeID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.InsertData(
@@ -583,8 +581,8 @@ namespace eAutobus.Migrations
                 columns: new[] { "AutobusID", "BrojAutobusa", "BrojSjedista", "DatumProizvodnje", "GarazaID", "IsDeleted", "Ispravan", "MarkaAutobusa" },
                 values: new object[,]
                 {
-                    { 1, 6, 55, new DateTime(2023, 8, 16, 15, 25, 13, 26, DateTimeKind.Local).AddTicks(1710), 1, false, true, "MAN" },
-                    { 2, 10, 55, new DateTime(2023, 8, 16, 15, 25, 13, 26, DateTimeKind.Local).AddTicks(1778), 2, false, true, "Volvo" }
+                    { 1, 6, 55, new DateTime(2023, 8, 23, 13, 33, 53, 514, DateTimeKind.Local).AddTicks(2371), 1, false, true, "MAN" },
+                    { 2, 10, 55, new DateTime(2023, 8, 23, 13, 33, 53, 514, DateTimeKind.Local).AddTicks(2471), 2, false, true, "Volvo" }
                 });
 
             migrationBuilder.InsertData(
@@ -623,8 +621,8 @@ namespace eAutobus.Migrations
                 columns: new[] { "AutobusVozacID", "AutobusID", "IsDeleted", "Kraj", "Pocetak", "Smjena", "VozacID" },
                 values: new object[,]
                 {
-                    { 1, 1, false, new DateTime(2023, 8, 16, 23, 25, 13, 26, DateTimeKind.Local).AddTicks(1799), new DateTime(2023, 8, 16, 15, 25, 13, 26, DateTimeKind.Local).AddTicks(1796), 1, 1 },
-                    { 2, 2, false, new DateTime(2023, 8, 16, 23, 25, 13, 26, DateTimeKind.Local).AddTicks(1819), new DateTime(2023, 8, 16, 15, 25, 13, 26, DateTimeKind.Local).AddTicks(1817), 1, 2 }
+                    { 1, 1, false, new DateTime(2023, 8, 23, 21, 33, 53, 514, DateTimeKind.Local).AddTicks(2518), new DateTime(2023, 8, 23, 13, 33, 53, 514, DateTimeKind.Local).AddTicks(2508), 1, 1 },
+                    { 2, 2, false, new DateTime(2023, 8, 23, 21, 33, 53, 514, DateTimeKind.Local).AddTicks(2581), new DateTime(2023, 8, 23, 13, 33, 53, 514, DateTimeKind.Local).AddTicks(2574), 1, 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -632,33 +630,33 @@ namespace eAutobus.Migrations
                 columns: new[] { "KartaKupacID", "Aktivna", "DatumVadjenjaKarte", "DatumVazenjaKarte", "KartaID", "KupacID", "Pravac", "PravacS" },
                 values: new object[,]
                 {
-                    { 1, true, new DateTime(2023, 8, 16, 15, 25, 13, 26, DateTimeKind.Local).AddTicks(2277), new DateTime(2023, 8, 17, 3, 25, 13, 26, DateTimeKind.Local).AddTicks(2282), 1, 1, true, "U jednom pravcu" },
-                    { 2, true, new DateTime(2023, 8, 16, 15, 25, 13, 26, DateTimeKind.Local).AddTicks(2298), new DateTime(2023, 9, 16, 15, 25, 13, 26, DateTimeKind.Local).AddTicks(2301), 2, 2, true, "U oba pravca" }
+                    { 1, true, new DateTime(2023, 8, 23, 13, 33, 53, 514, DateTimeKind.Local).AddTicks(3497), new DateTime(2023, 8, 24, 1, 33, 53, 514, DateTimeKind.Local).AddTicks(3512), 1, 1, true, "U jednom pravcu" },
+                    { 2, true, new DateTime(2023, 8, 23, 13, 33, 53, 514, DateTimeKind.Local).AddTicks(3603), new DateTime(2023, 9, 23, 13, 33, 53, 514, DateTimeKind.Local).AddTicks(3611), 2, 2, true, "U oba pravca" }
                 });
 
             migrationBuilder.InsertData(
                 table: "PlatiKartu",
                 columns: new[] { "PlatiKartuID", "Cijena", "DatumVadjenjaKarte", "DatumVazenjaKarte", "JeLiPlacena", "KartaID", "KupacID" },
-                values: new object[] { 1, 10.0, new DateTime(2023, 8, 16, 15, 25, 13, 26, DateTimeKind.Local).AddTicks(2321), new DateTime(2023, 9, 16, 15, 25, 13, 26, DateTimeKind.Local).AddTicks(2324), true, 2, 2 });
+                values: new object[] { 1, 10.0, new DateTime(2023, 8, 23, 13, 33, 53, 514, DateTimeKind.Local).AddTicks(3640), new DateTime(2023, 9, 23, 13, 33, 53, 514, DateTimeKind.Local).AddTicks(3644), true, 2, 2 });
 
             migrationBuilder.InsertData(
                 table: "RasporedVoznje",
                 columns: new[] { "RasporedVoznjeID", "AutobusID", "BrojLinije", "Datum", "FinalOcjena", "IsDeleted", "KondukterID", "OdredisteID", "PolazisteID", "VozacID", "VrijemeDolaska", "VrijemePolaska" },
                 values: new object[,]
                 {
-                    { 1, 1, 6, new DateTime(2023, 8, 16, 15, 25, 13, 26, DateTimeKind.Local).AddTicks(2344), 5m, false, 1, 2, 1, 1, new DateTime(2023, 8, 16, 15, 25, 13, 26, DateTimeKind.Local).AddTicks(2353), new DateTime(2023, 8, 16, 15, 25, 13, 26, DateTimeKind.Local).AddTicks(2350) },
+                    { 1, 1, 6, new DateTime(2023, 8, 23, 13, 33, 53, 514, DateTimeKind.Local).AddTicks(3673), 5m, false, 1, 2, 1, 1, new DateTime(2023, 8, 23, 13, 33, 53, 514, DateTimeKind.Local).AddTicks(3684), new DateTime(2023, 8, 23, 13, 33, 53, 514, DateTimeKind.Local).AddTicks(3680) },
                     { 2, 2, 10, new DateTime(2022, 3, 1, 14, 29, 18, 167, DateTimeKind.Local).AddTicks(8190), 4m, false, 2, 1, 2, 2, new DateTime(2022, 3, 1, 14, 30, 0, 0, DateTimeKind.Local).AddTicks(8190), new DateTime(2022, 3, 1, 12, 15, 0, 0, DateTimeKind.Local).AddTicks(8190) }
                 });
 
             migrationBuilder.InsertData(
                 table: "Recenzija",
                 columns: new[] { "RecenzijaID", "DatumRecenzije", "Komentar", "KupacID", "Ocjena", "RasporedVoznjeID", "VrstaUsluga" },
-                values: new object[] { 1, new DateTime(2023, 8, 16, 15, 25, 13, 26, DateTimeKind.Local).AddTicks(2384), "Sve pohvale!", 1, 5, 1, "Osoblje" });
+                values: new object[] { 1, new DateTime(2023, 8, 23, 13, 33, 53, 514, DateTimeKind.Local).AddTicks(3735), "Sve pohvale!", 1, 5, 1, "Osoblje" });
 
             migrationBuilder.InsertData(
                 table: "Recenzija",
                 columns: new[] { "RecenzijaID", "DatumRecenzije", "Komentar", "KupacID", "Ocjena", "RasporedVoznjeID", "VrstaUsluga" },
-                values: new object[] { 2, new DateTime(2023, 8, 16, 15, 25, 13, 26, DateTimeKind.Local).AddTicks(2398), "Nije očišćeno!", 2, 3, 2, "Vozilo" });
+                values: new object[] { 2, new DateTime(2023, 8, 23, 13, 33, 53, 514, DateTimeKind.Local).AddTicks(3761), "Nije očišćeno!", 2, 3, 2, "Vozilo" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Autobus_GarazaID",

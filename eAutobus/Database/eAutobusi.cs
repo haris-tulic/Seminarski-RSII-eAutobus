@@ -73,6 +73,10 @@ namespace eAutobus.Database
             bilder.Entity<Vozac>().HasMany(v => v.Autobuss).WithMany(v => v.Vozacs).UsingEntity<AutobusVozac>();
             bilder.Entity<AutobusVozac>().HasOne(a=>a.Vozac).WithMany(v=>v.Autobusi).HasForeignKey(a=>a.VozacID).OnDelete(DeleteBehavior.NoAction);
 
+            bilder.Entity<RasporedVoznje>().HasOne(r => r.Kondukter).WithMany(v => v.RKondukters).HasForeignKey(r => r.KondukterID).OnDelete(DeleteBehavior.NoAction);
+            bilder.Entity<RasporedVoznje>().HasOne(r => r.Vozac).WithMany(v => v.RVozacs).HasForeignKey(r => r.VozacID).OnDelete(DeleteBehavior.NoAction);
+
+
             base.OnModelCreating(bilder);
             OnModelCreatingPartial(bilder);
         }

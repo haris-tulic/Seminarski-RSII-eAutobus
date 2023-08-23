@@ -9,5 +9,8 @@
         public List<Autobus> Autobuss { get; set; }
         public List<AutobusVozac> Autobusi { get; set; }
         public bool IsDeleted { get; internal set; }
+        public ICollection<RasporedVoznje> RVozacs  { get; set; }
+        public ICollection<RasporedVoznje> RKondukters  { get; set; }
+
     }
 }

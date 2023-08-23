@@ -32,6 +32,7 @@ dependencies:
   unicons: any 
   http: ^0.13.5
   provider: ^6.0.3
+  adb: ^0.2.5
   json_serializable: ^6.5.2
   intl: ^0.17.0
   email_validator: ^2.0.1

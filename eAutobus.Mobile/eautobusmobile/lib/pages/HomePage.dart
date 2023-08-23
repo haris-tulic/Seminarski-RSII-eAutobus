@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
         title: const Text("eAutobus"),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.fromLTRB(20, 50, 20, 0),
+        padding: const EdgeInsets.fromLTRB(20, 50, 0, 0),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

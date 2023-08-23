@@ -11,6 +11,7 @@
 
         public int VozacID { get; set; }
         public Vozac Vozac { get; set; }
+
         public bool IsDeleted { get; set; }
     }
 }
