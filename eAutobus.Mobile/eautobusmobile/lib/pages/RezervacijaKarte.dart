@@ -130,11 +130,12 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
     final DateTime? _odabraniDatum = await showDatePicker(
       context: context,
       initialDate: _datumPOOD,
-      firstDate: DateTime.now(),
+      firstDate: datumS == "Datum povratka" ? _datumPOOD : DateTime.now(),
       lastDate: DateTime(2035),
+      cancelText: "",
     );
     setState(() {
-      if (_odabraniDatum != null || _odabraniDatum != _datumPOOD) {
+      if (_odabraniDatum != null && _odabraniDatum != _datumPOOD) {
         _datumPOOD = _odabraniDatum!;
         if (datumS == "Datum polaska") {
           _datumPolaska.text = "${_datumPOOD.toLocal()}".substring(0, 10);
@@ -211,7 +212,7 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
           title: const Text("Kupovina karte"),
         ),
         body: SingleChildScrollView(
-          padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
+          padding: EdgeInsets.fromLTRB(10, 50, 10, 35),
           child: Form(
             key: _formkey,
             child: Center(
@@ -343,31 +344,33 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          width: 200,
-                          color: Colors.orange[500],
-                          alignment: Alignment.center,
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              labelText: "Datum izdavanja karte",
-                              contentPadding: const EdgeInsets.all(20),
-                              labelStyle: const TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(0)),
+                        Flexible(
+                          child: Container(
+                            width: 200,
+                            color: Colors.orange[500],
+                            alignment: Alignment.center,
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                labelText: "Datum izdavanja karte",
+                                //contentPadding: const EdgeInsets.all(20),
+                                labelStyle: const TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(0)),
+                              ),
+                              validator: (value) {
+                                return (value == null || value.isEmpty)
+                                    ? _obaveznoPolje
+                                    : null;
+                              },
+                              controller: _datumPolaska,
+                              obscureText: false,
+                              style: const TextStyle(color: Colors.white),
+                              onTap: () {
+                                _selectDate(context, "Datum polaska");
+                              },
                             ),
-                            validator: (value) {
-                              return (value == null || value.isEmpty)
-                                  ? _obaveznoPolje
-                                  : null;
-                            },
-                            controller: _datumPolaska,
-                            obscureText: false,
-                            style: const TextStyle(color: Colors.white),
-                            onTap: () {
-                              _selectDate(context, "Datum polaska");
-                            },
                           ),
                         ),
                         const SizedBox(width: 30),
@@ -405,37 +408,39 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
                   ),
                   const SizedBox(height: 30),
                   Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                    Container(
-                      width: 200,
-                      color: Colors.orange[500],
-                      child: DropdownButtonFormField(
-                          isDense: true,
-                          dropdownColor: Colors.orange[300],
-                          style: const TextStyle(color: Colors.white),
-                          decoration: const InputDecoration(
-                            labelText: "Odaberite tip karte",
-                            labelStyle: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                            border: OutlineInputBorder(),
-                          ),
-                          validator: (value) {
-                            return value == null ? _obaveznoPolje : null;
-                          },
-                          value: _tipKarteS != null ? _tipKarteS : null,
-                          items: [
-                            for (final kartat in tipKarte!)
-                              DropdownMenuItem(
-                                  value: kartat.tipKarteID,
-                                  child: Row(
-                                    children: [Text("${kartat.naziv}")],
-                                  ))
-                          ],
-                          onChanged: (value) {
-                            setState(() {
-                              _tipKarteS = value as int;
-                            });
-                          }),
+                    Flexible(
+                      child: Container(
+                        width: 200,
+                        color: Colors.orange[500],
+                        child: DropdownButtonFormField(
+                            isDense: true,
+                            dropdownColor: Colors.orange[300],
+                            style: const TextStyle(color: Colors.white),
+                            decoration: const InputDecoration(
+                              labelText: "Odaberite tip karte",
+                              labelStyle: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                              border: OutlineInputBorder(),
+                            ),
+                            validator: (value) {
+                              return value == null ? _obaveznoPolje : null;
+                            },
+                            value: _tipKarteS != null ? _tipKarteS : null,
+                            items: [
+                              for (final kartat in tipKarte!)
+                                DropdownMenuItem(
+                                    value: kartat.tipKarteID,
+                                    child: Row(
+                                      children: [Text("${kartat.naziv}")],
+                                    ))
+                            ],
+                            onChanged: (value) {
+                              setState(() {
+                                _tipKarteS = value as int;
+                              });
+                            }),
+                      ),
                     ),
                     const SizedBox(width: 30),
                     Flexible(
@@ -485,6 +490,7 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
                             ? _obaveznoPolje
                             : null;
                       },
+                      obscureText: false,
                       decoration: InputDecoration(
                         labelText: "Cijena",
                         labelStyle: const TextStyle(

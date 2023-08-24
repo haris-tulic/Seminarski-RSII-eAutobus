@@ -53,7 +53,7 @@ class _InfoPageState extends State<InfoPage> {
               decoration:
                   const BoxDecoration(color: Color.fromARGB(255, 255, 108, 10)),
               arrowColor: Colors.white,
-              accountName: Text('${korisnik.korisnickoIme.toString()}',
+              accountName: Text('${korisnik.korisnickoIme}',
                   style: const TextStyle(color: Colors.white, fontSize: 18)),
               accountEmail: Row(
                 children: [
@@ -64,7 +64,7 @@ class _InfoPageState extends State<InfoPage> {
                   const SizedBox(
                     width: 10,
                   ),
-                  Text('${korisnik.email.toString()}',
+                  Text('${korisnik.email}',
                       style:
                           const TextStyle(color: Colors.white, fontSize: 18)),
                 ],
@@ -72,7 +72,7 @@ class _InfoPageState extends State<InfoPage> {
               currentAccountPicture: CircleAvatar(
                 backgroundColor: Colors.yellow,
                 child: Text(
-                  '${korisnik.ime.toString().substring(0, 1)}${korisnik.prezime.toString().substring(0, 1) ?? "N"}',
+                  '${korisnik.ime.toString().substring(0, 1)}${korisnik.prezime.toString().substring(0, 1) ?? "NN"}',
                   style: const TextStyle(fontSize: 40.0, color: Colors.red),
                 ),
               ),

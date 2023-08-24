@@ -65,6 +65,7 @@ class _CjenovnikState extends State<CjenovnikPage> {
 
   Widget prikazCjenovnika() {
     return SingleChildScrollView(
+      padding: const EdgeInsets.fromLTRB(15, 15, 15, 15),
       scrollDirection: Axis.horizontal,
       child: Center(
         child: Column(
@@ -78,7 +79,7 @@ class _CjenovnikState extends State<CjenovnikPage> {
                 style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
-                    fontSize: 18),
+                    fontSize: 16),
               ),
             ),
             const SizedBox(
@@ -96,7 +97,10 @@ class _CjenovnikState extends State<CjenovnikPage> {
                   style: const TextStyle(color: Colors.white),
                   decoration: const InputDecoration(
                     labelText: 'Odaberite tip karte',
-                    labelStyle: TextStyle(color: Colors.white),
+                    labelStyle: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold),
                     border: OutlineInputBorder(),
                   ),
                   value: tipKarte != null ? tipKarte : null,
@@ -155,29 +159,40 @@ class _CjenovnikState extends State<CjenovnikPage> {
                 ),
                 child: DataTable(
                   dataTextStyle:
-                      const TextStyle(fontSize: 15, color: Colors.white),
+                      const TextStyle(fontSize: 10, color: Colors.white),
                   columns: const [
                     DataColumn(
                         label: Text(
                       'Vrsta karte',
-                      style: TextStyle(color: Colors.white, fontSize: 18),
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12),
                     )),
                     DataColumn(
                         label: Text('Tip karte',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 18))),
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12))),
                     DataColumn(
                         label: Text('Polaziste',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 18))),
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12))),
                     DataColumn(
                         label: Text('Odrediste',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 18))),
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12))),
                     DataColumn(
                         label: Text('Cijena karte',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 18))),
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12))),
                   ],
                   rows: data!
                       .map(

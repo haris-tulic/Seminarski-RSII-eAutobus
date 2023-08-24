@@ -154,7 +154,7 @@ class _RegistracijaState extends State<RegistracijaPage> {
       decoration: InputDecoration(
           contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           labelText: "Broj telefona",
-          labelStyle: TextStyle(color: Colors.white),
+          labelStyle: const TextStyle(color: Colors.white),
           border:
               OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
     );
@@ -301,7 +301,7 @@ class _RegistracijaState extends State<RegistracijaPage> {
                   "Nije moguce kreirati novog korisnika. Pokusajte kasnije!");
             }
           } else {
-            _showDialog((_existUSer as ErrorResponse).message as String);
+            _showDialog("Niste unijeli sve tražene parametre!");
           }
         },
         child: Text("Registruj se",
