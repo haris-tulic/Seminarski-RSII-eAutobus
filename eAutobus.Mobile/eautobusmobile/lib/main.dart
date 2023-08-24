@@ -19,7 +19,7 @@ import 'package:provider/provider.dart';
 import '../../providers/cjenovnik_provider.dart';
 import '../../providers/user_provider.dart';
 import 'package:eautobusmobile/pages/InfoPage.dart';
-import '.env';
+import 'helper/StripeKey.dart';
 import 'pages/RedVoznjeDetails.dart';
 
 void main() async {
