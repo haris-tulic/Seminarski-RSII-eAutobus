@@ -97,7 +97,7 @@ namespace eAutobus.Database
             {
                 AutobusVozacID = 3,
                 AutobusID = 3,
-                VozacID = 3,
+                VozacID = 1,
                 Smjena = 1,
                 Pocetak = DateTime.Now,
                 Kraj = DateTime.Now.AddHours(8),
@@ -108,7 +108,7 @@ namespace eAutobus.Database
             {
                 AutobusVozacID = 4,
                 AutobusID = 4,
-                VozacID = 4,
+                VozacID = 2,
                 Smjena = 1,
                 Pocetak = DateTime.Now,
                 Kraj = DateTime.Now.AddHours(8),
@@ -333,6 +333,7 @@ namespace eAutobus.Database
                 IsDeleted = false
 
             });
+         
 
             //uloge
             modelBuilder.Entity<Uloge>().HasData(new Uloge()
@@ -537,7 +538,7 @@ namespace eAutobus.Database
                 KondukterID = 1,
                 OdredisteID = 1,
                 PolazisteID = 2,
-                VozacID = 3,
+                VozacID = 1,
                 VrijemePolaska = DateTime.Now,
                 VrijemeDolaska = DateTime.Now,
             });
@@ -553,7 +554,7 @@ namespace eAutobus.Database
                 KondukterID = 1,
                 OdredisteID = 1,
                 PolazisteID = 2,
-                VozacID = 4,
+                VozacID = 2,
                 VrijemePolaska = DateTime.Now,
                 VrijemeDolaska = DateTime.Now,
             });
