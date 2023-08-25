@@ -1,7 +1,6 @@
 import 'package:eautobusmobile/models/cjenovnik/Cjenovnik.dart';
 import 'package:eautobusmobile/providers/cjenovnik_provider.dart';
 import 'package:eautobusmobile/providers/tipkarte_provider.dart';
-import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -125,18 +124,18 @@ class _CjenovnikState extends State<CjenovnikPage> {
               elevation: 5.0,
               borderRadius: BorderRadius.circular(30.0),
               child: MaterialButton(
-                child: Text(
-                  "Pretraga",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.white),
-                ),
-                color: Color.fromARGB(255, 255, 81, 0),
+                color: const Color.fromARGB(255, 255, 81, 0),
                 padding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                 onPressed: () {
                   setState(() {
                     loadData();
                   });
                 },
+                child: const Text(
+                  "Pretraga",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ),
             const SizedBox(height: 30),

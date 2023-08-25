@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import '../../models/korisnik/KorisnikRegistracija.dart';
-import '../../models/response/error_response.dart';
 import '../HomePage.dart';
 
 class RegistracijaPage extends StatefulWidget {
@@ -32,7 +31,6 @@ class _RegistracijaState extends State<RegistracijaPage> {
 
   FocusNode focusNode = FocusNode();
   late RegistracijaProvider _registracijaProvider;
-  dynamic _existUSer;
   Map? newUser = null;
   KorisnikRegistracijaRequest request = KorisnikRegistracijaRequest();
 
@@ -74,22 +72,21 @@ class _RegistracijaState extends State<RegistracijaPage> {
     _registracijaProvider =
         Provider.of<RegistracijaProvider>(context, listen: false);
 
-    final txtIme = Container(
-      child: TextFormField(
-        style: const TextStyle(color: Colors.white),
-        validator: (value) {
-          return value == null || value.isEmpty ? _obaveznoPolje : null;
-        },
-        controller: imeController,
-        obscureText: false,
-        decoration: InputDecoration(
-            contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-            labelText: "Ime",
-            labelStyle: TextStyle(color: Colors.white),
-            border:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
-      ),
+    final txtIme = TextFormField(
+      style: const TextStyle(color: Colors.white),
+      validator: (value) {
+        return value == null || value.isEmpty ? _obaveznoPolje : null;
+      },
+      controller: imeController,
+      obscureText: false,
+      decoration: InputDecoration(
+          contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+          labelText: "Ime",
+          labelStyle: const TextStyle(color: Colors.white),
+          border:
+              OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
     );
+
     final txtPrezime = TextFormField(
       validator: (value) {
         return value == null || value.isEmpty ? _obaveznoPolje : null;
@@ -100,7 +97,7 @@ class _RegistracijaState extends State<RegistracijaPage> {
       decoration: InputDecoration(
           contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           labelText: "Prezime",
-          labelStyle: TextStyle(color: Colors.white),
+          labelStyle: const TextStyle(color: Colors.white),
           border:
               OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
     );
@@ -121,7 +118,7 @@ class _RegistracijaState extends State<RegistracijaPage> {
       decoration: InputDecoration(
           contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           labelText: "Email",
-          labelStyle: TextStyle(color: Colors.white),
+          labelStyle: const TextStyle(color: Colors.white),
           border:
               OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
     );
@@ -136,7 +133,7 @@ class _RegistracijaState extends State<RegistracijaPage> {
       decoration: InputDecoration(
           contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           labelText: "Adresa stanovanja",
-          labelStyle: TextStyle(color: Colors.white),
+          labelStyle: const TextStyle(color: Colors.white),
           border:
               OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
     );
@@ -169,7 +166,7 @@ class _RegistracijaState extends State<RegistracijaPage> {
       decoration: InputDecoration(
           contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
           labelText: "Korisnicko ime",
-          labelStyle: TextStyle(color: Colors.white),
+          labelStyle: const TextStyle(color: Colors.white),
           border:
               OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
     );
@@ -201,11 +198,11 @@ class _RegistracijaState extends State<RegistracijaPage> {
                 });
               }),
           labelText: "Password",
-          labelStyle: TextStyle(color: Colors.white),
+          labelStyle: const TextStyle(color: Colors.white),
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(32.0),
-              borderSide:
-                  BorderSide(color: Color.fromARGB(255, 255, 1, 1), width: 2))),
+              borderSide: const BorderSide(
+                  color: Color.fromARGB(255, 255, 1, 1), width: 2))),
     );
     final txtPotvrdaPassworda = TextFormField(
       validator: (value) {
@@ -234,18 +231,18 @@ class _RegistracijaState extends State<RegistracijaPage> {
                 });
               }),
           labelText: "Potvrda passworda",
-          labelStyle: TextStyle(color: Colors.white),
+          labelStyle: const TextStyle(color: Colors.white),
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(32.0),
-              borderSide:
-                  BorderSide(color: Color.fromARGB(255, 255, 1, 1), width: 2))),
+              borderSide: const BorderSide(
+                  color: Color.fromARGB(255, 255, 1, 1), width: 2))),
     );
 
     final btnOdustani = Material(
       elevation: 5.0,
       borderRadius: BorderRadius.circular(30.0),
       child: MaterialButton(
-        color: Color.fromARGB(255, 255, 81, 0),
+        color: const Color.fromARGB(255, 255, 81, 0),
         padding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
         onPressed: () async {
           Navigator.of(context).pushAndRemoveUntil(
@@ -266,7 +263,7 @@ class _RegistracijaState extends State<RegistracijaPage> {
       borderRadius: BorderRadius.circular(30.0),
       child: MaterialButton(
         padding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-        color: Color.fromARGB(255, 255, 81, 0),
+        color: const Color.fromARGB(255, 255, 81, 0),
         onPressed: () async {
           if (_formKey.currentState!.validate()) {
             newUser = {
@@ -288,7 +285,7 @@ class _RegistracijaState extends State<RegistracijaPage> {
                 _showDialog("Korisnik vec postoji!");
               }
 
-              CircularProgressIndicator();
+              const CircularProgressIndicator();
               Navigator.of(context).pushAndRemoveUntil(
                 MaterialPageRoute(
                     builder: (BuildContext context) => InfoPage(
@@ -315,7 +312,7 @@ class _RegistracijaState extends State<RegistracijaPage> {
       backgroundColor: Color.fromARGB(255, 248, 183, 86),
       appBar: AppBar(
         backgroundColor: Colors.orange,
-        title: Text(
+        title: const Text(
           "Registracija korisnika",
           style: TextStyle(color: Colors.white),
         ),
@@ -323,8 +320,8 @@ class _RegistracijaState extends State<RegistracijaPage> {
       body: Center(
         child: ListView(children: [
           Container(
-            padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
-            color: Color.fromARGB(255, 248, 183, 86),
+            padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+            color: const Color.fromARGB(255, 248, 183, 86),
             child: Padding(
               padding: const EdgeInsets.all(36.0),
               child: Column(

@@ -93,13 +93,13 @@ class _RedVoznjePrikazState extends State<RedVoznjePrikaz> {
       decoration: BoxDecoration(
         color: Colors.yellow[900],
         border: Border.all(color: Colors.white),
-        borderRadius: BorderRadius.all(Radius.circular(20)),
+        borderRadius: const BorderRadius.all(Radius.circular(20)),
         boxShadow: [
           BoxShadow(
-            color: Color.fromARGB(255, 255, 255, 255).withOpacity(0.9),
+            color: const Color.fromARGB(255, 255, 255, 255).withOpacity(0.9),
             spreadRadius: 2,
             blurRadius: 5,
-            offset: Offset(0, 1),
+            offset: const Offset(0, 1),
           ),
         ],
       ),
@@ -158,13 +158,13 @@ class _RedVoznjePrikazState extends State<RedVoznjePrikaz> {
       decoration: BoxDecoration(
         color: Colors.yellow[900],
         border: Border.all(color: Colors.white),
-        borderRadius: BorderRadius.all(Radius.circular(20)),
+        borderRadius: const BorderRadius.all(Radius.circular(20)),
         boxShadow: [
           BoxShadow(
-            color: Color.fromARGB(255, 255, 255, 255).withOpacity(0.9),
+            color: const Color.fromARGB(255, 255, 255, 255).withOpacity(0.9),
             spreadRadius: 2,
             blurRadius: 5,
-            offset: Offset(0, 1),
+            offset: const Offset(0, 1),
           ),
         ],
       ),

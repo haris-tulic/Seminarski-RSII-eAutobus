@@ -115,18 +115,18 @@ class _RedVoznjeState extends State<RedVoznjePage> {
               elevation: 5.0,
               borderRadius: BorderRadius.circular(30.0),
               child: MaterialButton(
-                child: Text(
-                  "Pretraga",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.white),
-                ),
-                color: Color.fromARGB(255, 255, 81, 0),
+                color: const Color.fromARGB(255, 255, 81, 0),
                 padding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                 onPressed: () {
                   setState(() {
                     loadData();
                   });
                 },
+                child: const Text(
+                  "Pretraga",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ),
             const SizedBox(height: 30),
@@ -134,13 +134,14 @@ class _RedVoznjeState extends State<RedVoznjePage> {
               decoration: BoxDecoration(
                 color: Colors.yellow[900],
                 border: Border.all(color: Colors.white),
-                borderRadius: BorderRadius.all(Radius.circular(20)),
+                borderRadius: const BorderRadius.all(Radius.circular(20)),
                 boxShadow: [
                   BoxShadow(
-                    color: Color.fromARGB(255, 255, 255, 255).withOpacity(0.9),
+                    color: const Color.fromARGB(255, 255, 255, 255)
+                        .withOpacity(0.9),
                     spreadRadius: 2,
                     blurRadius: 5,
-                    offset: Offset(0, 1),
+                    offset: const Offset(0, 1),
                   ),
                 ],
               ),
@@ -187,7 +188,7 @@ class _RedVoznjeState extends State<RedVoznjePage> {
                           DataCell(Text(data.datum!.substring(0, 10))),
                           DataCell(Text(data.brojAutobusa.toString())),
                           DataCell(TextButton(
-                            child: Text(
+                            child: const Text(
                               "Detalji",
                               style:
                                   TextStyle(color: Colors.white, fontSize: 18),

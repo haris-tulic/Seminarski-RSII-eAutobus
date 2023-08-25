@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:eautobusmobile/models/redvoznje/RedVoznje.dart';
 import 'package:eautobusmobile/providers/recenzija_provider.dart';
 import 'package:eautobusmobile/providers/redvoznje_provider.dart';
@@ -174,7 +176,7 @@ class _RecenzijaState extends State<RecenzijaPage> {
                         controller: _komentar,
                         decoration: InputDecoration(
                           labelText: "Ostavite komentar",
-                          labelStyle: TextStyle(
+                          labelStyle: const TextStyle(
                               color: Colors.white, fontWeight: FontWeight.bold),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5)),
@@ -214,7 +216,7 @@ class _RecenzijaState extends State<RecenzijaPage> {
                   elevation: 5.0,
                   borderRadius: BorderRadius.circular(30.0),
                   child: MaterialButton(
-                    color: Color.fromARGB(255, 255, 81, 0),
+                    color: const Color.fromARGB(255, 255, 81, 0),
                     padding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
@@ -233,14 +235,14 @@ class _RecenzijaState extends State<RecenzijaPage> {
                           showDialog(
                               context: context,
                               builder: (BuildContext context) => AlertDialog(
-                                    title: Text(
+                                    title: const Text(
                                       "Hvala vam na recenziji!",
                                       style: TextStyle(color: Colors.white),
                                     ),
                                     backgroundColor: Colors.orangeAccent,
                                     actions: [
                                       TextButton(
-                                        child: Text(
+                                        child: const Text(
                                           "Ok",
                                           style: TextStyle(
                                               color: Colors.white,
@@ -254,12 +256,12 @@ class _RecenzijaState extends State<RecenzijaPage> {
                           showDialog(
                               context: context,
                               builder: (BuildContext context) => AlertDialog(
-                                    title: Text(
+                                    title: const Text(
                                         "Recenzija nije uspjela. Pokusajte ponovo kasnije."),
                                     content: Text(e.toString()),
                                     actions: [
                                       TextButton(
-                                        child: Text("Ok"),
+                                        child: const Text("Ok"),
                                         onPressed: () => Navigator.pop(context),
                                       )
                                     ],
@@ -269,7 +271,8 @@ class _RecenzijaState extends State<RecenzijaPage> {
                         showDialog(
                             context: context,
                             builder: (BuildContext context) => AlertDialog(
-                                  title: Text("Popunite sva potrebna polja!"),
+                                  title: const Text(
+                                      "Popunite sva potrebna polja!"),
                                   actions: [
                                     TextButton(
                                       child: Text("Ok"),
@@ -279,7 +282,7 @@ class _RecenzijaState extends State<RecenzijaPage> {
                                 ));
                       }
                     },
-                    child: Text("Ocijeni",
+                    child: const Text("Ocijeni",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Colors.white, fontWeight: FontWeight.bold)),

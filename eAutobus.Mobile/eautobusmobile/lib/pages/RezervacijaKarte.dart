@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:convert';
 
 import 'package:eautobusmobile/models/cjenovnik/Cjenovnik.dart';
@@ -25,7 +27,7 @@ String _pravac = "";
 class RezervacijaKarte extends StatefulWidget {
   static const String routname = "Karta";
   final Korisnik? korisnik;
-  RezervacijaKarte({Key? key, required this.korisnik}) : super(key: key);
+  const RezervacijaKarte({Key? key, required this.korisnik}) : super(key: key);
 
   @override
   State<RezervacijaKarte> createState() => _RezervacijaKarteState();
@@ -186,7 +188,8 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
         backgroundColor: Colors.orangeAccent,
         title: Text(
           poruka,
-          style: TextStyle(color: Colors.white, fontStyle: FontStyle.italic),
+          style:
+              const TextStyle(color: Colors.white, fontStyle: FontStyle.italic),
         ),
         content: Text(e == null ? " " : e.toString()),
         actions: [
@@ -212,7 +215,7 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
           title: const Text("Kupovina karte"),
         ),
         body: SingleChildScrollView(
-          padding: EdgeInsets.fromLTRB(10, 50, 10, 35),
+          padding: const EdgeInsets.fromLTRB(10, 50, 10, 35),
           child: Form(
             key: _formkey,
             child: Center(
@@ -507,7 +510,7 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
                       },
                     ),
                   ),
-                  Text(
+                  const Text(
                     "*Klikom na polje cijena, prikazujete cijenu za odabranu kartu",
                     style: TextStyle(
                         color: Colors.red,
@@ -522,12 +525,7 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
                         elevation: 5.0,
                         borderRadius: BorderRadius.circular(30),
                         child: MaterialButton(
-                          child: Text(
-                            "Kupi kartu",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          color: Color.fromARGB(255, 255, 81, 0),
+                          color: const Color.fromARGB(255, 255, 81, 0),
                           padding:
                               const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                           onPressed: () async {
@@ -567,6 +565,11 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
                               }
                             }
                           },
+                          child: const Text(
+                            "Kupi kartu",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ),
                       ),
                       const SizedBox(width: 30),
@@ -574,12 +577,7 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
                         elevation: 5.0,
                         borderRadius: BorderRadius.circular(30),
                         child: MaterialButton(
-                          child: Text(
-                            "Online kupovina",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          color: Color.fromARGB(255, 255, 81, 0),
+                          color: const Color.fromARGB(255, 255, 81, 0),
                           padding:
                               const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                           onPressed: () async {
@@ -617,6 +615,11 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
                               }
                             }
                           },
+                          child: const Text(
+                            "Online kupovina",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ),
                       ),
                     ],
@@ -630,7 +633,7 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
 
   Future<void> kupiOnline(dynamic cijenaKarte) async {
     try {
-      paymentIntent = await createPaymentIntent(cijenaKarte, 'USD');
+      paymentIntent = await createPaymentIntent(cijenaKarte, 'BAM');
       await Stripe.instance
           .initPaymentSheet(
               paymentSheetParameters: SetupPaymentSheetParameters(
@@ -644,7 +647,12 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
       ///now finally display payment sheeet
       displayPaymentSheet();
     } catch (e, s) {
-      print('exception:$e$s');
+      showDialog(
+        context: context,
+        builder: (_) => const AlertDialog(
+          content: Text("Error "),
+        ),
+      );
     }
   }
 
@@ -653,12 +661,12 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
       await Stripe.instance.presentPaymentSheet().then((value) {
         showDialog(
             context: context,
-            builder: (_) => AlertDialog(
+            builder: (_) => const AlertDialog(
                   content: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Row(
-                        children: const [
+                        children: [
                           Icon(
                             Icons.check_circle,
                             color: Colors.green,
@@ -673,17 +681,27 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
 
         paymentIntent = null;
       }).onError((error, stackTrace) {
-        print('Error is:--->$error $stackTrace');
-      });
-    } on StripeException catch (e) {
-      print('Error is:---> $e');
-      showDialog(
+        showDialog(
           context: context,
           builder: (_) => const AlertDialog(
-                content: Text("Cancelled "),
-              ));
+            content: Text("Error "),
+          ),
+        );
+      });
+    } on StripeException catch (e) {
+      showDialog(
+        context: context,
+        builder: (_) => const AlertDialog(
+          content: Text("Cancelled "),
+        ),
+      );
     } catch (e) {
-      print('$e');
+      showDialog(
+        context: context,
+        builder: (_) => const AlertDialog(
+          content: Text("Cancelled "),
+        ),
+      );
     }
   }
 
@@ -706,11 +724,14 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
         },
         body: body,
       );
-      // ignore: avoid_print
-      print('Payment Intent Body->>> ${response.body.toString()}');
       return jsonDecode(response.body);
     } catch (err) {
-      print('err charging user: ${err.toString()}');
+      showDialog(
+        context: context,
+        builder: (_) => const AlertDialog(
+          content: Text("Cancelled "),
+        ),
+      );
     }
   }
 

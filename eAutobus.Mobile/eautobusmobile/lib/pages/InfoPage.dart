@@ -132,7 +132,7 @@ class _InfoPageState extends State<InfoPage> {
                 Authorization.username = " ";
                 Authorization.password = " ";
                 Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: (context) => HomePage()),
+                  MaterialPageRoute(builder: (context) => const HomePage()),
                   (Route<dynamic> route) => false,
                 );
               },

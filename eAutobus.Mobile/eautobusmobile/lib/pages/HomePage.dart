@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:eautobusmobile/pages/InfoPage.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -10,7 +12,7 @@ import 'korisnik/RegistracijaKorisnika.dart';
 class HomePage extends StatefulWidget {
   static const String? routeName = "HomePage";
 
-  HomePage({Key? key});
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();

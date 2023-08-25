@@ -30,6 +30,44 @@ namespace eAutobus.Database
                 Ispravan = true,
                 MarkaAutobusa = "Volvo",
 
+            });
+
+            modelBuilder.Entity<Autobus>().HasData(new Autobus()
+            {
+                AutobusID = 3,
+                BrojAutobusa = 2,
+                BrojSjedista = 55,
+                DatumProizvodnje = DateTime.Now,
+                GarazaID = 2,
+                IsDeleted = false,
+                Ispravan = true,
+                MarkaAutobusa = "Iveco",
+
+            });
+
+            modelBuilder.Entity<Autobus>().HasData(new Autobus()
+            {
+                AutobusID = 4,
+                BrojAutobusa = 4,
+                BrojSjedista = 55,
+                DatumProizvodnje = DateTime.Now,
+                GarazaID = 1,
+                IsDeleted = false,
+                Ispravan = true,
+                MarkaAutobusa = "Scania",
+
+            });
+
+            modelBuilder.Entity<Autobus>().HasData(new Autobus()
+            {
+                AutobusID = 5,
+                BrojAutobusa = 5,
+                BrojSjedista = 55,
+                DatumProizvodnje = DateTime.Now,
+                GarazaID = 2,
+                IsDeleted = false,
+                Ispravan = true,
+                MarkaAutobusa = "Renault",
 
             });
 
@@ -54,6 +92,27 @@ namespace eAutobus.Database
                 Kraj = DateTime.Now.AddHours(8),
                 IsDeleted = false,
 
+            });
+            modelBuilder.Entity<AutobusVozac>().HasData(new AutobusVozac()
+            {
+                AutobusVozacID = 3,
+                AutobusID = 3,
+                VozacID = 3,
+                Smjena = 1,
+                Pocetak = DateTime.Now,
+                Kraj = DateTime.Now.AddHours(8),
+                IsDeleted = false,
+
+            });
+            modelBuilder.Entity<AutobusVozac>().HasData(new AutobusVozac()
+            {
+                AutobusVozacID = 4,
+                AutobusID = 4,
+                VozacID = 4,
+                Smjena = 1,
+                Pocetak = DateTime.Now,
+                Kraj = DateTime.Now.AddHours(8),
+                IsDeleted = false,
             });
 
             //cjenovnik
@@ -351,6 +410,22 @@ namespace eAutobus.Database
                 IsDeleted = false,
 
             });
+            modelBuilder.Entity<Grad>().HasData(new Grad()
+            {
+                GradID = 4,
+                NazivGrada = "Zenica",
+                PostanskiBroj = 72000,
+                IsDeleted = false,
+
+            });
+            modelBuilder.Entity<Grad>().HasData(new Grad()
+            {
+                GradID = 5,
+                NazivGrada = "Tuzla",
+                PostanskiBroj = 75000,
+                IsDeleted = false,
+
+            });
 
             //karta
             modelBuilder.Entity<Karta>().HasData(new Karta()
@@ -451,6 +526,37 @@ namespace eAutobus.Database
                 VrijemeDolaska = new DateTime(2022, 3, 1, 14, 30, 00, 000, DateTimeKind.Local).AddTicks(8190)
             });
 
+            modelBuilder.Entity<RasporedVoznje>().HasData(new RasporedVoznje()
+            {
+                RasporedVoznjeID = 3,
+                AutobusID = 3,
+                BrojLinije = 3,
+                Datum = DateTime.Now,
+                FinalOcjena = 4,
+                IsDeleted = false,
+                KondukterID = 1,
+                OdredisteID = 1,
+                PolazisteID = 2,
+                VozacID = 3,
+                VrijemePolaska = DateTime.Now,
+                VrijemeDolaska = DateTime.Now,
+            });
+
+            modelBuilder.Entity<RasporedVoznje>().HasData(new RasporedVoznje()
+            {
+                RasporedVoznjeID = 4,
+                AutobusID = 4,
+                BrojLinije = 4,
+                Datum = DateTime.Now,
+                FinalOcjena = 4,
+                IsDeleted = false,
+                KondukterID = 1,
+                OdredisteID = 1,
+                PolazisteID = 2,
+                VozacID = 4,
+                VrijemePolaska = DateTime.Now,
+                VrijemeDolaska = DateTime.Now,
+            });
 
             //recenzije
             modelBuilder.Entity<Recenzija>().HasData(new Recenzija()
@@ -473,6 +579,46 @@ namespace eAutobus.Database
                 Komentar = "Nije očišćeno!",
                 Ocjena = 3,
             });
+            modelBuilder.Entity<Recenzija>().HasData(new Recenzija()
+            {
+                RecenzijaID = 3,
+                RasporedVoznjeID = 3,
+                KupacID = 1,
+                DatumRecenzije = DateTime.Now,
+                VrstaUsluga = "Vozilo",
+                Komentar = "Sve super!",
+                Ocjena = 5,
+            });
+            modelBuilder.Entity<Recenzija>().HasData(new Recenzija()
+            {
+                RecenzijaID = 4,
+                RasporedVoznjeID = 4,
+                KupacID = 2,
+                DatumRecenzije = DateTime.Now,
+                VrstaUsluga = "Vozilo",
+                Komentar = "Okej",
+                Ocjena = 4,
+            });
+            modelBuilder.Entity<Recenzija>().HasData(new Recenzija()
+            {
+                RecenzijaID = 5,
+                RasporedVoznjeID = 2,
+                KupacID = 2,
+                DatumRecenzije = DateTime.Now,
+                VrstaUsluga = "Osoblje",
+                Komentar = "Okej",
+                Ocjena = 5,
+            });
+            modelBuilder.Entity<Recenzija>().HasData(new Recenzija()
+            {
+                RecenzijaID = 6,
+                RasporedVoznjeID = 3,
+                KupacID = 1,
+                DatumRecenzije = DateTime.Now,
+                VrstaUsluga = "Osoblje",
+                Komentar = "Moze i bolje!",
+                Ocjena = 3,
+            });
 
             //stanice
             modelBuilder.Entity<Stanica>().HasData(new Stanica()
@@ -488,6 +634,27 @@ namespace eAutobus.Database
                 GradID = 2,
                 NazivLokacijeStanice = "Stanica-Mostar",
                 IsDeleted=false,
+            });
+            modelBuilder.Entity<Stanica>().HasData(new Stanica()
+            {
+                StanicaID = 3,
+                GradID = 3,
+                NazivLokacijeStanice = "Stanica-Konjic",
+                IsDeleted = false,
+            });
+            modelBuilder.Entity<Stanica>().HasData(new Stanica()
+            {
+                StanicaID = 4,
+                GradID = 4,
+                NazivLokacijeStanice = "Stanica-Zenica",
+                IsDeleted = false,
+            });
+            modelBuilder.Entity<Stanica>().HasData(new Stanica()
+            {
+                StanicaID = 5,
+                GradID = 5,
+                NazivLokacijeStanice = "Stanica-Tuzla",
+                IsDeleted = false,
             });
 
             //zona
