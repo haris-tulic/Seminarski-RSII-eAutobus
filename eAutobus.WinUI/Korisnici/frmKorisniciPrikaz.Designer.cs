@@ -50,27 +50,27 @@ namespace eAutobus.WinUI.Korisnici
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(288, 76);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(329, 101);
+            label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
-            label1.Size = new Size(30, 15);
+            label1.Size = new Size(37, 20);
             label1.TabIndex = 0;
             label1.Text = "Ime:";
             // 
             // txtIme
             // 
-            txtIme.Location = new Point(326, 73);
-            txtIme.Margin = new Padding(4);
+            txtIme.Location = new Point(373, 97);
+            txtIme.Margin = new Padding(5, 5, 5, 5);
             txtIme.Name = "txtIme";
-            txtIme.Size = new Size(165, 23);
+            txtIme.Size = new Size(188, 27);
             txtIme.TabIndex = 1;
             // 
             // btnPrikazi
             // 
-            btnPrikazi.Location = new Point(354, 206);
-            btnPrikazi.Margin = new Padding(4);
+            btnPrikazi.Location = new Point(405, 275);
+            btnPrikazi.Margin = new Padding(5, 5, 5, 5);
             btnPrikazi.Name = "btnPrikazi";
-            btnPrikazi.Size = new Size(88, 26);
+            btnPrikazi.Size = new Size(101, 35);
             btnPrikazi.TabIndex = 2;
             btnPrikazi.Text = "Pretraga";
             btnPrikazi.UseVisualStyleBackColor = true;
@@ -79,29 +79,29 @@ namespace eAutobus.WinUI.Korisnici
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(265, 116);
-            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Location = new Point(303, 155);
+            label2.Margin = new Padding(5, 0, 5, 0);
             label2.Name = "label2";
-            label2.Size = new Size(52, 15);
+            label2.Size = new Size(65, 20);
             label2.TabIndex = 3;
             label2.Text = "Prezime:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(276, 158);
-            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Location = new Point(315, 211);
+            label3.Margin = new Padding(5, 0, 5, 0);
             label3.Name = "label3";
-            label3.Size = new Size(41, 15);
+            label3.Size = new Size(52, 20);
             label3.TabIndex = 4;
             label3.Text = "Uloga:";
             // 
             // txtPrezime
             // 
-            txtPrezime.Location = new Point(326, 113);
-            txtPrezime.Margin = new Padding(4);
+            txtPrezime.Location = new Point(373, 151);
+            txtPrezime.Margin = new Padding(5, 5, 5, 5);
             txtPrezime.Name = "txtPrezime";
-            txtPrezime.Size = new Size(165, 23);
+            txtPrezime.Size = new Size(188, 27);
             txtPrezime.TabIndex = 6;
             // 
             // dgvPrikaz
@@ -110,13 +110,13 @@ namespace eAutobus.WinUI.Korisnici
             dgvPrikaz.AllowUserToDeleteRows = false;
             dgvPrikaz.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPrikaz.Columns.AddRange(new DataGridViewColumn[] { KorisnikID, Ime, Prezime, DatumRodjenja, Uloga, Akcija });
-            dgvPrikaz.Location = new Point(62, 265);
-            dgvPrikaz.Margin = new Padding(4);
+            dgvPrikaz.Location = new Point(71, 353);
+            dgvPrikaz.Margin = new Padding(5, 5, 5, 5);
             dgvPrikaz.Name = "dgvPrikaz";
             dgvPrikaz.ReadOnly = true;
             dgvPrikaz.RowHeadersWidth = 51;
             dgvPrikaz.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPrikaz.Size = new Size(679, 256);
+            dgvPrikaz.Size = new Size(776, 341);
             dgvPrikaz.TabIndex = 7;
             dgvPrikaz.CellContentClick += dgvPrikaz_CellContentClick;
             dgvPrikaz.CellMouseDoubleClick += dgvPrikaz_CellMouseDoubleClick;
@@ -179,19 +179,20 @@ namespace eAutobus.WinUI.Korisnici
             // 
             // cbUloga
             // 
+            cbUloga.DropDownStyle = ComboBoxStyle.DropDownList;
             cbUloga.FormattingEnabled = true;
-            cbUloga.Location = new Point(326, 149);
-            cbUloga.Margin = new Padding(4);
+            cbUloga.Location = new Point(373, 199);
+            cbUloga.Margin = new Padding(5, 5, 5, 5);
             cbUloga.Name = "cbUloga";
-            cbUloga.Size = new Size(165, 23);
+            cbUloga.Size = new Size(188, 28);
             cbUloga.TabIndex = 8;
             // 
             // button1
             // 
-            button1.Location = new Point(354, 561);
-            button1.Margin = new Padding(4);
+            button1.Location = new Point(405, 748);
+            button1.Margin = new Padding(5, 5, 5, 5);
             button1.Name = "button1";
-            button1.Size = new Size(88, 26);
+            button1.Size = new Size(101, 35);
             button1.TabIndex = 9;
             button1.Text = "Izvještaj";
             button1.UseVisualStyleBackColor = true;
@@ -199,9 +200,9 @@ namespace eAutobus.WinUI.Korisnici
             // 
             // frmKorisniciPrikaz
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(862, 636);
+            ClientSize = new Size(985, 848);
             Controls.Add(button1);
             Controls.Add(cbUloga);
             Controls.Add(dgvPrikaz);
@@ -211,9 +212,9 @@ namespace eAutobus.WinUI.Korisnici
             Controls.Add(btnPrikazi);
             Controls.Add(txtIme);
             Controls.Add(label1);
-            Margin = new Padding(4);
+            Margin = new Padding(5, 5, 5, 5);
             Name = "frmKorisniciPrikaz";
-            Text = "frmKorisniciPrikaz";
+            Text = "Prikaz korisnika";
             Load += frmKorisniciPrikaz_Load;
             ((System.ComponentModel.ISupportInitialize)dgvPrikaz).EndInit();
             ResumeLayout(false);

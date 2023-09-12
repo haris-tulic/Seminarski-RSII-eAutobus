@@ -1,13 +1,9 @@
 ﻿using AutoMapper;
+using eAutobus.Database;
+using eAutobus.Services.Interfaces;
 using eAutobusModel;
 using eAutobusModel.Requests;
 using Microsoft.EntityFrameworkCore;
-using eAutobus.Database;
-using eAutobus.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace eAutobus.Services
 {
@@ -23,19 +19,19 @@ namespace eAutobus.Services
 
         public async Task<List<KartaKupacModel>> Get(KartaKupacGetRequest search)
         {
-            var list = await _context.KartaKupac.Include(k=>k.Karta)
+            var list = await _context.KartaKupac.Include(k => k.Karta)
                 .Include("Karta.Odrediste")
                 .Include("Karta.Polaziste")
-                .Include(u=>u.Kupac)
-                .Include(t=>t.Karta.TipKarte)
-                .Include(v=>v.Karta.VrstaKarte)
-                .Where(x=>x.KupacID==search.KupacID)
+                .Include(u => u.Kupac)
+                .Include(t => t.Karta.TipKarte)
+                .Include(v => v.Karta.VrstaKarte)
+                .Where(x => x.KupacID == search.KupacID)
                 .ToListAsync();
             var listM = new List<KartaKupacModel>();
             _mapper.Map(list, listM);
             for (int i = 0; i < list.Count; i++)
             {
-                listM[i].Karta = list[i].Karta.TipKarte.Naziv+" "+ list[i].Karta.VrstaKarte.Naziv;
+                listM[i].Karta = list[i].Karta.TipKarte.Naziv + " " + list[i].Karta.VrstaKarte.Naziv;
                 listM[i].Kupac = list[i].Kupac.Ime + " " + list[i].Kupac.Prezime;
                 listM[i].Polaziste = list[i].Karta.Polaziste.NazivLokacijeStanice;
                 listM[i].Odrediste = list[i].Karta.Odrediste.NazivLokacijeStanice;

@@ -53,13 +53,13 @@ namespace eAutobus.WinUI.Autobusi
             {
                 DialogResult odgovor = MessageBox.Show("Da li zelite izbrisati odabrani autobus?", "Izbrisati zapis", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 if (odgovor == DialogResult.Yes)
-                { 
+                {
                     await _service.Delete<AutobusiModel>(idAutobus);
                     MessageBox.Show("Izbrisali ste odabrani autobus: " + odabraniAutobus.BrojAutobusa + " ---> " + odabraniAutobus.MarkaAutobusa);
                     await LoadAutobuse();
                 }
             }
-          
+
         }
 
         private void dgvAutobusi_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)

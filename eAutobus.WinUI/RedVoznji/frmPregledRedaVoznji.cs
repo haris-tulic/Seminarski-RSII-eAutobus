@@ -90,7 +90,7 @@ namespace eAutobus.WinUI.RedVoznji
                 if (odgovor == DialogResult.Yes)
                 {
                     await _linije.Delete<RasporedVoznjeModel>(RedVoznjeID);
-                    MessageBox.Show("Izbrisali ste liniju: " + odabranaLinija.Polazak + "-" + odabranaLinija.Odlazak);
+                    MessageBox.Show("Izbrisali ste liniju: " + odabranaLinija.Polazak + "-" + odabranaLinija.Odlazak, "Brisanje zapisa", MessageBoxButtons.OK);
                     await LoadRedVoznje();
                 }
             }
@@ -101,8 +101,8 @@ namespace eAutobus.WinUI.RedVoznji
         {
             var RedVoznjeID = dgvLinije.SelectedRows[0].Cells[0].Value;
             frmDodavanjeRedaVoznje frm = new frmDodavanjeRedaVoznje(int.Parse(RedVoznjeID.ToString()));
-                frm.Show();
-           
+            frm.Show();
+
         }
     }
 }

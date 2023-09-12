@@ -501,30 +501,30 @@ namespace eAutobus.Database
                 RasporedVoznjeID = 1,
                 AutobusID = 1,
                 BrojLinije = 6,
-                Datum = DateTime.Now,
+                Datum = DateTime.Parse(DateTime.Now.ToShortDateString()),
                 FinalOcjena = 5,
                 IsDeleted = false,
                 KondukterID = 1,
                 OdredisteID = 2,
                 PolazisteID = 1,
                 VozacID = 1,
-                VrijemePolaska = DateTime.Now,
-                VrijemeDolaska = DateTime.Now,
+                VrijemePolaska = DateTime.Parse(DateTime.Now.ToShortTimeString()),
+                VrijemeDolaska = DateTime.Parse(DateTime.Now.ToShortTimeString()),
             });
             modelBuilder.Entity<RasporedVoznje>().HasData(new RasporedVoznje()
             {
                 RasporedVoznjeID = 2,
                 AutobusID = 2,
                 BrojLinije = 10,
-                Datum = new DateTime(2022, 3, 1, 14, 29, 18, 167, DateTimeKind.Local).AddTicks(8190),
+                Datum = DateTime.Parse(DateTime.Now.ToShortDateString()),
                 FinalOcjena = 4,
                 IsDeleted = false,
                 KondukterID = 2,
                 OdredisteID = 1,
                 PolazisteID = 2,
                 VozacID = 2,
-                VrijemePolaska = new DateTime(2022, 3, 1, 12, 15, 00, 000, DateTimeKind.Local).AddTicks(8190),
-                VrijemeDolaska = new DateTime(2022, 3, 1, 14, 30, 00, 000, DateTimeKind.Local).AddTicks(8190)
+                VrijemePolaska = DateTime.Parse(DateTime.Now.ToShortTimeString()),
+                VrijemeDolaska = DateTime.Parse(DateTime.Now.ToShortTimeString())
             });
 
             modelBuilder.Entity<RasporedVoznje>().HasData(new RasporedVoznje()
@@ -532,15 +532,15 @@ namespace eAutobus.Database
                 RasporedVoznjeID = 3,
                 AutobusID = 3,
                 BrojLinije = 3,
-                Datum = DateTime.Now,
+                Datum = DateTime.Parse(DateTime.Now.ToShortDateString()),
                 FinalOcjena = 4,
                 IsDeleted = false,
                 KondukterID = 1,
                 OdredisteID = 1,
                 PolazisteID = 2,
                 VozacID = 1,
-                VrijemePolaska = DateTime.Now,
-                VrijemeDolaska = DateTime.Now,
+                VrijemePolaska = DateTime.Parse(DateTime.Now.ToShortTimeString()),
+                VrijemeDolaska = DateTime.Parse(DateTime.Now.ToShortTimeString()),
             });
 
             modelBuilder.Entity<RasporedVoznje>().HasData(new RasporedVoznje()
@@ -548,15 +548,15 @@ namespace eAutobus.Database
                 RasporedVoznjeID = 4,
                 AutobusID = 4,
                 BrojLinije = 4,
-                Datum = DateTime.Now,
+                Datum = DateTime.Parse(DateTime.Now.ToShortDateString()),
                 FinalOcjena = 4,
                 IsDeleted = false,
                 KondukterID = 1,
                 OdredisteID = 1,
                 PolazisteID = 2,
                 VozacID = 2,
-                VrijemePolaska = DateTime.Now,
-                VrijemeDolaska = DateTime.Now,
+                VrijemePolaska = DateTime.Parse(DateTime.Now.ToShortTimeString()),
+                VrijemeDolaska = DateTime.Parse(DateTime.Now.ToShortTimeString()),
             });
 
             //recenzije

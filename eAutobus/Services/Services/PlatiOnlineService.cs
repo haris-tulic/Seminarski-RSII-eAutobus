@@ -1,13 +1,9 @@
 ﻿using AutoMapper;
-using eAutobusModel.Requests;
-using eAutobus.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using eAutobus.Database;
-using Microsoft.EntityFrameworkCore;
+using eAutobus.Services.Interfaces;
 using eAutobusModel;
+using eAutobusModel.Requests;
+using Microsoft.EntityFrameworkCore;
 
 namespace eAutobus.Services
 {
@@ -15,7 +11,7 @@ namespace eAutobus.Services
     {
         private readonly eAutobusi _context;
         private readonly IMapper _mapper;
-        public PlatiOnlineService(eAutobusi context,IMapper mapper)
+        public PlatiOnlineService(eAutobusi context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -45,7 +41,7 @@ namespace eAutobus.Services
 
         public async Task<PlatiKartuModel> GetById(int id)
         {
-            var entity = await _context.PlatiKartu.Include(x => x.Kupac).Include(x => x.Karta).FirstOrDefaultAsync(k=>k.PlatiKartuID==id);
+            var entity = await _context.PlatiKartu.Include(x => x.Kupac).Include(x => x.Karta).FirstOrDefaultAsync(k => k.PlatiKartuID == id);
             return _mapper.Map<PlatiKartuModel>(entity);
         }
 
@@ -57,9 +53,9 @@ namespace eAutobus.Services
             return _mapper.Map<PlatiKartuModel>(entity);
         }
 
-        public async Task<PlatiKartuModel>Update(PlatiKartuUpsertRequest request,int id)
+        public async Task<PlatiKartuModel> Update(PlatiKartuUpsertRequest request, int id)
         {
-            var entity = await _context.PlatiKartu.FirstOrDefaultAsync(p=>p.PlatiKartuID==id);
+            var entity = await _context.PlatiKartu.FirstOrDefaultAsync(p => p.PlatiKartuID == id);
             _mapper.Map(request, entity);
             await _context.SaveChangesAsync();
             return _mapper.Map<PlatiKartuModel>(entity);

@@ -1,14 +1,5 @@
 ﻿using eAutobusModel;
 using eAutobusModel.Requests;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace eAutobus.WinUI.Korisnici
 {
@@ -85,7 +76,7 @@ namespace eAutobus.WinUI.Korisnici
                     await _korisnici.Delete<KorisnikModel>(korisnik.KorisnikID);
                 await LoadKorisnike();
             }
-           
+
         }
 
         private void dgvPrikaz_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -93,7 +84,7 @@ namespace eAutobus.WinUI.Korisnici
             var IdKorisnik = dgvPrikaz.SelectedRows[0].Cells[0].Value;
 
             frmKorisniciDodaj frm = new frmKorisniciDodaj(int.Parse(IdKorisnik.ToString()));
-                frm.Show();
+            frm.Show();
 
         }
     }

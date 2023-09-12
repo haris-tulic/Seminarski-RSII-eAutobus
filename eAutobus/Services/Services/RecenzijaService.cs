@@ -1,13 +1,9 @@
 ﻿using AutoMapper;
+using eAutobus.Database;
+using eAutobus.Services.Interfaces;
 using eAutobusModel;
 using eAutobusModel.Requests;
 using Microsoft.EntityFrameworkCore;
-using eAutobus.Database;
-using eAutobus.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace eAutobus.Services.Services
 {
@@ -26,8 +22,8 @@ namespace eAutobus.Services.Services
 
         public async Task<List<RecenzijaModel>> Get(RecenzijaGetRequest search)
         {
-            var query = _context.Recenzija.Include(x => x.RasporedVoznje).Include(x=>x.Kupac).Include("RasporedVoznje.Polaziste").Include("RasporedVoznje.Odrediste").AsQueryable();
-            if (search.Ocjena>0  && search.Ocjena<=5)
+            var query = _context.Recenzija.Include(x => x.RasporedVoznje).Include(x => x.Kupac).Include("RasporedVoznje.Polaziste").Include("RasporedVoznje.Odrediste").AsQueryable();
+            if (search.Ocjena > 0 && search.Ocjena <= 5)
             {
                 query = query.Where(x => x.Ocjena == search.Ocjena);
             }
@@ -48,17 +44,17 @@ namespace eAutobus.Services.Services
             _context.Recenzija.Add(entity);
             var linija = await _context.RasporedVoznje.Include(r => r.Recenzija).FirstOrDefaultAsync(r => r.RasporedVoznjeID == request.RasporedVoznjeID);
             int ocjena = 0;
-                foreach (var item in linija.Recenzija)
-                {
-                    ocjena += item.Ocjena;
-                }
-                if (linija.Recenzija.Count() > 0)
-                    linija.FinalOcjena = ocjena / linija.Recenzija.Count();
+            foreach (var item in linija.Recenzija)
+            {
+                ocjena += item.Ocjena;
+            }
+            if (linija.Recenzija.Count() > 0)
+                linija.FinalOcjena = ocjena / linija.Recenzija.Count();
 
             await _context.SaveChangesAsync();
 
             return _mapper.Map<RecenzijaModel>(entity);
         }
-    
+
     }
 }

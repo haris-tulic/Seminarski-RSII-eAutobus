@@ -1,14 +1,6 @@
 ﻿using eAutobusModel;
 using eAutobusModel.Requests;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace eAutobus.WinUI.Karte
 {
@@ -20,13 +12,13 @@ namespace eAutobus.WinUI.Karte
         private readonly APIService _cjenovnik = new APIService("Cjenovnik");
         private readonly APIService _stanice = new APIService("Stanica");
         private int? id;
-        public frmDodajKartu(int ?kartaID=null)
+        public frmDodajKartu(int? kartaID = null)
         {
             InitializeComponent();
             id = kartaID;
         }
 
-        private async void frmDodajKartu_Load(object sender, EventArgs e) 
+        private async void frmDodajKartu_Load(object sender, EventArgs e)
         {
             await LoadTipKarte();
             await LoadVrstuKarte();
@@ -34,7 +26,7 @@ namespace eAutobus.WinUI.Karte
             await LoadPolazisteIOdrediste();
             if (id.HasValue)
             {
-                var karta=await _cjenovnik.GetById<CjenovnikModel>(id);
+                var karta = await _cjenovnik.GetById<CjenovnikModel>(id);
                 cbTipKarte.SelectedValue = karta.TipkarteID;
                 cbVrstaKarte.SelectedValue = karta.VrstaKarteID;
                 cbZona.SelectedValue = karta.ZonaID;
@@ -96,13 +88,13 @@ namespace eAutobus.WinUI.Karte
                 if (id.HasValue)
                 {
                     await _cjenovnik.Update<CjenovnikModel>(id, newKarta);
-                    MessageBox.Show("Izmjenjena karta!");
+                    MessageBox.Show("Izmjenjena karta!", "Izmjena", MessageBoxButtons.OK);
 
                 }
                 else
                 {
                     await _cjenovnik.Insert<CjenovnikModel>(newKarta);
-                    MessageBox.Show("Dodana nova karta!");
+                    MessageBox.Show("Dodana nova karta!", "Obavijest", MessageBoxButtons.OK);
 
                 }
             }
@@ -183,6 +175,14 @@ namespace eAutobus.WinUI.Karte
             else
             {
                 errorProvider.SetError(cbZona, null);
+            }
+        }
+
+        private void txtCijena_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }

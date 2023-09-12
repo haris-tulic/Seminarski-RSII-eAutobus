@@ -1,12 +1,8 @@
 ﻿using AutoMapper;
+using eAutobus.Database;
+using eAutobus.Services.Interfaces;
 using eAutobusModel;
 using eAutobusModel.Requests;
-using eAutobus.Database;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using eAutobus.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace eAutobus.Services
@@ -22,7 +18,7 @@ namespace eAutobus.Services
         }
         public async Task<TipKarteModel> Delete(int id)
         {
-            var entity = await _context.TipKarte.FirstOrDefaultAsync(x=>x.TipKarteID==id);
+            var entity = await _context.TipKarte.FirstOrDefaultAsync(x => x.TipKarteID == id);
             entity.IsDeleted = true;
             _context.SaveChanges();
             return _mapper.Map<TipKarteModel>(entity);
@@ -36,7 +32,7 @@ namespace eAutobus.Services
 
         public async Task<TipKarteModel> GetById(int id)
         {
-            var entity = await _context.TipKarte.FirstOrDefaultAsync(x=>x.TipKarteID==id);
+            var entity = await _context.TipKarte.FirstOrDefaultAsync(x => x.TipKarteID == id);
             return _mapper.Map<TipKarteModel>(entity);
         }
 
@@ -44,7 +40,7 @@ namespace eAutobus.Services
         {
             var entity = _mapper.Map<TipKarte>(request);
             _context.TipKarte.Add(entity);
-           await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
             return _mapper.Map<TipKarteModel>(entity);
         }
     }

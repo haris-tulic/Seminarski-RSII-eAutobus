@@ -4,10 +4,6 @@ using eAutobus.Services.Interfaces;
 using eAutobusModel;
 using eAutobusModel.Requests;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace eAutobus.Services
 {
@@ -20,9 +16,9 @@ namespace eAutobus.Services
             _context = context;
             _mapper = mapper;
         }
-        public async Task< AutobusVozacModel> Delete(int id)
+        public async Task<AutobusVozacModel> Delete(int id)
         {
-            var entity = await _context.AutobusVozac.FirstOrDefaultAsync(x=>x.AutobusVozacID==id);
+            var entity = await _context.AutobusVozac.FirstOrDefaultAsync(x => x.AutobusVozacID == id);
             entity.IsDeleted = true;
             await _context.SaveChangesAsync();
             return _mapper.Map<AutobusVozacModel>(entity);
@@ -36,7 +32,7 @@ namespace eAutobus.Services
 
         public async Task<AutobusVozacModel> GetByID(int id)
         {
-            var obj =await  _context.AutobusVozac.FirstOrDefaultAsync(x=>x.AutobusVozacID==id);
+            var obj = await _context.AutobusVozac.FirstOrDefaultAsync(x => x.AutobusVozacID == id);
             return _mapper.Map<AutobusVozacModel>(obj);
 
         }

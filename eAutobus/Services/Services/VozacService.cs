@@ -1,21 +1,17 @@
 ﻿using AutoMapper;
+using eAutobus.Database;
+using eAutobus.Services.Interfaces;
 using eAutobusModel;
 using eAutobusModel.Requests;
 using Microsoft.EntityFrameworkCore;
-using eAutobus.Database;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using eAutobus.Services.Interfaces;
 
 namespace eAutobus.Services
 {
-    public class VozacService:IVozacService
+    public class VozacService : IVozacService
     {
         private readonly Database.eAutobusi _context;
         private readonly IMapper _mapper;
-        public VozacService (Database.eAutobusi context,IMapper mapper)
+        public VozacService(Database.eAutobusi context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -23,7 +19,7 @@ namespace eAutobus.Services
 
         public async Task<VozacModel> Delete(int id)
         {
-            var entity = await _context.Vozac.FirstOrDefaultAsync(x=>x.VozacID==id);
+            var entity = await _context.Vozac.FirstOrDefaultAsync(x => x.VozacID == id);
             entity.IsDeleted = true;
             await _context.SaveChangesAsync();
             return _mapper.Map<VozacModel>(entity);
@@ -31,7 +27,9 @@ namespace eAutobus.Services
 
         public async Task<List<VozacModel>> Get(VozacGetRequest request)
         {
-            var query = _context.Vozac.Include(v=>v.Korisnik).Where(v=>v.IsDeleted == false).AsQueryable();
+            var query = _context.Vozac
+                        .Include(v => v.Korisnik)
+                        .Where(v => v.IsDeleted == false).AsQueryable();
             var list = await query.ToListAsync();
             var listM = new List<VozacModel>();
             _mapper.Map(list, listM);
@@ -48,7 +46,7 @@ namespace eAutobus.Services
 
         public async Task<VozacModel> GetById(int id)
         {
-            var entity = await _context.Vozac.FirstOrDefaultAsync(x=>x.VozacID==id);
+            var entity = await _context.Vozac.FirstOrDefaultAsync(x => x.VozacID == id);
             return _mapper.Map<VozacModel>(entity);
         }
 
@@ -62,7 +60,7 @@ namespace eAutobus.Services
 
         public async Task<VozacModel> Update(VozacUpsertRequest request, int id)
         {
-            var update = await _context.Vozac.FirstOrDefaultAsync(x=>x.VozacID==id);
+            var update = await _context.Vozac.FirstOrDefaultAsync(x => x.VozacID == id);
             _mapper.Map(request, update);
             await _context.SaveChangesAsync();
             return _mapper.Map<VozacModel>(update);

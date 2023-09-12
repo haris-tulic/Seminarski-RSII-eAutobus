@@ -151,10 +151,12 @@ namespace eAutobus.WinUI.RedVoznji
             txtBrLinije.Name = "txtBrLinije";
             txtBrLinije.Size = new Size(207, 23);
             txtBrLinije.TabIndex = 9;
+            txtBrLinije.KeyPress += txtBrLinije_KeyPress;
             txtBrLinije.Validating += txtBrojLinije_Validating;
             // 
             // cbBrAutobusa
             // 
+            cbBrAutobusa.DropDownStyle = ComboBoxStyle.DropDownList;
             cbBrAutobusa.FormattingEnabled = true;
             cbBrAutobusa.Location = new Point(570, 42);
             cbBrAutobusa.Margin = new Padding(4, 3, 4, 3);
@@ -165,6 +167,7 @@ namespace eAutobus.WinUI.RedVoznji
             // 
             // cbVozac
             // 
+            cbVozac.DropDownStyle = ComboBoxStyle.DropDownList;
             cbVozac.FormattingEnabled = true;
             cbVozac.Location = new Point(570, 108);
             cbVozac.Margin = new Padding(4, 3, 4, 3);
@@ -175,6 +178,7 @@ namespace eAutobus.WinUI.RedVoznji
             // 
             // cbKondukter
             // 
+            cbKondukter.DropDownStyle = ComboBoxStyle.DropDownList;
             cbKondukter.FormattingEnabled = true;
             cbKondukter.Location = new Point(570, 166);
             cbKondukter.Margin = new Padding(4, 3, 4, 3);
@@ -210,6 +214,7 @@ namespace eAutobus.WinUI.RedVoznji
             // 
             // cbPolaziste
             // 
+            cbPolaziste.DropDownStyle = ComboBoxStyle.DropDownList;
             cbPolaziste.FormattingEnabled = true;
             cbPolaziste.Location = new Point(139, 102);
             cbPolaziste.Margin = new Padding(4, 3, 4, 3);
@@ -220,6 +225,7 @@ namespace eAutobus.WinUI.RedVoznji
             // 
             // cbOdrediste
             // 
+            cbOdrediste.DropDownStyle = ComboBoxStyle.DropDownList;
             cbOdrediste.FormattingEnabled = true;
             cbOdrediste.Location = new Point(139, 160);
             cbOdrediste.Margin = new Padding(4, 3, 4, 3);

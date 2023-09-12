@@ -25,14 +25,14 @@ namespace eAutobus.WinUI.Login
             APIService.Password = txtPassword.Text;
             try
             {
-                var result =await _api.Get<List<KorisnikModel>>(null);
+                var result = await _api.Get<List<KorisnikModel>>(null);
                 frmPocetna frm = new frmPocetna();
                 this.Hide();
                 frm.Show();
             }
-            catch 
+            catch
             {
-                MessageBox.Show("Pogrešan username ili password!");
+                MessageBox.Show("Pogrešan username ili password!", "Upozorenje", MessageBoxButtons.OK);
             }
         }
     }

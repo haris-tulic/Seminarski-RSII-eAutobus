@@ -1,12 +1,8 @@
 ﻿using AutoMapper;
+using eAutobus.Database;
 using eAutobus.Services.Interfaces;
 using eAutobusModel;
 using eAutobusModel.Requests;
-using eAutobus.Database;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 namespace eAutobus.Services
@@ -23,7 +19,7 @@ namespace eAutobus.Services
         public async Task<GradModel> Delete(int id)
         {
             var entity = _context.Grad.Find(id);
-            entity.IsDeleted=true;
+            entity.IsDeleted = true;
             await _context.SaveChangesAsync();
             return _mapper.Map<GradModel>(entity);
 
@@ -31,13 +27,13 @@ namespace eAutobus.Services
 
         public async Task<List<GradModel>> Get()
         {
-            var list =await _context.Grad.ToListAsync();
+            var list = await _context.Grad.ToListAsync();
             return _mapper.Map<List<GradModel>>(list);
         }
 
         public async Task<GradModel> GetById(int id)
         {
-            var entity = await _context.Grad.FirstOrDefaultAsync(g=>g.GradID==id);
+            var entity = await _context.Grad.FirstOrDefaultAsync(g => g.GradID == id);
             return _mapper.Map<GradModel>(entity);
         }
 
@@ -51,7 +47,7 @@ namespace eAutobus.Services
 
         public async Task<GradModel> Update(GradInsertRequest request, int id)
         {
-            var entity =await _context.Grad.FirstOrDefaultAsync(g=>g.GradID==id);
+            var entity = await _context.Grad.FirstOrDefaultAsync(g => g.GradID == id);
             _mapper.Map(request, entity);
             await _context.SaveChangesAsync();
             return _mapper.Map<GradModel>(entity);

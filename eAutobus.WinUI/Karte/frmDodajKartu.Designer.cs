@@ -29,187 +29,219 @@ namespace eAutobus.WinUI.Karte
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cbTipKarte = new System.Windows.Forms.ComboBox();
-            this.cbVrstaKarte = new System.Windows.Forms.ComboBox();
-            this.cbZona = new System.Windows.Forms.ComboBox();
-            this.txtCijena = new System.Windows.Forms.TextBox();
-            this.btnSnimi = new System.Windows.Forms.Button();
-            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cmbPolaziste = new System.Windows.Forms.ComboBox();
-            this.cmbOdrediste = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            cbTipKarte = new ComboBox();
+            cbVrstaKarte = new ComboBox();
+            cbZona = new ComboBox();
+            txtCijena = new TextBox();
+            btnSnimi = new Button();
+            errorProvider = new ErrorProvider(components);
+            label5 = new Label();
+            label6 = new Label();
+            cmbPolaziste = new ComboBox();
+            cmbOdrediste = new ComboBox();
+            label7 = new Label();
+            ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(249, 115);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Tip karte:";
+            label1.AutoSize = true;
+            label1.Location = new Point(290, 133);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(55, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Tip karte:";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(240, 150);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Vrsta karte:";
+            label2.AutoSize = true;
+            label2.Location = new Point(280, 173);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(65, 15);
+            label2.TabIndex = 1;
+            label2.Text = "Vrsta karte:";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(266, 185);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Zona:";
+            label3.AutoSize = true;
+            label3.Location = new Point(310, 213);
+            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(37, 15);
+            label3.TabIndex = 2;
+            label3.Text = "Zona:";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(262, 222);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Cijena:";
+            label4.AutoSize = true;
+            label4.Location = new Point(306, 256);
+            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(43, 15);
+            label4.TabIndex = 3;
+            label4.Text = "Cijena:";
             // 
             // cbTipKarte
             // 
-            this.cbTipKarte.FormattingEnabled = true;
-            this.cbTipKarte.Location = new System.Drawing.Point(307, 112);
-            this.cbTipKarte.Name = "cbTipKarte";
-            this.cbTipKarte.Size = new System.Drawing.Size(140, 21);
-            this.cbTipKarte.TabIndex = 4;
-            this.cbTipKarte.Validating += new System.ComponentModel.CancelEventHandler(this.cbTipKarte_Validating);
+            cbTipKarte.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbTipKarte.FormattingEnabled = true;
+            cbTipKarte.Location = new Point(358, 129);
+            cbTipKarte.Margin = new Padding(4, 3, 4, 3);
+            cbTipKarte.Name = "cbTipKarte";
+            cbTipKarte.Size = new Size(163, 23);
+            cbTipKarte.TabIndex = 4;
+            cbTipKarte.Validating += cbTipKarte_Validating;
             // 
             // cbVrstaKarte
             // 
-            this.cbVrstaKarte.FormattingEnabled = true;
-            this.cbVrstaKarte.Location = new System.Drawing.Point(307, 147);
-            this.cbVrstaKarte.Name = "cbVrstaKarte";
-            this.cbVrstaKarte.Size = new System.Drawing.Size(140, 21);
-            this.cbVrstaKarte.TabIndex = 5;
-            this.cbVrstaKarte.Validating += new System.ComponentModel.CancelEventHandler(this.cbVrstaKarte_Validating);
+            cbVrstaKarte.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbVrstaKarte.FormattingEnabled = true;
+            cbVrstaKarte.Location = new Point(358, 170);
+            cbVrstaKarte.Margin = new Padding(4, 3, 4, 3);
+            cbVrstaKarte.Name = "cbVrstaKarte";
+            cbVrstaKarte.Size = new Size(163, 23);
+            cbVrstaKarte.TabIndex = 5;
+            cbVrstaKarte.Validating += cbVrstaKarte_Validating;
             // 
             // cbZona
             // 
-            this.cbZona.FormattingEnabled = true;
-            this.cbZona.Location = new System.Drawing.Point(307, 182);
-            this.cbZona.Name = "cbZona";
-            this.cbZona.Size = new System.Drawing.Size(140, 21);
-            this.cbZona.TabIndex = 6;
-            this.cbZona.Validating += new System.ComponentModel.CancelEventHandler(this.cbZona_Validating);
+            cbZona.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbZona.FormattingEnabled = true;
+            cbZona.Location = new Point(358, 210);
+            cbZona.Margin = new Padding(4, 3, 4, 3);
+            cbZona.Name = "cbZona";
+            cbZona.Size = new Size(163, 23);
+            cbZona.TabIndex = 6;
+            cbZona.Validating += cbZona_Validating;
             // 
             // txtCijena
             // 
-            this.txtCijena.Location = new System.Drawing.Point(307, 219);
-            this.txtCijena.Name = "txtCijena";
-            this.txtCijena.Size = new System.Drawing.Size(140, 20);
-            this.txtCijena.TabIndex = 7;
-            this.txtCijena.Validating += new System.ComponentModel.CancelEventHandler(this.txtCijena_Validating);
+            txtCijena.Location = new Point(358, 253);
+            txtCijena.Margin = new Padding(4, 3, 4, 3);
+            txtCijena.Name = "txtCijena";
+            txtCijena.Size = new Size(163, 23);
+            txtCijena.TabIndex = 7;
+            txtCijena.KeyPress += txtCijena_KeyPress;
+            txtCijena.Validating += txtCijena_Validating;
             // 
             // btnSnimi
             // 
-            this.btnSnimi.Location = new System.Drawing.Point(337, 341);
-            this.btnSnimi.Name = "btnSnimi";
-            this.btnSnimi.Size = new System.Drawing.Size(75, 23);
-            this.btnSnimi.TabIndex = 8;
-            this.btnSnimi.Text = "Snimi";
-            this.btnSnimi.UseVisualStyleBackColor = true;
-            this.btnSnimi.Click += new System.EventHandler(this.btnSnimi_Click);
+            btnSnimi.Location = new Point(393, 406);
+            btnSnimi.Margin = new Padding(4, 3, 4, 3);
+            btnSnimi.Name = "btnSnimi";
+            btnSnimi.Size = new Size(88, 27);
+            btnSnimi.TabIndex = 8;
+            btnSnimi.Text = "Snimi";
+            btnSnimi.UseVisualStyleBackColor = true;
+            btnSnimi.Click += btnSnimi_Click;
             // 
             // errorProvider
             // 
-            this.errorProvider.ContainerControl = this;
+            errorProvider.ContainerControl = this;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(249, 258);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Polazište:";
+            label5.AutoSize = true;
+            label5.Location = new Point(290, 298);
+            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(56, 15);
+            label5.TabIndex = 9;
+            label5.Text = "Polazište:";
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(246, 294);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 13);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Odredište:";
+            label6.AutoSize = true;
+            label6.Location = new Point(287, 339);
+            label6.Margin = new Padding(4, 0, 4, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(61, 15);
+            label6.TabIndex = 10;
+            label6.Text = "Odredište:";
             // 
             // cmbPolaziste
             // 
-            this.cmbPolaziste.FormattingEnabled = true;
-            this.cmbPolaziste.Location = new System.Drawing.Point(307, 255);
-            this.cmbPolaziste.Name = "cmbPolaziste";
-            this.cmbPolaziste.Size = new System.Drawing.Size(140, 21);
-            this.cmbPolaziste.TabIndex = 11;
-            this.cmbPolaziste.Validating += new System.ComponentModel.CancelEventHandler(this.cmbPolaziste_Validating);
+            cmbPolaziste.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbPolaziste.FormattingEnabled = true;
+            cmbPolaziste.Location = new Point(358, 294);
+            cmbPolaziste.Margin = new Padding(4, 3, 4, 3);
+            cmbPolaziste.Name = "cmbPolaziste";
+            cmbPolaziste.Size = new Size(163, 23);
+            cmbPolaziste.TabIndex = 11;
+            cmbPolaziste.Validating += cmbPolaziste_Validating;
             // 
             // cmbOdrediste
             // 
-            this.cmbOdrediste.FormattingEnabled = true;
-            this.cmbOdrediste.Location = new System.Drawing.Point(307, 291);
-            this.cmbOdrediste.Name = "cmbOdrediste";
-            this.cmbOdrediste.Size = new System.Drawing.Size(140, 21);
-            this.cmbOdrediste.TabIndex = 12;
-            this.cmbOdrediste.Validating += new System.ComponentModel.CancelEventHandler(this.cmbOdrediste_Validating);
+            cmbOdrediste.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbOdrediste.FormattingEnabled = true;
+            cmbOdrediste.Location = new Point(358, 336);
+            cmbOdrediste.Margin = new Padding(4, 3, 4, 3);
+            cmbOdrediste.Name = "cmbOdrediste";
+            cmbOdrediste.Size = new Size(163, 23);
+            cmbOdrediste.TabIndex = 12;
+            cmbOdrediste.Validating += cmbOdrediste_Validating;
+            // 
+            // label7
+            // 
+            label7.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.ForeColor = Color.Red;
+            label7.Location = new Point(359, 367);
+            label7.Name = "label7";
+            label7.Size = new Size(162, 31);
+            label7.TabIndex = 13;
+            label7.Text = "*Pri unosu cijene, unose se samo brojevi.";
             // 
             // frmDodajKartu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.cmbOdrediste);
-            this.Controls.Add(this.cmbPolaziste);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.btnSnimi);
-            this.Controls.Add(this.txtCijena);
-            this.Controls.Add(this.cbZona);
-            this.Controls.Add(this.cbVrstaKarte);
-            this.Controls.Add(this.cbTipKarte);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Name = "frmDodajKartu";
-            this.Text = "frmDodajKartu";
-            this.Load += new System.EventHandler(this.frmDodajKartu_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(933, 519);
+            Controls.Add(label7);
+            Controls.Add(cmbOdrediste);
+            Controls.Add(cmbPolaziste);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(btnSnimi);
+            Controls.Add(txtCijena);
+            Controls.Add(cbZona);
+            Controls.Add(cbVrstaKarte);
+            Controls.Add(cbTipKarte);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "frmDodajKartu";
+            Text = "DodajKartu";
+            Load += frmDodajKartu_Load;
+            ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cbTipKarte;
-        private System.Windows.Forms.ComboBox cbVrstaKarte;
-        private System.Windows.Forms.ComboBox cbZona;
-        private System.Windows.Forms.TextBox txtCijena;
-        private System.Windows.Forms.Button btnSnimi;
-        private System.Windows.Forms.ErrorProvider errorProvider;
-        private System.Windows.Forms.ComboBox cmbOdrediste;
-        private System.Windows.Forms.ComboBox cmbPolaziste;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        private ComboBox cbTipKarte;
+        private ComboBox cbVrstaKarte;
+        private ComboBox cbZona;
+        private TextBox txtCijena;
+        private Button btnSnimi;
+        private ErrorProvider errorProvider;
+        private ComboBox cmbOdrediste;
+        private ComboBox cmbPolaziste;
+        private Label label6;
+        private Label label5;
+        private Label label7;
     }
 }

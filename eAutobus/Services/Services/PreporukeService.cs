@@ -1,17 +1,9 @@
 ﻿using AutoMapper;
-using eAutobusModel;
-using Microsoft.EntityFrameworkCore;
 using eAutobus.Database;
 using eAutobus.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using eAutobusModel;
+using Microsoft.EntityFrameworkCore;
 using System.Data;
-using System.Reflection;
-using Microsoft.ML;
-using Microsoft.ML.Trainers;
-using eAutobus.ML;
 
 namespace eAutobus.Services
 {
@@ -36,7 +28,7 @@ namespace eAutobus.Services
                 ocjena += o.Ocjena;
             }
 
-            if(linija.Recenzija.Count() > 0)
+            if (linija.Recenzija.Count() > 0)
                 linija.FinalOcjena = ocjena / linija.Recenzija.Count();
 
             return _mapper.Map<List<RasporedVoznjeModel>>(linija);
@@ -103,12 +95,12 @@ namespace eAutobus.Services
                 zajednickeR1.Clear();
                 zajednickeR2.Clear();
             }
-            var preporuka = _context.Set<RasporedVoznje>().Include(o => o.Odrediste).Include(a=>a.Autobus)
+            var preporuka = _context.Set<RasporedVoznje>().Include(o => o.Odrediste).Include(a => a.Autobus)
                 .Include(d => d.Polaziste)
                 .Include(r => r.Recenzija)
                 .Include(v => v.Vozac)
                 .Include(k => k.Kondukter)
-                .Include("Vozac.Korisnik").Where(x=>preporuceneLinijeIds.Contains(x.RasporedVoznjeID)).ToList();
+                .Include("Vozac.Korisnik").Where(x => preporuceneLinijeIds.Contains(x.RasporedVoznjeID)).ToList();
             var preporukaM = new List<RasporedVoznjeModel>();
             _mapper.Map(preporuka, preporukaM);
 
@@ -144,5 +136,5 @@ namespace eAutobus.Services
                 return 0;
             return brojnik / nazivnik;
         }
-    } 
+    }
 }

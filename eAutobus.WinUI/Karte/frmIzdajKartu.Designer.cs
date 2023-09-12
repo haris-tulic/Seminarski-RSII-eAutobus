@@ -135,7 +135,7 @@ namespace eAutobus.WinUI.Karte
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(330, 605);
+            label8.Location = new Point(330, 624);
             label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
             label8.Size = new Size(45, 15);
@@ -144,6 +144,7 @@ namespace eAutobus.WinUI.Karte
             // 
             // cbVrstaKarte
             // 
+            cbVrstaKarte.DropDownStyle = ComboBoxStyle.DropDownList;
             cbVrstaKarte.FormattingEnabled = true;
             cbVrstaKarte.Location = new Point(387, 249);
             cbVrstaKarte.Margin = new Padding(4, 3, 4, 3);
@@ -155,6 +156,7 @@ namespace eAutobus.WinUI.Karte
             // 
             // cbTipKarte
             // 
+            cbTipKarte.DropDownStyle = ComboBoxStyle.DropDownList;
             cbTipKarte.FormattingEnabled = true;
             cbTipKarte.Location = new Point(387, 298);
             cbTipKarte.Margin = new Padding(4, 3, 4, 3);
@@ -166,6 +168,7 @@ namespace eAutobus.WinUI.Karte
             // 
             // cbPolaziste
             // 
+            cbPolaziste.DropDownStyle = ComboBoxStyle.DropDownList;
             cbPolaziste.FormattingEnabled = true;
             cbPolaziste.Location = new Point(388, 348);
             cbPolaziste.Margin = new Padding(4, 3, 4, 3);
@@ -177,6 +180,7 @@ namespace eAutobus.WinUI.Karte
             // 
             // cbOdrediste
             // 
+            cbOdrediste.DropDownStyle = ComboBoxStyle.DropDownList;
             cbOdrediste.FormattingEnabled = true;
             cbOdrediste.Location = new Point(388, 399);
             cbOdrediste.Margin = new Padding(4, 3, 4, 3);
@@ -217,7 +221,7 @@ namespace eAutobus.WinUI.Karte
             // 
             rbJedan.AutoSize = true;
             rbJedan.Checked = true;
-            rbJedan.Location = new Point(388, 603);
+            rbJedan.Location = new Point(388, 622);
             rbJedan.Margin = new Padding(4, 3, 4, 3);
             rbJedan.Name = "rbJedan";
             rbJedan.Size = new Size(116, 19);
@@ -230,7 +234,7 @@ namespace eAutobus.WinUI.Karte
             // rbDva
             // 
             rbDva.AutoSize = true;
-            rbDva.Location = new Point(534, 605);
+            rbDva.Location = new Point(534, 622);
             rbDva.Margin = new Padding(4, 3, 4, 3);
             rbDva.Name = "rbDva";
             rbDva.Size = new Size(94, 19);
@@ -309,6 +313,7 @@ namespace eAutobus.WinUI.Karte
             txtBrojTelefona.Name = "txtBrojTelefona";
             txtBrojTelefona.Size = new Size(182, 23);
             txtBrojTelefona.TabIndex = 24;
+            txtBrojTelefona.KeyPress += txtBrojTelefona_KeyPress;
             txtBrojTelefona.Validating += txtBrojTelefona_Validating;
             // 
             // label11
@@ -332,10 +337,10 @@ namespace eAutobus.WinUI.Karte
             // 
             // btnPreuzmiPDF
             // 
-            btnPreuzmiPDF.Location = new Point(667, 668);
+            btnPreuzmiPDF.Location = new Point(423, 734);
             btnPreuzmiPDF.Margin = new Padding(4, 3, 4, 3);
             btnPreuzmiPDF.Name = "btnPreuzmiPDF";
-            btnPreuzmiPDF.Size = new Size(104, 32);
+            btnPreuzmiPDF.Size = new Size(113, 32);
             btnPreuzmiPDF.TabIndex = 29;
             btnPreuzmiPDF.Text = "Preuzmi PDF";
             btnPreuzmiPDF.UseVisualStyleBackColor = true;
@@ -343,13 +348,12 @@ namespace eAutobus.WinUI.Karte
             // 
             // label12
             // 
-            label12.AutoSize = true;
             label12.Font = new Font("Sitka Display", 9F, FontStyle.Italic | FontStyle.Underline, GraphicsUnit.Point);
             label12.ForeColor = Color.OrangeRed;
-            label12.Location = new Point(339, 574);
+            label12.Location = new Point(387, 572);
             label12.Margin = new Padding(4, 0, 4, 0);
             label12.Name = "label12";
-            label12.Size = new Size(303, 18);
+            label12.Size = new Size(183, 44);
             label12.TabIndex = 30;
             label12.Text = "*Klikom na polje Cijena, prikazuje se cijena za odabranu kartu";
             // 
@@ -357,7 +361,7 @@ namespace eAutobus.WinUI.Karte
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1052, 850);
+            ClientSize = new Size(1052, 791);
             Controls.Add(label12);
             Controls.Add(btnPreuzmiPDF);
             Controls.Add(txtPrezime);
@@ -388,7 +392,7 @@ namespace eAutobus.WinUI.Karte
             Controls.Add(label1);
             Margin = new Padding(4, 3, 4, 3);
             Name = "frmIzdajKartu";
-            Text = "frmIzdajKartu";
+            Text = "Izdaj kartu";
             Load += frmIzdajKartu_Load;
             ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
             ResumeLayout(false);

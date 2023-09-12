@@ -48,11 +48,9 @@ namespace eAutobus.WinUI.Autobusi
             // groupBox1
             // 
             groupBox1.Controls.Add(dgvAutobusi);
-            groupBox1.Location = new Point(121, 220);
-            groupBox1.Margin = new Padding(3, 2, 3, 2);
+            groupBox1.Location = new Point(138, 293);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(3, 2, 3, 2);
-            groupBox1.Size = new Size(809, 344);
+            groupBox1.Size = new Size(925, 459);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Autobusi";
@@ -64,14 +62,13 @@ namespace eAutobus.WinUI.Autobusi
             dgvAutobusi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvAutobusi.Columns.AddRange(new DataGridViewColumn[] { AutobusID, MarkaAutobusa, BrojSjedista, DatumProizvodnje, NazivGaraze, Ispravan, Akcija });
             dgvAutobusi.Dock = DockStyle.Fill;
-            dgvAutobusi.Location = new Point(3, 18);
-            dgvAutobusi.Margin = new Padding(3, 2, 3, 2);
+            dgvAutobusi.Location = new Point(3, 23);
             dgvAutobusi.Name = "dgvAutobusi";
             dgvAutobusi.ReadOnly = true;
             dgvAutobusi.RowHeadersWidth = 51;
             dgvAutobusi.RowTemplate.Height = 24;
             dgvAutobusi.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvAutobusi.Size = new Size(803, 324);
+            dgvAutobusi.Size = new Size(919, 433);
             dgvAutobusi.TabIndex = 0;
             dgvAutobusi.CellContentClick += dgvAutobusi_CellContentClick;
             dgvAutobusi.CellMouseDoubleClick += dgvAutobusi_CellMouseDoubleClick;
@@ -143,10 +140,9 @@ namespace eAutobus.WinUI.Autobusi
             // 
             // btnPrikazi
             // 
-            btnPrikazi.Location = new Point(437, 146);
-            btnPrikazi.Margin = new Padding(3, 2, 3, 2);
+            btnPrikazi.Location = new Point(499, 195);
             btnPrikazi.Name = "btnPrikazi";
-            btnPrikazi.Size = new Size(116, 37);
+            btnPrikazi.Size = new Size(133, 49);
             btnPrikazi.TabIndex = 1;
             btnPrikazi.Text = "Pretraga";
             btnPrikazi.UseVisualStyleBackColor = true;
@@ -154,33 +150,31 @@ namespace eAutobus.WinUI.Autobusi
             // 
             // txtMarkaVozila
             // 
-            txtMarkaVozila.Location = new Point(386, 88);
-            txtMarkaVozila.Margin = new Padding(3, 2, 3, 2);
+            txtMarkaVozila.Location = new Point(441, 117);
             txtMarkaVozila.Name = "txtMarkaVozila";
-            txtMarkaVozila.Size = new Size(220, 23);
+            txtMarkaVozila.Size = new Size(251, 27);
             txtMarkaVozila.TabIndex = 2;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(449, 56);
+            label1.Location = new Point(513, 75);
             label1.Name = "label1";
-            label1.Size = new Size(76, 15);
+            label1.Size = new Size(96, 20);
             label1.TabIndex = 3;
             label1.Text = "Marka vozila:";
             // 
             // frmAutobusiPrikaz
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1054, 626);
+            ClientSize = new Size(1205, 835);
             Controls.Add(label1);
             Controls.Add(txtMarkaVozila);
             Controls.Add(btnPrikazi);
             Controls.Add(groupBox1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "frmAutobusiPrikaz";
-            Text = "frmAutobusi";
+            Text = "Prikaz autobusa";
             Load += frmAutobusiPrikaz_Load;
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvAutobusi).EndInit();

@@ -714,8 +714,7 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
         'description': "Placeno",
         'payment_method_types[]': 'card'
       };
-      const secretkey =
-          "sk_test_51KeOHDDgK4DOihzEO7yRFmzgc0GjCjmAzgAzwc5ZYoTtFAFVQ0h89JNx0yER0cM1TjdI18TPOJclgMVWUBS5p34P00N57vXNgc";
+
       var response = await http.post(
         Uri.parse('https://api.stripe.com/v1/payment_intents'),
         headers: {

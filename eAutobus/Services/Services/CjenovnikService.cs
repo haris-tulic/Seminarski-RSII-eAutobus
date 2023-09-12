@@ -4,10 +4,6 @@ using eAutobus.Services.Interfaces;
 using eAutobusModel;
 using eAutobusModel.Requests;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace eAutobus.Services
 {
@@ -33,34 +29,34 @@ namespace eAutobus.Services
         {
             var query = _context.Cjenovnik.Include(t => t.Tipkarte)
                 .Include(v => v.VrstaKarte)
-                .Include(z=>z.Zona)
-                .Include(p=>p.Polaziste)
-                .Include(o=>o.Odrediste)
-                .Where(c=>c.IsDeleted==false).AsQueryable();
-            if (request.TipkarteID.ToString()!="0")
+                .Include(z => z.Zona)
+                .Include(p => p.Polaziste)
+                .Include(o => o.Odrediste)
+                .Where(c => c.IsDeleted == false).AsQueryable();
+            if (request.TipkarteID.ToString() != "0")
             {
-                query = query.Where(x => x.TipkarteID==request.TipkarteID);
+                query = query.Where(x => x.TipkarteID == request.TipkarteID);
             }
-            if (request.ZonaID.ToString()!="0")
+            if (request.ZonaID.ToString() != "0")
             {
-                query = query.Where(y =>y.ZonaID==request.ZonaID);
+                query = query.Where(y => y.ZonaID == request.ZonaID);
             }
 
-            if (request.VrstaKarteID.ToString()!="0")
+            if (request.VrstaKarteID.ToString() != "0")
             {
                 query = query.Where(c => c.VrstaKarteID == request.VrstaKarteID);
             }
-            if (request.PolazisteID.ToString()!="0")
+            if (request.PolazisteID.ToString() != "0")
             {
                 query = query.Where(p => p.PolazisteID == request.PolazisteID);
             }
-            if (request.OdredisteID.ToString()!="0")
+            if (request.OdredisteID.ToString() != "0")
             {
                 query = query.Where(o => o.OdredisteID == request.OdredisteID);
             }
             var list = await query.ToListAsync();
             var listC = new List<CjenovnikModel>();
-            _mapper.Map(list,listC);
+            _mapper.Map(list, listC);
             for (int i = 0; i < list.Count(); i++)
             {
                 listC[i].TipKarte = list[i].Tipkarte.Naziv;
@@ -76,12 +72,15 @@ namespace eAutobus.Services
         {
             var entity = await _context.Cjenovnik.FirstOrDefaultAsync(x => x.TipkarteID == cijena.TipkarteID && x.VrstaKarteID == cijena.VrstaKarteID);
 
-            return _mapper.Map <CjenovnikModel>(entity);
+            return _mapper.Map<CjenovnikModel>(entity);
 
         }
         public async Task<CjenovnikModel> GetByID(int id)
         {
-            var entity = await _context.Cjenovnik.FirstOrDefaultAsync(x=> x.CjenovnikID==id);
+            var entity = await _context.Cjenovnik
+                        .Include(x => x.Tipkarte)
+                        .Include(x => x.VrstaKarte)
+                        .FirstOrDefaultAsync(x => x.CjenovnikID == id);
             return _mapper.Map<CjenovnikModel>(entity);
         }
 
@@ -93,7 +92,7 @@ namespace eAutobus.Services
             return _mapper.Map<CjenovnikModel>(entity);
         }
 
-        public async Task<CjenovnikModel>Update(int id,CjenovnikInsertRequest request)
+        public async Task<CjenovnikModel> Update(int id, CjenovnikInsertRequest request)
         {
             var entity = _context.Cjenovnik.Find(id);
             _mapper.Map(request, entity);

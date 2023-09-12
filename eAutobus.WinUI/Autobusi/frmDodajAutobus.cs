@@ -1,13 +1,5 @@
 ﻿using eAutobusModel.Requests;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace eAutobus.WinUI.Autobusi
 {
@@ -38,12 +30,12 @@ namespace eAutobus.WinUI.Autobusi
                 if (id.HasValue)
                 {
                     await _service.Update<eAutobusModel.AutobusiModel>(id, request);
-                    MessageBox.Show("Novo vozilo uspjesno izmjenjeno!");
+                    MessageBox.Show("Novo vozilo uspjesno izmjenjeno!", "Izmjena", MessageBoxButtons.OK);
                 }
                 else
                 {
                     await _service.Insert<eAutobusModel.AutobusiModel>(request);
-                    MessageBox.Show("Novo vozilo uspjesno dodano!");
+                    MessageBox.Show("Novo vozilo uspjesno dodano!", "Obavijest", MessageBoxButtons.OK);
                 }
             }
 
@@ -141,7 +133,9 @@ namespace eAutobus.WinUI.Autobusi
 
         private void cbGaraza_Validating(object sender, CancelEventArgs e)
         {
-            
+
+            if (cbGaraza.SelectedValue != null)
+            {
                 if (string.IsNullOrWhiteSpace(cbGaraza.SelectedValue.ToString()) || cbGaraza.SelectedValue.ToString() == "0")
                 {
                     errorProvider.SetError(cbGaraza, "Obavezno polje!");
@@ -151,8 +145,29 @@ namespace eAutobus.WinUI.Autobusi
                 {
                     errorProvider.SetError(cbGaraza, null);
                 }
-            
-           
+            }
+            else
+            {
+                errorProvider.SetError(cbGaraza, "Obavezno polje!");
+                e.Cancel = true;
+            }
+
+        }
+
+        private void txtBrojAutobusa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtBrojSjedista_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

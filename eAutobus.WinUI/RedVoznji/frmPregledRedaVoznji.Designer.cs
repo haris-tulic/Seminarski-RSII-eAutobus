@@ -53,30 +53,30 @@ namespace eAutobus.WinUI.RedVoznji
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(71, 67);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(81, 89);
+            label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
-            label1.Size = new Size(56, 15);
+            label1.Size = new Size(70, 20);
             label1.TabIndex = 0;
             label1.Text = "Polazište:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(612, 66);
-            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Location = new Point(699, 88);
+            label2.Margin = new Padding(5, 0, 5, 0);
             label2.Name = "label2";
-            label2.Size = new Size(61, 15);
+            label2.Size = new Size(77, 20);
             label2.TabIndex = 1;
             label2.Text = "Odredište:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(315, 148);
-            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Location = new Point(360, 197);
+            label3.Margin = new Padding(5, 0, 5, 0);
             label3.Name = "label3";
-            label3.Size = new Size(46, 15);
+            label3.Size = new Size(57, 20);
             label3.TabIndex = 2;
             label3.Text = "Datum:";
             // 
@@ -85,10 +85,10 @@ namespace eAutobus.WinUI.RedVoznji
             btnSnimi.BackColor = SystemColors.ControlDark;
             btnSnimi.BackgroundImageLayout = ImageLayout.Center;
             btnSnimi.ForeColor = SystemColors.ButtonFace;
-            btnSnimi.Location = new Point(431, 201);
-            btnSnimi.Margin = new Padding(4);
+            btnSnimi.Location = new Point(493, 268);
+            btnSnimi.Margin = new Padding(5, 5, 5, 5);
             btnSnimi.Name = "btnSnimi";
-            btnSnimi.Size = new Size(88, 26);
+            btnSnimi.Size = new Size(101, 35);
             btnSnimi.TabIndex = 3;
             btnSnimi.Text = "Pretraga";
             btnSnimi.UseVisualStyleBackColor = false;
@@ -100,13 +100,13 @@ namespace eAutobus.WinUI.RedVoznji
             dgvLinije.AllowUserToDeleteRows = false;
             dgvLinije.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvLinije.Columns.AddRange(new DataGridViewColumn[] { RasporedVoznjeID, BrojLinije, BrojAutobusa, Polazak, VrijemePolaska, VrijemeDolaska, Odlazak, Datum, Akcija });
-            dgvLinije.Location = new Point(14, 263);
-            dgvLinije.Margin = new Padding(4);
+            dgvLinije.Location = new Point(16, 351);
+            dgvLinije.Margin = new Padding(5, 5, 5, 5);
             dgvLinije.Name = "dgvLinije";
             dgvLinije.ReadOnly = true;
             dgvLinije.RowHeadersWidth = 51;
             dgvLinije.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvLinije.Size = new Size(1059, 242);
+            dgvLinije.Size = new Size(1210, 323);
             dgvLinije.TabIndex = 4;
             dgvLinije.CellContentClick += dgvLinije_CellContentClick;
             dgvLinije.CellMouseDoubleClick += dgvLinije_CellMouseDoubleClick;
@@ -199,37 +199,39 @@ namespace eAutobus.WinUI.RedVoznji
             // 
             // cbPolaziste
             // 
+            cbPolaziste.DropDownStyle = ComboBoxStyle.DropDownList;
             cbPolaziste.FormattingEnabled = true;
-            cbPolaziste.Location = new Point(139, 62);
-            cbPolaziste.Margin = new Padding(4);
+            cbPolaziste.Location = new Point(159, 83);
+            cbPolaziste.Margin = new Padding(5, 5, 5, 5);
             cbPolaziste.Name = "cbPolaziste";
-            cbPolaziste.Size = new Size(161, 23);
+            cbPolaziste.Size = new Size(183, 28);
             cbPolaziste.TabIndex = 5;
             // 
             // cbOdrediste
             // 
+            cbOdrediste.DropDownStyle = ComboBoxStyle.DropDownList;
             cbOdrediste.FormattingEnabled = true;
-            cbOdrediste.Location = new Point(682, 62);
-            cbOdrediste.Margin = new Padding(4);
+            cbOdrediste.Location = new Point(779, 83);
+            cbOdrediste.Margin = new Padding(5, 5, 5, 5);
             cbOdrediste.Name = "cbOdrediste";
-            cbOdrediste.Size = new Size(161, 23);
+            cbOdrediste.Size = new Size(183, 28);
             cbOdrediste.TabIndex = 6;
             // 
             // dtpDatum
             // 
-            dtpDatum.Location = new Point(381, 148);
-            dtpDatum.Margin = new Padding(4);
+            dtpDatum.Location = new Point(435, 197);
+            dtpDatum.Margin = new Padding(5, 5, 5, 5);
             dtpDatum.Name = "dtpDatum";
-            dtpDatum.Size = new Size(232, 23);
+            dtpDatum.Size = new Size(265, 27);
             dtpDatum.TabIndex = 7;
             dtpDatum.ValueChanged += dtpDatum_ValueChanged;
             // 
             // btnIzvjestaj
             // 
-            btnIzvjestaj.Location = new Point(431, 554);
-            btnIzvjestaj.Margin = new Padding(4);
+            btnIzvjestaj.Location = new Point(493, 739);
+            btnIzvjestaj.Margin = new Padding(5, 5, 5, 5);
             btnIzvjestaj.Name = "btnIzvjestaj";
-            btnIzvjestaj.Size = new Size(88, 26);
+            btnIzvjestaj.Size = new Size(101, 35);
             btnIzvjestaj.TabIndex = 8;
             btnIzvjestaj.Text = "Izvještaj";
             btnIzvjestaj.UseVisualStyleBackColor = true;
@@ -237,9 +239,9 @@ namespace eAutobus.WinUI.RedVoznji
             // 
             // frmPregledRedaVoznji
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1100, 641);
+            ClientSize = new Size(1257, 855);
             Controls.Add(btnIzvjestaj);
             Controls.Add(dtpDatum);
             Controls.Add(cbOdrediste);
@@ -249,9 +251,9 @@ namespace eAutobus.WinUI.RedVoznji
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Margin = new Padding(4);
+            Margin = new Padding(5, 5, 5, 5);
             Name = "frmPregledRedaVoznji";
-            Text = "frmPregledRedaVoznji";
+            Text = "Pregled reda voznji";
             Load += frmPregledRedaVoznji_Load;
             ((System.ComponentModel.ISupportInitialize)dgvLinije).EndInit();
             ResumeLayout(false);

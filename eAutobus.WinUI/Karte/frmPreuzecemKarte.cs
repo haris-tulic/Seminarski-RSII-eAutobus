@@ -1,15 +1,5 @@
-﻿using eAutobus.WinUI.Korisnici;
-using eAutobusModel;
+﻿using eAutobusModel;
 using eAutobusModel.Requests;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace eAutobus.WinUI.Karte
 {
@@ -24,12 +14,10 @@ namespace eAutobus.WinUI.Karte
 
         private async void frmPreuzecemKarte_Load(object sender, EventArgs e)
         {
-            loadKarte();
-            
-
+            await loadKarte();
         }
 
-        private async void loadKarte()
+        private async Task loadKarte()
         {
             var listPrikaz = new List<KartaModel>();
             List<KartaModel> list = await _karte.Get<List<KartaModel>>(null);
@@ -61,8 +49,9 @@ namespace eAutobus.WinUI.Karte
                 if (dgvPrikazKarata.CurrentCell is DataGridViewCheckBoxCell checkBoxCell)
                 {
                     bool isChecked = (bool)checkBoxCell.Value;
-                    if (!isChecked) {
-                        DialogResult odgovor = MessageBox.Show("Da li zelite kartu oznaciti kao Placena", "Izbrisati zapis", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                    if (!isChecked)
+                    {
+                        DialogResult odgovor = MessageBox.Show("Da li zelite kartu oznaciti kao Placena", "Placanje karte", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                         if (odgovor == DialogResult.Yes)
                         {
                             var response = await _karte.UplatiKartu<KartaModel>(IdKarta, kartaUpsert);
@@ -71,7 +60,7 @@ namespace eAutobus.WinUI.Karte
                     }
                 }
 
-               
+
 
             }
         }

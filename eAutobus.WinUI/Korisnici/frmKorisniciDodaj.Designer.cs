@@ -155,6 +155,7 @@ namespace eAutobus.WinUI.Korisnici
             txtBrojTelefona.Name = "txtBrojTelefona";
             txtBrojTelefona.Size = new Size(199, 23);
             txtBrojTelefona.TabIndex = 13;
+            txtBrojTelefona.KeyPress += txtBrojTelefona_KeyPress;
             txtBrojTelefona.Validating += txtBrojTelefona_Validating;
             // 
             // txtAdresaStanovanja
@@ -178,6 +179,7 @@ namespace eAutobus.WinUI.Korisnici
             // 
             // cmbUloga
             // 
+            cmbUloga.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbUloga.FormattingEnabled = true;
             cmbUloga.Location = new Point(285, 357);
             cmbUloga.Margin = new Padding(4, 3, 4, 3);
@@ -212,6 +214,7 @@ namespace eAutobus.WinUI.Korisnici
             // 
             // cmbGrad
             // 
+            cmbGrad.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbGrad.FormattingEnabled = true;
             cmbGrad.Location = new Point(285, 309);
             cmbGrad.Margin = new Padding(4, 3, 4, 3);
@@ -244,7 +247,7 @@ namespace eAutobus.WinUI.Korisnici
             Controls.Add(label1);
             Margin = new Padding(4, 3, 4, 3);
             Name = "frmKorisniciDodaj";
-            Text = "frmDodajKorisnika";
+            Text = "Dodaj korisnika";
             Load += frmKorisniciDodaj_Load;
             ((System.ComponentModel.ISupportInitialize)errorKorisnik).EndInit();
             ResumeLayout(false);

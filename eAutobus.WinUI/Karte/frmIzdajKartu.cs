@@ -195,7 +195,7 @@ namespace eAutobus.WinUI.Karte
                     insert.Cijena *= 1.67;
                 }
                 await _karta.Insert<KartaModel>(insert);
-                MessageBox.Show("Karta je izdata!");
+                MessageBox.Show("Karta je izdata!", "Obavijest", MessageBoxButtons.OK);
             }
         }
 
@@ -250,9 +250,8 @@ namespace eAutobus.WinUI.Karte
             {
                 CijenaK = x.Cijena;
                 txtCijena.Text = x.Cijena.ToString() + " KM";
-
             }
-
+            rbJedan.Checked = true;
         }
 
         private void txtBrojTelefona_Validating(object sender, CancelEventArgs e)
@@ -334,6 +333,12 @@ namespace eAutobus.WinUI.Karte
             }
         }
 
-
+        private void txtBrojTelefona_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

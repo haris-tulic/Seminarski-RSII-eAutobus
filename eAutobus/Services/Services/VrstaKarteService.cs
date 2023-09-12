@@ -1,21 +1,17 @@
 ﻿using AutoMapper;
-using eAutobusModel.Requests;
 using eAutobus.Database;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using eAutobus.Services.Interfaces;
 using eAutobusModel;
+using eAutobusModel.Requests;
 using Microsoft.EntityFrameworkCore;
 
 namespace eAutobus.Services
 {
-    public class VrstaKarteService:IVrstaKarteService
+    public class VrstaKarteService : IVrstaKarteService
     {
         private readonly Database.eAutobusi _context;
         private readonly IMapper _mapper;
-        public VrstaKarteService (Database.eAutobusi context, IMapper mapper)
+        public VrstaKarteService(Database.eAutobusi context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -23,7 +19,7 @@ namespace eAutobus.Services
 
         public async Task<VrstaKarteModel> Delete(int id)
         {
-            var entity = await _context.VrstaKarte.FirstOrDefaultAsync(x=>x.VrstaKarteID==id);
+            var entity = await _context.VrstaKarte.FirstOrDefaultAsync(x => x.VrstaKarteID == id);
             entity.IsDeleted = true;
             await _context.SaveChangesAsync();
             return _mapper.Map<VrstaKarteModel>(entity);
@@ -37,7 +33,7 @@ namespace eAutobus.Services
 
         public async Task<VrstaKarteModel> GetById(int id)
         {
-            var entity = await _context.VrstaKarte.FirstOrDefaultAsync(x=>x.VrstaKarteID==id);
+            var entity = await _context.VrstaKarte.FirstOrDefaultAsync(x => x.VrstaKarteID == id);
             return _mapper.Map<VrstaKarteModel>(entity);
         }
 

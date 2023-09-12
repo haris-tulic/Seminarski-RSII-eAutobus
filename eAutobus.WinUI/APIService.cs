@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Flurl.Http;
-using Flurl;
+﻿using eAutobus.WinUI.Properties;
 using eAutobusModel;
-using eAutobus.WinUI.Properties;
-using Microsoft.Reporting.Map.WebForms.BingMaps;
+using Flurl.Http;
 
 namespace eAutobus.WinUI
 {
@@ -25,30 +18,30 @@ namespace eAutobus.WinUI
         public async Task<T> Get<T>(object search = null)
         {
             var url = $"{Settings.Default.ApiURL}/{_route}";
-            if (search!=null)
+            if (search != null)
             {
                 url += "?";
                 url += await search.ToQueryString();
             }
-            var result = await url.WithBasicAuth(Username,Password).GetJsonAsync<T>();
+            var result = await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
             return result;
         }
         public async Task<T> GetById<T>(object id)
         {
             var url = $"{Settings.Default.ApiURL}/{_route}/{id}";
-            return await url.WithBasicAuth(Username,Password).GetJsonAsync<T>();
+            return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
         }
 
         public async Task<T> Insert<T>(object request)
         {
             var url = $"{Settings.Default.ApiURL}/{_route}";
-            return await url.WithBasicAuth(Username,Password).PostJsonAsync(request).ReceiveJson<T>();
+            return await url.WithBasicAuth(Username, Password).PostJsonAsync(request).ReceiveJson<T>();
         }
 
-        public async Task<T> Update<T>(object id,object request)
+        public async Task<T> Update<T>(object id, object request)
         {
             var url = $"{Settings.Default.ApiURL}/{_route}/{id}";
-            return await url.WithBasicAuth(Username,Password).PutJsonAsync(request).ReceiveJson<T>();
+            return await url.WithBasicAuth(Username, Password).PutJsonAsync(request).ReceiveJson<T>();
         }
         public async Task<T> Delete<T>(object id)
         {
@@ -67,9 +60,9 @@ namespace eAutobus.WinUI
             return result;
         }
 
-        public async Task<T> UplatiKartu<T>(int id,object request)
+        public async Task<T> UplatiKartu<T>(int id, object request)
         {
-           var _route1 = _route + "/UplatiKartu";
+            var _route1 = _route + "/UplatiKartu";
             var url = $"{Settings.Default.ApiURL}/{_route1}/{id}";
             var result = await url.PostJsonAsync(request).ReceiveJson<T>();
 

@@ -1,14 +1,5 @@
 ﻿using eAutobusModel;
 using eAutobusModel.Requests;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace eAutobus.WinUI.Korisnici
 {
@@ -24,23 +15,71 @@ namespace eAutobus.WinUI.Korisnici
 
         private async void btnPotvrdi_Click(object sender, EventArgs e)
         {
-            if (_korisnik!=null)
+            if (_korisnik != null)
             {
                 _korisnik.KorisnickoIme = txtKorisnickoIme.Text;
                 _korisnik.Password = txtPassword.Text;
                 _korisnik.PasswordPotrvda = txtConfirmPassword.Text;
+
+
                 if (_korisnik.KorisnikID.HasValue)
                 {
-                    await _korisnikService.Update<KorisnikModel>(_korisnik.KorisnikID, _korisnik);
-                    MessageBox.Show("Korisnik je izmjenjen!");
+                    if (ProvjeraPostojecegKorisnika())
+                    {
+                        await _korisnikService.Update<KorisnikModel>(_korisnik.KorisnikID, _korisnik);
+                        MessageBox.Show("Korisnik je izmjenjen!", "Izmjena", MessageBoxButtons.OK);
+                        this.Close();
+                    }
                 }
                 else
                 {
-                    await _korisnikService.Insert<KorisnikModel>(_korisnik);
-                    MessageBox.Show("Novi korisnik uspjesno dodan!");
-                    this.Close();
+                    if (ProvjeraNovogKorisnika())
+                    {
+                        await _korisnikService.Insert<KorisnikModel>(_korisnik);
+                        MessageBox.Show("Novi korisnik uspjesno dodan!", "Obavijest", MessageBoxButtons.OK);
+                        this.Close();
+                    }
                 }
             }
+        }
+
+        private bool ProvjeraPostojecegKorisnika()
+        {
+            if (string.IsNullOrWhiteSpace(txtKorisnickoIme.Text))
+            {
+                MessageBox.Show("Nisu uneseni validni kredencijali!", "Upozorenje", MessageBoxButtons.OK);
+                return false;
+            }
+            if (!string.IsNullOrWhiteSpace(txtPassword.Text))
+            {
+                if (txtPassword.Text != txtConfirmPassword.Text)
+                {
+                    MessageBox.Show("Passwordi se ne slazu!", "Upozorenje", MessageBoxButtons.OK);
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private bool ProvjeraNovogKorisnika()
+        {
+            if (string.IsNullOrWhiteSpace(txtKorisnickoIme.Text) || string.IsNullOrWhiteSpace(txtPassword.Text) || string.IsNullOrWhiteSpace(txtConfirmPassword.Text))
+            {
+                MessageBox.Show("Nisu uneseni kredencijali za korisnika!", "Upozorenje", MessageBoxButtons.OK);
+                return false;
+            }
+            if (!string.IsNullOrWhiteSpace(txtPassword.Text))
+            {
+                if (txtPassword.Text != txtConfirmPassword.Text)
+                {
+                    MessageBox.Show("Passwordi se ne slazu!", "Upozorenje", MessageBoxButtons.OK);
+                    return false;
+                }
+
+            }
+
+            return true;
         }
 
         private async void frmKorisniciDodajRegistracija_Load(object sender, EventArgs e)
@@ -53,7 +92,20 @@ namespace eAutobus.WinUI.Korisnici
                     txtKorisnickoIme.Text = entity.KorisnickoIme;
                 }
             }
-          
+
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtPassword.Text))
+            {
+                txtConfirmPassword.Enabled = true;
+            }
+            else
+            {
+                txtConfirmPassword.Enabled = false;
+                txtConfirmPassword.Text = string.Empty;
+            }
         }
     }
 }

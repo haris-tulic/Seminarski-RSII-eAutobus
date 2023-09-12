@@ -46,30 +46,30 @@ namespace eAutobus.WinUI.Recenzija
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(360, 101);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(411, 135);
+            label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
-            label1.Size = new Size(47, 15);
+            label1.Size = new Size(58, 20);
             label1.TabIndex = 0;
             label1.Text = "Ocjena:";
             // 
             // nmOcjena
             // 
-            nmOcjena.Location = new Point(430, 99);
-            nmOcjena.Margin = new Padding(4);
+            nmOcjena.Location = new Point(491, 132);
+            nmOcjena.Margin = new Padding(5, 5, 5, 5);
             nmOcjena.Maximum = new decimal(new int[] { 5, 0, 0, 0 });
             nmOcjena.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             nmOcjena.Name = "nmOcjena";
-            nmOcjena.Size = new Size(81, 23);
+            nmOcjena.Size = new Size(93, 27);
             nmOcjena.TabIndex = 1;
             nmOcjena.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // btnFiltriraj
             // 
-            btnFiltriraj.Location = new Point(424, 170);
-            btnFiltriraj.Margin = new Padding(4);
+            btnFiltriraj.Location = new Point(485, 227);
+            btnFiltriraj.Margin = new Padding(5, 5, 5, 5);
             btnFiltriraj.Name = "btnFiltriraj";
-            btnFiltriraj.Size = new Size(88, 26);
+            btnFiltriraj.Size = new Size(101, 35);
             btnFiltriraj.TabIndex = 2;
             btnFiltriraj.Text = "Filtriraj";
             btnFiltriraj.UseVisualStyleBackColor = true;
@@ -81,12 +81,12 @@ namespace eAutobus.WinUI.Recenzija
             dgvRecenzije.AllowUserToDeleteRows = false;
             dgvRecenzije.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvRecenzije.Columns.AddRange(new DataGridViewColumn[] { RecenzijaID, Vrsta, Relacija, DatumRecenzije, Ocjena, Komentar });
-            dgvRecenzije.Location = new Point(156, 231);
-            dgvRecenzije.Margin = new Padding(4);
+            dgvRecenzije.Location = new Point(178, 308);
+            dgvRecenzije.Margin = new Padding(5, 5, 5, 5);
             dgvRecenzije.Name = "dgvRecenzije";
             dgvRecenzije.ReadOnly = true;
             dgvRecenzije.RowHeadersWidth = 51;
-            dgvRecenzije.Size = new Size(690, 264);
+            dgvRecenzije.Size = new Size(789, 352);
             dgvRecenzije.TabIndex = 3;
             // 
             // RecenzijaID
@@ -146,16 +146,16 @@ namespace eAutobus.WinUI.Recenzija
             // 
             // frmRecenzija
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1032, 580);
+            ClientSize = new Size(1179, 773);
             Controls.Add(dgvRecenzije);
             Controls.Add(btnFiltriraj);
             Controls.Add(nmOcjena);
             Controls.Add(label1);
-            Margin = new Padding(4);
+            Margin = new Padding(5, 5, 5, 5);
             Name = "frmRecenzija";
-            Text = "frmRecenzija";
+            Text = "Recenzija";
             Load += frmRecenzija_Load;
             ((System.ComponentModel.ISupportInitialize)nmOcjena).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvRecenzije).EndInit();

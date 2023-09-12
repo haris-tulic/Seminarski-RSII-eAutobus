@@ -50,47 +50,49 @@ namespace eAutobus.WinUI.Karte
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(119, 88);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(136, 117);
+            label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
-            label1.Size = new Size(26, 15);
+            label1.Size = new Size(33, 20);
             label1.TabIndex = 0;
             label1.Text = "Tip:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(528, 88);
-            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Location = new Point(603, 117);
+            label2.Margin = new Padding(5, 0, 5, 0);
             label2.Name = "label2";
-            label2.Size = new Size(37, 15);
+            label2.Size = new Size(46, 20);
             label2.TabIndex = 1;
             label2.Text = "Zona:";
             // 
             // cbTip
             // 
+            cbTip.DropDownStyle = ComboBoxStyle.DropDownList;
             cbTip.FormattingEnabled = true;
-            cbTip.Location = new Point(155, 84);
-            cbTip.Margin = new Padding(4);
+            cbTip.Location = new Point(177, 112);
+            cbTip.Margin = new Padding(5, 5, 5, 5);
             cbTip.Name = "cbTip";
-            cbTip.Size = new Size(200, 23);
+            cbTip.Size = new Size(228, 28);
             cbTip.TabIndex = 2;
             // 
             // cbZona
             // 
+            cbZona.DropDownStyle = ComboBoxStyle.DropDownList;
             cbZona.FormattingEnabled = true;
-            cbZona.Location = new Point(575, 84);
-            cbZona.Margin = new Padding(4);
+            cbZona.Location = new Point(657, 112);
+            cbZona.Margin = new Padding(5, 5, 5, 5);
             cbZona.Name = "cbZona";
-            cbZona.Size = new Size(200, 23);
+            cbZona.Size = new Size(228, 28);
             cbZona.TabIndex = 3;
             // 
             // btnPretraga
             // 
-            btnPretraga.Location = new Point(395, 159);
-            btnPretraga.Margin = new Padding(4);
+            btnPretraga.Location = new Point(451, 212);
+            btnPretraga.Margin = new Padding(5, 5, 5, 5);
             btnPretraga.Name = "btnPretraga";
-            btnPretraga.Size = new Size(88, 26);
+            btnPretraga.Size = new Size(101, 35);
             btnPretraga.TabIndex = 4;
             btnPretraga.Text = "Pretraga";
             btnPretraga.UseVisualStyleBackColor = true;
@@ -102,13 +104,13 @@ namespace eAutobus.WinUI.Karte
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { CjenovnikID, TipKarte, Zona, VrstaKarte, Polaziste, Odrediste, CijenaPrikaz, Akcija });
-            dataGridView1.Location = new Point(62, 278);
-            dataGridView1.Margin = new Padding(4);
+            dataGridView1.Location = new Point(71, 371);
+            dataGridView1.Margin = new Padding(5, 5, 5, 5);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(929, 227);
+            dataGridView1.Size = new Size(1062, 303);
             dataGridView1.TabIndex = 5;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             dataGridView1.CellMouseDoubleClick += dataGridView1_CellMouseDoubleClick;
@@ -189,10 +191,10 @@ namespace eAutobus.WinUI.Karte
             // 
             // btnPrintajKarte
             // 
-            btnPrintajKarte.Location = new Point(395, 571);
-            btnPrintajKarte.Margin = new Padding(4);
+            btnPrintajKarte.Location = new Point(451, 761);
+            btnPrintajKarte.Margin = new Padding(5, 5, 5, 5);
             btnPrintajKarte.Name = "btnPrintajKarte";
-            btnPrintajKarte.Size = new Size(88, 26);
+            btnPrintajKarte.Size = new Size(101, 35);
             btnPrintajKarte.TabIndex = 6;
             btnPrintajKarte.Text = "Printaj karte";
             btnPrintajKarte.UseVisualStyleBackColor = true;
@@ -200,9 +202,9 @@ namespace eAutobus.WinUI.Karte
             // 
             // frmPrikazKarata
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1066, 699);
+            ClientSize = new Size(1218, 932);
             Controls.Add(btnPrintajKarte);
             Controls.Add(dataGridView1);
             Controls.Add(btnPretraga);
@@ -210,9 +212,9 @@ namespace eAutobus.WinUI.Karte
             Controls.Add(cbTip);
             Controls.Add(label2);
             Controls.Add(label1);
-            Margin = new Padding(4);
+            Margin = new Padding(5, 5, 5, 5);
             Name = "frmPrikazKarata";
-            Text = "frmPrikazKarata";
+            Text = "Prikaz karata";
             Load += frmPrikazKarata_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

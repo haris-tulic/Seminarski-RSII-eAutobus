@@ -63,6 +63,7 @@ namespace eAutobus.WinUI.Autobusi
             txtBrojAutobusa.Name = "txtBrojAutobusa";
             txtBrojAutobusa.Size = new Size(259, 23);
             txtBrojAutobusa.TabIndex = 0;
+            txtBrojAutobusa.KeyPress += txtBrojAutobusa_KeyPress;
             txtBrojAutobusa.Validating += txtBrojAutobusa_Validating;
             // 
             // label1
@@ -92,6 +93,7 @@ namespace eAutobus.WinUI.Autobusi
             txtBrojSjedista.Name = "txtBrojSjedista";
             txtBrojSjedista.Size = new Size(259, 23);
             txtBrojSjedista.TabIndex = 2;
+            txtBrojSjedista.KeyPress += txtBrojSjedista_KeyPress;
             txtBrojSjedista.Validating += txtBrojSjedista_Validating;
             // 
             // label3
@@ -174,6 +176,7 @@ namespace eAutobus.WinUI.Autobusi
             // 
             // cbGaraza
             // 
+            cbGaraza.DropDownStyle = ComboBoxStyle.DropDownList;
             cbGaraza.FormattingEnabled = true;
             cbGaraza.Location = new Point(46, 251);
             cbGaraza.Margin = new Padding(4);
@@ -286,7 +289,7 @@ namespace eAutobus.WinUI.Autobusi
             Controls.Add(txtBrojAutobusa);
             Margin = new Padding(4);
             Name = "frmDodajAutobus";
-            Text = "frmDodajAutobus";
+            Text = "Dodaj autobus";
             Load += frmDodajAutobus_Load;
             ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvPrikazAutobusa).EndInit();

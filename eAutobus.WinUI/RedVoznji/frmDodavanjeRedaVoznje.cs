@@ -1,14 +1,6 @@
 ﻿using eAutobusModel;
 using eAutobusModel.Requests;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace eAutobus.WinUI.RedVoznji
 {
@@ -114,18 +106,18 @@ namespace eAutobus.WinUI.RedVoznji
                 newLine.OdredisteID = int.Parse(cbOdrediste.SelectedValue.ToString());
                 newLine.PolazisteID = int.Parse(cbPolaziste.SelectedValue.ToString());
                 newLine.VozacID = int.Parse(cbVozac.SelectedValue.ToString());
-                newLine.Datum = dtpDatum.Value.Date;
+                newLine.Datum = DateTime.Parse(dtpDatum.Value.ToShortDateString());
 
                 if (id.HasValue)
                 {
                     await _redVoznje.Update<RasporedVoznjeModel>(id, newLine);
-                    MessageBox.Show("Uspjesno izmjenjena linija! ");
+                    MessageBox.Show("Uspjesno izmjenjena linija!", "Izmjena", MessageBoxButtons.OK);
 
                 }
                 else
                 {
                     await _redVoznje.Insert<RasporedVoznjeModel>(newLine);
-                    MessageBox.Show("Uspjesno kreirana linija! ");
+                    MessageBox.Show("Uspjesno kreirana linija!", "Obavijest", MessageBoxButtons.OK);
                 }
             }
 
@@ -237,6 +229,14 @@ namespace eAutobus.WinUI.RedVoznji
             else
             {
                 errorDodavanjeLinije.SetError(dtpPolazak, null);
+            }
+        }
+
+        private void txtBrLinije_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }

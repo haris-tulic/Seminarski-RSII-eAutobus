@@ -3,12 +3,6 @@ using eAutobus.Database;
 using eAutobus.Services.Interfaces;
 using eAutobusModel;
 using eAutobusModel.Requests;
-using eAutobus.Database;
-using eAutobus.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 namespace eAutobus.Services
@@ -25,13 +19,13 @@ namespace eAutobus.Services
 
         public async Task<List<GarazaModel>> Get()
         {
-            var list =await _context.Garaza.ToListAsync();
+            var list = await _context.Garaza.ToListAsync();
             return _mapper.Map<List<GarazaModel>>(list);
         }
 
         public async Task<GarazaModel> GetByID(int id)
         {
-            var entity =await _context.Garaza.FirstOrDefaultAsync(i=>i.GarazaID==id);
+            var entity = await _context.Garaza.FirstOrDefaultAsync(i => i.GarazaID == id);
             return _mapper.Map<GarazaModel>(entity);
         }
 
@@ -45,7 +39,7 @@ namespace eAutobus.Services
 
         public async Task<GarazaModel> Update(GarazaUpsertRequest update, int id)
         {
-            var entity =await  _context.Garaza.FirstOrDefaultAsync(i => i.GarazaID == id);
+            var entity = await _context.Garaza.FirstOrDefaultAsync(i => i.GarazaID == id);
             _mapper.Map(update, entity);
             await _context.SaveChangesAsync();
             return _mapper.Map<GarazaModel>(entity);
@@ -53,15 +47,15 @@ namespace eAutobus.Services
 
         public async Task<GarazaModel> Delete(int id)
         {
-            var entity =await _context.Garaza.FirstOrDefaultAsync(g=>g.GarazaID==id);
+            var entity = await _context.Garaza.FirstOrDefaultAsync(g => g.GarazaID == id);
             entity.IsDeleted = true;
             await _context.SaveChangesAsync();
             return _mapper.Map<GarazaModel>(entity);
         }
         public async Task<bool> IsPopunjeno(int GarazaID)
         {
-            var entity = await _context.Garaza.FirstOrDefaultAsync(g=>g.GarazaID ==GarazaID);
-            if (entity.IsPopunjeno==true || entity.TrenutnoAutobusa>=entity.BrojMjesta)
+            var entity = await _context.Garaza.FirstOrDefaultAsync(g => g.GarazaID == GarazaID);
+            if (entity.IsPopunjeno == true || entity.TrenutnoAutobusa >= entity.BrojMjesta)
             {
                 entity.IsPopunjeno = true;
                 return entity.IsPopunjeno;

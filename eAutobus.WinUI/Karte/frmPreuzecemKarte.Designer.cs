@@ -30,7 +30,6 @@ namespace eAutobus.WinUI.Karte
         private void InitializeComponent()
         {
             dgvPrikazKarata = new DataGridView();
-            label1 = new Label();
             KartaID = new DataGridViewTextBoxColumn();
             ImePrezimeKupca = new DataGridViewTextBoxColumn();
             VrstaKarte = new DataGridViewTextBoxColumn();
@@ -40,6 +39,7 @@ namespace eAutobus.WinUI.Karte
             DatumVazenja = new DataGridViewTextBoxColumn();
             Cijena = new DataGridViewTextBoxColumn();
             JeLiPlacena = new DataGridViewCheckBoxColumn();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvPrikazKarata).BeginInit();
             SuspendLayout();
             // 
@@ -49,27 +49,15 @@ namespace eAutobus.WinUI.Karte
             dgvPrikazKarata.AllowUserToDeleteRows = false;
             dgvPrikazKarata.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPrikazKarata.Columns.AddRange(new DataGridViewColumn[] { KartaID, ImePrezimeKupca, VrstaKarte, TipKarte, Relacija, DatumVadjenja, DatumVazenja, Cijena, JeLiPlacena });
-            dgvPrikazKarata.Location = new Point(56, 200);
-            dgvPrikazKarata.Margin = new Padding(3, 2, 3, 2);
+            dgvPrikazKarata.Location = new Point(64, 267);
             dgvPrikazKarata.Name = "dgvPrikazKarata";
             dgvPrikazKarata.ReadOnly = true;
             dgvPrikazKarata.RowHeadersWidth = 51;
             dgvPrikazKarata.RowTemplate.Height = 24;
             dgvPrikazKarata.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPrikazKarata.Size = new Size(1054, 446);
+            dgvPrikazKarata.Size = new Size(1205, 595);
             dgvPrikazKarata.TabIndex = 0;
             dgvPrikazKarata.CellContentClick += dgvPrikazKarata_CellContentClick;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(363, 74);
-            label1.Name = "label1";
-            label1.Size = new Size(235, 26);
-            label1.TabIndex = 1;
-            label1.Text = "Plaćanje preuzećem:";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // KartaID
             // 
@@ -153,16 +141,26 @@ namespace eAutobus.WinUI.Karte
             JeLiPlacena.ReadOnly = true;
             JeLiPlacena.Width = 125;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(415, 99);
+            label1.Name = "label1";
+            label1.Size = new Size(299, 32);
+            label1.TabIndex = 1;
+            label1.Text = "Plaćanje preuzećem:";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // frmPreuzecemKarte
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1256, 736);
+            ClientSize = new Size(1435, 981);
             Controls.Add(label1);
             Controls.Add(dgvPrikazKarata);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "frmPreuzecemKarte";
-            Text = "frmPreuzecemKarte";
+            Text = "Preuzecem karte";
             Load += frmPreuzecemKarte_Load;
             ((System.ComponentModel.ISupportInitialize)dgvPrikazKarata).EndInit();
             ResumeLayout(false);

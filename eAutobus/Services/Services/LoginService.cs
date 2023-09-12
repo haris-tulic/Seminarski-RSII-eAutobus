@@ -1,15 +1,11 @@
 ﻿using AutoMapper;
-using eAutobusModel;
-using Microsoft.EntityFrameworkCore;
 using eAutobus.Database;
 using eAutobus.Exceptions;
 using eAutobus.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using eAutobusModel;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace eAutobus.Services
 {
@@ -26,11 +22,11 @@ namespace eAutobus.Services
 
         public async Task<KorisnikModel> Autentificiraj(string userName, string password)
         {
-            var entity = await  _context.Korisnik.Include(x => x.Uloge).FirstOrDefaultAsync(u => u.KorisnickoIme == userName);
+            var entity = await _context.Korisnik.Include(x => x.Uloge).FirstOrDefaultAsync(u => u.KorisnickoIme == userName);
             var entityK = await _context.Kupac.FirstOrDefaultAsync(k => k.KorisnickoIme == userName);
-           
-         
-            if (entity!=null)
+
+
+            if (entity != null)
             {
                 var hash = GenerateHash(entity.LozinkaSalt, password);
                 if (hash != entity.LozinkaHash)
@@ -40,35 +36,35 @@ namespace eAutobus.Services
 
                 return _mapper.Map<KorisnikModel>(entity);
             }
-            else if(entityK!=null )
+            else if (entityK != null)
             {
-               
 
 
-                    var hash = GenerateHash(entityK.LozinkaSalt, password);
-                    if (hash != entityK.LozinkaHash)
-                    {
-                        throw new UserException("Pogresan username ili password");
-                    }
-                    UlogeModel nova = new UlogeModel
-                    {
-                        Naziv = "Kupac",
-                        Opis = "Kupovina karata",
 
-                    };
+                var hash = GenerateHash(entityK.LozinkaSalt, password);
+                if (hash != entityK.LozinkaHash)
+                {
+                    throw new UserException("Pogresan username ili password");
+                }
+                UlogeModel nova = new UlogeModel
+                {
+                    Naziv = "Kupac",
+                    Opis = "Kupovina karata",
 
-                    KorisnikModel kupac = new KorisnikModel
-                    {
-                        KorisnikID = entityK.KupacID,
-                        Ime = entityK.Ime,
-                        KorisnickoIme = entityK.KorisnickoIme,
-                        Prezime = entityK.Prezime,
-                        Uloga = nova.Naziv,
-                        Uloge = nova,
-                        BrojTelefona = entityK.BrojTelefona,
-                        AdresaStanovanja = entityK.AdresaStanovanja,
-                    };
-                    return kupac;
+                };
+
+                KorisnikModel kupac = new KorisnikModel
+                {
+                    KorisnikID = entityK.KupacID,
+                    Ime = entityK.Ime,
+                    KorisnickoIme = entityK.KorisnickoIme,
+                    Prezime = entityK.Prezime,
+                    Uloga = nova.Naziv,
+                    Uloge = nova,
+                    BrojTelefona = entityK.BrojTelefona,
+                    AdresaStanovanja = entityK.AdresaStanovanja,
+                };
+                return kupac;
             }
             return null;
 

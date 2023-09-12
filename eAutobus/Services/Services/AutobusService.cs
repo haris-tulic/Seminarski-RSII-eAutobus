@@ -4,10 +4,6 @@ using eAutobus.Services.Interfaces;
 using eAutobusModel;
 using eAutobusModel.Requests;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace eAutobus.Services
 {
@@ -33,11 +29,11 @@ namespace eAutobus.Services
 
         public async Task<List<AutobusiModel>> Get(AutobusGetRequest request)
         {
-            var query =  _context.Autobus.Include(a=>a.Garaza).Where(a=>a.IsDeleted==false).AsQueryable();
+            var query = _context.Autobus.Include(a => a.Garaza).Where(a => a.IsDeleted == false).AsQueryable();
             if (!string.IsNullOrEmpty(request.Marka))
             {
                 query = query.Where(x => x.MarkaAutobusa.StartsWith(request.Marka));
-                
+
             }
             var lista = await query.ToListAsync();
             var entityl = new List<AutobusiModel>();
@@ -51,7 +47,7 @@ namespace eAutobus.Services
 
         public async Task<AutobusiModel> GetById(int id)
         {
-            var entity =await _context.Autobus.FindAsync(id);
+            var entity = await _context.Autobus.FindAsync(id);
             return _mapper.Map<AutobusiModel>(entity);
         }
 
@@ -71,7 +67,7 @@ namespace eAutobus.Services
             {
                 throw new Exception("Garaža je popunjena!");
             }
-           
+
         }
 
         public async Task<bool> Popunjeno(int GarazaId)

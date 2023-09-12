@@ -1,12 +1,8 @@
 ﻿using AutoMapper;
+using eAutobus.Database;
+using eAutobus.Services.Interfaces;
 using eAutobusModel;
 using eAutobusModel.Requests;
-using eAutobus.Database;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using eAutobus.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace eAutobus.Services
@@ -22,9 +18,9 @@ namespace eAutobus.Services
         }
         public async Task<ZonaModel> Delete(int id)
         {
-            var entity = await _context.Zona.FirstOrDefaultAsync(c=>c.ZonaID==id);
+            var entity = await _context.Zona.FirstOrDefaultAsync(c => c.ZonaID == id);
             entity.IsDeleted = true;
-            await  _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
             return _mapper.Map<ZonaModel>(entity);
         }
 
@@ -36,7 +32,7 @@ namespace eAutobus.Services
 
         public async Task<ZonaModel> GetById(int id)
         {
-            var entity = await _context.Zona.FirstOrDefaultAsync(x=>x.ZonaID==id);
+            var entity = await _context.Zona.FirstOrDefaultAsync(x => x.ZonaID == id);
             return _mapper.Map<ZonaModel>(entity);
         }
 

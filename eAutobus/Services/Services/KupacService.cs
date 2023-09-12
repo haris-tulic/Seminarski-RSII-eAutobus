@@ -1,23 +1,19 @@
 ﻿using AutoMapper;
-using eAutobusModel;
-using eAutobusModel.Requests;
-using Microsoft.EntityFrameworkCore;
 using eAutobus.Database;
 using eAutobus.Exceptions;
 using eAutobus.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using eAutobusModel;
+using eAutobusModel.Requests;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 
 namespace eAutobus.Services
 {
     public class KupacService : IKupacService
     {
-        
+
         private readonly eAutobusi _context;
         private readonly IMapper _mapper;
         private readonly IKorisnikService _korisnik;
@@ -51,15 +47,15 @@ namespace eAutobus.Services
 
         public async Task<KupacModel> Delete(int id)
         {
-            var entity = await _context.Kupac.FirstOrDefaultAsync(x=>x.KupacID==id);
+            var entity = await _context.Kupac.FirstOrDefaultAsync(x => x.KupacID == id);
             entity.IsDeleted = true;
             await _context.SaveChangesAsync();
             return _mapper.Map<KupacModel>(entity);
         }
 
-        public async Task< List<KupacModel>> Get(KupacGetRequest request)
+        public async Task<List<KupacModel>> Get(KupacGetRequest request)
         {
-            var query = _context.Kupac.Include(k=>k.KartaList).Include(k=>k.Recenzija).Where(k=>!k.IsDeleted).AsQueryable();
+            var query = _context.Kupac.Include(k => k.KartaList).Include(k => k.Recenzija).Where(k => !k.IsDeleted).AsQueryable();
             if (!string.IsNullOrWhiteSpace(request.Ime))
             {
                 query = query.Where(k => k.Ime.StartsWith(request.Ime));
@@ -76,7 +72,7 @@ namespace eAutobus.Services
             var list = await query.ToListAsync();
             var listM = new List<KupacModel>();
             _mapper.Map(list, listM);
-            if (list.Count()==1)
+            if (list.Count() == 1)
             {
                 var search = new KartaKupacGetRequest();
                 foreach (var item in list)
@@ -94,7 +90,7 @@ namespace eAutobus.Services
 
         public async Task<KupacModel> GetByID(int id)
         {
-            var entity = await _context.Kupac.Include(k=>k.KartaList).Include(k=>k.PlaceneKarte).FirstOrDefaultAsync(k=>k.KupacID==id && (!k.IsDeleted));
+            var entity = await _context.Kupac.Include(k => k.KartaList).Include(k => k.PlaceneKarte).FirstOrDefaultAsync(k => k.KupacID == id && (!k.IsDeleted));
             var search = new KartaKupacGetRequest
             {
                 KupacID = id,
@@ -108,15 +104,15 @@ namespace eAutobus.Services
 
         public async Task<KupacModel> Insert(KupacInsertRequest request)
         {
-          
+
             var entity = _mapper.Map<Database.Kupac>(request);
             if (!string.IsNullOrEmpty(request.KorisnickoIme) && request.Password == request.PotvrdaPassworda)
             {
-               
+
                 entity.LozinkaSalt = GenerateSalt();
                 entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Password);
                 var pronadji = await PronadjiKupca(request);
-                if (pronadji!=null)
+                if (pronadji != null)
                 {
                     return null;
                 }
@@ -135,7 +131,7 @@ namespace eAutobus.Services
                 var pronadji = await PronadjiKupca(request);
                 if (pronadji != null)
                 {
-                   await Update(request, pronadji.KupacID);
+                    await Update(request, pronadji.KupacID);
                 }
                 else
                 {
@@ -145,7 +141,7 @@ namespace eAutobus.Services
 
                 return _mapper.Map<KupacModel>(entity);
             }
-          
+
         }
         public async Task<KupacModel> RegistrujSe(KupacInsertRequest request)
         {
@@ -153,7 +149,7 @@ namespace eAutobus.Services
             var entity = _mapper.Map<Kupac>(request);
             if (!string.IsNullOrEmpty(request.KorisnickoIme) && request.Password == request.PotvrdaPassworda)
             {
-               
+
                 entity.LozinkaSalt = GenerateSalt();
                 entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Password);
             }
@@ -165,7 +161,7 @@ namespace eAutobus.Services
             else
             {
                 _context.Kupac.Add(entity);
-               await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
             }
 
             return _mapper.Map<KupacModel>(entity);
@@ -173,9 +169,9 @@ namespace eAutobus.Services
 
         }
 
-        public async Task<KupacModel> Update(KupacInsertRequest request,int id)
+        public async Task<KupacModel> Update(KupacInsertRequest request, int id)
         {
-            var entity = await _context.Kupac.FirstOrDefaultAsync(x=>x.KupacID==id);
+            var entity = await _context.Kupac.FirstOrDefaultAsync(x => x.KupacID == id);
             _mapper.Map(request, entity);
             if (!string.IsNullOrEmpty(entity.KorisnickoIme) && request.Password == request.PotvrdaPassworda)
             {
@@ -223,12 +219,12 @@ namespace eAutobus.Services
         public Kupac PronadjiRegistrovanogKupca(KupacInsertRequest kupac)
         {
             var pronadji = _context.Kupac
-                .Where(k => k.Ime == kupac.Ime && k.Prezime == kupac.Prezime && k.BrojTelefona == kupac.BrojTelefona && k.KorisnickoIme == kupac.KorisnickoIme && k.Email==kupac.Email)
+                .Where(k => k.Ime == kupac.Ime && k.Prezime == kupac.Prezime && k.BrojTelefona == kupac.BrojTelefona && k.KorisnickoIme == kupac.KorisnickoIme && k.Email == kupac.Email)
                 .Include(x => x.KartaList).Include(x => x.PlaceneKarte).Include(x => x.Recenzija)
                 .Include("KartaList.Karta").Include("PlaceneKarte.Karta").FirstOrDefault();
             return pronadji;
         }
 
-        
+
     }
 }

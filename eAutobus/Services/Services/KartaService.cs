@@ -1,18 +1,13 @@
 ﻿using AutoMapper;
+using eAutobus.Database;
+using eAutobus.Services.Interfaces;
 using eAutobusModel;
 using eAutobusModel.Requests;
 using Microsoft.EntityFrameworkCore;
-using eAutobus.Database;
-using eAutobus.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace eAutobus.Services
 {
-    public class KartaService : IKartaService   
+    public class KartaService : IKartaService
     {
         private readonly eAutobusi _context;
         private readonly IMapper _mapper;
@@ -29,7 +24,7 @@ namespace eAutobus.Services
         }
         public async Task<KartaModel> Delete(int id)
         {
-            var entity =await _context.Karta.FirstOrDefaultAsync(k=>k.KartaID==id);
+            var entity = await _context.Karta.FirstOrDefaultAsync(k => k.KartaID == id);
             entity.IsDeleted = true;
             await _context.SaveChangesAsync();
             return _mapper.Map<KartaModel>(entity);
@@ -38,13 +33,13 @@ namespace eAutobus.Services
         public async Task<List<KartaModel>> Get(KartaGetRequest request)
         {
             var query = _context.Karta.Include(v => v.VrstaKarte)
-                                    .Include(k=>k.KupacList)
+                                    .Include(k => k.KupacList)
                                     .Include(t => t.TipKarte)
-                                    .Include(p=>p.PlaceneKarte)
+                                    .Include(p => p.PlaceneKarte)
                                     .Include("KupacList.Kupac")
-                                    .Include(o=>o.Odrediste)
-                                    .Include(p=>p.Polaziste)
-                                    .Where(k=>k.IsDeleted==false && k.NacinPlacanja== "Preuzećem")
+                                    .Include(o => o.Odrediste)
+                                    .Include(p => p.Polaziste)
+                                    .Where(k => k.IsDeleted == false && k.NacinPlacanja == "Preuzećem")
                                     .AsQueryable();
             var list = await query.ToListAsync();
             var listM = new List<KartaModel>();
@@ -59,11 +54,11 @@ namespace eAutobus.Services
                     listM[i].DatumVadjenjaKarte = item.DatumVadjenjaKarte;
                     listM[i].DatumVazenjaKarte = item.DatumVazenjaKarte;
                     listM[i].ImePrezimeKupca = item.Kupac.Ime + " " + item.Kupac.Prezime;
-                   
+
                 }
                 foreach (var item in list[i].PlaceneKarte)
                 {
-                        listM[i].JeLiPlacena = item.JeLiPlacena;
+                    listM[i].JeLiPlacena = item.JeLiPlacena;
                 }
 
             }
@@ -73,7 +68,7 @@ namespace eAutobus.Services
 
         public async Task<KartaModel> GetById(int id)
         {
-            var entity = await _context.Karta.Include(k=>k.PlaceneKarte).Include(k=>k.KupacList).FirstOrDefaultAsync(x=>x.KartaID==id);
+            var entity = await _context.Karta.Include(k => k.PlaceneKarte).Include(k => k.KupacList).FirstOrDefaultAsync(x => x.KartaID == id);
             var entityK = new KartaModel();
             _mapper.Map(entity, entityK);
             foreach (var item in entity.KupacList)
@@ -84,10 +79,10 @@ namespace eAutobus.Services
                     entityK.DatumVazenjaKarte = item.DatumVazenjaKarte;
                     entityK.KupacID = item.KupacID;
                 }
-                
+
             }
             return entityK;
-          
+
         }
 
         public async Task<KartaModel> Insert(KartaUpsertRequest request)
@@ -103,63 +98,63 @@ namespace eAutobus.Services
             };
             var entity = _mapper.Map<Karta>(request);
             bool postoji = await ProvjeriKartu(kupac);
-                if (!postoji)
+            if (!postoji)
+            {
+                _context.Karta.Add(entity);
+                await _context.SaveChangesAsync();
+                KupacModel newKupac = new KupacModel();
+                Kupac pronadjeni = await _kupac.PronadjiKupca(kupac);
+                if (pronadjeni == null)
                 {
-                    _context.Karta.Add(entity);
-                    await _context.SaveChangesAsync();
-                    KupacModel newKupac = new KupacModel();
-                    Kupac pronadjeni = await _kupac.PronadjiKupca(kupac);
-                    if (pronadjeni == null)
-                    {
-                        kupac.Password = "";
-                        kupac.PotvrdaPassworda = "";
-                        newKupac = await _kupac.Insert(kupac);
+                    kupac.Password = "";
+                    kupac.PotvrdaPassworda = "";
+                    newKupac = await _kupac.Insert(kupac);
 
-                    }
-                    else
+                }
+                else
+                {
+                    newKupac.KupacID = pronadjeni.KupacID;
+                }
+                var kupacKarta = new KartaKupacUpsertRequest()
+                {
+                    Aktivna = true,
+                    DatumVadjenjaKarte = request.DatumVadjenjaKarte,
+                    DatumVazenjaKarte = request.DatumVazenjaKarte,
+                    KartaID = entity.KartaID,
+                    KupacID = newKupac.KupacID,
+                    Pravac = request.Pravac,
+                    PravacS = request.PravacS,
+                };
+
+                KartaKupacModel osobineKarte = _kartaKupac.Insert(kupacKarta);
+                request.KupacID = newKupac.KupacID;
+                request.KartaID = entity.KartaID;
+                if (request.NacinPlacanja == "Online")
+                {
+                    var onlineplati = new PlatiKartuUpsertRequest()
                     {
-                        newKupac.KupacID = pronadjeni.KupacID;
-                    }
-                    var kupacKarta = new KartaKupacUpsertRequest()
-                    {
-                        Aktivna = true,
+                        KartaID = request.KartaID,
+                        KupacID = request.KupacID,
+                        Cijena = request.Cijena,
                         DatumVadjenjaKarte = request.DatumVadjenjaKarte,
                         DatumVazenjaKarte = request.DatumVazenjaKarte,
-                        KartaID = entity.KartaID,
-                        KupacID = newKupac.KupacID,
-                        Pravac = request.Pravac,
-                        PravacS = request.PravacS,
+                        JeLiPlacena = true,
                     };
-
-                    KartaKupacModel osobineKarte = _kartaKupac.Insert(kupacKarta);
-                    request.KupacID = newKupac.KupacID;
-                    request.KartaID = entity.KartaID;
-                    if (request.NacinPlacanja == "Online")
-                    {
-                        var onlineplati = new PlatiKartuUpsertRequest()
-                        {
-                            KartaID = request.KartaID,
-                            KupacID = request.KupacID,
-                            Cijena = request.Cijena,
-                            DatumVadjenjaKarte = request.DatumVadjenjaKarte,
-                            DatumVazenjaKarte = request.DatumVazenjaKarte,
-                            JeLiPlacena = true,
-                        };
-                        await _onlinePlacanje.Insert(onlineplati);
+                    await _onlinePlacanje.Insert(onlineplati);
                 }
                 return _mapper.Map<KartaModel>(request);
-                }
-            return null;  
+            }
+            return null;
         }
 
         private async Task<bool> ProvjeriKartu(KupacInsertRequest trazeni)
         {
             var pronadjiKupca = await _kupac.PronadjiKupca(trazeni);
-            if (pronadjiKupca!=null && pronadjiKupca.KartaList!=null)
+            if (pronadjiKupca != null && pronadjiKupca.KartaList != null)
             {
                 foreach (var item in pronadjiKupca.KartaList)
                 {
-                    if (DateTime.Parse(DateTime.Now.ToShortDateString())>DateTime.Parse(item.DatumVazenjaKarte.ToShortDateString()))
+                    if (DateTime.Parse(DateTime.Now.ToShortDateString()) > DateTime.Parse(item.DatumVazenjaKarte.ToShortDateString()))
                     {
                         item.Aktivna = false;
                     }
@@ -170,15 +165,15 @@ namespace eAutobus.Services
 
         public async Task<KartaModel> Update(KartaUpsertRequest request, int id)
         {
-            var update = await _context.Karta.Include(k=>k.PlaceneKarte).FirstOrDefaultAsync(k=>k.KartaID==id);
+            var update = await _context.Karta.Include(k => k.PlaceneKarte).FirstOrDefaultAsync(k => k.KartaID == id);
             _mapper.Map(request, update);
             await _context.SaveChangesAsync();
             return _mapper.Map<KartaModel>(update);
         }
-        public async Task<KartaModel> UplatiKartu(int id,PlatiKartuUpsertRequest request)
+        public async Task<KartaModel> UplatiKartu(int id, PlatiKartuUpsertRequest request)
         {
-            var platiK = await _context.Karta.Include(k => k.PlaceneKarte).Include(k => k.KupacList).Where(k=>k.NacinPlacanja == "Preuzećem").FirstOrDefaultAsync(k => k.KartaID == id);
-            
+            var platiK = await _context.Karta.Include(k => k.PlaceneKarte).Include(k => k.KupacList).Where(k => k.NacinPlacanja == "Preuzećem").FirstOrDefaultAsync(k => k.KartaID == id);
+
             var response = _onlinePlacanje.Insert(request);
             return _mapper.Map<KartaModel>(platiK);
         }
