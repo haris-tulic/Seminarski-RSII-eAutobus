@@ -135,7 +135,7 @@ namespace eAutobus.WinUI.Karte
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(330, 624);
+            label8.Location = new Point(330, 630);
             label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
             label8.Size = new Size(45, 15);
@@ -221,7 +221,7 @@ namespace eAutobus.WinUI.Karte
             // 
             rbJedan.AutoSize = true;
             rbJedan.Checked = true;
-            rbJedan.Location = new Point(388, 622);
+            rbJedan.Location = new Point(388, 628);
             rbJedan.Margin = new Padding(4, 3, 4, 3);
             rbJedan.Name = "rbJedan";
             rbJedan.Size = new Size(116, 19);
@@ -234,7 +234,7 @@ namespace eAutobus.WinUI.Karte
             // rbDva
             // 
             rbDva.AutoSize = true;
-            rbDva.Location = new Point(534, 622);
+            rbDva.Location = new Point(534, 628);
             rbDva.Margin = new Padding(4, 3, 4, 3);
             rbDva.Name = "rbDva";
             rbDva.Size = new Size(94, 19);
