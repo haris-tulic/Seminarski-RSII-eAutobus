@@ -20,12 +20,6 @@ namespace eAutobus.Controllers
         {
             _service = service;
         }
-        [HttpGet]
-        public async Task<ActionResult<List<RasporedVoznjeModel>>> Get(int RasporedLinijeID)
-        {
-            var response=await _service.Get(RasporedLinijeID);
-            return Ok(response);
-        }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<List<RasporedVoznjeModel>>> Recommend(int id)

@@ -201,6 +201,7 @@ namespace eAutobus.WinUI.Karte
 
         private void cbVrstaKarte_SelectedIndexChanged(object sender, EventArgs e)
         {
+            txtCijena.Text = string.Empty;
             var obj = cbVrstaKarte.SelectedValue;
             int.TryParse(obj.ToString(), out int id);
             CijenaKarte.VrstaKarteID = id;
@@ -224,6 +225,7 @@ namespace eAutobus.WinUI.Karte
 
         private void cbTipKarte_SelectedIndexChanged(object sender, EventArgs e)
         {
+            txtCijena.Text = string.Empty;
             var obj = cbTipKarte.SelectedValue;
             int.TryParse(obj.ToString(), out int id);
             CijenaKarte.TipkarteID = id;

@@ -353,7 +353,7 @@ namespace eAutobus.WinUI.Karte
             label12.Location = new Point(387, 572);
             label12.Margin = new Padding(4, 0, 4, 0);
             label12.Name = "label12";
-            label12.Size = new Size(183, 44);
+            label12.Size = new Size(204, 55);
             label12.TabIndex = 30;
             label12.Text = "*Klikom na polje Cijena, prikazuje se cijena za odabranu kartu";
             // 

@@ -189,7 +189,7 @@ class _InfoPageState extends State<InfoPage> {
                 ),
                 child: DataTable(
                   dataTextStyle:
-                      const TextStyle(fontSize: 15, color: Colors.white),
+                      const TextStyle(fontSize: 12, color: Colors.white),
                   border: TableBorder.all(
                       color: const Color.fromARGB(207, 255, 255, 255),
                       width: 2,
@@ -200,7 +200,7 @@ class _InfoPageState extends State<InfoPage> {
                         "Karta",
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 16,
+                            fontSize: 12,
                             fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -208,31 +208,31 @@ class _InfoPageState extends State<InfoPage> {
                         label: Text("Polaziste",
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 18,
+                                fontSize: 12,
                                 fontWeight: FontWeight.bold))),
                     DataColumn(
                         label: Text("Odrediste",
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 18,
+                                fontSize: 12,
                                 fontWeight: FontWeight.bold))),
                     DataColumn(
                         label: Text("Datum vadjenja karte",
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 18,
+                                fontSize: 12,
                                 fontWeight: FontWeight.bold))),
                     DataColumn(
                         label: Text("Datum vazenja karte",
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 18,
+                                fontSize: 12,
                                 fontWeight: FontWeight.bold))),
                     DataColumn(
                         label: Text("Aktivna",
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 18,
+                                fontSize: 12,
                                 fontWeight: FontWeight.bold))),
                   ],
                   rows: prikazKarata()!,

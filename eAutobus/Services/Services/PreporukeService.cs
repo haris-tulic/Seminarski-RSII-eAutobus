@@ -19,23 +19,6 @@ namespace eAutobus.Services
         }
         Dictionary<int, List<Recenzija>> linije = new Dictionary<int, List<Recenzija>>();
 
-        public async Task<List<RasporedVoznjeModel>> Get(int RasporedLinijaID)
-        {
-            var linija = await _context.RasporedVoznje.Include(r => r.Recenzija).FirstOrDefaultAsync(r => r.RasporedVoznjeID == RasporedLinijaID);
-            int ocjena = 0;
-            foreach (var o in linija.Recenzija)
-            {
-                ocjena += o.Ocjena;
-            }
-
-            if (linija.Recenzija.Count() > 0)
-                linija.FinalOcjena = ocjena / linija.Recenzija.Count();
-
-            return _mapper.Map<List<RasporedVoznjeModel>>(linija);
-        }
-
-
-
         public async Task<List<RasporedVoznjeModel>> Recommend(int id)
         {
             var linijeA = await _context.RasporedVoznje

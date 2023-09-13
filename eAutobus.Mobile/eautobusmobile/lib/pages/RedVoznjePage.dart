@@ -147,34 +147,34 @@ class _RedVoznjeState extends State<RedVoznjePage> {
               ),
               child: DataTable(
                 dataTextStyle:
-                    const TextStyle(fontSize: 15, color: Colors.white),
+                    const TextStyle(fontSize: 12, color: Colors.white),
                 columns: const [
                   DataColumn(
                       label: Text(
                     'Broj linije',
-                    style: TextStyle(color: Colors.white, fontSize: 18),
+                    style: TextStyle(color: Colors.white, fontSize: 15),
                   )),
                   DataColumn(
                       label: Text('Polazak',
-                          style: TextStyle(color: Colors.white, fontSize: 18))),
+                          style: TextStyle(color: Colors.white, fontSize: 15))),
                   DataColumn(
                       label: Text('Vrijeme polaska',
-                          style: TextStyle(color: Colors.white, fontSize: 18))),
+                          style: TextStyle(color: Colors.white, fontSize: 15))),
                   DataColumn(
                       label: Text('Odrediste',
-                          style: TextStyle(color: Colors.white, fontSize: 18))),
+                          style: TextStyle(color: Colors.white, fontSize: 15))),
                   DataColumn(
                       label: Text('Vrijeme dolaska',
-                          style: TextStyle(color: Colors.white, fontSize: 18))),
+                          style: TextStyle(color: Colors.white, fontSize: 15))),
                   DataColumn(
                       label: Text('Datum',
-                          style: TextStyle(color: Colors.white, fontSize: 18))),
+                          style: TextStyle(color: Colors.white, fontSize: 15))),
                   DataColumn(
                       label: Text('Broj autobusa',
-                          style: TextStyle(color: Colors.white, fontSize: 18))),
+                          style: TextStyle(color: Colors.white, fontSize: 15))),
                   DataColumn(
                       label: Text('Prikazi detalje',
-                          style: TextStyle(color: Colors.white, fontSize: 18))),
+                          style: TextStyle(color: Colors.white, fontSize: 15))),
                 ],
                 rows: data!
                     .map(

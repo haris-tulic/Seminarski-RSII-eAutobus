@@ -144,6 +144,8 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
         } else if (datumS == "Datum povratka") {
           _datumPovratka.text = "${_datumPOOD.toLocal()}".substring(0, 10);
         }
+      } else {
+        _datumPovratka.text = "${_datumPOOD.toLocal()}".substring(0, 10);
       }
       if (_datumPolaska.text != _datumPovratka.text) {
         _odabrani = Smjer.dva;
@@ -606,8 +608,8 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
                                 };
                               });
                               try {
-                                await _kartaProvider?.insert(kupipreuzecem);
                                 await kupiOnline(_cijenaKarte?.toString());
+                                await _kartaProvider?.insert(kupipreuzecem);
                               } catch (e) {
                                 _showDialog(
                                     "Kartu nije moguce kupiti. Molimo pokusajte kasnije",
@@ -631,6 +633,34 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
         ));
   }
 
+  createPaymentIntent(dynamic amount, String currency) async {
+    try {
+      Map<String, dynamic> body = {
+        'amount': calculateAmount(amount),
+        'currency': currency,
+        'description': "Placeno",
+        'payment_method_types[]': 'card'
+      };
+
+      var response = await http.post(
+        Uri.parse('https://api.stripe.com/v1/payment_intents'),
+        headers: {
+          'Authorization': 'Bearer $secretkey',
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: body,
+      );
+      return jsonDecode(response.body);
+    } catch (err) {
+      showDialog(
+        context: context,
+        builder: (_) => const AlertDialog(
+          content: Text("Cancelled "),
+        ),
+      );
+    }
+  }
+
   Future<void> kupiOnline(dynamic cijenaKarte) async {
     try {
       paymentIntent = await createPaymentIntent(cijenaKarte, 'BAM');
@@ -647,12 +677,7 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
       ///now finally display payment sheeet
       displayPaymentSheet();
     } catch (e, s) {
-      showDialog(
-        context: context,
-        builder: (_) => const AlertDialog(
-          content: Text("Error "),
-        ),
-      );
+      print('exception:$e$s');
     }
   }
 
@@ -704,35 +729,7 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
       );
     }
   }
-
   //  Future<Map<String, dynamic>>
-  createPaymentIntent(dynamic amount, String currency) async {
-    try {
-      Map<String, dynamic> body = {
-        'amount': calculateAmount(amount),
-        'currency': currency,
-        'description': "Placeno",
-        'payment_method_types[]': 'card'
-      };
-
-      var response = await http.post(
-        Uri.parse('https://api.stripe.com/v1/payment_intents'),
-        headers: {
-          'Authorization': 'Bearer $secretkey',
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: body,
-      );
-      return jsonDecode(response.body);
-    } catch (err) {
-      showDialog(
-        context: context,
-        builder: (_) => const AlertDialog(
-          content: Text("Cancelled "),
-        ),
-      );
-    }
-  }
 
   calculateAmount(String amount) {
     final calculatedAmout = (int.parse(amount)) * 100;
