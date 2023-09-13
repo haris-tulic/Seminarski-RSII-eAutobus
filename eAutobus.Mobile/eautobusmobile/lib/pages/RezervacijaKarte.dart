@@ -671,7 +671,7 @@ class _RezervacijaKarteState extends State<RezervacijaKarte> {
                   // applePay: const PaymentSheetApplePay(merchantCountryCode: '+92',),
                   // googlePay: const PaymentSheetGooglePay(testEnv: true, currencyCode: "US", merchantCountryCode: "+92"),
                   style: ThemeMode.dark,
-                  merchantDisplayName: 'Adnan'))
+                  merchantDisplayName: 'Karta'))
           .then((value) {});
 
       ///now finally display payment sheeet
