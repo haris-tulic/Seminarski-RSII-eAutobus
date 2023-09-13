@@ -291,6 +291,7 @@ namespace eAutobus.WinUI.Karte
             txtCijena.Location = new Point(388, 548);
             txtCijena.Margin = new Padding(4, 3, 4, 3);
             txtCijena.Name = "txtCijena";
+            txtCijena.ReadOnly = true;
             txtCijena.Size = new Size(182, 23);
             txtCijena.TabIndex = 22;
             txtCijena.Click += txtCijena_Click;
